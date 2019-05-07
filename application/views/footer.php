@@ -33,9 +33,7 @@
 		<script src="<?php echo asset_url('vendors/general/sticky-js/dist/sticky.min.js'); ?>" type="text/javascript"></script>
 		<script src="<?php echo asset_url('vendors/general/wnumb/wNumb.js'); ?>" type="text/javascript"></script>
 
-		<!--end:: Global Mandatory Vendors -->
 
-		<!--begin:: Global Optional Vendors -->
 		<script src="<?php echo asset_url('vendors/general/jquery-form/dist/jquery.form.min.js'); ?>" type="text/javascript"></script>
 		<script src="<?php echo asset_url('vendors/general/block-ui/jquery.blockUI.js'); ?>" type="text/javascript"></script>
 		<script src="<?php echo asset_url('vendors/general/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js'); ?>" type="text/javascript"></script>
