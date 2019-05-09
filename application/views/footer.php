@@ -91,3 +91,6 @@
 		<script src="<?php echo asset_url('js/demo1/scripts.bundle.js'); ?>" type="text/javascript"></script>
 
 		<!--end::Global Theme Bundle -->
+
+		<script src="<?php echo asset_url('js/demo1/pages/crud/forms/widgets/form-repeater.js'); ?>" type="text/javascript"></script>
+		<script src="?php echo asset_url('js/demo1/pages/crud/forms/widgets/form-repeater.js'); ?>" type="text/javascript"></script>
