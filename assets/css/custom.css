@@ -1,0 +1,90 @@
+
+body { 
+            background: url(../../assets/media/bg_registro.jpg) repeat; 
+            background-size: cover; 
+            background-position: scroll; 
+        }
+
+.container-registro { width: 85%; margin: 0 auto; margin-top: 80px; }
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 { margin-bottom:0; }
+
+.kt-checkbox.kt-checkbox--brand.kt-checkbox--solid > input:checked ~ span {
+    background: #b51f1f;
+}
+.kt-checkbox.kt-checkbox--brand.kt-checkbox--solid > span {
+    background: #b51f1f;
+    border: 1px solid transparent !important;
+}
+.kt-radio.kt-radio--brand.kt-radio--solid > span {
+    background: #b51f1f;
+    border: 1px solid transparent !important;
+}
+.kt-radio.kt-radio--brand.kt-radio--solid > input:checked ~ span {
+    background: #b51f1f;
+}
+.nav-pills .nav-item .nav-link:active, .nav-pills .nav-item .nav-link.active, .nav-pills .nav-item .nav-link.active:hover {
+    background-color: #b51f1f;
+    color: #ffffff;
+}
+.kt-option {
+    border: 1px solid #b51f1f;
+}
+.input-group-text {
+    background-color: #b51f1f;
+    border: 1px solid #b51f1f;
+}
+.form-control {
+    border: 1px solid #b51f1f;
+}
+.input-group i {
+    color: #fff;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #666;
+    border-color: #666;
+    color: #ffffff;
+    cursor: pointer;
+}
+.custom-file-label {
+    border: 1px solid #b51f1f;
+}
+.dropzone {
+    border: 2px dashed #b51f1f;
+}
+body {
+    color: #010000;
+}
+.kt-section .kt-section__content.kt-section__content--solid {
+    border-left: 4px solid #b51f1f;
+     background: #efefef;
+}
+.btn-remover {
+	background-color: #666;
+    border-color: #666;
+}
+.kt-option .kt-option__label .kt-option__head .kt-option__title {
+    color: #010000;
+}
+p {
+     color: #010000; font-size: 14px;
+}
+
+.kt-wizard-v3 .kt-wizard-v3__wrapper .kt-form {
+    width: 100% !important;
+    padding: 0 !important;
+}
+.kt-wizard-v3 .kt-wizard-v3__wrapper .kt-form .kt-wizard-v3__content {
+    padding-bottom: 0 !important;
+}
+
+.kt-wizard-v3 .kt-wizard-v3__nav .kt-wizard-v3__nav-items .kt-wizard-v3__nav-item {
+    -ms-flex: 0 0 8% !important;
+    flex: 0 0 8% !important;
+    margin-right: 15px;
+}
+.kt-wizard-v3 .kt-wizard-v3__nav .kt-wizard-v3__nav-items { padding: 0 !important;  }
+
+#tienePeriodoEjercido-error { display: none !important; }
