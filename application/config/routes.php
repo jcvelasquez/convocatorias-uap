@@ -49,7 +49,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		    my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'welcome';
+$route['default_controller'] = 'Bienvenidos';
 $route['admin'] = 'Admin/index';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+//PAGINAS DETALLES DE CONVOCATORIAS
+$route['admin/convocatorias/(:any)'] = "Admin/convocatorias_detalle/$1";
+$route['provincia/prov_x_depa'] = "Provincia/listar_provincias_x_depa";
+$route['distrito/dist_x_prov'] = "Distrito/listar_distritos_x_prov";
+
+$route['registro'] = "Registro/index";
+$route['registro-campo'] = "Registro/grabar_campo";
+
+$route['crear-cuenta'] = "Bienvenidos/crear_cuenta_nuevo";
+
+$route['cerrar-sesion'] = "Bienvenidos/cerrar_sesion";
+$route['iniciar-sesion'] = "Bienvenidos/iniciar_sesion";
+
+$route['generar-idrepeater'] = "Registro/generarRepeaterId";
+
+
+
+
+

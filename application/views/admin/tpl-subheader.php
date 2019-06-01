@@ -14,11 +14,11 @@
 									</div>
 									<div class="kt-subheader__toolbar">
 										<div class="kt-subheader__wrapper">
-											<a href="../admin/resumen" class="btn  kt-subheader__btn-primary kt-subheader__btn-options">
+											<a href="<?php echo site_url('index.php/admin/resumen');?>" class="btn  kt-subheader__btn-primary kt-subheader__btn-options">
 												VER RESUMEN
 											</a>
 											
-												<a href="../admin/convocatorias" class="btn btn-danger kt-subheader__btn-options">
+												<a href="<?php echo site_url('index.php/admin/convocatorias');?>" class="btn btn-danger kt-subheader__btn-options">
 													VER CONVOCATORIAS
 												</a>
 											

@@ -1,45 +1,48 @@
-<form class="kt-form">
-	<div class="kt-portlet__body">
-		<div class="kt-section kt-section--first">
-			<h3 class="kt-section__title">Por Favor adjunta sus fotografía</h3>
-			<div class="form-group row">
-				<label class="col-form-label col-lg-3 col-sm-12">Adjuntar fotografía</label>
-				<div class="col-lg-4 col-md-9 col-sm-12">
-					<div class="kt-dropzone dropzone dz-clickable" action="inc/api/dropzone/upload.php" id="m-dropzone-one">
-						<div class="kt-dropzone__msg dz-message needsclick">
-							<h3 class="kt-dropzone__msg-title">Arrastra la fotografía hasta acá</h3>
-							<span class="kt-dropzone__msg-desc">Puedes subir más de uno.</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+
+<div class="kt-section">
+	<div class="kt-section__content kt-section__content--solid">
+		<h4>POR FAVOR ADJUNTAR SU FOTOGRAFIA <small>With faded secondary text</small></h4>
 	</div>
-	<div class="kt-portlet__body">
-		<div class="kt-section kt-section--first">
-			<h3 class="kt-section__title">Adjunte su curriculum vitae correctamente documento con todas las certificaciones declaradas en el formulario. Recuerde que solo puede adjuntar archivos en formatos PDF</h3>
-			<div class="form-group row">
-				<label class="col-form-label col-lg-3 col-sm-12">Ajuntar curriculum vitae</label>
-				<div class="col-lg-4 col-md-9 col-sm-12">
-					<div class="kt-dropzone dropzone dz-clickable" action="inc/api/dropzone/upload.php" id="m-dropzone-one">
-						<div class="kt-dropzone__msg dz-message needsclick">
-							<h3 class="kt-dropzone__msg-title">Arrastra el archivo hasta acá</h3>
-							<span class="kt-dropzone__msg-desc">Puedes subir más de uno.</span>
-						</div>
-					</div>
-				</div>
+</div>
+
+
+<div class="form-group row">
+	<div class="col-lg-12">
+		
+		<!-- inicio dropzone -->
+		<div class="kt-dropzone dropzone m-dropzone--success" action="inc/api/dropzone/upload.php" id="m-dropzone-three">
+			<div class="kt-dropzone__msg dz-message needsclick">
+				<h3 class="kt-dropzone__msg-title">Arrastre los archivos hasta aquí o haga clic para subir archivos.</h3>
+				<span class="kt-dropzone__msg-desc">Solo imágenes, pdfs y documentos word estan permitidos</span>
 			</div>
-		</div>
+		</div> 
+		<!-- fin de dropzone -->
 	</div>
-	<div class="kt-portlet__foot">
-		<div class="kt-form__actions">
-			<div class="row">
-				<div class="col-lg-3"></div>
-				<div class="col-lg-6">
-					<button type="reset" class="btn btn-success">Submit</button>
-					<button type="reset" class="btn btn-secondary">Cancel</button>
-				</div>
+</div>
+
+<div class="kt-section">
+	<div class="kt-section__content kt-section__content--solid">
+		<h4>ADJUNTE SU CV DOCUMENTADO <small> con todas las certificaciones declaradas en el formulario</small></h4>
+	</div>
+</div>
+
+<div class="form-group row">
+	<div class="col-lg-12">
+		<!-- inicio dropzone -->
+		<div class="kt-dropzone dropzone m-dropzone--success" action="inc/api/dropzone/upload.php" id="m-dropzone-three">
+			<div class="kt-dropzone__msg dz-message needsclick">
+				<h3 class="kt-dropzone__msg-title">Arrastre los archivos hasta aquí o haga clic para subir archivos.</h3>
+				<span class="kt-dropzone__msg-desc">Solo imágenes, pdfs y documentos word estan permitidos</span>
 			</div>
-		</div>
+		</div> 
+		<!-- fin de dropzone -->
+
 	</div>
-</form>
+</div>
+
+
+
+
+
+
+

@@ -62,10 +62,13 @@
 
 		<!--begin::Global Theme Styles(used by all pages) -->
 		<link href="<?php echo asset_url('css/demo4/style.bundle.css'); ?>" rel="stylesheet" type="text/css" />
-
 		<!--end::Global Theme Styles -->
 
 		<!--begin::Layout Skins(used by all pages) -->
 
 		<!--end::Layout Skins -->
 		<link rel="shortcut icon" href="<?php echo asset_url('media/logos/favicon.ico'); ?>" />
+
+
+		<link href="<?php echo asset_url('css/demo1/pages/custom/general/wizard/wizard-1.css'); ?>" rel="stylesheet" type="text/css" />
+

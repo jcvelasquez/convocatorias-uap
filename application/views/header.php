@@ -58,14 +58,14 @@
 		<link href="<?php echo asset_url('vendors/custom/vendors/flaticon2/flaticon.css'); ?>" rel="stylesheet" type="text/css" />
 		<link href="<?php echo asset_url('vendors/general/@fortawesome/fontawesome-free/css/all.min.css'); ?>" rel="stylesheet" type="text/css" />
 
-		<!--end:: Global Optional Vendors -->
 
-		<!--begin::Global Theme Styles(used by all pages) -->
+
 		<link href="<?php echo asset_url('css/demo4/style.bundle.css'); ?>" rel="stylesheet" type="text/css" />
+		<link href="<?php echo asset_url('css/custom.css'); ?>" rel="stylesheet" type="text/css" />
 
-		<!--end::Global Theme Styles -->
 
-		<!--begin::Layout Skins(used by all pages) -->
+		<link href="<?php echo asset_url('css/demo1/pages/custom/general/wizard/wizard-3.css'); ?>" rel="stylesheet" type="text/css" />
 
-		<!--end::Layout Skins -->
+
 		<link rel="shortcut icon" href="<?php echo asset_url('media/logos/favicon.ico'); ?>" />
+

@@ -11,7 +11,7 @@
 
 						<li class="kt-menu__item " aria-haspopup="true"><a href="javascript:;" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-map"></i> <span class="kt-menu__link-text">Cursos</span></a></li>
 
-						<li class="kt-menu__item " aria-haspopup="true"><a href="javascript:;" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-map"></i> <span class="kt-menu__link-text">Convocatorias</span></a></li>
+						<li class="kt-menu__item " aria-haspopup="true"><a href="<?php echo site_url('index.php/admin/convocatorias');?>" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-map"></i> <span class="kt-menu__link-text">Convocatorias</span></a></li>
 
 						<li class="kt-menu__item " aria-haspopup="true"><a href="javascript:;" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-map"></i> <span class="kt-menu__link-text">Usuarios</span></a></li>
 

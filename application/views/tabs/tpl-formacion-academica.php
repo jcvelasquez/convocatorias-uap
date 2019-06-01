@@ -1,237 +1,172 @@
-<form class="kt-form">
-	<div class="kt-portlet__body">
-		<div class="kt-section kt-section--first">
-			<h3 class="kt-section__title">Instituciones Educativas y Culturales</h3>
-			<div class="kt-section__body">
 
-				<div id="kt_repeater_3">
-					<div class="form-group  row">
+<div class="kt-section">
+	<div class="kt-section__content kt-section__content--solid ">
+		<h4>PDF REGISTRO EN SUNEDU <small style="color: red;">(ATENCIÓN: Si no cuenta con dicho archivo, no podrá continuar con el registro)</small></h4>
+	</div>
+</div>
 
-						<div class="col-lg-12">
 
-							<div data-repeater-item="" class="row kt-margin-b-10">
-								<div class="col-lg-6">
-									<div class="col-lg-3 2">
-										<div class="kt-radio-inline">
-											<label class="kt-radio">
-												<input type="radio" name="radio4"> Si
-												<span></span>
-											</label>
-											<label class="kt-radio">
-												<input type="radio" checked="checked" name="radio4"> No
-												<span></span>
-											</label>
-										</div>
-										<span>Marque la opcion correcta</span>
-									</div>
-									<div class="col-lg-3">
-										<div class="kt-radio-inline">
-											<label class="kt-radio">
-												<input type="radio" name="radio4"> Si
-												<span></span>
-											</label>
-											<label class="kt-radio">
-												<input type="radio" checked="checked" name="radio4"> No
-												<span></span>
-											</label>
-										</div>
-										<span>Marque la opcion correcta</span>
-									</div>
+<div class="form-group row">
 
-									<div class="col-lg-6">
-										<div class="custom-file">
-											<input type="file" class="custom-file-input" id="customFile">
-											<label class="custom-file-label" for="customFile">Selecciona Archivo</label>
-										</div>
-									</div>
-								</div>
-							</div>
+	<div class="col-lg-12">
 
-						</div>
-					</div>
-				</div>														
-			</div>
-
-			<div class="kt-section kt-section--first">
-				<h3 class="kt-section__title">¿ Cuenta con grado de Maestro? </h3>
-				<div class="kt-section__body">
-
-					<div id="kt_repeater_3">
-						<div class="form-group  row">
-							<div data-repeater-list="" class="col-lg-12">
-								<div data-repeater-item="" class="row kt-margin-b-10">
-									<div class="col-lg-3">
-										<div class="kt-radio-inline">
-											<label class="kt-radio">
-												<input type="radio" name="radio4"> Si
-												<span></span>
-											</label>
-											<label class="kt-radio">
-												<input type="radio" checked="checked" name="radio4"> No
-												<span></span>
-											</label>
-										</div>
-										<span>Marque la opcion correcta</span>
-									</div>
-									<div class="col-lg-3">
-									</div>
-									<div class="col-lg-3">	
-									</div>
-									<div class="col-lg-3">
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>														
-			</div>
-
-		</div>
-		<div class="kt-portlet__foot">
-			<div class="kt-form__actions">
-				<div class="row">
-					<div class="col-lg-3"></div>
-					<div class="col-lg-6">
-						<button type="reset" class="btn btn-success">Submit</button>
-						<button type="reset" class="btn btn-secondary">Cancel</button>
-					</div>
-				</div>
+		<!-- inicio dropzone -->
+		<div class="kt-dropzone dropzone m-dropzone--success" action="inc/api/dropzone/upload.php" id="m-dropzone-three">
+			<div class="kt-dropzone__msg dz-message needsclick">
+				<h3 class="kt-dropzone__msg-title">Arrastre los archivos hasta aquí o haga clic para subir archivos.</h3>
+				<span class="kt-dropzone__msg-desc">Solo imágenes, pdfs y documentos word estan permitidos</span>
 			</div>
 		</div>
-	</form>
-
-
-
-
-	<div class="kt-radio-list">
-		<label class="kt-radio">
-			<input type="radio" name="radio1"> Si
-			<span></span>
-		</label>
-
+		<!-- fin de dropzone -->
+		
 	</div>
 
-	<div class="kt-portlet__head kt-portlet__head--lg">
-		<div class="kt-portlet__head-label">
-			<span class="kt-portlet__head-icon">
-				<i class="la la-file-pdf-o"></i>
+</div>
+
+<div class="kt-section">
+	<div class="kt-section__content kt-section__content--solid">
+		<h4>MARCAR SEGÚN CORRESPONDA. <small>En el caso de que sean verdaderas</small></h4>
+	</div>
+</div>
+
+
+<div class="form-group row">
+	
+	<div class="col-lg-6">
+		<label class="kt-option">
+			<span class="kt-option__control ">
+				<span class="kt-checkbox kt-checkbox--solid kt-checkbox--brand kt-checkbox--check-bold">
+
+					<?php 
+
+						$tieneGradoMaestro = $docente['tieneGradoMaestro']; 
+
+						if(isset($tieneGradoMaestro)){ 
+
+							if($tieneGradoMaestro == 1){
+								echo '<input type="checkbox" name="tieneGradoMaestro" id="tieneGradoMaestro" data-dbtable="indicadores" data-dbpk="indicadorId" value="1" checked>';
+							}else{
+								echo '<input type="checkbox" name="tieneGradoMaestro" id="tieneGradoMaestro" data-dbtable="indicadores" data-dbpk="indicadorId" value="1">';
+							}
+
+						}else{ 
+
+							echo '<input type="checkbox" name="tieneGradoMaestro" id="tieneGradoMaestro" data-dbtable="indicadores" data-dbpk="indicadorId" value="1">';
+
+						} 
+
+					?>
+					
+					<span></span>
+						
+				</span>
 			</span>
-			<h3 class="kt-portlet__head-title">
-				Adjuntar el registro de su grado en SUNEDU (Solo formato PDF)
-			</h3>
-		</div>
+			<span class="kt-option__label">
+				<span class="kt-option__head">
+					<span class="kt-option__title">
+						Cuento con un grado de maestro
+					</span>
+					<span class="kt-option__focus">
+						(NO excluyente)
+					</span>
+				</span>
+				<span class="kt-option__body">
+
+				</span>
+			</span>
+		</label>
 	</div>
 
-	<!--tabla de botones-->
-	<div class="kt-portlet__body">
-		<!--begin::Section-->
-		<div class="kt-section">
-			<div class="kt-section__content">
-				<table class="table table-bordered">
-					<thead>
-						<tr>
-							<th><button type="button" class="btn btn-success"><i class="fa fa-dollar-sign"></i> Seleccionar archivos</button>
-								<button type="button" class="btn btn-success"><i class="fa fa-dollar-sign"></i> Cancelar todas las subidas</button></th>
-								<th><button type="button" class="btn btn-danger"><i class="fa fa-dollar-sign"></i> ELIMINAR SELECCIÓN</button></th>
-								<th><label class="kt-checkbox">
-									<input type="checkbox"> <span></span>
-								</label></th>
-							</tr>
-						</thead>
-					</table>
+	<div class="col-lg-6">
+		<label class="kt-option">
+			<span class="kt-option__control">
+				<span class="kt-checkbox kt-checkbox--solid kt-checkbox--brand kt-checkbox--check-bold">
+					<?php 
+						$tieneSegEspecialidad = $docente['tieneSegEspecialidad']; 
 
-					<table class="table table-bordered">
-						<thead>
-							<tr>
-								<th></th>
-								<th></th>
-								<th></th>
-								<th></th>
-							</tr>
-						</thead>
-					</table>
+						if(isset($tieneSegEspecialidad)){ 
+							if($tieneSegEspecialidad == 1){
+								echo '<input type="checkbox" name="tieneSegEspecialidad" id="tieneSegEspecialidad" data-dbtable="indicadores" data-dbpk="indicadorId" value="1" checked>';
+							}else{
+								echo '<input type="checkbox" name="tieneSegEspecialidad" id="tieneSegEspecialidad" data-dbtable="indicadores" data-dbpk="indicadorId" value="1">';
+							}
+						}else{ 
+							echo '<input type="checkbox" name="tieneSegEspecialidad" id="tieneSegEspecialidad" data-dbtable="indicadores" data-dbpk="indicadorId" value="1">';
+						} 
 
-				</div>
-			</div>														
-		</div>
-		<!--end::Section-->
-		<!-- -->
-		<div class="kt-portlet__head kt-portlet__head--lg">
-			<div class="kt-portlet__head-label">
-				<span class="kt-portlet__head-icon">
-					<i class="la la-check"></i>
+					?>
+					<span></span>
 				</span>
-				<h3 class="kt-portlet__head-title">
-					¿ Cuenta con grado de Maestro?
-				</h3>
-			</div>
-		</div>
-
-		<div class="col-lg-9 col-md-9 col-sm-12">
-			<div class="kt-radio-inline">
-				<label class="kt-radio">
-					<input type="checkbox" name="radio"> Si
-					<span></span>
-				</label>
-				<label class="kt-radio">
-					<input type="checkbox" name="radio"> No
-					<span></span>
-				</label>
-			</div>
-			<span class="form-text text-muted">Please select an option</span>
-		</div>
-
-		<!---->
-		<div class="kt-portlet__head kt-portlet__head--lg">
-			<div class="kt-portlet__head-label">
-				<span class="kt-portlet__head-icon">
-					<i class="la la-check"></i>
+			</span>
+			<span class="kt-option__label">
+				<span class="kt-option__head">
+					<span class="kt-option__title">
+						Cuento con segunda especialidad
+					</span>
+					<span class="kt-option__focus">
+						(NO excluyente)
+					</span>
 				</span>
-				<h3 class="kt-portlet__head-title">
-					¿ Cuenta con Segunda especialidad?
-				</h3>
-			</div>
-		</div>
+				<span class="kt-option__body">
 
-		<div class="col-lg-9 col-md-9 col-sm-12">
-			<div class="kt-radio-inline">
-				<label class="kt-radio">
-					<input type="checkbox" name="radio"> Si
-					<span></span>
-				</label>
-				<label class="kt-radio">
-					<input type="checkbox" name="radio"> No
-					<span></span>
-				</label>
-			</div>
-			<span class="form-text text-muted">Please select an option</span>
-		</div>
-
-		<!-- Grados títulos obteneidos  -->
-		<div class="kt-portlet__head kt-portlet__head--lg">
-			<div class="kt-portlet__head-label">
-				<span class="kt-portlet__head-icon">
-					<i class="la la-check"></i>
 				</span>
-				<h3 class="kt-portlet__head-title">
-					GRADOS, TÍTULOS OBTENIDOS O ESTUDIO S COMPLEMETARIOS
-				</h3>
-			</div>
-		</div>
-		<!-- -->
+			</span>
+		</label>
+	</div>
 
-		<div id="kt_repeater_3">
-			<div class="form-group  row">
-				<div data-repeater-list="" class="col-lg-12">
-					<div data-repeater-item="" class="row kt-margin-b-10">
-						<div class="col-lg-3">
+</div>
+
+<div class="kt-section">
+	<div class="kt-section__content kt-section__content--solid">
+		<h4>GRADOS, TITULOS O ESTUDIOS COMPLEMENTARIOS <small>Puede agregar cuantos requiera.</small></h4>
+	</div>
+</div>
+
+
+<div class="form-group row">
+	<div class="col-lg-12">
+
+		<!-- repeater -->
+		<div id="kt_repeater_grados">
+			
+			<div data-repeater-list="">
+				<div data-repeater-item="" data-random-id="<?php echo $randomRepeaterID; ?>">
+					<div class="form-group row">
+						<div class="col-lg-4">
 							<div class="input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text">
 										<i class="la la-phone"></i>
 									</span>
 								</div>
-								<input type="text" class="form-control form-control-danger" placeholder="Grado Académico">
+								<select name="gradAcademico" class="form-control">
+									<option value="">Seleccione grado académico</option>	
+									<option value="Bachiller">Bachiller</option>
+									<option value="Licenciado">Licenciado</option>
+									<option value="Estudios__Concluidos__Maestría">Estudios Concluidos Maestría</option>
+									<option value="Magister">Magíster</option>
+									<option value="Estudios_Concluidos_Doctorado">Estudios Concluidos Doctorado</option>
+									<option value="Doctor">Doctor</option>
+									<option value="Estudios_Concluidos_Postdoctorado">Estudios Concluidos Postdoctorado</option>
+									<option value="Postdoctorado">Postdoctorado</option>
+									<option value="Titulo">Título</option>
+									<option value="Doctor_Magíster">Doctor / Magíster</option>
+									<option value="Postdoctorado__Doctor">Postdoctorado / Doctor</option>
+									<option value="Tecnico__Bachiller">Técnico / Bachiller</option>
+									<option value="Bachiller__Magister">Bachiller / Magíster</option>
+									<option value="Diplomado">Diplomado</option>
+									<option value="Otros_estudios">Otros estudios</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-lg-4">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text">
+										<i class="la la-envelope"></i>
+									</span>
+								</div>
+								<input type="text" name="gradEspecialidad" class="form-control" placeholder="Especialidad">
 							</div>
 						</div>
 						<div class="col-lg-3">
@@ -241,64 +176,111 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<input type="text" class="form-control form-control-danger" placeholder="Especialidad">
+								<input type="text" name="gradInstitucion" class="form-control" placeholder="Institucion">
 							</div>
 						</div>
-						<div class="col-lg-3">
-							<div class="input-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text">
-										<i class="la la-envelope"></i>
-									</span>
-								</div>
-								<input type="text" class="form-control form-control-danger" placeholder="Email">
-							</div>
-						</div>
-						<div class="col-lg-3">
-							<a href="javascript:;" data-repeater-delete="" class="btn btn-danger btn-icon">
+						<div class="col-lg-1">
+							<a href="javascript:;" data-repeater-delete="" class="btn btn-remover btn-danger btn-icon">
 								<i class="la la-remove"></i>
 							</a>
 						</div>
 					</div>
 				</div>
-				<!-- -->
+
 			</div>
-			<div class="row">
-				<div class="col-lg-3"></div>
-				<div class="col">
-					<div data-repeater-create="" class="btn btn btn-primary">
-						<span>
-							<i class="la la-plus"></i>
-							<span>Agregar más Grado o Títulos</span>
-						</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Experiencia en Docencia  -->
-		<div class="kt-portlet__head kt-portlet__head--lg">
-			<div class="kt-portlet__head-label">
-				<span class="kt-portlet__head-icon">
-					<i class="la la-check"></i>
+
+			<div data-repeater-create="" class="btn btn btn-primary">
+				<span>
+					<i class="la la-plus"></i>
+					<span>Agregar más Grado o Títulos</span>
 				</span>
-				<h3 class="kt-portlet__head-title">
-					EXPERIENCIA EN DOCENCIA
-				</h3>
 			</div>
+			
 		</div>
-		<!-- -->
-		<div id="kt_repeater_4">
-			<div class="form-group  row">
-				<div data-repeater-list="" class="col-lg-12">
-					<div data-repeater-item="" class="row kt-margin-b-10">
-						<div class="col-lg-3">
+		<!-- fin repeater -->
+	</div>
+</div>
+
+
+
+<div class="kt-section">
+	<div class="kt-section__content kt-section__content--solid ">
+		<h4>EXPERIENCIA EN DOCENCIA <small>Puede agregar cuantos requiera.</small></h4>
+	</div>
+</div>
+
+<div class="form-group row">
+	<div class="col-lg-12">
+
+
+		<div id="kt_repeater_experiencia">
+			<div data-repeater-list="">
+				<div data-repeater-item="">
+					<div class="form-group row">
+						<div class="col-lg-6">
 							<div class="input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text">
 										<i class="la la-phone"></i>
 									</span>
 								</div>
-								<input type="text" class="form-control form-control-danger" placeholder="Institución">
+								<input type="text" name="expDocInstitucion" class="form-control form-control-danger" placeholder="Institución">
+							</div>
+						</div>
+						<div class="col-lg-5">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text">
+										<i class="la la-envelope"></i>
+									</span>
+								</div>
+								<select class="form-control" name="cargoDocencia">
+									<option value="">Seleccione un cargo</option>
+									<option value="Docente_universitario">Docente universitario</option>
+									<option value="Facilitador">Facilitador</option>
+									<option value="Conferencista">Conferencista</option>
+									<option value="Otros">Otros</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-lg-1">
+							<a href="javascript:;" data-repeater-delete="" class="btn btn-remover  btn-danger btn-icon">
+								<i class="la la-remove"></i>
+							</a>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-lg-11">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text">
+										<i class="la la-envelope"></i>
+									</span>
+								</div>
+								<select class="form-control" name="tipoConDocencia"> 
+									<option value="">Seleccione el tipo de contrato</option>
+									<option value="Tiempo_Completo">Tiempo Completo</option>
+									<option value="Tiempo_Parcial">Tiempo Parcial</option>
+									<option value="Ordinario_Principal">Ordinario Principal</option>
+									<option value="Ordinario_Asociado">Ordinario Asociado</option>
+									<option value="Ordinario_Auxiliar">Ordinario Auxiliar</option>
+									<option value="Otros">Otros</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-lg-1">
+							
+						</div>
+					</div>	
+					<div class="form-group row">
+						<div class="col-lg-3">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text">
+										<i class="la la-envelope"></i>
+									</span>
+								</div>
+								<input type="text" class="form-control form-control-danger form-date" placeholder="Fecha Inicio" name="expDocFecInicio">
 							</div>
 						</div>
 						<div class="col-lg-3">
@@ -308,103 +290,117 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<input type="text" class="form-control form-control-danger" placeholder="Cargo">
+								<input name="expDocFecFin" type="text" class="form-control form-control-danger form-date" placeholder="Fecha Fin">
 							</div>
 						</div>
-						<div class="col-lg-3">
-							<div class="input-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text">
-										<i class="la la-envelope"></i>
-									</span>
-								</div>
-								<input type="text" class="form-control form-control-danger" placeholder="Tipo de Contrato">
-							</div>
-						</div>
-						<div class="col-lg-3">
-							<div class="input-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text">
-										<i class="la la-envelope"></i>
-									</span>
-								</div>
-								<input type="text" class="form-control form-control-danger" placeholder="Si especialidad otros, por favor el tipo de caontrato">
-							</div>
-						</div>
-						<div class="col-lg-3">
-							<div class="input-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text">
-										<i class="la la-envelope"></i>
-									</span>
-								</div>
-								<input type="text" class="form-control form-control-danger" placeholder="Fecha Inicio">
-							</div>
-						</div>
-						<div class="col-lg-3">
-							<div class="input-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text">
-										<i class="la la-envelope"></i>
-									</span>
-								</div>
-								<input type="text" class="form-control form-control-danger" placeholder="Fecha Fin">
-							</div>
-						</div>
-						<div class="col-lg-3">
+						<div class="col-lg-6">
 							<div class="kt-checkbox-inline">
-								<label class="kt-checkbox">
-									<input type="checkbox"> Hasta la Actualidad 
+								<label class="kt-checkbox kt-checkbox--solid kt-checkbox--brand kt-checkbox--check-bold">
+									<input type="checkbox" name="expDocHastaActual"> Hasta la Actualidad 
 									<span></span>
 								</label>
 							</div>
 						</div>
 
-						<div class="col-lg-3">
-							<a href="javascript:;" data-repeater-delete="" class="btn btn-danger btn-icon">
-								<i class="la la-remove"></i>
-							</a>
-						</div>
-					</div>
+					</div>	
+
 				</div>
-				<!-- -->
+
 			</div>
-			<div class="row">
-				<div class="col-lg-3"></div>
-				<div class="col">
-					<div data-repeater-create="" class="btn btn btn-primary">
-						<span>
-							<i class="la la-plus"></i>
-							<span>Agregar más Experiencia</span>
-						</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Experiencia profesionale de especialización  -->
-		<div class="kt-portlet__head kt-portlet__head--lg">
-			<div class="kt-portlet__head-label">
-				<span class="kt-portlet__head-icon">
-					<i class="la la-check"></i>
+
+			<div data-repeater-create="" class="btn btn btn-primary">
+				<span>
+					<i class="la la-plus"></i>
+					<span>Agregar más Experiencia</span>
 				</span>
-				<h3 class="kt-portlet__head-title">
-					EXPERIENCIA PROFESIONALES DE ESPECIALIZACIÓN
-				</h3>
 			</div>
-		</div>
-		<!-- -->
-		<div id="kt_repeater_5">
-			<div class="form-group  row">
-				<div data-repeater-list="" class="col-lg-12">
-					<div data-repeater-item="" class="row kt-margin-b-10">
-						<div class="col-lg-3">
+			
+		</div> 
+
+	</div>
+</div>
+
+
+<div class="kt-section">
+	<div class="kt-section__content kt-section__content--solid">
+		<h4>EXPERIENCIA PROFESIONAL DE ESPECIALIZACIÓN <small></small></h4>
+	</div>
+</div>
+
+
+<div class="form-group row">
+	<div class="col-lg-12">
+
+		<div id="kt_repeater_especializacion">
+			<div data-repeater-list="">
+				<div data-repeater-item="">
+					<div class="form-group row">
+						<div class="col-lg-11">
 							<div class="input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text">
 										<i class="la la-phone"></i>
 									</span>
 								</div>
-								<input type="text" class="form-control form-control-danger" placeholder="Institución">
+								<input type="text" class="form-control form-control-danger" placeholder="Institución" name="especInstitucion">
+							</div>
+						</div>
+						<div class="col-lg-1">
+							<a href="javascript:;" data-repeater-delete="" class="btn btn-remover btn-danger btn-icon">
+								<i class="la la-remove"></i>
+							</a>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-lg-6">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text">
+										<i class="la la-envelope"></i>
+									</span>
+								</div>
+								<select class="form-control" name="especTipoInstitucion">
+									<option value="">Seleccione un tipo de institución</option>
+									<option value="Pública">Pública</option>
+									<option value="Privada">Privada</option>
+									<option value="ONG">ONG</option>
+									<option value="Religiosa">Religiosa</option>
+									<option value="Otra">Otra</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-lg-5">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text">
+										<i class="la la-envelope"></i>
+									</span>
+								</div>
+								<select class="form-control" name="especCargo">
+									<option value="">Seleccione cargo desempeñado</option>
+									<option value="Director_Gerentes_de_area_o_equivalente">Director / Gerentes de área o equivalente</option>
+									<option value="Jefe_de_area,proyecto_o_equivalente">Jefe de Área, Proyecto o Equivalente</option>
+									<option value="Coordinador_supervisor">Coordinador / Supervisor</option>
+									<option value="Analistas">Analistas</option>
+									<option value="Otros">Otros</option>
+								</select>
+
+							</div>
+						</div>
+						<div class="col-lg-1">
+							
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<div class="col-lg-3">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text">
+										<i class="la la-envelope"></i>
+									</span>
+								</div>
+								<input type="text" class="form-control form-control-danger form-date" placeholder="Fecha Inicio" name="especFecInicio">
 							</div>
 						</div>
 						<div class="col-lg-3">
@@ -414,66 +410,33 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<input type="text" class="form-control form-control-danger" placeholder="Tipo de Institución">
+								<input type="text" name="especFecFin" class="form-control form-date form-control-danger" placeholder="Fecha Fin">
 							</div>
 						</div>
-						<div class="col-lg-3">
-							<div class="input-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text">
-										<i class="la la-envelope"></i>
-									</span>
-								</div>
-								<input type="text" class="form-control form-control-danger" placeholder="Cargos Desempeñado">
-							</div>
-						</div>
-						<div class="col-lg-3">
-							<div class="input-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text">
-										<i class="la la-envelope"></i>
-									</span>
-								</div>
-								<input type="text" class="form-control form-control-danger" placeholder="Fecha de Inicio">
-							</div>
-						</div>
-						<div class="col-lg-3">
-							<div class="input-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text">
-										<i class="la la-envelope"></i>
-									</span>
-								</div>
-								<input type="text" class="form-control form-control-danger" placeholder="Fecha Fin">
-							</div>
-						</div>
-						<div class="col-lg-3">
+						<div class="col-lg-6">
 							<div class="kt-checkbox-inline">
-								<label class="kt-checkbox">
-									<input type="checkbox"> Hasta la Actualidad 
+								<label class="kt-checkbox kt-checkbox--solid kt-checkbox--brand kt-checkbox--check-bold">
+									<input type="checkbox" name="especHastaFecha"> Hasta la Actualidad 
 									<span></span>
 								</label>
 							</div>
 						</div>
 
-						<div class="col-lg-3">
-							<a href="javascript:;" data-repeater-delete="" class="btn btn-danger btn-icon">
-								<i class="la la-remove"></i>
-							</a>
-						</div>
-					</div>
+					</div>	
+
 				</div>
-				<!-- -->
+
 			</div>
-			<div class="row">
-				<div class="col-lg-3"></div>
-				<div class="col">
-					<div data-repeater-create="" class="btn btn btn-primary">
-						<span>
-							<i class="la la-plus"></i>
-							<span>Agregar más Experiencia</span>
-						</span>
-					</div>
-				</div>
+
+			<div data-repeater-create="" class="btn btn btn-primary">
+				<span>
+					<i class="la la-plus"></i>
+					<span>Agregar más Experiencia</span>
+				</span>
 			</div>
+			
 		</div>
+
+	</div>
+
+</div>

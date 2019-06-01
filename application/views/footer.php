@@ -33,7 +33,6 @@
 		<script src="<?php echo asset_url('vendors/general/sticky-js/dist/sticky.min.js'); ?>" type="text/javascript"></script>
 		<script src="<?php echo asset_url('vendors/general/wnumb/wNumb.js'); ?>" type="text/javascript"></script>
 
-
 		<script src="<?php echo asset_url('vendors/general/jquery-form/dist/jquery.form.min.js'); ?>" type="text/javascript"></script>
 		<script src="<?php echo asset_url('vendors/general/block-ui/jquery.blockUI.js'); ?>" type="text/javascript"></script>
 		<script src="<?php echo asset_url('vendors/general/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js'); ?>" type="text/javascript"></script>
@@ -74,6 +73,7 @@
 		<script src="<?php echo asset_url('vendors/general/morris.js/morris.js'); ?>" type="text/javascript"></script>
 		<script src="<?php echo asset_url('vendors/general/chart.js/dist/Chart.bundle.js'); ?>" type="text/javascript"></script>
 		<script src="<?php echo asset_url('vendors/custom/vendors/bootstrap-session-timeout/dist/bootstrap-session-timeout.min.js'); ?>" type="text/javascript"></script>
+		
 		<script src="<?php echo asset_url('vendors/custom/vendors/jquery-idletimer/idle-timer.min.js'); ?>" type="text/javascript"></script>
 		<script src="<?php echo asset_url('vendors/general/waypoints/lib/jquery.waypoints.js'); ?>" type="text/javascript"></script>
 		<script src="<?php echo asset_url('vendors/general/counterup/jquery.counterup.js'); ?>" type="text/javascript"></script>
@@ -92,5 +92,6 @@
 
 		<!--end::Global Theme Bundle -->
 
-		<script src="<?php echo asset_url('js/demo1/pages/crud/forms/widgets/form-repeater.js'); ?>" type="text/javascript"></script>
-		<script src="?php echo asset_url('js/demo1/pages/crud/forms/widgets/form-repeater.js'); ?>" type="text/javascript"></script>
+		<script src="<?php echo asset_url('js/custom.js'); ?>" type="text/javascript"></script>
+		<script src="<?php echo asset_url('js/main.js'); ?>" type="text/javascript"></script>
+		

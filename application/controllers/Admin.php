@@ -6,19 +6,41 @@ class Admin extends CI_Controller {
 
 	public function resumen()
 	{
-		$this->load->view('admin/index');
+		$data['_view'] = 'admin/content/tpl-resumen';
+
+		$this->load->view('admin/index', $data);
 	}
 
 	public function convocatorias()
 	{
-		$this->load->view('admin/convocatorias');
+		$data['_view'] = 'admin/content/tpl-convocatorias';
+
+		$this->load->view('admin/index', $data);
 	}
+
+	public function convocatorias_detalle($id_convocatoria)
+	{
+
+		$this->load->model('Convocatorias_model');
+	    //$convocatoria =  $this->Convocatoria_model->get_plato_by_slug($id_convocatoria);
+	    
+	    //$id = $convocatoria['id'];
+
+	    //$data['convocatoria'] = $convocatoria;
+
+		$data['_view'] = 'admin/content/tpl-convocatorias-detalle';
+
+		$this->load->view('admin/index', $data);
+	}
+
 
 	public function sedes()
 	{
-		$this->load->view('admin/sedes');
+		$this->load->view('admin/index');
 	}
 
 
 
 }
+
+?>
