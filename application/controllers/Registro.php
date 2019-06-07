@@ -8,12 +8,15 @@ class Registro extends CI_Controller {
         $this->load->helper('url');
 		$this->load->helper('form');
 		$this->load->library('session');
+		$this->load->library('simple_html_dom');
 		$this->load->model('Registro_model');	
         $this->load->model('Departamento_model');	
 		$this->load->model('Provincia_model');	
 		$this->load->model('Distrito_model');
         $this->load->model('Docentes_model');
 		$this->load->model('Indicadores_model');	
+
+
 		
 
     }
@@ -51,6 +54,48 @@ class Registro extends CI_Controller {
 		} 
 	
 		
+	}
+
+
+	public function obtenerDatosReniec(){
+
+		require_once(APPPATH.'libraries/simple_html_dom.php');
+
+		//display_errors(0)
+
+		$dni = $this->input->post('dni');
+
+		//OBTENEMOS EL VALOR
+		//$consulta = file_get_html('http://aplicaciones007.jne.gob.pe/srop_publico/Consulta/Afiliado/GetNombresCiudadano?DNI='.$dni)->plaintext;
+
+		//LA LOGICA DE LA PAGINAS ES APELLIDO PATERNO | APELLIDO MATERNO | NOMBRES
+		if($consulta = file_get_html('http://aplicaciones007.jne.gob.pe/srop_publico/Consulta/Afiliado/GetNombresCiudadano?DNI='.$dni)->plaintext){
+			$partes = explode("|", $consulta);
+
+			$datos = array( "success" => true,
+							'message' => "Se recuperaron los datos correctamente.",
+							"DNI" => $dni,
+							"APEMAT" => $partes[0],
+							"APEPAT" => $partes[1],
+							"NOMBRES" => $partes[2]);
+
+			return $this->output
+						->set_content_type('application/json')
+						->set_output(json_encode($datos));	
+
+		}else{
+
+			return $this->output
+					->set_content_type('application/json')
+					->set_output(json_encode(array(
+						'success' => false,
+						'message' => "No se pudieron recuperar los datos.",
+					)));
+
+
+		}
+		
+
 	}
 
 	public function generarRepeaterId(){

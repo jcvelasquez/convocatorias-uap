@@ -699,10 +699,31 @@ var Registro = function () {
 
                 var isCheked = ($(element).prop('checked'))? '1' : '0';
 
-                console.log("valor " + isCheked);
+                console.log("valor " + valor);
                 console.log("campo " + campo);
-                console.log("dbtable " + dbtable);
-                console.log("dbpk " + dbpk);
+
+                if(campo == "docNroDocumento"){
+
+                    //INICIO DEL AJAX EDICION DE CAMPO
+                        $.ajax({
+                            dataType:'JSON',
+                            type: 'POST',
+                            url: BASE_URL + 'consultar-dni',
+                            data : {dni: valor},
+                            success:function(response){
+
+                                console.log(response.APEMAT);
+                                console.log(response.APEPAT);
+                                console.log(response.NOMBRES);
+                                                                                                      
+                            },
+                            error: function(xhr) { 
+                                console.log(xhr.statusText + xhr.responseText);
+                            }
+                        });
+                        //FIN DEL AJAX
+
+                }
                 
                 /*************************************************************/
                 //FUNCION PERSONALIZADO PARA LOS CHECKBOX - SI ESTA EN CHECK

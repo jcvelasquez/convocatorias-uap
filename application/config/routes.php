@@ -55,19 +55,21 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 //PAGINAS DETALLES DE CONVOCATORIAS
-$route['admin/convocatorias/(:any)'] = "Admin/convocatorias_detalle/$1";
 $route['provincia/prov_x_depa'] = "Provincia/listar_provincias_x_depa";
 $route['distrito/dist_x_prov'] = "Distrito/listar_distritos_x_prov";
-
 $route['registro'] = "Registro/index";
 $route['registro-campo'] = "Registro/grabar_campo";
-
 $route['crear-cuenta'] = "Bienvenidos/crear_cuenta_nuevo";
-
 $route['cerrar-sesion'] = "Bienvenidos/cerrar_sesion";
 $route['iniciar-sesion'] = "Bienvenidos/iniciar_sesion";
-
 $route['generar-idrepeater'] = "Registro/generarRepeaterId";
+$route['consultar-dni'] = "Registro/obtenerDatosReniec";
+
+
+$route['admin/convocatorias/(:any)'] = "Admin/convocatorias_detalle/$1";
+$route['admin/sedes'] = "Admin/listar_sedes";
+
+
 
 
 

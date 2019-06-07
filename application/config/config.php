@@ -23,8 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-//$config['base_url'] = 'http://localhost/convocatorias-uap/';
-$config['base_url'] = 'http://10.100.50.75/convocatorias-uap/';
+$config['base_url'] = 'http://localhost/convocatorias-uap/';
+//$config['base_url'] = 'http://10.100.50.75/convocatorias-uap/';
 //$config['base_url'] = 'http://convocatorias.uap.edu.pe/';
 
 

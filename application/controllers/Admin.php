@@ -18,6 +18,13 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/index', $data);
 	}
 
+	public function sedes()
+	{
+		$data['_view'] = 'admin/content/tpl-convocatorias';
+
+		$this->load->view('admin/index', $data);
+	}
+
 	public function convocatorias_detalle($id_convocatoria)
 	{
 
@@ -34,9 +41,11 @@ class Admin extends CI_Controller {
 	}
 
 
-	public function sedes()
+	public function listar_sedes()
 	{
-		$this->load->view('admin/index');
+		$data['_view'] = 'admin/content/tpl-sedes';
+
+		$this->load->view('admin/index', $data);
 	}
 
 
