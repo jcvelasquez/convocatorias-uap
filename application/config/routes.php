@@ -91,7 +91,7 @@ $route['admin/cursos/editar/(:any)'] = "Cursos/agregar_editar/$1";
 //RUTAS DE CURSOS
 $route['admin/facultades'] 		  		 = "Facultades/index";
 $route['admin/facultades/listar'] 		 = "Facultades/listar";
-$route['admin/facultades/select'] 		 = "Facultades/listar_select";
+//$route['admin/facultades/select'] 		 = "Facultades/listar_select";
 $route['admin/facultades/agregar'] 	     = "Facultades/agregar_editar/$1";
 $route['admin/facultades/editar/(:any)'] = "Facultades/agregar_editar/$1";
 

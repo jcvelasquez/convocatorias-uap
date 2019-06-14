@@ -29,7 +29,6 @@ var DatatableEscuelas = function() {
 
 			if (primaryKey != '' && primaryKey != 'nuevo' && typeof(primaryKey) != 'undefined') {
 
-				console.log()
 
 				 $.ajax({
 					dataType:'JSON',
@@ -47,22 +46,6 @@ var DatatableEscuelas = function() {
 						$('#select_sede').val(data.sedes_sedeId).trigger('change');
 						$('#escuelaNombre').val(data.escuelaNombre);
 						
-						//INICIO DE PERSONALIZACION DE CAMPOS
-						/*
-						$('#descripcion_taller').val(data.descripcion_taller);
-						$("#direccion_taller").val(data.direccion_taller);
-						$("#email_taller").val(data.email_taller);
-						$("#ruc_taller").val(data.ruc_taller);
-						$("#telefono_taller").val(data.telefono_taller);
-						$("#estado_taller").val(data.estado_taller).change();
-
-						var len = response.length;
-                    
-	                    $("#ubprovincia_idProv").empty();
-	                    $("#ubprovincia_idProv").append('<option value="">Selecciona una provincia</option>');
-	                    
-	                    */
-						//FIN DE PERSONALIZACION DE CAMPOS
 		
 					},
 					error: function(xhr) { 
@@ -70,10 +53,6 @@ var DatatableEscuelas = function() {
 					}
 				});
 			
-			}else{
-				
-				//$("#estado_taller").val(1).change().selectpicker('refresh');
-				
 			}
 
 	}
