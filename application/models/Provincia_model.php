@@ -11,9 +11,6 @@
           parent::__construct();
       }
 
-      /*
-       * Get all
-      */
       function get_provincia_by_departamento($idDepa){
 
           $this->db->select("prov.*");
@@ -21,20 +18,9 @@
           $this->db->where("prov.idDepa ='{$idDepa}' ");
           $this->db->order_by('prov.idDepa', 'asc');
           return $this->db->get()->result_array();
-
-
       }
 
-      /*
-       * Get by id
-      */
-     
-      /*function get_idiomas_by_id($idiomaId){
-        $this->db->select("idi.*");
-        $this->db->from("idiomas idi");
-        $this->db->where("idi.idiomaId ='{$idiomaId}' ");
-        return $this->db->get()->row_array();
-      }*/
+
 
   }
 

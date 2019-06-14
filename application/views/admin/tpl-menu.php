@@ -5,13 +5,15 @@
 			<li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click" aria-haspopup="true"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-text">Administración</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
 				<div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
 					<ul class="kt-menu__subnav">
-						<li class="kt-menu__item " aria-haspopup="true"><a href="javascript:;" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-map"></i> <span class="kt-menu__link-text">Sedes</span></a></li>
+						<li class="kt-menu__item " aria-haspopup="true"><a href="<?=site_url('admin/sedes') ?>" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-map"></i> <span class="kt-menu__link-text">Sedes</span></a></li>
 
-						<li class="kt-menu__item " aria-haspopup="true"><a href="javascript:;" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-map"></i> <span class="kt-menu__link-text">Areas</span></a></li>
+						<li class="kt-menu__item " aria-haspopup="true"><a href="<?=site_url('admin/facultades') ?>" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-map"></i> <span class="kt-menu__link-text">Facultades</span></a></li>
 
-						<li class="kt-menu__item " aria-haspopup="true"><a href="javascript:;" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-map"></i> <span class="kt-menu__link-text">Cursos</span></a></li>
+						<li class="kt-menu__item " aria-haspopup="true"><a href="<?=site_url('admin/escuelas') ?>" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-map"></i> <span class="kt-menu__link-text">Escuelas</span></a></li>
 
-						<li class="kt-menu__item " aria-haspopup="true"><a href="<?php echo site_url('index.php/admin/convocatorias');?>" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-map"></i> <span class="kt-menu__link-text">Convocatorias</span></a></li>
+						<li class="kt-menu__item " aria-haspopup="true"><a href="<?=site_url('admin/cursos') ?>" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-map"></i> <span class="kt-menu__link-text">Cursos</span></a></li>
+
+						<li class="kt-menu__item " aria-haspopup="true"><a href="<?php echo site_url('admin/convocatorias');?>" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-map"></i> <span class="kt-menu__link-text">Convocatorias</span></a></li>
 
 						<li class="kt-menu__item " aria-haspopup="true"><a href="javascript:;" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-map"></i> <span class="kt-menu__link-text">Usuarios</span></a></li>
 

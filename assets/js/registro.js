@@ -439,7 +439,7 @@ var Registro = function () {
             }
         }); 
 
-        $(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
+        //$(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
 
 
     }

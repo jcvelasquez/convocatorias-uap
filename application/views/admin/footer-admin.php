@@ -121,7 +121,16 @@
 
 <script src="<?php echo asset_url('vendors/custom/datatables/datatables.bundle.js') ?>" type="text/javascript"></script>
 
- <script src="<?php echo asset_url('js/sedes.js') ?>" type="text/javascript"></script>
+<script src="<?php echo asset_url('js/main.js') ?>" type="text/javascript"></script>
+<script src="<?php echo asset_url('js/sedes.js') ?>" type="text/javascript"></script>
+
+<?php
+	if (isset($js)) {
+	   foreach ($js as $file) {
+	     echo "<script src='".asset_url($file.'?'.uniqid())."'></script>";
+	   }
+	}
+ ?>
 
 
 		<!--end::Page Scripts -->

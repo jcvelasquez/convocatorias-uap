@@ -16,9 +16,6 @@ class Registro extends CI_Controller {
         $this->load->model('Docentes_model');
 		$this->load->model('Indicadores_model');	
 
-
-		
-
     }
 
 	public function index()

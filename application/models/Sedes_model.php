@@ -15,8 +15,36 @@ class Sedes_model extends CI_Model
      * Get all
     */
     function get_all_sedes(){
-        $this->db->order_by('sedeId', 'desc');
-        return $this->db->get('sedes')->result_array();
+
+        $this->db->order_by('sedeId', 'asc');
+
+        $records = array();
+        //$records['data'] = array();
+
+        $records['iTotalRecords'] = $this->db->get('sedes')->num_rows();
+        $records['iTotalDisplayRecords'] = $this->db->get('sedes')->num_rows();
+        $records['sEcho'] = 0;
+        $records['sColumns'] = 0;
+        $records['aaData'] = $this->db->get('sedes')->result_array();
+
+
+
+        return $records;
+
+    }
+
+    function get_all_sedes_select(){
+
+        $records = array();
+
+        $this->db->select("sedeId as id, sedeNombre as text");
+        $this->db->from("sedes");
+        $this->db->order_by('sedeNombre', 'asc');
+        
+        //$records['results'] = $this->db->get()->result_array();
+
+        return $this->db->get()->result_array();
+
     }
 
     /*
