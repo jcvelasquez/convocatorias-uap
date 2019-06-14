@@ -77,9 +77,9 @@ class Escuelas extends CI_Controller {
 
 	public function get_escuela_x_id(){
 
-		$escuelaId = $this->input->post('escuelaId');
+		//$escuelaId = $this->input->post('escuelaId');
 
-		$data = $this->Escuelas_model->get_escuela_by_id($escuelaId);
+		$data = $this->Escuelas_model->get_escuela_by_id(15);
 
 		return $this->output
 					->set_content_type('application/json')
