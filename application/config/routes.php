@@ -64,7 +64,11 @@ $route['generar-idrepeater'] = "Registro/generarRepeaterId";
 $route['consultar-dni'] = "Registro/obtenerDatosReniec";
 
 //RUTAS DE CONVOCATORIAS 
-$route['admin/convocatorias/(:any)'] = "Admin/convocatorias_detalle/$1";
+$route['admin/convocatorias'] 			    = "Convocatorias/index";
+$route['admin/convocatorias/listar'] 	    = "Convocatorias/listar";
+$route['admin/convocatorias/agregar'] 	    = "Convocatorias/agregar_editar/$1";
+$route['admin/convocatorias/editar/(:any)'] = "Convocatorias/agregar_editar/$1";
+//$route['admin/convocatorias/(:any)'] 		= "Convocatorias/convocatorias_detalle/$1";
 
 //RUTAS DE SEDES
 $route['admin/sedes'] = "Sedes/index";
@@ -74,17 +78,19 @@ $route['admin/sedes/listar'] = "Sedes/listar";
 //RUTAS DE ESCUELAS
 $route['admin/escuelas'] 			   = "Escuelas/index";
 $route['admin/escuelas/listar'] 	   = "Escuelas/listar";
-//$route['admin/escuelas/select'] 	   = "Escuelas/listar_select";
 $route['admin/escuelas/agregar'] 	   = "Escuelas/agregar_editar/$1";
 $route['admin/escuelas/editar/(:any)'] = "Escuelas/agregar_editar/$1";
 
-
+//RUTAS DE USUARIOS
+$route['admin/usuarios'] 			   = "Usuarios/index";
+$route['admin/usuarios/listar'] 	   = "Usuarios/listar";
+$route['admin/usuarios/agregar'] 	   = "Usuarios/agregar_editar/$1";
+$route['admin/usuarios/editar/(:any)'] = "Usuarios/agregar_editar/$1";
 
 
 //RUTAS DE CURSOS
 $route['admin/cursos'] 		  		 = "Cursos/index";
 $route['admin/cursos/listar'] 		 = "Cursos/listar";
-//$route['admin/cursos/select'] 		 = "Cursos/listar_select";
 $route['admin/cursos/agregar'] 	     = "Cursos/agregar_editar/$1";
 $route['admin/cursos/editar/(:any)'] = "Cursos/agregar_editar/$1";
 
@@ -99,7 +105,7 @@ $route['admin/facultades/editar/(:any)'] = "Facultades/agregar_editar/$1";
 
 //OBTENER LOS CAMPOS A EDITAR
 $route['provincia/prov_x_depa'] = "Provincia/listar_provincias_x_depa";
-$route['distrito/dist_x_prov'] = "Distrito/listar_distritos_x_prov";
+$route['distrito/dist_x_prov']  = "Distrito/listar_distritos_x_prov";
 
 
 //GET AJAX AL EDITAR

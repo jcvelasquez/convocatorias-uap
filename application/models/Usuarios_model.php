@@ -15,8 +15,24 @@ class Usuarios_model extends CI_Model
      * Get all
     */
     function get_all_usuarios(){
-        $this->db->order_by('usuarioId', 'desc');
-        return $this->db->get('usuarios')->result_array();
+
+
+        $records = array();
+
+        $this->db->select("usu.*, sed.sedeNombre");
+        $this->db->from("usuarios usu");
+        $this->db->join('sedes sed', 'sed.sedeId = usu.sedes_sedeId', 'inner');   
+        $this->db->order_by('usuarioId', 'desc');     
+        $query = $this->db->get();
+
+        $records['iTotalRecords'] = $query->num_rows();
+        $records['iTotalDisplayRecords'] = $query->num_rows();
+        $records['sEcho'] = 0;
+        $records['sColumns'] = 0;
+        $records['aaData'] = $query->result_array();
+
+        return $records;
+    
     }
 
     /*

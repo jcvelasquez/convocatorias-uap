@@ -15,8 +15,24 @@ class Convocatorias_model extends CI_Model
      * Get all
     */
     function get_all_convocatorias(){
-        $this->db->order_by('convocatoriaId', 'desc');
-        return $this->db->get('convocatorias')->result_array();
+
+        $records = array();
+
+        $this->db->select("conv.*, sed.*");
+        $this->db->from("convocatorias conv");
+        $this->db->join('sedes sed', 'sed.sedeId = conv.sedes_sedeId', 'inner');  
+        $this->db->order_by('convocatoriaId', 'desc');      
+        $query = $this->db->get();
+
+        $records['iTotalRecords'] = $query->num_rows();
+        $records['iTotalDisplayRecords'] = $query->num_rows();
+        $records['sEcho'] = 0;
+        $records['sColumns'] = 0;
+        $records['aaData'] = $query->result_array();
+
+        return $records;
+
+
     }
 
 

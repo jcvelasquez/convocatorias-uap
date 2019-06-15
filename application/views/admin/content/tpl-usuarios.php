@@ -9,7 +9,7 @@
  					<i class="kt-font-brand flaticon2-line-chart"></i>
  				</span>
  				<h3 class="kt-portlet__head-title">
- 					LISTADO DE CONVOCATORIAS 
+ 					LISTADO DE USUARIOS 
  				</h3>
  			</div>
  			<div class="kt-portlet__head-toolbar">
@@ -58,9 +58,9 @@
  							</div>
  						</div>
  						&nbsp;
- 						<a href="<?php echo site_url('admin/convocatorias/agregar'); ?>" class="btn btn-brand btn-elevate btn-icon-sm">
+ 						<a href="<?php echo site_url('admin/escuelas/agregar'); ?>" class="btn btn-brand btn-elevate btn-icon-sm">
  							<i class="la la-plus"></i>
- 							NUEVA CONVOCATORIA
+ 							NUEVA ESCUELA
  						</a>
  					</div>
  				</div>
@@ -70,24 +70,24 @@
  		<div class="kt-portlet__body">
 
  			<!--begin: Datatable -->
- 			<table class="table table-striped- table-bordered table-hover table-checkable" id="table_convocatorias">
+ 			<table class="table table-striped- table-bordered table-hover table-checkable" id="table_escuelas">
  				<thead>
  					<tr>
  						<th width="80">ID</th>
-						<th>NOMBRE DE CONVOCATORIA</th>
+						<th>NOMBRE DE ESCUELA</th>
 						<th>SEDE</th>
-						<th>F. INICIO</th>
-						<th>F. FIN</th>
-						<th># VAC</th>
 						<th width="150">ESTADO</th>
 						<th width="150">ACCIONES</th>
  					</tr>
  				</thead>
  			</table>
- 			<!--end: Datatable -->
 
+ 			<!--end: Datatable -->
  		</div>
+
  		<!-- TERMINA LA TABLA -->
+
+
  	</div>
  </div> 
 

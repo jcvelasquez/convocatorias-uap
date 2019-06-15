@@ -1,5 +1,5 @@
 "use strict";
-var DatatableConvocatorias = function() {
+var DatatableUsuarios = function() {
 
 
 	// Base elements
@@ -15,8 +15,12 @@ var DatatableConvocatorias = function() {
             placeholder: "Selecciona los cursos para esta escuela"
         });
 
-         $('#select_sede').select2({
+        $('#sedes_sedeId').select2({
             placeholder: "Selecciona una sede"
+        });
+
+        $('#facultades_facultadId').select2({
+            placeholder: "Selecciona una facultad"
         });
 
 	}
@@ -24,6 +28,7 @@ var DatatableConvocatorias = function() {
 	var initContent = function(){
 
 			if (primaryKey != '' && primaryKey != 'nuevo' && typeof(primaryKey) != 'undefined') {
+
 
 				 $.ajax({
 					dataType:'JSON',
@@ -41,22 +46,6 @@ var DatatableConvocatorias = function() {
 						$('#select_sede').val(data.sedes_sedeId).trigger('change');
 						$('#escuelaNombre').val(data.escuelaNombre);
 						
-						//INICIO DE PERSONALIZACION DE CAMPOS
-						/*
-						$('#descripcion_taller').val(data.descripcion_taller);
-						$("#direccion_taller").val(data.direccion_taller);
-						$("#email_taller").val(data.email_taller);
-						$("#ruc_taller").val(data.ruc_taller);
-						$("#telefono_taller").val(data.telefono_taller);
-						$("#estado_taller").val(data.estado_taller).change();
-
-						var len = response.length;
-                    
-	                    $("#ubprovincia_idProv").empty();
-	                    $("#ubprovincia_idProv").append('<option value="">Selecciona una provincia</option>');
-	                    
-	                    */
-						//FIN DE PERSONALIZACION DE CAMPOS
 		
 					},
 					error: function(xhr) { 
@@ -64,10 +53,6 @@ var DatatableConvocatorias = function() {
 					}
 				});
 			
-			}else{
-				
-				//$("#estado_taller").val(1).change().selectpicker('refresh');
-				
 			}
 
 	}
@@ -75,7 +60,7 @@ var DatatableConvocatorias = function() {
 
 	var initTable = function() {
 
-		var table = $('#table_convocatorias');
+		var table = $('#table_escuelas');
 
 		// begin first table
 		table.DataTable({
@@ -83,17 +68,14 @@ var DatatableConvocatorias = function() {
 			//searchDelay: 500,
 			processing: true,
 			serverSide: true,
-			paging:   true,
+			paging:   false,
 			searching:   false,
-			ajax: BASE_URL + 'admin/convocatorias/listar',
+			ajax: BASE_URL + 'admin/escuelas/listar',
 			columns: [
-				{data: 'convocatoriaId'},
-				{data: 'convoNombre'},
+				{data: 'escuelaId'},
+				{data: 'escuelaNombre'},
 				{data: 'sedeNombre'},
-				{data: 'convoFechaInicio'},
-				{data: 'convoFechaFin'},
-				{data: 'convoVacantes'},
-				{data: 'convoEstado'},
+				{data: 'escuelaEstado'},
 				{data: 'Acciones', responsivePriority: -1},
 			],
 			columnDefs: [
@@ -109,35 +91,14 @@ var DatatableConvocatorias = function() {
                               <i class="fa fa-tools"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="` + BASE_URL + 'admin/convocatorias/editar/' + full['convocatoriaId'] + `"><i class="la la-edit"></i> Editar </a>
+                                <a class="dropdown-item" href="` + BASE_URL + 'admin/escuelas/editar/' + full['escuelaId'] + `"><i class="la la-edit"></i> Editar </a>
                                 <a class="dropdown-item" href="#"><i class="la la-leaf"></i> Eliminar </a>
                                 <a class="dropdown-item" href="#"><i class="la la-print"></i> Ver escuelas</a>
                             </div>
                         </span>`;
 					},
 				},
-				{
-					targets: -2,
-					render: function(data, type, full, meta) {
-						var status = {
-							0: {'title': 'INACTIVA', 'state': 'danger'},
-							1: {'title': 'ACTIVA', 'state': 'success'},
-						};
-						if (typeof status[data] === 'undefined') {
-							return data;
-						}
-						return '<span class="kt-badge kt-badge--' + status[data].state + ' kt-badge--inline kt-badge--pill">' + status[data].title + '</span>&nbsp;';
-					},
-				},
-				{
-					targets: -7,
-					render: function(data, type, full, meta) {
-
-						return '<a href="' + BASE_URL + 'admin/convocatorias/editar/' + full['convocatoriaId'] + '">' + full['convoNombre'] + ' </a>';
-					},
-				}
-				/*
-				{
+				/*{
 					targets: -3,
 					render: function(data, type, full, meta) {
 						var status = {
@@ -154,9 +115,27 @@ var DatatableConvocatorias = function() {
 						}
 						return '<span class="kt-badge ' + status[data].class + ' kt-badge--inline kt-badge--pill">' + status[data].title + '</span>';
 					},
+				},*/
+				{
+					targets: -2,
+					render: function(data, type, full, meta) {
+						var status = {
+							0: {'title': 'INACTIVA', 'state': 'danger'},
+							1: {'title': 'ACTIVA', 'state': 'success'},
+						};
+						if (typeof status[data] === 'undefined') {
+							return data;
+						}
+						return '<span class="kt-badge kt-badge--' + status[data].state + ' kt-badge--inline kt-badge--pill">' + status[data].title + '</span>&nbsp;';
+					},
 				},
-				,
-				*/
+				{
+					targets: -4,
+					render: function(data, type, full, meta) {
+
+						return '<a href="' + BASE_URL + 'admin/escuelas/editar/' + full['escuelaId'] + '">' + full['escuelaNombre'] + ' </a>';
+					},
+				}
 			],
 		});
 	};
@@ -256,5 +235,5 @@ var DatatableConvocatorias = function() {
 }();
 
 jQuery(document).ready(function() {
-	DatatableConvocatorias.init();
+	DatatableUsuarios.init();
 });
