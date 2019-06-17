@@ -1,7 +1,7 @@
 
 <div class="kt-section">
 	<div class="kt-section__content kt-section__content--solid ">
-		<h4>TRATAMIENTO DE DATOS PERSONALES. <small>Lea cuidadosamente las siguientes indicaciones</small></h4>
+		<h4>LEA CUIDADOSAMENTE LAS SIGUIENTES INDICACIONES</h4>
 	</div>
 </div>
 
