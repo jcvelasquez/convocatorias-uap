@@ -1,7 +1,6 @@
 "use strict";
 var DatatableConvocatorias = function() {
 
-
 	// Base elements
     var form_registro;
     var validator;
@@ -15,9 +14,31 @@ var DatatableConvocatorias = function() {
             placeholder: "Selecciona los cursos para esta escuela"
         });
 
-         $('#select_sede').select2({
+         $('#sedes_sedeId').select2({
             placeholder: "Selecciona una sede"
         });
+
+         $('#convoVacantes').TouchSpin({
+            buttondown_class: 'btn btn-secondary',
+            buttonup_class: 'btn btn-secondary',
+            min: 1,
+            max: 100,
+            step: 1,
+            boostat: 5,
+            maxboostedstep: 10,
+        });
+
+        var arrows = {
+            leftArrow: '<i class="la la-angle-left"></i>',
+            rightArrow: '<i class="la la-angle-right"></i>'
+        }
+
+        $('#convoFechaInicio, #convoFechaFin').datepicker({
+            todayHighlight: true,
+            orientation: "bottom left",
+            templates: arrows
+        });
+
 
 	}
 
@@ -28,46 +49,28 @@ var DatatableConvocatorias = function() {
 				 $.ajax({
 					dataType:'JSON',
 					type: 'POST',
-					url: BASE_URL + 'escuela_x_id',
-					data : {escuelaId: primaryKey},
+					url: BASE_URL + 'convocatoria_x_id',
+					data : {convocatoriaId: primaryKey},
 					success:function(data){
 
-						var cursos = data.cursos;
+						//var cursos = data.cursos;
 						var ids = [];
-                 
-	                    for( var i = 0; i<cursos.length; i++){ ids.push(cursos[i]['id']); }
 
 						$('#select_cursos').val(ids).trigger('change');
 						$('#select_sede').val(data.sedes_sedeId).trigger('change');
-						$('#escuelaNombre').val(data.escuelaNombre);
-						
-						//INICIO DE PERSONALIZACION DE CAMPOS
-						/*
-						$('#descripcion_taller').val(data.descripcion_taller);
-						$("#direccion_taller").val(data.direccion_taller);
-						$("#email_taller").val(data.email_taller);
-						$("#ruc_taller").val(data.ruc_taller);
-						$("#telefono_taller").val(data.telefono_taller);
-						$("#estado_taller").val(data.estado_taller).change();
+						$('#escuelaNombre').val(data.convoNombre);
+						$('#convoDescripcion').val(data.convoDescripcion);
+						$('#convoVacantes').val(data.convoVacantes);
+						$('#convoFechaInicio').datepicker('update', data.convoFechaInicio);
+						$('#convoFechaFin').datepicker('update', data.convoFechaFin);
+						$('#convoEstado').val(data.convoEstado).trigger('change');
 
-						var len = response.length;
-                    
-	                    $("#ubprovincia_idProv").empty();
-	                    $("#ubprovincia_idProv").append('<option value="">Selecciona una provincia</option>');
-	                    
-	                    */
-						//FIN DE PERSONALIZACION DE CAMPOS
-		
 					},
 					error: function(xhr) { 
 						console.log(xhr.statusText + xhr.responseText);
 					}
 				});
 			
-			}else{
-				
-				//$("#estado_taller").val(1).change().selectpicker('refresh');
-				
 			}
 
 	}
@@ -80,7 +83,6 @@ var DatatableConvocatorias = function() {
 		// begin first table
 		table.DataTable({
 			responsive: true,
-			//searchDelay: 500,
 			processing: true,
 			serverSide: true,
 			paging:   true,
@@ -136,27 +138,7 @@ var DatatableConvocatorias = function() {
 						return '<a href="' + BASE_URL + 'admin/convocatorias/editar/' + full['convocatoriaId'] + '">' + full['convoNombre'] + ' </a>';
 					},
 				}
-				/*
-				{
-					targets: -3,
-					render: function(data, type, full, meta) {
-						var status = {
-							1: {'title': 'Pending', 'class': 'kt-badge--brand'},
-							2: {'title': 'Delivered', 'class': ' kt-badge--danger'},
-							3: {'title': 'Canceled', 'class': ' kt-badge--primary'},
-							4: {'title': 'Success', 'class': ' kt-badge--success'},
-							5: {'title': 'Info', 'class': ' kt-badge--info'},
-							6: {'title': 'Danger', 'class': ' kt-badge--danger'},
-							7: {'title': 'Warning', 'class': ' kt-badge--warning'},
-						};
-						if (typeof status[data] === 'undefined') {
-							return data;
-						}
-						return '<span class="kt-badge ' + status[data].class + ' kt-badge--inline kt-badge--pill">' + status[data].title + '</span>';
-					},
-				},
-				,
-				*/
+				
 			],
 		});
 	};
@@ -255,6 +237,78 @@ var DatatableConvocatorias = function() {
 
 }();
 
-jQuery(document).ready(function() {
-	DatatableConvocatorias.init();
-});
+//----------------------------------------------------
+//FUNCIONA PARA LA PAGINA DE FRONTEND SOLAMENTE
+//----------------------------------------------------
+var ConvocatoriasDocentes = function() {
+
+	// Base elements
+    var form_registro;
+    var validator;
+    var primaryKey;
+    var error;
+    var success;
+
+	var initTable = function() {
+
+		var table = $('#table_convocatorias_docentes');
+
+		// begin first table
+		table.DataTable({
+			responsive: true,
+			//searchDelay: 500,
+			processing: true,
+			serverSide: false,
+			paging:   false,
+			searching:   false,
+			ajax: BASE_URL + 'admin/convocatorias/listar',
+			columns: [
+				{data: 'convocatoriaId'},
+				{data: 'convoNombre'},
+				{data: 'sedeNombre'},
+				{data: 'convoEstado'},
+				{data: 'convoFechaFin'},				
+				{data: '', responsivePriority: -1},
+			],
+			columnDefs: [
+				{
+					targets: -1,
+					title: '',
+					orderable: false,
+					render: function(data, type, full, meta) {
+
+						return '<a href="' + BASE_URL + 'convocatorias/seleccionar/' + full['convocatoriaId'] + '" class="btn btn-primary" aria-expanded="true"> Postular </a>';
+					},
+				},
+				{
+					targets: -3,
+					render: function(data, type, full, meta) {
+						var status = {
+							0: {'title': 'INACTIVA', 'state': 'danger'},
+							1: {'title': 'ACTIVA', 'state': 'success'},
+						};
+						if (typeof status[data] === 'undefined') {
+							return data;
+						}
+						return '<span class="kt-badge kt-badge--' + status[data].state + ' kt-badge--inline kt-badge--pill">' + status[data].title + '</span>&nbsp;';
+					},
+				}
+			],
+		});
+	};
+
+
+	
+	return {
+
+		//main function to initiate the module
+		init: function() {
+
+			initTable();
+
+		},
+
+	};
+
+}();
+

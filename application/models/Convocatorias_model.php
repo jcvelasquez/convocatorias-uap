@@ -41,10 +41,24 @@ class Convocatorias_model extends CI_Model
     */
    
     function get_convocatorias_by_id($convocatoriaId){
+
+      //CONSULTO LA ESCUELA POR ID
       $this->db->select("conv.*");
       $this->db->from("convocatorias conv");
       $this->db->where("conv.convocatoriaId ='{$convocatoriaId}' ");
-      return $this->db->get()->row_array();
+      $records = $this->db->get()->row_array();
+
+
+      //CONSULTO LOS CURSOS CREADOS PARA LA ESCUELA
+      /*$this->db->select("cxc.cursos_cursoId as id");
+      $this->db->from("cursos_x_convocatoria cxc");
+      $this->db->where("cxe.escuelas_escuelaId ='{$escuelaId}' ");
+      $cursos = $this->db->get()->result_array();
+
+      $records['cursos'] = $cursos;*/
+
+      return $records;
+      
     }
 
     /*

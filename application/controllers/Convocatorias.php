@@ -39,6 +39,42 @@ class Convocatorias extends CI_Controller {
 
 	}
 
+	public function listar_para_docentes()
+	{
+
+		//$data['convocatorias'] = $this->Convocatorias_model->get_all_convocatorias();
+		$data['js'] = array('js/convocatorias.js');
+
+		$this->load->view('convocatorias', $data);
+
+		/*return $this->output
+					->set_content_type('application/json')
+					->set_output(json_encode($convocatorias));*/
+
+	}
+
+
+
+	public function seleccionar_convocatoria($convocatoriaId)
+	{
+
+		$convocatoria = $this->Convocatorias_model->get_convocatorias_by_id($convocatoriaId);
+
+		$this->session->set_userdata('convocatoria',$convocatoria);
+
+		redirect('bienvenidos');
+		
+		//$data['_view'] = 'admin/content/tpl-convocatorias-detalle';
+
+
+		//$data['sedes'] = $this->Sedes_model->get_all_sedes_select();
+		//$data['cursos'] = $this->Cursos_model->get_all_cursos_select();
+
+		//$data['js'] = array('js/convocatorias.js');
+
+		//$this->load->view('admin/index', $data);
+	}
+
 	public function agregar_editar($convocatoriaId)
 	{
 
@@ -53,6 +89,19 @@ class Convocatorias extends CI_Controller {
 
 		$this->load->view('admin/index', $data);
 	}
+
+	public function get_convocatoria_x_id(){
+
+		$convocatoriaId = $this->input->post('convocatoriaId');
+
+		$data = $this->Convocatorias_model->get_convocatorias_by_id($convocatoriaId);
+
+		return $this->output
+					->set_content_type('application/json')
+					->set_output(json_encode($data));
+
+    }
+
 
 /*
 

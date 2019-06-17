@@ -8,7 +8,7 @@
  				<h3 class="kt-portlet__head-title">FORMULARIO DE REGISTRO DE CONVOCATORIAS</h3>
  			</div>
  			<div class="kt-portlet__head-toolbar">
- 				<a href="<?php echo site_url('admin/escuelas'); ?>" class="btn btn-clean kt-margin-r-10">
+ 				<a href="<?php echo site_url('admin/convocatorias'); ?>" class="btn btn-clean kt-margin-r-10">
  					<i class="la la-arrow-left"></i>
  					<span class="kt-hidden-mobile">Regresar</span>
  				</a>
@@ -87,29 +87,28 @@
  									<div class="col-9">
  										<div class="input-group">
  											<div class="input-group-prepend"><span class="input-group-text"><i class="la la-phone"></i></span></div>
- 											<input type="text" id="escuelaNombre" name="escuelaNombre" class="form-control" value="" placeholder="" aria-describedby="basic-addon1">
+ 											<input type="text" id="convoDescripcion" name="convoDescripcion" class="form-control" value="" placeholder="" aria-describedby="basic-addon1">
  										</div>
  										<!-- <span class="form-text text-muted">We'll never share your email with anyone else.</span> -->
  									</div>
  								</div>
 
- 								<div class="form-group row">
- 									<label class="col-3 col-form-label">Cantidad de Vacantes</label>
- 									<div class="col-9">
- 										<div class="input-group">
- 											<div class="input-group-prepend"><span class="input-group-text"><i class="la la-phone"></i></span></div>
- 											<input type="text" id="escuelaNombre" name="escuelaNombre" class="form-control" value="" placeholder="" aria-describedby="basic-addon1">
- 										</div>
- 										<!-- <span class="form-text text-muted">We'll never share your email with anyone else.</span> -->
- 									</div>
- 								</div>
+ 								<div class="form-group m-form__group row">
+										<label class="col-3 col-form-label">Cantidad de Vacantes</label>
+										<div class="col-md-9 col-sm-12">
+											<div class="m-bootstrap-touchspin-brand">
+												<input id="convoVacantes" type="text" class="form-control" value="1" name="convoVacantes" placeholder="Select time" type="text">
+											</div>
+										</div>
+									</div>
 
+ 								
  								<div class="form-group row">
  									<label class="col-3 col-form-label">Publicar desde</label>
  									<div class="col-9">
  										<div class="input-group">
  											<div class="input-group-prepend"><span class="input-group-text"><i class="la la-phone"></i></span></div>
- 											<input type="text" id="escuelaNombre" name="escuelaNombre" class="form-control" value="" placeholder="" aria-describedby="basic-addon1">
+ 											<input type="text" class="form-control" name="convoFechaInicio" id="convoFechaInicio" readonly placeholder="Seleccione una fecha" />
  										</div>
  										<!-- <span class="form-text text-muted">We'll never share your email with anyone else.</span> -->
  									</div>
@@ -120,7 +119,7 @@
  									<div class="col-9">
  										<div class="input-group">
  											<div class="input-group-prepend"><span class="input-group-text"><i class="la la-phone"></i></span></div>
- 											<input type="text" id="escuelaNombre" name="escuelaNombre" class="form-control" value="" placeholder="" aria-describedby="basic-addon1">
+ 											<input type="text" id="convoFechaFin" name="convoFechaFin" class="form-control" value="" placeholder="Seleccione una fecha">
  										</div>
  										<!-- <span class="form-text text-muted">We'll never share your email with anyone else.</span> -->
  									</div>

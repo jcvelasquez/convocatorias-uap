@@ -18,9 +18,13 @@ class Bienvenidos extends CI_Controller {
 
 		$docente = $this->session->userdata('docente');
 
-		if(isset($docente)) redirect('registro');
+		if(isset($docente)){
+			redirect('registro');	
+		} 
 
-		$this->load->view('bienvenidos');	
+		$data['convocatoria'] = $this->session->userdata('convocatoria');
+
+		$this->load->view('bienvenidos', $data);	
 	}
 
 	public function crearcuentaDocente()

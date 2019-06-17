@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		    my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'Bienvenidos';
+$route['default_controller'] = 'Convocatorias/listar_para_docentes';
 $route['admin'] = 'Admin/index';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
@@ -68,6 +68,11 @@ $route['admin/convocatorias'] 			    = "Convocatorias/index";
 $route['admin/convocatorias/listar'] 	    = "Convocatorias/listar";
 $route['admin/convocatorias/agregar'] 	    = "Convocatorias/agregar_editar/$1";
 $route['admin/convocatorias/editar/(:any)'] = "Convocatorias/agregar_editar/$1";
+
+//RUTAS DE CONVOCATORIAS
+$route['convocatorias'] = "Convocatorias/listar_para_docentes";
+$route['convocatorias/seleccionar/(:any)'] = "Convocatorias/seleccionar_convocatoria/$1";
+
 //$route['admin/convocatorias/(:any)'] 		= "Convocatorias/convocatorias_detalle/$1";
 
 //RUTAS DE SEDES
@@ -110,6 +115,10 @@ $route['distrito/dist_x_prov']  = "Distrito/listar_distritos_x_prov";
 
 //GET AJAX AL EDITAR
 $route['escuela_x_id'] = "Escuelas/get_escuela_x_id";
+$route['convocatoria_x_id'] = "Convocatorias/get_convocatoria_x_id";
+
+
+
 
 
 

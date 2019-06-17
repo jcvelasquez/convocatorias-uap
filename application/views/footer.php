@@ -89,6 +89,7 @@
 
 		<!--begin::Global Theme Bundle(used by all pages) -->
 		<script src="<?php echo asset_url('js/demo1/scripts.bundle.js'); ?>" type="text/javascript"></script>
+		<script src="<?php echo asset_url('vendors/custom/datatables/datatables.bundle.js') ?>" type="text/javascript"></script>
 
 		<!--end::Global Theme Bundle -->
 
