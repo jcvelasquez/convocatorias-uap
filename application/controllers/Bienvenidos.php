@@ -13,19 +13,7 @@ class Bienvenidos extends CI_Controller {
 
 	}
 
-	public function index()
-	{
-
-		$docente = $this->session->userdata('docente');
-
-		if(isset($docente)){
-			redirect('registro');	
-		} 
-
-		$data['convocatoria'] = $this->session->userdata('convocatoria');
-
-		$this->load->view('bienvenidos', $data);	
-	}
+	
 
 	public function crearcuentaDocente()
 	{
@@ -167,6 +155,55 @@ class Bienvenidos extends CI_Controller {
     	$this->session->unset_userdata('docente');
     	redirect('/iniciar-sesion');
     }
+
+	function mantener_sesion(){
+    	$this->session->unset_userdata('docente');
+    	redirect('/iniciar-sesion');
+    }
+
+    function concurso()
+	{
+		$data['_view'] = 'concurso-de-meritos';
+		//$data['js'] = array('js/facultades.js');
+		$this->load->view('index', $data);
+	}
+
+	function requisitos()
+	{
+		$data['_view'] = 'requisitos';
+		//$data['js'] = array('js/facultades.js');
+		$this->load->view('index', $data);
+	}
+
+	function plazas()
+	{
+		$data['_view'] = 'plazas';
+		//$data['js'] = array('js/facultades.js');
+		$this->load->view('index', $data);
+	}
+
+	function inicio()
+	{
+		$data['_view'] = 'inicio';
+		$this->load->view('index', $data);
+	}
+
+	function cronogramas()
+	{
+		$data['_view'] = 'cronogramas';
+		$this->load->view('index', $data);
+	}
+
+	
+	function instrucciones()
+	{
+		$data['_view'] = 'instrucciones';
+		//$data['js'] = array('js/facultades.js');
+		$this->load->view('index', $data);
+	}
+
+	
+
 
     
 

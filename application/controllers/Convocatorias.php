@@ -39,41 +39,7 @@ class Convocatorias extends CI_Controller {
 
 	}
 
-	public function listar_para_docentes()
-	{
-
-		//$data['convocatorias'] = $this->Convocatorias_model->get_all_convocatorias();
-		$data['js'] = array('js/convocatorias.js');
-
-		$this->load->view('convocatorias', $data);
-
-		/*return $this->output
-					->set_content_type('application/json')
-					->set_output(json_encode($convocatorias));*/
-
-	}
-
-
-
-	public function seleccionar_convocatoria($convocatoriaId)
-	{
-
-		$convocatoria = $this->Convocatorias_model->get_convocatorias_by_id($convocatoriaId);
-
-		$this->session->set_userdata('convocatoria',$convocatoria);
-
-		redirect('bienvenidos');
-		
-		//$data['_view'] = 'admin/content/tpl-convocatorias-detalle';
-
-
-		//$data['sedes'] = $this->Sedes_model->get_all_sedes_select();
-		//$data['cursos'] = $this->Cursos_model->get_all_cursos_select();
-
-		//$data['js'] = array('js/convocatorias.js');
-
-		//$this->load->view('admin/index', $data);
-	}
+	
 
 	public function agregar_editar($convocatoriaId)
 	{
@@ -101,6 +67,62 @@ class Convocatorias extends CI_Controller {
 					->set_output(json_encode($data));
 
     }
+
+    public function convocatorias()
+	{
+
+		//$data['convocatorias'] = $this->Convocatorias_model->get_all_convocatorias();
+		$data['js'] = array('js/convocatorias.js');
+
+		$data['_view'] = 'convocatorias';
+
+		$this->load->view('index', $data);
+
+		/*return $this->output
+					->set_content_type('application/json')
+					->set_output(json_encode($convocatorias));*/
+
+	}
+
+
+
+	public function convocatorias_seleccionar($convocatoriaId)
+	{
+
+		$convocatoria = $this->Convocatorias_model->get_convocatorias_by_id($convocatoriaId);
+
+		$this->session->set_userdata('convocatoria',$convocatoria);
+
+		redirect('convocatorias/inicio');
+		
+		//$data['_view'] = 'admin/content/tpl-convocatorias-detalle';
+
+
+		//$data['sedes'] = $this->Sedes_model->get_all_sedes_select();
+		//$data['cursos'] = $this->Cursos_model->get_all_cursos_select();
+
+		//$data['js'] = array('js/convocatorias.js');
+
+		//$this->load->view('admin/index', $data);
+	}
+
+	public function inicio()
+	{
+
+		$docente = $this->session->userdata('docente');
+
+		if(isset($docente)){
+			redirect('registro');	
+		} 
+
+		$data['convocatoria'] = $this->session->userdata('convocatoria');
+		$data['_view'] = 'bienvenidos';
+		$data['js'] = array('js/bienvenidos.js');
+
+
+		$this->load->view('index', $data);
+
+	}
 
 
 /*

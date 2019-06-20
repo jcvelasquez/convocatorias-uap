@@ -19,6 +19,9 @@
 			});
 		</script>
 
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
+
+
 		<!--end::Fonts -->
 
 		<!--begin::Page Vendors Styles(used by this page) -->
@@ -68,4 +71,6 @@
 
 
 		<link rel="shortcut icon" href="<?php echo asset_url('media/logos/favicon.ico'); ?>" />
+
+		<script src="<?php echo asset_url('vendors/general/jquery/dist/jquery.js'); ?>" type="text/javascript"></script>
 

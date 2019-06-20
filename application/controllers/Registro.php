@@ -27,9 +27,10 @@ class Registro extends CI_Controller {
 			redirect('/','refresh');
 		}else{
 
-			$docenteId = $this->session->userdata('docente')['docenteId'];				
+			$data['docenteId'] = $this->session->userdata('docente')['docenteId'];
 
-			$data['docente'] = $this->Docentes_model->listar_docente_por_id($docenteId);
+			$data['docente'] = $this->Docentes_model->listar_docente_por_id($data['docenteId']);
+
 	     	$data['cuentaId'] =  $this->Docentes_model->generarCuentaID();
 	     	$data['departamentos'] = $this->Departamento_model->get_all_departamentos();
 
@@ -45,6 +46,9 @@ class Registro extends CI_Controller {
 
 	     	if(isset($idDist) && $idDist != 0)
 	     		$data['distritos'] = $this->Distrito_model->get_distritos_by_provincia($idProv);
+
+
+	     	$data['js'] = array('js/sesion.js');
 
 			$this->load->view('registro', $data);
 
@@ -62,11 +66,8 @@ class Registro extends CI_Controller {
 
 		$dni = $this->input->post('dni');
 
-		//OBTENEMOS EL VALOR
-		//$consulta = file_get_html('http://aplicaciones007.jne.gob.pe/srop_publico/Consulta/Afiliado/GetNombresCiudadano?DNI='.$dni)->plaintext;
-
 		//LA LOGICA DE LA PAGINAS ES APELLIDO PATERNO | APELLIDO MATERNO | NOMBRES
-		if($consulta = file_get_html('http://aplicaciones007.jne.gob.pe/srop_publico/Consulta/Afiliado/GetNombresCiudadano?DNI='.$dni)->plaintext){
+		if(@$consulta = file_get_html('http://aplicaciones007.jne.gob.pe/srop_publico/Consulta/Afiliado/GetNombresCiudadano?DNI='.$dni)->plaintext){
 			$partes = explode("|", $consulta);
 
 			$datos = array( "success" => true,

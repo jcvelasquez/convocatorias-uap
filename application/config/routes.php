@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		    my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'Convocatorias/listar_para_docentes';
+$route['default_controller'] = 'Bienvenidos/inicio';
 $route['admin'] = 'Admin/index';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
@@ -60,8 +60,12 @@ $route['registro-campo'] = "Registro/grabar_campo";
 $route['crear-cuenta'] = "Bienvenidos/crear_cuenta_nuevo";
 $route['cerrar-sesion'] = "Bienvenidos/cerrar_sesion";
 $route['iniciar-sesion'] = "Bienvenidos/iniciar_sesion";
+$route['mantener-sesion'] = "Bienvenidos/mantener_sesion";
+
 $route['generar-idrepeater'] = "Registro/generarRepeaterId";
 $route['consultar-dni'] = "Registro/obtenerDatosReniec";
+
+
 
 //RUTAS DE CONVOCATORIAS 
 $route['admin/convocatorias'] 			    = "Convocatorias/index";
@@ -69,9 +73,7 @@ $route['admin/convocatorias/listar'] 	    = "Convocatorias/listar";
 $route['admin/convocatorias/agregar'] 	    = "Convocatorias/agregar_editar/$1";
 $route['admin/convocatorias/editar/(:any)'] = "Convocatorias/agregar_editar/$1";
 
-//RUTAS DE CONVOCATORIAS
-$route['convocatorias'] = "Convocatorias/listar_para_docentes";
-$route['convocatorias/seleccionar/(:any)'] = "Convocatorias/seleccionar_convocatoria/$1";
+
 
 //$route['admin/convocatorias/(:any)'] 		= "Convocatorias/convocatorias_detalle/$1";
 
@@ -117,6 +119,20 @@ $route['distrito/dist_x_prov']  = "Distrito/listar_distritos_x_prov";
 $route['escuela_x_id'] = "Escuelas/get_escuela_x_id";
 $route['convocatoria_x_id'] = "Convocatorias/get_convocatoria_x_id";
 
+
+
+//FRONTEND
+//$route['inicio'] = 'Inicio/index';
+$route['concurso-de-meritos'] = 'Bienvenidos/concurso';
+$route['cronogramas'] = 'Bienvenidos/cronogramas';
+$route['requisitos'] = 'Bienvenidos/requisitos';
+$route['plazas'] = 'Bienvenidos/plazas';
+$route['instrucciones'] = 'Bienvenidos/instrucciones';
+
+//RUTAS DE CONVOCATORIAS
+$route['convocatorias'] = "Convocatorias/convocatorias";
+$route['convocatorias/seleccionar/(:any)'] = "Convocatorias/convocatorias_seleccionar/$1";
+$route['convocatorias/inicio'] = "Convocatorias/inicio";
 
 
 

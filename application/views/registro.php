@@ -186,7 +186,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							</div>
 							<!--end: Form Actions -->
 
-							<input type="hidden" name="docenteId" id="docenteId" value="<?php echo $docente['docenteId']; ?>">
+							<input type="hidden" name="docenteId" id="docenteId" value="<?php echo $docenteId; ?>">
 
 						</form>
 

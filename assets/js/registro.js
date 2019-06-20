@@ -701,6 +701,8 @@ var Registro = function () {
 
                 console.log("valor " + valor);
                 console.log("campo " + campo);
+                console.log("dbtable " + dbtable);
+                console.log("dbpk " + dbpk);
 
                 if(campo == "docNroDocumento"){
 
@@ -712,9 +714,9 @@ var Registro = function () {
                             data : {dni: valor},
                             success:function(response){
 
-                                console.log(response.APEMAT);
-                                console.log(response.APEPAT);
-                                console.log(response.NOMBRES);
+                                $('#docApMaterno').val(response.APEMAT).blur();
+                                $('#docApPaterno').val(response.APEPAT).blur();
+                                $('#docNombres').val(response.NOMBRES).blur();
                                                                                                       
                             },
                             error: function(xhr) { 

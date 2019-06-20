@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost:4516/convocatorias-uap/';
+$config['base_url'] = 'http://localhost/convocatorias-uap/';
 //$config['base_url'] = 'http://10.100.50.75/convocatorias-uap/';
 //$config['base_url'] = 'http://convocatorias.uap.edu.pe/';
 
@@ -382,7 +382,7 @@ $config['encryption_key'] = '';
 |
 */
 $config['sess_driver'] = 'files';
-$config['sess_cookie_name'] = 'ci_session';
+$config['sess_cookie_name'] = 'uap_session';
 $config['sess_expiration'] = 7200;
 $config['sess_save_path'] = NULL;
 $config['sess_match_ip'] = FALSE;

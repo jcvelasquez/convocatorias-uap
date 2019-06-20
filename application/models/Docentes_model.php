@@ -36,10 +36,13 @@ class Docentes_model extends CI_Model
     */
    
     function listar_docente_por_id($docenteId){
+
       $this->db->select("doc.*, indi.*");
-      $this->db->from("docentes doc, indicadores indi");
-      $this->db->where("doc.docenteId = indi.docentes_docenteId AND doc.docenteId ='{$docenteId}' ");
+      $this->db->from("docentes doc");
+      $this->db->join('indicadores indi', 'doc.docenteId = indi.docentes_docenteId', 'left');
+      $this->db->where("doc.docenteId ='{$docenteId}' ");
       return $this->db->get()->row_array();
+
     }
 
     /*
