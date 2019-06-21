@@ -81,7 +81,7 @@
 
 								<div class="col-lg-6" style="margin-top: 20px;">
 									<button id="registrarDocente" type="submit" class="btn btn-brand">Iniciar registro</button>
-									<a href="<?php echo site_url('iniciar-sesion'); ?>" class="btn btn-outline-hover-dark">¿Tiene una cuenta? Inicie sesión</a>
+									<a href="<?php echo site_url('convocatorias/iniciar-sesion'); ?>" class="btn btn-outline-hover-dark">¿Tiene una cuenta? Inicie sesión</a>
 								</div>
 
 							</div>
@@ -133,7 +133,7 @@
 
 									<div class="col-lg-6" style="margin-top: 20px;">
 										<button id="registrarNuevo" type="submit" class="btn btn-brand">Iniciar registro</button>
-										<a href="<?php echo site_url('iniciar-sesion'); ?>" class="btn btn-outline-hover-dark">¿Tiene una cuenta? Inicie sesión</a>
+										<a href="<?php echo site_url('convocatorias/iniciar-sesion'); ?>" class="btn btn-outline-hover-dark">¿Tiene una cuenta? Inicie sesión</a>
 									</div>
 								</div>
 

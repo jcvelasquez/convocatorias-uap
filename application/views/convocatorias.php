@@ -52,7 +52,7 @@
 
 <!-- end:: Page -->
 
-<!-- <script src="<?php echo asset_url('js/convocatorias.js'); ?>" type="text/javascript"></script>
+<!-- <script src="<?php //echo asset_url('js/convocatorias.js'); ?>" type="text/javascript"></script>
 -->
 <script type="text/javascript">
 

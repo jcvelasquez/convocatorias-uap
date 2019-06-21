@@ -59,7 +59,7 @@ $route['registro'] = "Registro/index";
 $route['registro-campo'] = "Registro/grabar_campo";
 $route['crear-cuenta'] = "Bienvenidos/crear_cuenta_nuevo";
 $route['cerrar-sesion'] = "Bienvenidos/cerrar_sesion";
-$route['iniciar-sesion'] = "Bienvenidos/iniciar_sesion";
+
 $route['mantener-sesion'] = "Bienvenidos/mantener_sesion";
 
 $route['generar-idrepeater'] = "Registro/generarRepeaterId";
@@ -133,6 +133,7 @@ $route['instrucciones'] = 'Bienvenidos/instrucciones';
 $route['convocatorias'] = "Convocatorias/convocatorias";
 $route['convocatorias/seleccionar/(:any)'] = "Convocatorias/convocatorias_seleccionar/$1";
 $route['convocatorias/inicio'] = "Convocatorias/inicio";
+$route['convocatorias/iniciar-sesion'] = "Bienvenidos/iniciar_sesion";
 
 
 
