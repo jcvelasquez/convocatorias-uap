@@ -23,17 +23,14 @@ class Registro extends CI_Controller {
 
 		$docente = $this->session->userdata('docente');
 
-		if(!isset($docente)){
-			redirect('/','refresh');
-		}else{
+		//print_r($docente); return;
+		
 
+		if(isset($docente)){
 			$data['docenteId'] = $this->session->userdata('docente')['docenteId'];
-
 			$data['docente'] = $this->Docentes_model->listar_docente_por_id($data['docenteId']);
-
 	     	$data['cuentaId'] =  $this->Docentes_model->generarCuentaID();
 	     	$data['departamentos'] = $this->Departamento_model->get_all_departamentos();
-
 	     	$data['randomRepeaterID'] = $this->Registro_model->randomRepeaterID();
 
 	     	//SOLO SI EXISTE DEPARTAMENTO SELECCIONADO
@@ -48,9 +45,15 @@ class Registro extends CI_Controller {
 	     		$data['distritos'] = $this->Distrito_model->get_distritos_by_provincia($idProv);
 
 
-	     	$data['js'] = array('js/sesion.js');
+			//CARGO VISTA DE INICIO DE SESION
+			$data['_view'] = 'registro';
+			$data['js'] = array('js/sesion.js', 'js/registro.js');
+			
+			$this->load->view('index', $data);
 
-			$this->load->view('registro', $data);
+		}else{
+
+			redirect('convocatorias','refresh');
 
 		} 
 	

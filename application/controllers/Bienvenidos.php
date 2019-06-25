@@ -111,7 +111,7 @@ class Bienvenidos extends CI_Controller {
 
 		if(isset($docente)){
 
-			redirect('registro');
+			redirect('convocatorias/registro');
 
 		}else{
 
@@ -145,7 +145,10 @@ class Bienvenidos extends CI_Controller {
 			}
 
 			//CARGO VISTA DE INICIO DE SESION
-			$this->load->view('acceso');
+			$data['_view'] = 'acceso';
+			$data['js'] = array('js/acceso.js');
+			
+			$this->load->view('index', $data);
 
 		} 		
 
@@ -153,12 +156,12 @@ class Bienvenidos extends CI_Controller {
 
     function cerrar_sesion(){
     	$this->session->unset_userdata('docente');
-    	redirect('/iniciar-sesion');
+    	redirect('convocatorias/iniciar-sesion');
     }
 
 	function mantener_sesion(){
-    	$this->session->unset_userdata('docente');
-    	redirect('/iniciar-sesion');
+    	//$this->session->unset_userdata('docente');
+    	//redirect('convocatorias/iniciar-sesion');
     }
 
     function concurso()

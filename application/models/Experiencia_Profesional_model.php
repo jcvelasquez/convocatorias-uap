@@ -4,7 +4,7 @@
  * www.crudigniter.com
  */
 
-class Experiencia_Especializacion_model extends CI_Model
+class Experiencia_Profesional_model extends CI_Model
 {
     function __construct()
     {
@@ -14,9 +14,25 @@ class Experiencia_Especializacion_model extends CI_Model
     /*
      * Get all
     */
-    function get_all_experiencia_especializacion(){
-        $this->db->order_by('especializacionId', 'desc');
-        return $this->db->get('experiencia_especializacion')->result_array();
+    function listar_por_docente($docenteId){
+
+
+        $records = array();
+
+        $this->db->select("exp.*");
+        $this->db->from("experiencia_especializacion exp");
+        $this->db->where("exp.docenteId ='{$docenteId}' ");
+        $query = $this->db->get();
+
+
+        $records['iTotalRecords'] = $query->num_rows();
+        $records['iTotalDisplayRecords'] = $query->num_rows();
+        $records['sEcho'] = 0;
+        $records['sColumns'] = 0;
+        $records['aaData'] = $query->result_array();
+
+        return $records;
+
     }
 
 

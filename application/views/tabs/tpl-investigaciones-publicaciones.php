@@ -1,6 +1,6 @@
 <div class="kt-section">
 	<div class="kt-section__content kt-section__content--solid ">
-		<h4>INVESTIGACION Y PRODUCCION INTELECTUAL <small>With faded secondary text</small></h4>
+		<h4>INVESTIGACION Y PRODUCCION INTELECTUAL <small class="kt-hide">With faded secondary text</small></h4>
 	</div>
 </div>
 
@@ -47,7 +47,7 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<input type="text" class="form-control form-control-danger" placeholder="Nº Registro / Nº Resolución">
+								<input type="text" class="form-control form-control-danger" placeholder="Código ORCID">
 							</div>
 						</div>
 
@@ -108,7 +108,7 @@
 
 <div class="kt-section">
 	<div class="kt-section__content kt-section__content--solid">
-		<h4>ASESORIA Y DIRECCION DE TESIS <small>With faded secondary text</small></h4>
+		<h4>ASESORIA, DIRECCION Y JURADO DE TRABAJOS DE INVESTIGACIÓN <small class="kt-hide">With faded secondary text</small></h4>
 	</div>
 </div>
 
@@ -129,9 +129,11 @@
 									</span>
 								</div>
 								<select class="form-control kt-selectpicker" title="Nivel" data-style="btn-primary">
-									<option>Tipo</option>
-									<option>Dos</option>
-									<option>Tres</option>
+									<option value="">Seleccione tipo</option>
+									<option value="Asesoría">Asesoría</option>
+									<option value="Dirección">Dirección</option>
+									<option value="Jurado">Jurado</option>
+									<option value="Revisor">Revisor</option>
 								</select>
 							</div>
 						</div>
@@ -185,14 +187,14 @@
 						</div>
 
 						<div class="col-lg-3">
-							<div class="input-group date">
+							<!-- <div class="input-group date">
 								<div class="input-group-prepend">
 									<span class="input-group-text">
 										<i class="la la-calendar-check-o"></i>
 									</span>
 								</div>
 								<input type="text" class="form-control" readonly placeholder="Fecha de certificación" id="kt_datepicker_2" />
-							</div>
+							</div> -->
 						</div>
 
 					</div>

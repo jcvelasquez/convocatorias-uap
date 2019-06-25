@@ -8,7 +8,7 @@
 </div>
 
 <!-- fila 3 inicio -->
-<div class="form-group row">
+<div class="row">
 
 	<div class="col-lg-4">
 		<div class="input-group">
@@ -286,7 +286,7 @@
 
 
 <!-- fila 4 -->
-<div class="form-group row">
+<div class="row">
 	<div class="col-lg-4">
 		<div class="input-group">
 			<div class="input-group-prepend"><span class="input-group-text"><i class="far fa-user"></i></span></div>
@@ -313,7 +313,7 @@
 
 
 <!-- fila 5 inicio -->
-<div class="form-group row">
+<div class="row">
 	<div class="col-lg-4">
 		<div class="input-group">
 			<div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-venus-mars"></i></span></div>
@@ -350,7 +350,7 @@
 </div>
 
 <!-- fila 7 inicio -->
-<div class="form-group row">
+<div class="row">
 	<div class="col-lg-4">
 		<div class="input-group">
 			<div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-map-marked-alt"></i></span></div>
@@ -404,7 +404,7 @@
 	</div>
 
 </div>
-<div class="form-group row">
+<div class="row">
 
 	<div class="col-lg-12">
 		<div class="input-group">

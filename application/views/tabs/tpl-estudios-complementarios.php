@@ -8,21 +8,40 @@
 
 <div class="kt-section">
 	<div class="kt-section__content kt-section__content--solid">
-		<h4>IDIOMAS <small>With faded secondary text</small></h4>
+		<h4>IDIOMAS <small class="kt-hide">With faded secondary text</small></h4>
 	</div>
 </div>
 
 
 <div class="form-group row">
 	<div class="col-lg-12">
+
+
+		<!--begin: Datatable -->
+		<table class="table table-striped- table-hover table-checkable" id="table_idiomas">
+			<thead>
+				<tr>
+					<th width="70">ID</th>
+					<th>Centro de estudios</th>
+					<th>Idioma</th>
+					<th>Nivel</th>
+					<th>Certificado el</th>
+					<th>Archivo</th>
+					<th width="70">Acciones</th>
+				</tr>
+			</thead>
+		</table>
+		<!--end: Datatable -->
+
 		<!-- inicio repeater -->
-		<div id="kt_repeater_estudios">
-			<div data-repeater-list="">
+		<div id="kt_repeater_idiomas">
+
+<!-- 			<div data-repeater-list="">
 				<div data-repeater-item="">
+ -->
+					<div class="row">
 
-					<div class="form-group  row">
-
-						<div class="col-lg-5">
+						<div class="col-lg-6">
 							<div class="input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text">
@@ -41,9 +60,11 @@
 									</span>
 								</div>
 								<select class="form-control kt-selectpicker" title="idioma" data-style="btn-primary">
-									<option>Idioma</option>
-									<option>Dos</option>
-									<option>Tres</option>
+									<option value="">Seleccione el idioma</option>
+									<option value="Inglés">Inglés</option>
+									<option value="Francés">Francés</option>
+									<option value="Italiano">Italiano</option>
+									<option value="Otros">Otros</option>
 								</select>
 							</div>
 						</div>
@@ -56,25 +77,26 @@
 									</span>
 								</div>
 								<select class="form-control kt-selectpicker" title="Nivel" data-style="btn-primary">
-									<option>Nivel</option>
-									<option>Dos</option>
-									<option>Tres</option>
+									<option value="">Seleccione el nivel</option>
+									<option value="Basico">Básico</option>
+									<option value="Intermedio">Intermedio</option>
+									<option value="Avanzado">Avanzado</option>
 								</select>
 							</div>
 						</div>
 
-						<div class="col-lg-1">
+						<!-- <div class="col-lg-1">
 							<a href="javascript:;" data-repeater-delete="" class="btn btn-remover btn-danger btn-icon">
 								<i class="la la-remove"></i>
 							</a>
-						</div>
+						</div> -->
 
 					</div>
 
 
-					<div class="form-group row">
+					<div class="row kt-hide">
 
-						<div class="col-lg-11">
+						<div class="col-lg-12">
 							<div class="input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text">
@@ -88,9 +110,9 @@
 
 					</div>
 
-					<div class="form-group row">
+					<div class="row">
 
-						<div class="col-lg-5">
+						<div class="col-lg-6">
 							<div class="input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text">
@@ -119,14 +141,14 @@
 
 					</div>
 
-
+<!-- 
 
 				</div>
-			</div>
+			</div> -->
 			<div data-repeater-create="" class="btn btn btn-primary">
 				<span>
 					<i class="la la-plus"></i>
-					<span>Añadir más idiomas</span>
+					<span>Agregar y grabar idioma</span>
 				</span>
 			</div>
 		</div>
@@ -136,7 +158,7 @@
 
 <div class="kt-section">
 	<div class="kt-section__content kt-section__content--solid">
-		<h4>HERRAMIENTAS INFORMATICAS <small>With faded secondary text</small></h4>
+		<h4>HERRAMIENTAS INFORMATICAS <small class="kt-hide">With faded secondary text</small></h4>
 	</div>
 </div>
 

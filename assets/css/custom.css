@@ -250,3 +250,40 @@ header {
     width: 500px;">
  }
  /******************FOOTER********************/
+
+ footer {
+    background: #525050;
+    color: #fff;
+}
+footer .bg-footer {
+    padding: 60px 0 !important;
+}
+#footer-bg {
+    background-repeat-y: no-repeat;
+    background:url(https://posgrado.uap.edu.pe/wp-content/themes/posgrado/assets/img/aguila-05.png);
+    background-position: bottom;
+    background-size: contain;
+}
+
+footer .col-lg-2, footer .col-lg-3, footer .col-lg-4 {
+    padding: 60px 0 !important;
+}
+footer p,
+footer p a {
+    color:#fff;
+}
+
+footer p#title-footer {
+    text-transform: uppercase;
+    font-size: 2.4rem;
+    font-weight: 700;
+}
+
+.dataTables_info { display: none; }
+
+#kt_repeater_grados,
+#kt_repeater_cargos,
+#kt_repeater_idiomas,
+#kt_repeater_experiencia { padding-top: 25px; border-top:1px solid #ccc;  }
+
+.input-group { margin-bottom: 15px; }

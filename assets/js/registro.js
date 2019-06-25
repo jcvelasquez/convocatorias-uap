@@ -31,7 +31,47 @@ var Registro = function () {
 
     var initGrados = function() {
 
-        $('#kt_repeater_grados').repeater({
+
+        var table_grados = $('#table_grados');
+
+        // begin first table
+        table_grados.DataTable({
+            responsive: true,
+            processing: true,
+            serverSide: true,
+            paging: false,
+            searching: false,
+            ajax: {
+                url: BASE_URL + 'registro/grados/listar',
+                data: function ( d ) {
+                    d.docenteId = $('#docenteId').val();
+                },
+                type: "POST"
+            },
+            columns: [
+                {data: 'gradosId'},
+                {data: 'gradAcademico'},
+                {data: 'gradEspecialidad'},
+                {data: 'gradInstitucion'},
+                {data: 'Acciones'},
+            ],
+            columnDefs: [
+
+                {
+                    targets: -1,
+                    title: 'Acciones',
+                    orderable: false,
+                    render: function(data, type, full, meta) {
+
+                        return `<a class="btn btn-danger" href="` + BASE_URL + 'admin/convocatorias/editar/' + full['gradosId'] + `"><i class="la la-edit"></i> Eliminar </a>`;
+                    },
+                }
+                
+            ],
+        });
+        
+
+        /*$('#kt_repeater_grados').repeater({
             initEmpty: false,
             isFirstItemUndeletable: true,
             show: function() {
@@ -86,176 +126,204 @@ var Registro = function () {
 
                                                     
             }      
-        });
+        });*/
     }
 
     var initCargos = function() {
-        $('#kt_repeater_cargos').repeater({
-            initEmpty: false,
-            isFirstItemUndeletable: true,
-            show: function() {
-                $(this).slideDown();   
+        
+        var table_cargos = $('#table_cargos');
 
-                initDateFields();
-
+        // begin first table
+        table_cargos.DataTable({
+            responsive: true,
+            processing: true,
+            serverSide: true,
+            paging: false,
+            searching: false,
+            ajax: {
+                url: BASE_URL + 'registro/cargos-academicos/listar',
+                data: function ( d ) {
+                    d.docenteId = $('#docenteId').val();
+                },
+                type: "POST"
             },
+            columns: [
+                {data: 'cargosId'},
+                {data: 'carAcadNomInstitucion'},
+                {data: 'carAcadArea'},
+                {data: 'carAcadFecInicio'},
+                {data: 'carAcadFecFin'},
+                {data: 'carAcadeHastaFecha'},
+                {data: 'Acciones'},
+            ],
+            columnDefs: [
 
-            hide: function(deleteElement) {    
+                {
+                    targets: -1,
+                    title: 'Acciones',
+                    orderable: false,
+                    render: function(data, type, full, meta) {
 
-                    var $repeater = $(this);
-
-                    swal.fire({
-                        title: 'Are you sure?',
-                        text: "You won't be able to revert this!",
-                        type: 'warning',
-                        confirmButtonText: "<i class='la la-headphones'></i> Eliminar",
-                        confirmButtonClass: "btn btn-danger",
-                        showCancelButton: true,
-                        cancelButtonText: "Cancelar",
-                        cancelButtonClass: "btn btn-danger",
-                    }).then(function(result) {
-                        if (result.value) {
-
-                            $repeater.slideUp(deleteElement);
-
-                        } 
-
-                    });
-                                                           
-            }      
+                        return `<a class="btn btn-danger" href="` + BASE_URL + 'admin/convocatorias/editar/' + full['cargosId'] + `"><i class="la la-edit"></i> Eliminar </a>`;
+                    },
+                }
+                
+            ],
         });
+
     }
 
     // Private functions
-    var initExperiencia = function() {
-        $('#kt_repeater_experiencia').repeater({
-            initEmpty: false,
-            isFirstItemUndeletable: true,
-            show: function() {
-                $(this).slideDown();  
+    var initExperienciaDocencia = function() {
 
-                initDateFields();
 
+        var table_experiencia_docencia = $('#table_experiencia_docencia');
+
+        // begin first table
+        table_experiencia_docencia.DataTable({
+            responsive: true,
+            processing: true,
+            serverSide: true,
+            paging: false,
+            searching: false,
+            ajax: {
+                url: BASE_URL + 'registro/experiencia-docencia/listar',
+                data: function ( d ) {
+                    d.docenteId = $('#docenteId').val();
+                },
+                type: "POST"
             },
+            columns: [
+                {data: 'experienciaId'},
+                {data: 'expDocInstitucion'},
+                {data: 'cargoDocencia'},
+                {data: 'tipoConDocencia'},
+                {data: 'expDocFecInicio'},
+                {data: 'expDocFecFin'},
+                {data: 'expDocHastaActual'},
+                {data: 'Acciones'},
+            ],
+            columnDefs: [
 
-            hide: function(deleteElement) {     
+                {
+                    targets: -1,
+                    title: 'Acciones',
+                    orderable: false,
+                    render: function(data, type, full, meta) {
 
-                     var $repeater = $(this); 
-
-                    swal.fire({
-                        title: 'Are you sure?',
-                        text: "You won't be able to revert this!",
-                        type: 'warning',
-                        confirmButtonText: "<i class='la la-headphones'></i> I am game!",
-                        confirmButtonClass: "btn btn-danger",
-                        showCancelButton: true,
-                        cancelButtonText: "Cancelar",
-                        cancelButtonClass: "btn btn-danger",
-                    }).then(function(result) {
-                        if (result.value) {
-
-
-                            $repeater.slideUp(deleteElement);
-
-                        } 
-
-                    });
-
-                 
-
-            }      
+                        return `<a class="btn btn-danger" href="` + BASE_URL + 'admin/convocatorias/editar/' + full['experienciaId'] + `"><i class="la la-edit"></i> Eliminar </a>`;
+                    },
+                }
+                
+            ],
         });
+
+       
     }
+
+
+
+    // Private functions
+    var initExperienciaEspecializacion = function() {
+        
+        var table_experiencia_profesional = $('#table_experiencia_profesional');
+
+        // begin first table
+        table_experiencia_profesional.DataTable({
+            responsive: true,
+            processing: true,
+            serverSide: true,
+            paging: false,
+            searching: false,
+            ajax: {
+                url: BASE_URL + 'registro/experiencia-profesional/listar',
+                data: function ( d ) {
+                    d.docenteId = $('#docenteId').val();
+                },
+                type: "POST"
+            },
+            columns: [
+                {data: 'especializacionId'},
+                {data: 'especInstitucion'},
+                {data: 'especTipoInstitucion'},
+                {data: 'especCargo'},
+                {data: 'especFecInicio'},
+                {data: 'especFecFin'},
+                {data: 'especHastaFecha'},
+                {data: 'Acciones'},
+            ],
+            columnDefs: [
+
+                {
+                    targets: -1,
+                    title: 'Acciones',
+                    orderable: false,
+                    render: function(data, type, full, meta) {
+
+                        return `<a class="btn btn-danger" href="` + BASE_URL + 'admin/convocatorias/editar/' + full['especializacionId'] + `"><i class="la la-edit"></i> Eliminar </a>`;
+                    },
+                }
+                
+            ],
+        });
+
+    }
+
 
 
     
 
     // Private functions
-    var initEstudios = function() {
-        $('#kt_repeater_estudios').repeater({
-            initEmpty: false,
-            isFirstItemUndeletable: true,
-            show: function() {
-                $(this).slideDown(); 
+    var initIdiomas = function() {
 
-                initDateFields();
 
+        var table_idiomas = $('#table_idiomas');
+
+        // begin first table
+        table_idiomas.DataTable({
+            responsive: true,
+            processing: true,
+            serverSide: true,
+            paging: false,
+            searching: false,
+            ajax: {
+                url: BASE_URL + 'registro/idiomas/listar',
+                data: function ( d ) {
+                    d.docenteId = $('#docenteId').val();
+                },
+                type: "POST"
             },
+            columns: [
+                {data: 'idiomaId'},
+                {data: 'idioCentroEstudios'},
+                {data: 'idioNombre'},
+                {data: 'idioNivel'},
+                {data: 'idioFechaCertificacion'},
+                {data: 'idioRutaArchivoCertificacion'},
+                {data: 'Acciones'},
+            ],
+            columnDefs: [
 
-            hide: function(deleteElement) {    
+                {
+                    targets: -1,
+                    title: 'Acciones',
+                    orderable: false,
+                    render: function(data, type, full, meta) {
 
-                var $repeater = $(this); 
-
-                swal.fire({
-                        title: 'Are you sure?',
-                        text: "You won't be able to revert this!",
-                        type: 'warning',
-                        confirmButtonText: "Eliminar",
-                        confirmButtonClass: "btn btn-success",
-                        showCancelButton: true,
-                        cancelButtonText: "Cancelar",
-                        cancelButtonClass: "btn btn-danger",
-                    }).then(function(result) {
-                        if (result.value) {
-
-                            $repeater.slideUp(deleteElement);
-
-                        } 
-
-                    });              
+                        return `<a class="btn btn-danger" href="` + BASE_URL + 'admin/convocatorias/editar/' + full['idiomaId'] + `"><i class="la la-edit"></i> </a>`;
+                    },
+                }
                 
-
-
-            }      
+            ],
         });
+        
+
     }
-
-    // Private functions
-    var initEspecializacion = function() {
-        $('#kt_repeater_especializacion').repeater({
-            initEmpty: false,
-            isFirstItemUndeletable: true,
-            show: function() {
-                $(this).slideDown(); 
-
-                initDateFields();
-
-            },
-
-            hide: function(deleteElement) {    
-
-                var $repeater = $(this); 
-
-                swal.fire({
-                        title: 'Are you sure?',
-                        text: "You won't be able to revert this!",
-                        type: 'warning',
-                        confirmButtonText: "Eliminar",
-                        confirmButtonClass: "btn btn-success",
-                        showCancelButton: true,
-                        cancelButtonText: "Cancelar",
-                        cancelButtonClass: "btn btn-danger",
-                    }).then(function(result) {
-                        if (result.value) {
-
-                            $repeater.slideUp(deleteElement);
-
-                        } 
-
-                    });              
-                
-
-
-            }      
-        });
-    }
-
-
-
 
 
     // Private functions
     var initReconocimientos = function() {
+        
         $('#kt_repeater_reconocimientos').repeater({
             initEmpty: false,
             isFirstItemUndeletable: true,
@@ -290,6 +358,7 @@ var Registro = function () {
 
             }      
         });
+
     }
 
     
@@ -634,10 +703,10 @@ var Registro = function () {
 
                 //ACADEMICA
                 tieneGradoMaestro: {
-                    required: false
+                    required: true
                 },
                 tieneSegEspecialidad: {
-                    required: false
+                    required: true
                 },
                 archivoDina: {
                     required: {
@@ -850,13 +919,15 @@ var Registro = function () {
             //REPEATERS
             initCargos();
             initGrados();
-            initExperiencia();
-            initEspecializacion();
-            initEstudios();
+            initExperienciaDocencia();
+            initExperienciaEspecializacion();
+            //initEstudios();
             initHerramientas();
             initReconocimientos();
             initInvestigacion();
             initAsesoria();
+
+            initIdiomas();
 
 
 

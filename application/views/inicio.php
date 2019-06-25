@@ -6,9 +6,15 @@
                         <h1>CONVOCATORIA DOCENTES</h1>
                         <hr class="small">
                         <a href="<?= site_url('convocatorias'); ?>" class="btn btn-danger ">VER CONVOCATORIAS</a>
-                        <a href="#" class="btn btn-primary ">INICIAR SESIÓN</a>
+                        <a href="<?= site_url('convocatorias/iniciar-sesion'); ?>" class="btn btn-primary ">INICIAR SESIÓN</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <style type="text/css">
+        
+        footer { display: none; }
+
+    </style>

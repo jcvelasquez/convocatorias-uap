@@ -18,8 +18,8 @@
 
 		<div class="col-lg-6" style="margin-top: 20px;">
 			<button id="iniciarDocente" type="submit" class="btn btn-brand">Iniciar sesión</button>
-			<a href="<?php echo site_url('/'); ?>" class="btn btn-outline-hover-dark">¿No tiene una cuenta? Regístrese.</a>
-			<a href="#" class="btn btn-outline-hover-dark">¿Olvido su clave?</a>
+			<a href="<?php echo site_url('/'); ?>" class="btn">¿Es nuevo? Regístrese.</a>
+			<a href="#" class="btn">¿Olvido su clave?</a>
 		</div>
 
 		<div class="col-lg-6" style="margin-top: 20px; text-align: right;">

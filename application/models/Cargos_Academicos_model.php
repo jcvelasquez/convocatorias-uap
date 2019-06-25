@@ -14,11 +14,27 @@ class Cargos_Academicos_model extends CI_Model
     /*
      * Get all
     */
-    function get_all_cargos_academicos(){
-        $this->db->order_by('cargosId', 'desc');
-        return $this->db->get('asesoria_tesis')->result_array();
-    }
 
+    function listar_por_docente($docenteId){
+
+
+        $records = array();
+
+        $this->db->select("car.*");
+        $this->db->from("cargos_academicos car");
+        $this->db->where("car.docenteId = {$docenteId} ");
+        $query = $this->db->get();
+
+
+        $records['iTotalRecords'] = $query->num_rows();
+        $records['iTotalDisplayRecords'] = $query->num_rows();
+        $records['sEcho'] = 0;
+        $records['sColumns'] = 0;
+        $records['aaData'] = $query->result_array();
+
+        return $records;
+
+    }
 
     /*
      * Get by id

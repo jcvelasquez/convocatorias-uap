@@ -19,6 +19,27 @@ class Idiomas_model extends CI_Model
         return $this->db->get('idiomas')->result_array();
     }
 
+    function listar_por_docente($docenteId){
+
+
+        $records = array();
+
+        $this->db->select("idi.*");
+        $this->db->from("idiomas idi");
+        $this->db->where("idi.docenteId = {$docenteId} ");
+        $query = $this->db->get();
+
+
+        $records['iTotalRecords'] = $query->num_rows();
+        $records['iTotalDisplayRecords'] = $query->num_rows();
+        $records['sEcho'] = 0;
+        $records['sColumns'] = 0;
+        $records['aaData'] = $query->result_array();
+
+        return $records;
+
+    }
+
     /*
      * Get by id
     */

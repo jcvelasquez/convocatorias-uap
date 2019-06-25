@@ -29,7 +29,7 @@ var IniciarSesion = function () {
                 $.ajax({
                     dataType:'JSON',
                     type: 'POST',
-                    url: BASE_URL + 'iniciar-sesion',
+                    url: BASE_URL + 'convocatorias/iniciar-sesion',
                     data : {docEmail: docEmail, docClave: docClave},
                     success:function(response){
                                                                                                    
@@ -45,7 +45,7 @@ var IniciarSesion = function () {
                                 }
                             }).then(function(result) {
                                 if (result.dismiss === 'timer') {
-                                    window.location.href = BASE_URL + "registro";
+                                    window.location.href = BASE_URL + "convocatorias/registro";
                                 }
                             })
 

@@ -55,12 +55,9 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 //PAGINAS DETALLES DE CONVOCATORIAS
-$route['registro'] = "Registro/index";
 $route['registro-campo'] = "Registro/grabar_campo";
 $route['crear-cuenta'] = "Bienvenidos/crear_cuenta_nuevo";
-$route['cerrar-sesion'] = "Bienvenidos/cerrar_sesion";
 
-$route['mantener-sesion'] = "Bienvenidos/mantener_sesion";
 
 $route['generar-idrepeater'] = "Registro/generarRepeaterId";
 $route['consultar-dni'] = "Registro/obtenerDatosReniec";
@@ -72,9 +69,6 @@ $route['admin/convocatorias'] 			    = "Convocatorias/index";
 $route['admin/convocatorias/listar'] 	    = "Convocatorias/listar";
 $route['admin/convocatorias/agregar'] 	    = "Convocatorias/agregar_editar/$1";
 $route['admin/convocatorias/editar/(:any)'] = "Convocatorias/agregar_editar/$1";
-
-
-
 //$route['admin/convocatorias/(:any)'] 		= "Convocatorias/convocatorias_detalle/$1";
 
 //RUTAS DE SEDES
@@ -115,9 +109,7 @@ $route['provincia/prov_x_depa'] = "Provincia/listar_provincias_x_depa";
 $route['distrito/dist_x_prov']  = "Distrito/listar_distritos_x_prov";
 
 
-//GET AJAX AL EDITAR
-$route['escuela_x_id'] = "Escuelas/get_escuela_x_id";
-$route['convocatoria_x_id'] = "Convocatorias/get_convocatoria_x_id";
+
 
 
 
@@ -134,6 +126,24 @@ $route['convocatorias'] = "Convocatorias/convocatorias";
 $route['convocatorias/seleccionar/(:any)'] = "Convocatorias/convocatorias_seleccionar/$1";
 $route['convocatorias/inicio'] = "Convocatorias/inicio";
 $route['convocatorias/iniciar-sesion'] = "Bienvenidos/iniciar_sesion";
+$route['convocatorias/registro'] = "Registro/index";
+$route['convocatorias/cerrar-sesion'] = "Bienvenidos/cerrar_sesion";
+$route['convocatorias/mantener-sesion'] = "Bienvenidos/mantener_sesion";
+
+
+
+
+//GET AJAX AL EDITAR
+$route['escuela_x_id'] = "Escuelas/get_escuela_x_id";
+$route['convocatoria_x_id'] = "Convocatorias/get_convocatoria_x_id";
+
+
+//PARA DATATABLES DE DOCENTES, RECIBE ID DE DOCENTE
+$route['registro/grados/listar'] = "Grados/listar";
+$route['registro/cargos-academicos/listar'] = "Cargos/listar";
+$route['registro/idiomas/listar'] = "Idiomas/listar";
+$route['registro/experiencia-docencia/listar'] = "Experiencia/listar_docencia";
+$route['registro/experiencia-profesional/listar'] = "Experiencia/listar_profesional";
 
 
 

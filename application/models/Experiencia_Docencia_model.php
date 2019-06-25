@@ -11,6 +11,27 @@ class Experiencia_Docencia_model extends CI_Model
         parent::__construct();
     }
 
+    function listar_por_docente($docenteId){
+
+
+        $records = array();
+
+        $this->db->select("exp.*");
+        $this->db->from("experiencia_docencia exp");
+        $this->db->where("exp.docenteId ='{$docenteId}' ");
+        $query = $this->db->get();
+
+
+        $records['iTotalRecords'] = $query->num_rows();
+        $records['iTotalDisplayRecords'] = $query->num_rows();
+        $records['sEcho'] = 0;
+        $records['sColumns'] = 0;
+        $records['aaData'] = $query->result_array();
+
+        return $records;
+
+    }
+
     /*
      * Get all
     */

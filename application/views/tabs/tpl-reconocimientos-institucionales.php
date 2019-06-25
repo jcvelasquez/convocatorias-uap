@@ -1,7 +1,7 @@
 
 <div class="kt-section">
 	<div class="kt-section__content kt-section__content--solid ">
-		<h4>INSTITUCIONES EDUCATIVAS Y CULTURALES <small>With faded secondary text</small></h4>
+		<h4>RECONOCIMIENTOS EDUCATIVOS Y PROFESIONALES <small class="kt-hide">With faded secondary text</small></h4>
 	</div>
 </div>
 
@@ -14,23 +14,20 @@
 
 					<div class="form-group row">
 
-						<div class="col-lg-4">
+						<div class="col-lg-6">
 							<div class="input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text">
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<select class="form-control kt-selectpicker" title="Nivel" data-style="btn-primary">
-									<option>Premio</option>
-									<option>Dos</option>
-									<option>Tres</option>
-								</select>
+								<input type="text" class="form-control" title="Premio" placeholder="Premio" />
+									
 							</div>
 							
 						</div>
 
-						<div class="col-lg-4">
+						<div class="col-lg-5">
 							<div class="input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text">
@@ -40,19 +37,6 @@
 								<input type="text" class="form-control form-control-danger" placeholder="Institucion">
 							</div>
 						</div>
-
-						<div class="col-lg-3">
-							<div class="input-group date">
-
-								<div class="input-group-prepend">
-									<span class="input-group-text">
-										<i class="la la-calendar-check-o"></i>
-									</span>
-								</div>
-								<input type="text" class="form-control" readonly placeholder="Fecha de certificación" id="kt_datepicker_2" />
-							</div>
-						</div>
-
 
 						<div class="col-lg-1">
 							<a href="javascript:;" data-repeater-delete="" class="btn btn-remover btn-danger btn-icon">
@@ -64,7 +48,7 @@
 
 					<div class="form-group row">
 
-						<div class="col-lg-4">
+						<div class="col-lg-6">
 							<div class="input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text">
@@ -79,20 +63,18 @@
 						</div>
 
 
-						<div class="col-lg-4">
-							<div class="input-group">
+						<div class="col-lg-5">
+							<div class="input-group date">
+
 								<div class="input-group-prepend">
 									<span class="input-group-text">
-										<i class="la la-envelope"></i>
+										<i class="la la-calendar-check-o"></i>
 									</span>
 								</div>
-								<select class="form-control kt-selectpicker" title="Nivel" data-style="btn-primary">
-									<option>Doc. sustentatorio</option>
-									<option>Dos</option>
-									<option>Tres</option>
-								</select>
+								<input type="text" class="form-control" readonly placeholder="Fecha de certificación" id="kt_datepicker_2" />
 							</div>
 						</div>
+
 
 					</div>
 

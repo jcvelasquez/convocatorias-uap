@@ -141,6 +141,7 @@ var DatatableConvocatorias = function() {
 				
 			],
 		});
+		
 	};
 
 
