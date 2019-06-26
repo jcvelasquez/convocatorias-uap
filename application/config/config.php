@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 //$config['base_url'] = 'http://10.100.4.158/convocatorias-uap/';
-$config['base_url'] = 'http://localhost/convocatorias-uap/';
+$config['base_url'] = 'http://10.100.4.158/convocatorias-uap/';
 //$config['base_url'] = 'http://convocatorias.uap.edu.pe/';
 
 

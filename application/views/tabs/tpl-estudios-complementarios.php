@@ -64,6 +64,7 @@
 									<option value="Inglés">Inglés</option>
 									<option value="Francés">Francés</option>
 									<option value="Italiano">Italiano</option>
+									<option value="Italiano">Portugués</option>
 									<option value="Otros">Otros</option>
 								</select>
 							</div>
@@ -164,14 +165,31 @@
 
 <div class="form-group row">
 	<div class="col-lg-12">
+
+		<!--begin: Datatable -->
+		<table class="table table-striped- table-hover table-checkable" id="table_herramientas">
+			<thead>
+				<tr>
+					<th width="70">ID</th>
+					<th>Especialidad o curso</th>
+					<th>Centro de estudios</th>
+					<th>Nivel</th>
+					<th>Certificado el</th>
+					<th>Archivo</th>
+					<th width="70">Acciones</th>
+				</tr>
+			</thead>
+		</table>
+		<!--end: Datatable -->
+
 		<!-- inicio repeater -->
 		<div id="kt_repeater_herramientas">
-			<div data-repeater-list="">
+			<!-- <div data-repeater-list="">
 				<div data-repeater-item="">
+ -->
+					<div class="row">
 
-					<div class="form-group row">
-
-						<div class="col-lg-4">
+						<div class="col-lg-5">
 							<div class="input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text">
@@ -182,7 +200,25 @@
 							</div>
 						</div>
 
-						<div class="col-lg-4">
+					
+						<div class="col-lg-3">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text">
+										<i class="la la-envelope"></i>
+									</span>
+								</div>
+								<select class="form-control kt-selectpicker" title="Nivel" data-style="btn-primary">
+									<option value="">Seleccione un nivel</opion>
+									<option value="Básico">Básico</option>
+									<option value="Intermedio">Intermedio</option>
+									<option value="Avanzado">Avanzado</option>
+								</select>
+							</div>
+							
+						</div>
+
+							<div class="col-lg-4">
 							<div class="input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text">
@@ -193,35 +229,20 @@
 							</div>
 						</div>
 
-						<div class="col-lg-3">
-							<div class="input-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text">
-										<i class="la la-envelope"></i>
-									</span>
-								</div>
-								<select class="form-control kt-selectpicker" title="Nivel" data-style="btn-primary">
-									<option>Nivel</option>
-									<option>Dos</option>
-									<option>Tres</option>
-								</select>
-							</div>
-							
-						</div>
 
 
-						<div class="col-lg-1">
+					<!-- 	<div class="col-lg-1">
 							<a href="javascript:;" data-repeater-delete="" class="btn btn-remover btn-danger btn-icon">
 								<i class="la la-remove"></i>
 							</a>
-						</div>
+						</div> -->
 
 					</div>
 
 
-					<div class="form-group row">
+					<div class="row">
 
-						<div class="col-lg-4">
+						<div class="col-lg-5">
 							<div class="input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text">
@@ -249,13 +270,14 @@
 					</div>
 
 
-
+<!-- 
 				</div>
 			</div>
+			 -->
 			<div data-repeater-create="" class="btn btn btn-primary">
 				<span>
 					<i class="la la-plus"></i>
-					<span>Añadir más herramientas</span>
+					<span>Agregar y grabar herramienta</span>
 				</span>
 			</div>
 		</div>

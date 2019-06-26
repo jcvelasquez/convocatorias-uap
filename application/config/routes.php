@@ -137,6 +137,10 @@ $route['convocatorias/mantener-sesion'] = "Bienvenidos/mantener_sesion";
 $route['escuela_x_id'] = "Escuelas/get_escuela_x_id";
 $route['convocatoria_x_id'] = "Convocatorias/get_convocatoria_x_id";
 
+$route['cursos_x_convocatoria'] = "Convocatorias/get_cursos_por_convocatoria_select";
+
+
+
 
 //PARA DATATABLES DE DOCENTES, RECIBE ID DE DOCENTE
 $route['registro/grados/listar'] = "Grados/listar";
@@ -144,6 +148,13 @@ $route['registro/cargos-academicos/listar'] = "Cargos/listar";
 $route['registro/idiomas/listar'] = "Idiomas/listar";
 $route['registro/experiencia-docencia/listar'] = "Experiencia/listar_docencia";
 $route['registro/experiencia-profesional/listar'] = "Experiencia/listar_profesional";
+$route['registro/herramientas/listar'] = "Herramientas/listar";
+$route['registro/reconocimientos/listar'] = "Reconocimientos/listar";
+$route['registro/investigaciones/listar'] = "Investigaciones/listar";
+$route['registro/asesorias/listar'] = "Asesorias/listar";
+
+
+
 
 
 

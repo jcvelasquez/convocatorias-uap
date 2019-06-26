@@ -27,8 +27,22 @@
 						<p><?php echo $convocatoria['convoDescripcion']; ?></p>
 						<p><strong>FIN DE CONVOCATORIA</strong> <i class="flaticon2-calendar-1"></i> <?php echo $convocatoria['convoFechaFin']; ?></p>
 
-						<a href="<?php echo site_url('convocatorias'); ?>" class="btn btn-danger btn-sm btn-upper">SELECCIONAR OTRA CONVOCATORIA</a>
+						<a href="<?php echo site_url('convocatorias'); ?>" class="btn btn-danger btn-md btn-upper">SELECCIONAR OTRA CONVOCATORIA</a>
 					</div>
+					<br><br>
+					<div class="kt-widget__head">
+						<h3>Cursos disponibles de la convocatoria</h3>
+						<p>La presente convocatoria cuenta con los siguientes cursos disponibles para su postulacion. Puede marcar mas de uno </p>
+						
+						<select class="form-control m-select2" id="select_cursos" name="param" multiple="multiple" name="select_cursos">
+							<?php  foreach ($cursos as $curso) { ?>
+							<option value="<?php echo $curso['id'] ?>">
+								<?php echo $curso['text'] ?>
+							</option>
+			         		<?php } ?>
+						</select>
+					</div>
+
 				</div>
 
 			</div>

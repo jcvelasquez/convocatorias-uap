@@ -13,7 +13,7 @@
  					<span class="kt-hidden-mobile">Regresar</span>
  				</a>
  				<div class="btn-group">
- 					<button type="button" class="btn btn-brand">
+ 					<button type="button" class="btn btn-brand" id="btnGrabar">
  						<i class="la la-check"></i>
  						<span class="kt-hidden-mobile">Grabar</span>
  					</button>

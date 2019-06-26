@@ -23,6 +23,11 @@ var DatatableEscuelas = function() {
             placeholder: "Selecciona una facultad"
         });
 
+        $('#btnGrabar').on('click', function(){
+        	form_registro.valid();
+        });
+        
+
 	}
 
 	var initContent = function(){
@@ -36,6 +41,8 @@ var DatatableEscuelas = function() {
 					url: BASE_URL + 'escuela_x_id',
 					data : {escuelaId: primaryKey},
 					success:function(data){
+
+						console.log(data);
 
 						var cursos = data.cursos;
 						var ids = [];
@@ -98,24 +105,6 @@ var DatatableEscuelas = function() {
                         </span>`;
 					},
 				},
-				/*{
-					targets: -3,
-					render: function(data, type, full, meta) {
-						var status = {
-							1: {'title': 'Pending', 'class': 'kt-badge--brand'},
-							2: {'title': 'Delivered', 'class': ' kt-badge--danger'},
-							3: {'title': 'Canceled', 'class': ' kt-badge--primary'},
-							4: {'title': 'Success', 'class': ' kt-badge--success'},
-							5: {'title': 'Info', 'class': ' kt-badge--info'},
-							6: {'title': 'Danger', 'class': ' kt-badge--danger'},
-							7: {'title': 'Warning', 'class': ' kt-badge--warning'},
-						};
-						if (typeof status[data] === 'undefined') {
-							return data;
-						}
-						return '<span class="kt-badge ' + status[data].class + ' kt-badge--inline kt-badge--pill">' + status[data].title + '</span>';
-					},
-				},*/
 				{
 					targets: -2,
 					render: function(data, type, full, meta) {
@@ -143,6 +132,7 @@ var DatatableEscuelas = function() {
 
 	//FIN DE INIT VALIDATION
 	var initValidation = function() {
+
         validator = form_registro.validate({
             // Validate only visible fields
             ignore: ":hidden",
@@ -160,7 +150,13 @@ var DatatableEscuelas = function() {
                 escuelaNombre: {
                     required: true
                 },  
+                facultades_facultadId: {
+                    required: true
+                },  
                 escuelaEstado: {
+                    required: true
+                },  
+                select_cursos: {
                     required: true
                 }
 
@@ -192,7 +188,7 @@ var DatatableEscuelas = function() {
                         "confirmButtonClass": "btn btn-secondary"
                     });
 
-                    KTUtil.scrollTop();
+                    //KTUtil.scrollTop();
 
                 }
                 //success.hide();
@@ -227,6 +223,7 @@ var DatatableEscuelas = function() {
 			initTable();
 			initSelect();
 			initContent();
+			initValidation();
 
 		},
 

@@ -323,41 +323,46 @@ var Registro = function () {
 
     // Private functions
     var initReconocimientos = function() {
-        
-        $('#kt_repeater_reconocimientos').repeater({
-            initEmpty: false,
-            isFirstItemUndeletable: true,
-            show: function() {
-                $(this).slideDown();  
 
-                initDateFields();
+        var table_reconocimientos = $('#table_reconocimientos');
 
+        // begin first table
+        table_reconocimientos.DataTable({
+            responsive: true,
+            processing: true,
+            serverSide: true,
+            paging: false,
+            searching: false,
+            ajax: {
+                url: BASE_URL + 'registro/reconocimientos/listar',
+                data: function ( d ) {
+                    d.docenteId = $('#docenteId').val();
+                },
+                type: "POST"
             },
+            columns: [
+                {data: 'reconocimientoId'},
+                {data: 'recInstPremio'},
+                {data: 'recInstitucion'},
+                {data: 'recInstFecha'},
+                {data: 'rutaArchivoDocSustentatorio'},
+                {data: 'Acciones'},
+            ],
+            columnDefs: [
 
-            hide: function(deleteElement) {    
+                {
+                    targets: -1,
+                    title: 'Acciones',
+                    orderable: false,
+                    render: function(data, type, full, meta) {
 
-                var $repeater = $(this); 
-
-                swal.fire({
-                        title: 'Are you sure?',
-                        text: "You won't be able to revert this!",
-                        type: 'warning',
-                        confirmButtonText: "Eliminar",
-                        confirmButtonClass: "btn btn-success",
-                        showCancelButton: true,
-                        cancelButtonText: "Cancelar",
-                        cancelButtonClass: "btn btn-danger",
-                    }).then(function(result) {
-                        if (result.value) {
-
-                            $repeater.slideUp(deleteElement);
-
-                        } 
-
-                    });              
-
-            }      
+                        return `<a class="btn btn-danger" href="` + BASE_URL + 'admin/convocatorias/editar/' + full['reconocimientoId'] + `"><i class="la la-edit"></i> </a>`;
+                    },
+                }
+                
+            ],
         });
+
 
     }
 
@@ -366,47 +371,95 @@ var Registro = function () {
 
     // Private functions
     var initAsesoria = function() {
-        $('#kt_repeater_asesoria').repeater({
-            initEmpty: false,
-            isFirstItemUndeletable: true,
-            show: function() {
-                $(this).slideDown();  
+        
+        var table_asesorias = $('#table_asesorias');
 
-                initDateFields();
-
+        // begin first table
+        table_asesorias.DataTable({
+            responsive: true,
+            processing: true,
+            serverSide: true,
+            paging: false,
+            searching: false,
+            ajax: {
+                url: BASE_URL + 'registro/asesorias/listar',
+                data: function ( d ) {
+                    d.docenteId = $('#docenteId').val();
+                },
+                type: "POST"
             },
+            columns: [
+                {data: 'tesisId'},
+                {data: 'tesNombreTesis'},
+                {data: 'tesTipo'},
+                {data: 'tesFecha'},
+                {data: 'tesNroResolucion'},
+                {data: 'Acciones'},
+            ],
+            columnDefs: [
 
-            hide: function(deleteElement) {    
+                {
+                    targets: -1,
+                    title: 'Acciones',
+                    orderable: false,
+                    render: function(data, type, full, meta) {
 
-                var $repeater = $(this); 
-
-                swal.fire({
-                        title: 'Are you sure?',
-                        text: "You won't be able to revert this!",
-                        type: 'warning',
-                        confirmButtonText: "Eliminar",
-                        confirmButtonClass: "btn btn-success",
-                        showCancelButton: true,
-                        cancelButtonText: "Cancelar",
-                        cancelButtonClass: "btn btn-danger",
-                    }).then(function(result) {
-                        if (result.value) {
-
-                            $repeater.slideUp(deleteElement);
-
-                        } 
-
-                    });              
+                        return `<a class="btn btn-danger" href="` + BASE_URL + 'admin/convocatorias/editar/' + full['tesisId'] + `"><i class="la la-edit"></i> </a>`;
+                    },
+                }
                 
-
-
-            }      
+            ],
         });
+
+
     }
 
 
     // Private functions
     var initInvestigacion = function() {
+
+        var table_investigaciones = $('#table_investigaciones');
+
+        // begin first table
+        table_investigaciones.DataTable({
+            responsive: true,
+            processing: true,
+            serverSide: true,
+            paging: false,
+            searching: false,
+            ajax: {
+                url: BASE_URL + 'registro/investigaciones/listar',
+                data: function ( d ) {
+                    d.docenteId = $('#docenteId').val();
+                },
+                type: "POST"
+            },
+            columns: [
+                {data: 'investigacionesId'},
+                {data: 'invesTitulo'},
+                {data: 'invesTipoPublicacion'},
+                {data: 'invesFecha'},
+                {data: 'invesNroRegistro'},
+                {data: 'rutaArchivoInvestigacion'},
+                {data: 'Acciones'},
+            ],
+            columnDefs: [
+
+                {
+                    targets: -1,
+                    title: 'Acciones',
+                    orderable: false,
+                    render: function(data, type, full, meta) {
+
+                        return `<a class="btn btn-danger" href="` + BASE_URL + 'admin/convocatorias/editar/' + full['reconocimientoId'] + `"><i class="la la-edit"></i> </a>`;
+                    },
+                }
+                
+            ],
+        });
+     
+
+        /*
         $('#kt_repeater_investigacion').repeater({
             initEmpty: false,
             isFirstItemUndeletable: true,
@@ -442,49 +495,55 @@ var Registro = function () {
 
 
             }      
-        });
+        });*/
     }
 
 
 
     // Private functions
     var initHerramientas = function() {
-        $('#kt_repeater_herramientas').repeater({
-            initEmpty: false,
-            isFirstItemUndeletable: true,
-            show: function() {
-                $(this).slideDown();     
 
-                initDateFields();
+        var table_herramientas = $('#table_herramientas');
 
+        // begin first table
+        table_herramientas.DataTable({
+            responsive: true,
+            processing: true,
+            serverSide: true,
+            paging: false,
+            searching: false,
+            ajax: {
+                url: BASE_URL + 'registro/herramientas/listar',
+                data: function ( d ) {
+                    d.docenteId = $('#docenteId').val();
+                },
+                type: "POST"
             },
+            columns: [
+                {data: 'informaticaId'},
+                {data: 'inforEspecialidadCurso'},
+                {data: 'inforCentroEstudio'},
+                {data: 'inforNivel'},
+                {data: 'inforFechaCertificacion'},
+                {data: 'inforRutaArchivoCertificacion'},
+                {data: 'Acciones'},
+            ],
+            columnDefs: [
 
-            hide: function(deleteElement) {    
+                {
+                    targets: -1,
+                    title: 'Acciones',
+                    orderable: false,
+                    render: function(data, type, full, meta) {
 
-                var $repeater = $(this); 
-
-                swal.fire({
-                        title: 'Are you sure?',
-                        text: "You won't be able to revert this!",
-                        type: 'warning',
-                        confirmButtonText: "Eliminar",
-                        confirmButtonClass: "btn btn-success",
-                        showCancelButton: true,
-                        cancelButtonText: "Cancelar",
-                        cancelButtonClass: "btn btn-danger",
-                    }).then(function(result) {
-                        if (result.value) {
-
-                            $repeater.slideUp(deleteElement);
-
-                        } 
-
-                    });              
+                        return `<a class="btn btn-danger" href="` + BASE_URL + 'admin/convocatorias/editar/' + full['informaticaId'] + `"><i class="la la-edit"></i> </a>`;
+                    },
+                }
                 
-
-
-            }      
+            ],
         });
+
+
     }
 
 

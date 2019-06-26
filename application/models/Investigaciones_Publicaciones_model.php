@@ -19,6 +19,26 @@ class Investigaciones_Publicaciones_model extends CI_Model
         return $this->db->get('investigaciones_publicaciones')->result_array();
     }
 
+    function listar_por_docente($docenteId){
+
+
+        $records = array();
+
+        $this->db->select("inv.*");
+        $this->db->from("investigaciones_publicaciones inv");
+        $this->db->where("inv.docenteId ='{$docenteId}' ");
+        $query = $this->db->get();
+
+        $records['iTotalRecords'] = $query->num_rows();
+        $records['iTotalDisplayRecords'] = $query->num_rows();
+        $records['sEcho'] = 0;
+        $records['sColumns'] = 0;
+        $records['aaData'] = $query->result_array();
+
+        return $records;
+
+    }
+
     /*
      * Get by id
     */

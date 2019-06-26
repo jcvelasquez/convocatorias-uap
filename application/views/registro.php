@@ -30,7 +30,7 @@
 								<i class="flaticon2-correct kt-font-success"></i>
 							</a>
 							<div class="kt-widget__action">
-								<button type="button" class="btn btn-brand btn-sm btn-upper">VALIDAR FICHA</button> <a href="<?php echo site_url('cerrar-sesion'); ?>" class="btn btn-danger btn-sm btn-upper">CERRAR SESIÓN</a>
+								<button type="button" class="btn btn-brand btn-sm btn-upper">VALIDAR FICHA</button> <a href="<?php echo site_url('convocatorias/cerrar-sesion'); ?>" class="btn btn-danger btn-sm btn-upper">CERRAR SESIÓN</a>
 							</div>
 						</div>
 						<div class="kt-widget__subhead">

@@ -284,6 +284,14 @@ footer p#title-footer {
 #kt_repeater_grados,
 #kt_repeater_cargos,
 #kt_repeater_idiomas,
+#kt_repeater_herramientas,
+#kt_repeater_reconocimientos,
+#kt_repeater_especializacion,
 #kt_repeater_experiencia { padding-top: 25px; border-top:1px solid #ccc;  }
 
 .input-group { margin-bottom: 15px; }
+
+
+.select2-container--default .select2-selection--multiple {
+        border: solid #b51f1f 2px;
+}

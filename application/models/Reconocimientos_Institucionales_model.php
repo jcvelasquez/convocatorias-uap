@@ -19,6 +19,27 @@ class Reconocimientos_Institucionales_model extends CI_Model
         return $this->db->get('reconocimientos_institucionales')->result_array();
     }
 
+    function listar_por_docente($docenteId){
+
+
+        $records = array();
+
+        $this->db->select("rec.*");
+        $this->db->from("reconocimientos_institucionales rec");
+        $this->db->where("rec.docenteId ='{$docenteId}' ");
+        $query = $this->db->get();
+
+
+        $records['iTotalRecords'] = $query->num_rows();
+        $records['iTotalDisplayRecords'] = $query->num_rows();
+        $records['sEcho'] = 0;
+        $records['sColumns'] = 0;
+        $records['aaData'] = $query->result_array();
+
+        return $records;
+
+    }
+
     /*
      * Get by id
     */

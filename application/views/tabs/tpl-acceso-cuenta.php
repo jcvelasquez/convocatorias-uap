@@ -18,7 +18,7 @@
 
 		<div class="col-lg-6" style="margin-top: 20px;">
 			<button id="iniciarDocente" type="submit" class="btn btn-brand">Iniciar sesión</button>
-			<a href="<?php echo site_url('/'); ?>" class="btn">¿Es nuevo? Regístrese.</a>
+			<a href="<?php echo site_url('convocatorias'); ?>" class="btn">¿Es nuevo? Regístrese.</a>
 			<a href="#" class="btn">¿Olvido su clave?</a>
 		</div>
 

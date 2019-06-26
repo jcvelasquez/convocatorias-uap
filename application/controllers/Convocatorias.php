@@ -4,18 +4,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Convocatorias extends CI_Controller {
 
 	function __construct(){
-        parent::__construct();
-        $this->load->helper('url');
+		parent::__construct();
+		$this->load->helper('url');
 		$this->load->helper('form');
 		$this->load->library('session');
-
 		$this->load->model('Convocatorias_model');
 		$this->load->model('Sedes_model');	
 		$this->load->model('Cursos_model');		
 
-		
-
-    }
+	}
 
 
 	public function index()
@@ -34,8 +31,8 @@ class Convocatorias extends CI_Controller {
 		$convocatorias = $this->Convocatorias_model->get_all_convocatorias();
 
 		return $this->output
-					->set_content_type('application/json')
-					->set_output(json_encode($convocatorias));
+		->set_content_type('application/json')
+		->set_output(json_encode($convocatorias));
 
 	}
 
@@ -63,24 +60,19 @@ class Convocatorias extends CI_Controller {
 		$data = $this->Convocatorias_model->get_convocatorias_by_id($convocatoriaId);
 
 		return $this->output
-					->set_content_type('application/json')
-					->set_output(json_encode($data));
+		->set_content_type('application/json')
+		->set_output(json_encode($data));
 
-    }
+	}
 
-    public function convocatorias()
+	public function convocatorias()
 	{
 
 		//$data['convocatorias'] = $this->Convocatorias_model->get_all_convocatorias();
 		$data['js'] = array('js/convocatorias.js');
-
 		$data['_view'] = 'convocatorias';
-
 		$this->load->view('index', $data);
 
-		/*return $this->output
-					->set_content_type('application/json')
-					->set_output(json_encode($convocatorias));*/
 
 	}
 
@@ -90,20 +82,9 @@ class Convocatorias extends CI_Controller {
 	{
 
 		$convocatoria = $this->Convocatorias_model->get_convocatorias_by_id($convocatoriaId);
-
 		$this->session->set_userdata('convocatoria',$convocatoria);
-
 		redirect('convocatorias/inicio');
-		
-		//$data['_view'] = 'admin/content/tpl-convocatorias-detalle';
 
-
-		//$data['sedes'] = $this->Sedes_model->get_all_sedes_select();
-		//$data['cursos'] = $this->Cursos_model->get_all_cursos_select();
-
-		//$data['js'] = array('js/convocatorias.js');
-
-		//$this->load->view('admin/index', $data);
 	}
 
 	public function inicio()
@@ -116,6 +97,11 @@ class Convocatorias extends CI_Controller {
 		} 
 
 		$data['convocatoria'] = $this->session->userdata('convocatoria');
+
+		$convocatoriaId = $data['convocatoria']['convocatoriaId'];
+
+		$data['cursos'] = $this->Cursos_model->get_all_cursos_por_convocatoria_select($convocatoriaId);
+
 		$data['_view'] = 'bienvenidos';
 		$data['js'] = array('js/bienvenidos.js');
 

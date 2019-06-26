@@ -7,12 +7,30 @@
 
 <div class="form-group row">
 	<div class="col-lg-12">
+		
+		<!--begin: Datatable -->
+		<table class="table table-striped- table-hover table-checkable" id="table_investigaciones">
+			<thead>
+				<tr>
+					<th width="70">ID</th>
+					<th>Título de investigación</th>
+					<th>Tipo de investigación</th>
+					<th>Publicado el</th>
+					<th># ORCID</th>
+					<th>Archivo</th>
+					<th width="70">Acciones</th>
+				</tr>
+			</thead>
+		</table>
+		<!--end: Datatable -->
+
 		<!-- inicio repeater -->
 		<div id="kt_repeater_investigacion">
-			<div data-repeater-list="">
-				<div data-repeater-item="">
 
-					<div class="form-group row">
+			<!-- <div data-repeater-list="">
+				<div data-repeater-item=""> -->
+
+					<div class="row">
 
 						<div class="col-lg-5">
 							<div class="input-group">
@@ -33,14 +51,14 @@
 									</span>
 								</div>
 								<select class="form-control kt-selectpicker" title="idioma" data-style="btn-primary">
-									<option>Tipo de publicación</option>
+									<option>Seleccione tipo</option>
 									<option>Dos</option>
 									<option>Tres</option>
 								</select>
 							</div>
 						</div>
 
-						<div class="col-lg-3">
+						<div class="col-lg-4">
 							<div class="input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text">
@@ -51,16 +69,16 @@
 							</div>
 						</div>
 
-						<div class="col-lg-1">
+				<!-- 		<div class="col-lg-1">
 							<a href="javascript:;" data-repeater-delete="" class="btn btn-remover btn-danger btn-remover btn-icon">
 								<i class="la la-remove"></i>
 							</a>
-						</div>
+						</div> -->
 
 					</div>
 
 
-					<div class="form-group row">
+					<div class="row">
 
 						<div class="col-lg-5">
 							<div class="input-group">
@@ -88,17 +106,14 @@
 								<input type="text" class="form-control" readonly placeholder="Fecha de publicación" id="kt_datepicker_2" />
 							</div>
 						</div>
-
+<!-- 
 					</div>
-
-
-
-				</div>
+				</div> -->
 			</div>
 			<div data-repeater-create="" class="btn btn btn-primary">
 				<span>
 					<i class="la la-plus"></i>
-					<span>Añadir más investigaciones</span>
+					<span>Agregar y grabar investigacion</span>
 				</span>
 			</div>
 		</div>
@@ -114,12 +129,28 @@
 
 <div class="form-group row">
 	<div class="col-lg-12">
+
+		<!--begin: Datatable -->
+		<table class="table table-striped- table-hover table-checkable" id="table_asesorias">
+			<thead>
+				<tr>
+					<th width="70">ID</th>
+					<th>Nombre de tesis</th>
+					<th>Tipo de tesis</th>
+					<th>Publicada el</th>
+					<th># RESOLUCION</th>
+					<th width="70">Acciones</th>
+				</tr>
+			</thead>
+		</table>
+		<!--end: Datatable -->
+
 		<!-- inicio repeater -->
 		<div id="kt_repeater_asesoria">
-			<div data-repeater-list="">
+			<!-- <div data-repeater-list="">
 				<div data-repeater-item="">
-
-					<div class="form-group row">
+ -->
+					<div class="row">
 
 						<div class="col-lg-4">
 							<div class="input-group">
@@ -138,7 +169,7 @@
 							</div>
 						</div>
 
-						<div class="col-lg-3">
+						<div class="col-lg-4">
 							<div class="input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text">
@@ -164,18 +195,18 @@
 							</div>
 						</div>
 
-						<div class="col-lg-1">
+					<!-- 	<div class="col-lg-1">
 							<a href="javascript:;" data-repeater-delete="" class="btn btn-danger btn-icon btn-remover">
 								<i class="la la-remove"></i>
 							</a>
 						</div>
-
+ -->
 					</div>
 
 
-					<div class="form-group row">
+					<div class="row">
 
-						<div class="col-lg-7">
+						<div class="col-lg-12">
 							<div class="input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text">
@@ -199,14 +230,12 @@
 
 					</div>
 
-
-
-				</div>
-			</div>
+				<!-- </div>
+			</div> -->
 			<div data-repeater-create="" class="btn btn btn-primary">
 				<span>
 					<i class="la la-plus"></i>
-					<span>Añadir más asesorias</span>
+					<span>Agregar y grabar asesoría</span>
 				</span>
 			</div>
 		</div>
@@ -221,7 +250,7 @@
 </div>
 
 
-<div class="form-group row">
+<div class="row">
 	<div class="col-lg-12">
 		<div class="input-group">
 			<div class="input-group-prepend">
@@ -249,7 +278,7 @@
 		</div>
 	</div>
 </div>
-<div class="form-group row">
+<div class="row">
 	<div class="col-lg-12">
 		<div class="input-group">
 			<div class="input-group-prepend">

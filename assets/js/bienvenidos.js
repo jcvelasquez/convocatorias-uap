@@ -22,7 +22,37 @@ var Bienvenidos = function () {
 
         }); 
 
-        $(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
+        $('#select_cursos').select2({
+            placeholder: "Selecciona los cursos para esta escuela"
+        });
+
+        //$(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
+
+    }
+
+    var initCursosConvocatorias = function () {
+
+            $.ajax({
+                dataType:'JSON',
+                type: 'POST',
+                url: BASE_URL + 'cursos_x_convocatoria',
+                success:function(data){
+
+                    console.log(data);
+
+                    /*var cursos = data.cursos;
+                    var ids = [];
+             
+                    for( var i = 0; i<cursos.length; i++){ ids.push(cursos[i]['id']); }
+
+                    $('#select_cursos').val(ids).trigger('change');*/
+                    
+
+                },
+                error: function(xhr) { 
+                    console.log(xhr.statusText + xhr.responseText);
+                }
+            });
 
     }
 
@@ -190,6 +220,7 @@ var Bienvenidos = function () {
             form_registro = $('#form_registro');
 
             //initWizard(); 
+            initCursosConvocatorias();
             initFormFields();
             initValidation();
             initSubmit();

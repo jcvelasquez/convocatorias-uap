@@ -20,6 +20,27 @@ class Asesoria_Tesis_model extends CI_Model
         return $this->db->get('asesoria_tesis')->result_array();
     }
 
+    function listar_por_docente($docenteId){
+
+
+        $records = array();
+
+        $this->db->select("ase.*");
+        $this->db->from("asesoria_tesis ase");
+        $this->db->where("ase.docenteId = {$docenteId} ");
+        $query = $this->db->get();
+
+
+        $records['iTotalRecords'] = $query->num_rows();
+        $records['iTotalDisplayRecords'] = $query->num_rows();
+        $records['sEcho'] = 0;
+        $records['sColumns'] = 0;
+        $records['aaData'] = $query->result_array();
+
+        return $records;
+
+    }
+
     /*
      * Get by id
     */

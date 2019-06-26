@@ -19,6 +19,27 @@ class Herramientas_Informaticas_model extends CI_Model
         return $this->db->get('herramientas_informaticas')->result_array();
     }
 
+    function listar_por_docente($docenteId){
+
+
+        $records = array();
+
+        $this->db->select("herr.*");
+        $this->db->from("herramientas_informaticas herr");
+        $this->db->where("herr.docenteId ='20' ");
+        $query = $this->db->get();
+
+
+        $records['iTotalRecords'] = $query->num_rows();
+        $records['iTotalDisplayRecords'] = $query->num_rows();
+        $records['sEcho'] = 0;
+        $records['sColumns'] = 0;
+        $records['aaData'] = $query->result_array();
+
+        return $records;
+
+    }
+
     /*
      * Get by id
     */
