@@ -13,8 +13,8 @@
 </section>
 
 <div class="container-registro">
-	<div class="kt-portlet">
-		<div class="kt-portlet__body">
+	<div class="kt-portlet summary">
+		<div class="kt-portlet__body ">
 			<div class="kt-widget kt-widget--user-profile-3">
 				<div class="kt-widget__top">
 					<div class="kt-widget__media kt-hidden">
@@ -60,7 +60,7 @@
 	</div>
 
 	<!--begin::Portlet-->
-	<div class="kt-portlet">
+	<div class="kt-portlet form_tabs">
 
 		<div class="kt-portlet__body">
 
@@ -173,15 +173,17 @@
 
 						<!--begin: Form Actions -->
 						<div class="kt-form__actions">
-							<div class="btn btn-brand btn-md btn-tall btn-wide kt-font-bold kt-font-transform-u" data-ktwizard-type="action-prev">
-								<i class="fas fa-arrow-left"></i> Anterior
-							</div>
+							<div class="inside_buttons_form">
+								<div class="btn btn-brand btn-md btn-tall btn-wide kt-font-bold kt-font-transform-u" data-ktwizard-type="action-prev">
+									<i class="fas fa-arrow-left"></i> Anterior
+								</div>
 
-							<div class="btn btn-success btn-md btn-tall btn-wide kt-font-bold kt-font-transform-u" data-ktwizard-type="action-submit">
-								Submit
-							</div>
-							<div class="btn btn-brand btn-md btn-tall btn-wide kt-font-bold kt-font-transform-u" data-ktwizard-type="action-next">
-								Siguiente <i class="fas fa-arrow-right"></i>
+								<div class="btn btn-success btn-md btn-tall btn-wide kt-font-bold kt-font-transform-u" data-ktwizard-type="action-submit">
+									Submit
+								</div>
+								<div class="btn btn-brand btn-md btn-tall btn-wide kt-font-bold kt-font-transform-u" data-ktwizard-type="action-next">
+									Siguiente <i class="fas fa-arrow-right"></i>
+								</div>
 							</div>
 						</div>
 						<!--end: Form Actions -->

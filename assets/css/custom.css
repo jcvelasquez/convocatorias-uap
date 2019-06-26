@@ -5,7 +5,19 @@ body {
             background-position: scroll; 
         }
 
-.container-registro { width: 85%; margin: 0 auto; margin-top: 80px; }
+.container-registro { width: 100%; margin: 0 auto;  }
+.container-registro .kt-portlet__body { padding:0;  width: 100%; margin: 0 auto;  }
+.container-registro .kt-form__actions { background: #ededed; }
+.container-registro .kt-wizard-v3__content { padding:50px;  }
+
+.container-registro .kt-portlet.summary { background: #ededed; padding:50px 0;  }
+
+
+
+.container-registro .summary .kt-portlet__body,
+.inside_buttons_form { width: 80%; margin:0 auto;   }
+
+.form_tabs .kt-form__actions { padding: 40px 0; }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 { margin-bottom:0; }
 
@@ -295,3 +307,4 @@ footer p#title-footer {
 .select2-container--default .select2-selection--multiple {
         border: solid #b51f1f 2px;
 }
+
