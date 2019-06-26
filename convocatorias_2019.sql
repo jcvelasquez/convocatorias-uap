@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 15-06-2019 a las 02:37:15
--- Versión del servidor: 5.7.26
--- Versión de PHP: 7.2.18
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 27-06-2019 a las 00:05:15
+-- Versión del servidor: 10.3.15-MariaDB
+-- Versión de PHP: 7.3.6
 
 SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -29,19 +29,16 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `archivos`
 --
 
-DROP TABLE IF EXISTS `archivos`;
-CREATE TABLE IF NOT EXISTS `archivos` (
-  `archivosId` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `archivos` (
+  `archivosId` int(11) NOT NULL,
   `docentes_docenteId` int(11) NOT NULL,
-  `archivoDina` text,
-  `archivoRegina` text,
-  `archivoEvaluacionComp` text,
-  `archivoClaseModelo` text,
-  `archivoFotografia` text,
-  `archivoCurriculum` text,
-  `archivoSunedu` text,
-  PRIMARY KEY (`archivosId`),
-  KEY `fk_archivos_docentes1_idx` (`docentes_docenteId`)
+  `archivoDina` text DEFAULT NULL,
+  `archivoRegina` text DEFAULT NULL,
+  `archivoEvaluacionComp` text DEFAULT NULL,
+  `archivoClaseModelo` text DEFAULT NULL,
+  `archivoFotografia` text DEFAULT NULL,
+  `archivoCurriculum` text DEFAULT NULL,
+  `archivoSunedu` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -50,17 +47,21 @@ CREATE TABLE IF NOT EXISTS `archivos` (
 -- Estructura de tabla para la tabla `asesoria_tesis`
 --
 
-DROP TABLE IF EXISTS `asesoria_tesis`;
-CREATE TABLE IF NOT EXISTS `asesoria_tesis` (
-  `tesisId` int(11) NOT NULL AUTO_INCREMENT,
-  `docentes_docenteId` int(11) NOT NULL,
+CREATE TABLE `asesoria_tesis` (
+  `tesisId` int(11) NOT NULL,
+  `docenteId` int(11) NOT NULL,
   `tesTipo` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tesFecha` date NOT NULL,
   `tesNroResolucion` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tesNombreTesis` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`tesisId`),
-  KEY `fk_asesoria_x_docentes_id` (`docentes_docenteId`)
+  `tesNombreTesis` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `asesoria_tesis`
+--
+
+INSERT INTO `asesoria_tesis` (`tesisId`, `docenteId`, `tesTipo`, `tesFecha`, `tesNroResolucion`, `tesNombreTesis`) VALUES
+(1, 20, 'Tipo 1', '2019-06-24', '345e5463e345t', 'Tesis de Investigacion 1');
 
 -- --------------------------------------------------------
 
@@ -68,17 +69,23 @@ CREATE TABLE IF NOT EXISTS `asesoria_tesis` (
 -- Estructura de tabla para la tabla `cargos_academicos`
 --
 
-DROP TABLE IF EXISTS `cargos_academicos`;
-CREATE TABLE IF NOT EXISTS `cargos_academicos` (
-  `cargosId` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `cargos_academicos` (
+  `cargosId` int(11) NOT NULL,
   `docenteId` int(11) NOT NULL,
   `carAcadNomInstitucion` varchar(150) CHARACTER SET utf8 NOT NULL,
   `carAcadArea` varchar(100) CHARACTER SET utf8 NOT NULL,
   `carAcadFecInicio` date NOT NULL,
   `carAcadFecFin` date NOT NULL,
-  PRIMARY KEY (`cargosId`),
-  KEY `FK_carAcadDocId` (`docenteId`)
+  `carAcadeHastaFecha` int(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `cargos_academicos`
+--
+
+INSERT INTO `cargos_academicos` (`cargosId`, `docenteId`, `carAcadNomInstitucion`, `carAcadArea`, `carAcadFecInicio`, `carAcadFecFin`, `carAcadeHastaFecha`) VALUES
+(1, 20, 'Institucion 1', 'Area 1', '2019-06-16', '2019-06-23', 1),
+(2, 20, 'Institucion 2', 'Area 2', '2019-06-17', '2019-06-23', 1);
 
 -- --------------------------------------------------------
 
@@ -86,23 +93,19 @@ CREATE TABLE IF NOT EXISTS `cargos_academicos` (
 -- Estructura de tabla para la tabla `convocatorias`
 --
 
-DROP TABLE IF EXISTS `convocatorias`;
-CREATE TABLE IF NOT EXISTS `convocatorias` (
-  `convocatoriaId` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `convocatorias` (
+  `convocatoriaId` int(11) NOT NULL,
   `usuarioId` int(11) NOT NULL,
   `sedes_sedeId` int(11) NOT NULL,
   `convoNombre` varchar(250) CHARACTER SET utf8 NOT NULL,
   `convoVacantes` int(3) DEFAULT NULL,
-  `convoDescripcion` text COLLATE utf8mb4_unicode_ci,
+  `convoDescripcion` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `convoFechaInicio` datetime NOT NULL,
   `convoFechaFin` datetime NOT NULL,
   `convoEstado` int(1) NOT NULL,
   `convoFechaRegistro` datetime DEFAULT NULL,
-  `convoRegistradoPor` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`convocatoriaId`),
-  KEY `FK_usuId` (`usuarioId`),
-  KEY `fk_convocatorias_sedes1_idx` (`sedes_sedeId`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `convoRegistradoPor` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `convocatorias`
@@ -117,16 +120,12 @@ INSERT INTO `convocatorias` (`convocatoriaId`, `usuarioId`, `sedes_sedeId`, `con
 -- Estructura de tabla para la tabla `convocatorias_x_docente`
 --
 
-DROP TABLE IF EXISTS `convocatorias_x_docente`;
-CREATE TABLE IF NOT EXISTS `convocatorias_x_docente` (
+CREATE TABLE `convocatorias_x_docente` (
   `convoXdocenId` int(11) NOT NULL,
   `sedes_sedeId` int(11) NOT NULL,
   `convocatorias_convocatoriaId` int(11) NOT NULL,
   `docentes_docenteId` int(11) NOT NULL,
-  `convocatoriaFechaRegistro` datetime DEFAULT NULL,
-  PRIMARY KEY (`convoXdocenId`,`sedes_sedeId`,`convocatorias_convocatoriaId`,`docentes_docenteId`),
-  KEY `fk_convocatorias_x_docente_uap_convocatorias1_idx` (`convocatorias_convocatoriaId`,`sedes_sedeId`),
-  KEY `fk_convocatorias_x_docente_uap_docentes1_idx` (`docentes_docenteId`)
+  `convocatoriaFechaRegistro` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -135,12 +134,10 @@ CREATE TABLE IF NOT EXISTS `convocatorias_x_docente` (
 -- Estructura de tabla para la tabla `cursos`
 --
 
-DROP TABLE IF EXISTS `cursos`;
-CREATE TABLE IF NOT EXISTS `cursos` (
+CREATE TABLE `cursos` (
   `cursoId` int(11) NOT NULL,
   `cursoNombre` varchar(250) DEFAULT NULL,
-  `cursoEstado` int(1) DEFAULT NULL,
-  PRIMARY KEY (`cursoId`)
+  `cursoEstado` int(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -232,15 +229,21 @@ INSERT INTO `cursos` (`cursoId`, `cursoNombre`, `cursoEstado`) VALUES
 -- Estructura de tabla para la tabla `cursos_x_convocatoria`
 --
 
-DROP TABLE IF EXISTS `cursos_x_convocatoria`;
-CREATE TABLE IF NOT EXISTS `cursos_x_convocatoria` (
-  `cursosXconvocatoriaId` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `cursos_x_convocatoria` (
+  `cursosXconvocatoriaId` int(11) NOT NULL,
   `convocatoriaId` int(11) NOT NULL,
-  `cursosXescuelaId` int(11) NOT NULL,
-  PRIMARY KEY (`cursosXconvocatoriaId`),
-  KEY `fk_cursos_x_convocatoria_convocatorias1_idx` (`convocatoriaId`),
-  KEY `fk_cursos_x_convocatoria_cursos_x_escuela1_idx` (`cursosXescuelaId`)
+  `cursosXescuelaId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `cursos_x_convocatoria`
+--
+
+INSERT INTO `cursos_x_convocatoria` (`cursosXconvocatoriaId`, `convocatoriaId`, `cursosXescuelaId`) VALUES
+(1, 1, 1),
+(2, 1, 2),
+(3, 1, 3),
+(4, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -248,15 +251,8 @@ CREATE TABLE IF NOT EXISTS `cursos_x_convocatoria` (
 -- Estructura de tabla para la tabla `cursos_x_docente`
 --
 
-DROP TABLE IF EXISTS `cursos_x_docente`;
-CREATE TABLE IF NOT EXISTS `cursos_x_docente` (
-  `idcursos_x_docente` int(11) NOT NULL AUTO_INCREMENT,
-  `docentes_docenteId` int(11) NOT NULL,
-  `cursos_x_convocatoria_idcursos` int(11) NOT NULL,
-  `cursos_x_convocatoria_convocatoriaId` int(11) NOT NULL,
-  PRIMARY KEY (`idcursos_x_docente`),
-  KEY `fk_cursos_x_docente_uap_docentes1_idx` (`docentes_docenteId`),
-  KEY `fk_cursos_x_docente_cursos_x_convocatoria1_idx` (`cursos_x_convocatoria_idcursos`,`cursos_x_convocatoria_convocatoriaId`)
+CREATE TABLE `cursos_x_docente` (
+  `idcursos_x_docente` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -265,14 +261,10 @@ CREATE TABLE IF NOT EXISTS `cursos_x_docente` (
 -- Estructura de tabla para la tabla `cursos_x_escuela`
 --
 
-DROP TABLE IF EXISTS `cursos_x_escuela`;
-CREATE TABLE IF NOT EXISTS `cursos_x_escuela` (
+CREATE TABLE `cursos_x_escuela` (
   `cursosXescuelaId` int(11) NOT NULL,
   `cursos_cursoId` int(11) NOT NULL,
-  `escuelas_escuelaId` int(11) NOT NULL,
-  PRIMARY KEY (`cursosXescuelaId`),
-  KEY `fk_cursos_x_escuela_cursos1_idx` (`cursos_cursoId`),
-  KEY `fk_cursos_x_escuela_escuelas1_idx` (`escuelas_escuelaId`)
+  `escuelas_escuelaId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -291,9 +283,8 @@ INSERT INTO `cursos_x_escuela` (`cursosXescuelaId`, `cursos_cursoId`, `escuelas_
 -- Estructura de tabla para la tabla `docentes`
 --
 
-DROP TABLE IF EXISTS `docentes`;
-CREATE TABLE IF NOT EXISTS `docentes` (
-  `docenteId` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `docentes` (
+  `docenteId` int(11) NOT NULL,
   `docCodigoDocente` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `docTipoDocumento` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `docNroDocumento` int(11) DEFAULT NULL,
@@ -318,19 +309,15 @@ CREATE TABLE IF NOT EXISTS `docentes` (
   `docEstadoPostulacion` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `docRegistradoPor` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `docCreacion` datetime DEFAULT NULL,
-  `docModificacion` datetime DEFAULT NULL,
-  PRIMARY KEY (`docenteId`),
-  KEY `fk_docentes_ubdistrito_idx` (`ubdistrito_idDist`),
-  KEY `fk_docentes_ubprovincia_idx` (`ubprovincia_idProv`),
-  KEY `fk_docentes_ubdepartamento_idx` (`ubdepartamento_idDepa`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `docModificacion` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `docentes`
 --
 
 INSERT INTO `docentes` (`docenteId`, `docCodigoDocente`, `docTipoDocumento`, `docNroDocumento`, `docNacionalidad`, `docApPaterno`, `docApMaterno`, `docNombres`, `docGenero`, `docEmail`, `docClave`, `docToken`, `docCelular`, `docTelFijo`, `docFecNacimiento`, `ubdepartamento_idDepa`, `ubprovincia_idProv`, `ubdistrito_idDist`, `docDireccion`, `docModalidad`, `docPeriodoEjercidoDesde`, `docPeriodoEjercidoHasta`, `docEstadoPostulacion`, `docRegistradoPor`, `docCreacion`, `docModificacion`) VALUES
-(20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'jcvelasquez@piwichostudio.com', 'Pi051027@2019', '23a9f543975438dc361ef5d67b690c371eb57c8a', NULL, NULL, NULL, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'WEB', '2019-06-03 17:07:35', NULL);
+(20, NULL, 'DNI', 43764109, 'PE', 'BOYER', 'VELASQUEZ', 'JOSE CLAUDIO JUNIOR', 'M', 'jcvelasquez@piwichostudio.com', 'Pi051027@2019', '23a9f543975438dc361ef5d67b690c371eb57c8a', '967994927', '5353638', '1986-09-25', 15, 127, 1285, 'calle santa maritza 174urbanizacion palao', NULL, NULL, NULL, NULL, 'WEB', '2019-06-03 17:07:35', NULL);
 
 -- --------------------------------------------------------
 
@@ -338,16 +325,12 @@ INSERT INTO `docentes` (`docenteId`, `docCodigoDocente`, `docTipoDocumento`, `do
 -- Estructura de tabla para la tabla `escuelas`
 --
 
-DROP TABLE IF EXISTS `escuelas`;
-CREATE TABLE IF NOT EXISTS `escuelas` (
+CREATE TABLE `escuelas` (
   `escuelaId` int(11) NOT NULL,
   `sedes_sedeId` int(11) NOT NULL,
   `facultades_facultadId` int(11) NOT NULL,
   `escuelaNombre` varchar(250) DEFAULT NULL,
-  `escuelaEstado` int(1) DEFAULT NULL,
-  PRIMARY KEY (`escuelaId`),
-  KEY `fk_escuelas_sedes1_idx` (`sedes_sedeId`),
-  KEY `fk_escuelas_facultades1_idx` (`facultades_facultadId`)
+  `escuelaEstado` int(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -385,15 +368,12 @@ INSERT INTO `escuelas` (`escuelaId`, `sedes_sedeId`, `facultades_facultadId`, `e
 -- Estructura de tabla para la tabla `estudios_complementarios`
 --
 
-DROP TABLE IF EXISTS `estudios_complementarios`;
-CREATE TABLE IF NOT EXISTS `estudios_complementarios` (
-  `estudiosId` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `estudios_complementarios` (
+  `estudiosId` int(11) NOT NULL,
   `docenteId` int(11) NOT NULL,
   `gradoAcademico` varchar(250) DEFAULT NULL,
   `especialidad` varchar(250) DEFAULT NULL,
-  `institucion` varchar(250) DEFAULT NULL,
-  PRIMARY KEY (`estudiosId`),
-  KEY `fk_estudios_complementarios_uap_docentes1_idx` (`docenteId`)
+  `institucion` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -402,19 +382,24 @@ CREATE TABLE IF NOT EXISTS `estudios_complementarios` (
 -- Estructura de tabla para la tabla `experiencia_docencia`
 --
 
-DROP TABLE IF EXISTS `experiencia_docencia`;
-CREATE TABLE IF NOT EXISTS `experiencia_docencia` (
-  `experienciaId` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `experiencia_docencia` (
+  `experienciaId` int(11) NOT NULL,
   `docenteId` int(11) NOT NULL,
   `expDocInstitucion` varchar(150) CHARACTER SET utf8 NOT NULL,
   `cargoDocencia` varchar(50) CHARACTER SET utf8 NOT NULL,
   `tipoConDocencia` varchar(50) CHARACTER SET utf8 NOT NULL,
   `expDocFecInicio` date NOT NULL,
   `expDocFecFin` date NOT NULL,
-  `expDocHastaActual` int(1) NOT NULL,
-  PRIMARY KEY (`experienciaId`),
-  KEY `FK_expDocenteId` (`docenteId`)
+  `expDocHastaActual` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `experiencia_docencia`
+--
+
+INSERT INTO `experiencia_docencia` (`experienciaId`, `docenteId`, `expDocInstitucion`, `cargoDocencia`, `tipoConDocencia`, `expDocFecInicio`, `expDocFecFin`, `expDocHastaActual`) VALUES
+(1, 20, 'Institución 1', 'Cargo 1', 'Tipo de contrato 1', '2019-06-08', '2019-06-20', 0),
+(2, 20, 'Institución 2', 'Cargo 2', 'Tipo de contrato 2', '2019-05-01', '2019-05-31', 0);
 
 -- --------------------------------------------------------
 
@@ -422,19 +407,24 @@ CREATE TABLE IF NOT EXISTS `experiencia_docencia` (
 -- Estructura de tabla para la tabla `experiencia_especializacion`
 --
 
-DROP TABLE IF EXISTS `experiencia_especializacion`;
-CREATE TABLE IF NOT EXISTS `experiencia_especializacion` (
-  `especializacionId` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `experiencia_especializacion` (
+  `especializacionId` int(11) NOT NULL,
   `docenteId` int(11) NOT NULL,
   `especInstitucion` varchar(150) CHARACTER SET utf8 NOT NULL,
   `especTipoInstitucion` varchar(50) CHARACTER SET utf8 NOT NULL,
   `especCargo` varchar(50) CHARACTER SET utf8 NOT NULL,
   `especFecInicio` date NOT NULL,
   `especFecFin` date NOT NULL,
-  `especHastaFecha` int(1) NOT NULL,
-  PRIMARY KEY (`especializacionId`),
-  KEY `FK_especDocId` (`docenteId`)
+  `especHastaFecha` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `experiencia_especializacion`
+--
+
+INSERT INTO `experiencia_especializacion` (`especializacionId`, `docenteId`, `especInstitucion`, `especTipoInstitucion`, `especCargo`, `especFecInicio`, `especFecFin`, `especHastaFecha`) VALUES
+(1, 20, 'Institucion 1', 'Tipo 1', 'Cargo 1', '2019-06-02', '2019-06-23', 1),
+(2, 20, 'Institucion 2', 'Tipo de Institucion 2', 'Cargo 2', '2019-06-10', '2019-06-23', 1);
 
 -- --------------------------------------------------------
 
@@ -442,13 +432,11 @@ CREATE TABLE IF NOT EXISTS `experiencia_especializacion` (
 -- Estructura de tabla para la tabla `facultades`
 --
 
-DROP TABLE IF EXISTS `facultades`;
-CREATE TABLE IF NOT EXISTS `facultades` (
-  `facultadId` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `facultades` (
+  `facultadId` int(11) NOT NULL,
   `facultadNombre` varchar(250) DEFAULT NULL,
-  `facultadEstado` int(1) DEFAULT NULL,
-  PRIMARY KEY (`facultadId`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+  `facultadEstado` int(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `facultades`
@@ -467,16 +455,21 @@ INSERT INTO `facultades` (`facultadId`, `facultadNombre`, `facultadEstado`) VALU
 -- Estructura de tabla para la tabla `grados_titulos`
 --
 
-DROP TABLE IF EXISTS `grados_titulos`;
-CREATE TABLE IF NOT EXISTS `grados_titulos` (
-  `gradosId` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `grados_titulos` (
+  `gradosId` int(11) NOT NULL,
   `docenteId` int(11) NOT NULL,
   `gradAcademico` varchar(250) DEFAULT NULL,
   `gradEspecialidad` varchar(250) DEFAULT NULL,
-  `gradInstitucion` varchar(250) DEFAULT NULL,
-  PRIMARY KEY (`gradosId`),
-  KEY `fk_grados_titulos_docentes1_idx` (`docenteId`)
+  `gradInstitucion` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `grados_titulos`
+--
+
+INSERT INTO `grados_titulos` (`gradosId`, `docenteId`, `gradAcademico`, `gradEspecialidad`, `gradInstitucion`) VALUES
+(1, 20, 'Grado 1', 'Especialidad 1', 'Institución 1'),
+(2, 20, 'Grado 2', 'Especialidad 2', 'Institución 2');
 
 -- --------------------------------------------------------
 
@@ -484,18 +477,23 @@ CREATE TABLE IF NOT EXISTS `grados_titulos` (
 -- Estructura de tabla para la tabla `herramientas_informaticas`
 --
 
-DROP TABLE IF EXISTS `herramientas_informaticas`;
-CREATE TABLE IF NOT EXISTS `herramientas_informaticas` (
-  `informaticaId` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `herramientas_informaticas` (
+  `informaticaId` int(11) NOT NULL,
   `docenteId` int(11) NOT NULL,
   `inforEspecialidadCurso` varchar(250) CHARACTER SET utf8 NOT NULL,
   `inforCentroEstudio` varchar(250) CHARACTER SET utf8 DEFAULT NULL,
   `inforNivel` varchar(150) CHARACTER SET utf8 DEFAULT NULL,
   `inforFechaCertificacion` date DEFAULT NULL,
-  `inforRutaArchivoCertificacion` text COLLATE utf8mb4_unicode_ci,
-  PRIMARY KEY (`informaticaId`),
-  KEY `FK_infDocId` (`docenteId`)
+  `inforRutaArchivoCertificacion` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `herramientas_informaticas`
+--
+
+INSERT INTO `herramientas_informaticas` (`informaticaId`, `docenteId`, `inforEspecialidadCurso`, `inforCentroEstudio`, `inforNivel`, `inforFechaCertificacion`, `inforRutaArchivoCertificacion`) VALUES
+(1, 20, 'Especialidad 1', 'Centro de Estudios 1', 'Nivel 1', '2019-06-24', NULL),
+(2, 20, 'Especialidad 2', 'Centro de Estudios 2', 'Nivel 2', '2019-06-24', NULL);
 
 -- --------------------------------------------------------
 
@@ -503,19 +501,23 @@ CREATE TABLE IF NOT EXISTS `herramientas_informaticas` (
 -- Estructura de tabla para la tabla `idiomas`
 --
 
-DROP TABLE IF EXISTS `idiomas`;
-CREATE TABLE IF NOT EXISTS `idiomas` (
-  `idiomaId` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `idiomas` (
+  `idiomaId` int(11) NOT NULL,
   `docenteId` int(11) NOT NULL,
   `idioNombre` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `idioOtros` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `idioCentroEstudios` varchar(150) CHARACTER SET utf8 DEFAULT NULL,
   `idioNivel` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
   `idioFechaCertificacion` date DEFAULT NULL,
-  `idioRutaArchivoCertificacion` text COLLATE utf8mb4_unicode_ci,
-  PRIMARY KEY (`idiomaId`),
-  KEY `fk_idiomas_docentes1_idx` (`docenteId`)
+  `idioRutaArchivoCertificacion` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `idiomas`
+--
+
+INSERT INTO `idiomas` (`idiomaId`, `docenteId`, `idioNombre`, `idioCentroEstudios`, `idioNivel`, `idioFechaCertificacion`, `idioRutaArchivoCertificacion`) VALUES
+(1, 20, 'Ingles', 'Britanico', 'Avanzado', '2019-06-18', NULL),
+(2, 20, 'Quechua', 'PUCP', 'Basico', '2019-06-23', NULL);
 
 -- --------------------------------------------------------
 
@@ -523,9 +525,8 @@ CREATE TABLE IF NOT EXISTS `idiomas` (
 -- Estructura de tabla para la tabla `indicadores`
 --
 
-DROP TABLE IF EXISTS `indicadores`;
-CREATE TABLE IF NOT EXISTS `indicadores` (
-  `indicadorId` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `indicadores` (
+  `indicadorId` int(11) NOT NULL,
   `docentes_docenteId` int(11) NOT NULL,
   `tieneRegistroDina` int(1) DEFAULT NULL,
   `tieneRegistroRegina` int(1) DEFAULT NULL,
@@ -539,10 +540,15 @@ CREATE TABLE IF NOT EXISTS `indicadores` (
   `docPeriodoEjercidoHasta` date DEFAULT NULL,
   `esValidoSunedu` int(1) DEFAULT NULL,
   `esValidoCurriculum` int(1) DEFAULT NULL,
-  `esValidoEvaluacionComp` int(1) DEFAULT NULL,
-  PRIMARY KEY (`indicadorId`),
-  KEY `fk_indicadores_docentes1_idx` (`docentes_docenteId`)
+  `esValidoEvaluacionComp` int(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `indicadores`
+--
+
+INSERT INTO `indicadores` (`indicadorId`, `docentes_docenteId`, `tieneRegistroDina`, `tieneRegistroRegina`, `tieneGradoMaestro`, `tieneSegEspecialidad`, `tieneExpOffice`, `tieneExpOfficeSuite`, `tieneExpBlackboard`, `tienePeriodoEjercido`, `docPeriodoEjercidoDesde`, `docPeriodoEjercidoHasta`, `esValidoSunedu`, `esValidoCurriculum`, `esValidoEvaluacionComp`) VALUES
+(1, 20, 0, NULL, 1, 1, 1, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -550,18 +556,23 @@ CREATE TABLE IF NOT EXISTS `indicadores` (
 -- Estructura de tabla para la tabla `investigaciones_publicaciones`
 --
 
-DROP TABLE IF EXISTS `investigaciones_publicaciones`;
-CREATE TABLE IF NOT EXISTS `investigaciones_publicaciones` (
-  `investigacionesId` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `investigaciones_publicaciones` (
+  `investigacionesId` int(11) NOT NULL,
   `docenteId` int(11) NOT NULL,
   `invesTitulo` varchar(150) CHARACTER SET utf8 NOT NULL,
   `invesFecha` date NOT NULL,
   `invesTipoPublicacion` varchar(150) CHARACTER SET utf8 NOT NULL,
   `invesNroRegistro` varchar(150) CHARACTER SET utf8 NOT NULL,
-  `rutaArchivoInvestigacion` text CHARACTER SET utf8 NOT NULL,
-  PRIMARY KEY (`investigacionesId`),
-  KEY `fk_investigaciones_publicaciones_uap_docentes1_idx` (`docenteId`)
+  `rutaArchivoInvestigacion` text CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `investigaciones_publicaciones`
+--
+
+INSERT INTO `investigaciones_publicaciones` (`investigacionesId`, `docenteId`, `invesTitulo`, `invesFecha`, `invesTipoPublicacion`, `invesNroRegistro`, `rutaArchivoInvestigacion`) VALUES
+(1, 20, 'Titulo de publicacion 1', '2019-06-24', 'En Revista 1', '003434509823498', ''),
+(2, 20, 'Titulo de publicación 2', '2019-06-21', 'Articulo 2', '00343450983434', '');
 
 -- --------------------------------------------------------
 
@@ -569,18 +580,23 @@ CREATE TABLE IF NOT EXISTS `investigaciones_publicaciones` (
 -- Estructura de tabla para la tabla `reconocimientos_institucionales`
 --
 
-DROP TABLE IF EXISTS `reconocimientos_institucionales`;
-CREATE TABLE IF NOT EXISTS `reconocimientos_institucionales` (
-  `reconocimientoId` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `reconocimientos_institucionales` (
+  `reconocimientoId` int(11) NOT NULL,
   `docenteId` int(11) NOT NULL,
   `recInstPremio` varchar(100) CHARACTER SET utf8 NOT NULL,
   `recInstitucion` varchar(150) CHARACTER SET utf8 NOT NULL,
   `recInstFecha` date DEFAULT NULL,
   `recInstDocSustentario` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `rutaArchivoDocSustentatorio` text CHARACTER SET utf8 NOT NULL,
-  PRIMARY KEY (`reconocimientoId`),
-  KEY `FK_recInstDocId` (`docenteId`)
+  `rutaArchivoDocSustentatorio` text CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `reconocimientos_institucionales`
+--
+
+INSERT INTO `reconocimientos_institucionales` (`reconocimientoId`, `docenteId`, `recInstPremio`, `recInstitucion`, `recInstFecha`, `recInstDocSustentario`, `rutaArchivoDocSustentatorio`) VALUES
+(1, 20, 'Premio 1', 'Institucion 1', '2019-06-24', '', ''),
+(2, 20, 'Premio 2', 'Institucion 2', '2019-06-19', '', '');
 
 -- --------------------------------------------------------
 
@@ -588,11 +604,9 @@ CREATE TABLE IF NOT EXISTS `reconocimientos_institucionales` (
 -- Estructura de tabla para la tabla `roles`
 --
 
-DROP TABLE IF EXISTS `roles`;
-CREATE TABLE IF NOT EXISTS `roles` (
-  `rolId` int(11) NOT NULL AUTO_INCREMENT,
-  `rolNombre` varchar(200) NOT NULL,
-  PRIMARY KEY (`rolId`)
+CREATE TABLE `roles` (
+  `rolId` int(11) NOT NULL,
+  `rolNombre` varchar(200) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -601,13 +615,11 @@ CREATE TABLE IF NOT EXISTS `roles` (
 -- Estructura de tabla para la tabla `sedes`
 --
 
-DROP TABLE IF EXISTS `sedes`;
-CREATE TABLE IF NOT EXISTS `sedes` (
-  `sedeId` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `sedes` (
+  `sedeId` int(11) NOT NULL,
   `sedeNombre` varchar(45) DEFAULT NULL,
-  `sedeEstado` int(1) DEFAULT NULL,
-  PRIMARY KEY (`sedeId`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+  `sedeEstado` int(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `sedes`
@@ -628,11 +640,9 @@ INSERT INTO `sedes` (`sedeId`, `sedeNombre`, `sedeEstado`) VALUES
 -- Estructura de tabla para la tabla `ubdepartamento`
 --
 
-DROP TABLE IF EXISTS `ubdepartamento`;
-CREATE TABLE IF NOT EXISTS `ubdepartamento` (
-  `idDepa` int(5) NOT NULL DEFAULT '0',
-  `departamento` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`idDepa`)
+CREATE TABLE `ubdepartamento` (
+  `idDepa` int(5) NOT NULL DEFAULT 0,
+  `departamento` varchar(50) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -672,13 +682,10 @@ INSERT INTO `ubdepartamento` (`idDepa`, `departamento`) VALUES
 -- Estructura de tabla para la tabla `ubdistrito`
 --
 
-DROP TABLE IF EXISTS `ubdistrito`;
-CREATE TABLE IF NOT EXISTS `ubdistrito` (
-  `idDist` int(5) NOT NULL DEFAULT '0',
+CREATE TABLE `ubdistrito` (
+  `idDist` int(5) NOT NULL DEFAULT 0,
   `distrito` varchar(50) DEFAULT NULL,
-  `idProv` int(5) NOT NULL,
-  PRIMARY KEY (`idDist`),
-  KEY `fk_ubdistrito_ubprovincia1_idx` (`idProv`)
+  `idProv` int(5) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -2524,13 +2531,10 @@ INSERT INTO `ubdistrito` (`idDist`, `distrito`, `idProv`) VALUES
 -- Estructura de tabla para la tabla `ubprovincia`
 --
 
-DROP TABLE IF EXISTS `ubprovincia`;
-CREATE TABLE IF NOT EXISTS `ubprovincia` (
-  `idProv` int(5) NOT NULL DEFAULT '0',
+CREATE TABLE `ubprovincia` (
+  `idProv` int(5) NOT NULL DEFAULT 0,
   `provincia` varchar(50) DEFAULT NULL,
-  `idDepa` int(5) NOT NULL,
-  PRIMARY KEY (`idProv`),
-  KEY `fk_ubprovincia_ubdepartamento2_idx` (`idDepa`)
+  `idDepa` int(5) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -2738,27 +2742,339 @@ INSERT INTO `ubprovincia` (`idProv`, `provincia`, `idDepa`) VALUES
 -- Estructura de tabla para la tabla `usuarios`
 --
 
-DROP TABLE IF EXISTS `usuarios`;
-CREATE TABLE IF NOT EXISTS `usuarios` (
-  `usuarioId` int(11) NOT NULL AUTO_INCREMENT,
-  `tipRolId` int(11) NOT NULL,
+CREATE TABLE `usuarios` (
+  `usuarioId` int(11) NOT NULL,
   `sedes_sedeId` int(11) NOT NULL,
+  `roles_rolId` int(11) NOT NULL,
   `usuNombre` varchar(150) CHARACTER SET utf8 NOT NULL,
   `usuLogin` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `usuClave` varchar(200) CHARACTER SET utf8 NOT NULL,
   `usuEstado` int(1) NOT NULL,
-  `usuFechaRegistro` datetime NOT NULL,
-  PRIMARY KEY (`usuarioId`),
-  KEY `FK_tipRolId` (`tipRolId`),
-  KEY `fk_usuarios_sedes1_idx` (`sedes_sedeId`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `usuFechaRegistro` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`usuarioId`, `tipRolId`, `sedes_sedeId`, `usuNombre`, `usuLogin`, `usuClave`, `usuEstado`, `usuFechaRegistro`) VALUES
+INSERT INTO `usuarios` (`usuarioId`, `sedes_sedeId`, `roles_rolId`, `usuNombre`, `usuLogin`, `usuClave`, `usuEstado`, `usuFechaRegistro`) VALUES
 (1, 1, 1, 'JOSE CLAUDIO VELASQUEZ BOYER', 'jvelasquez', 'Pi051027@2019', 1, '2019-06-14 14:06:00');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `archivos`
+--
+ALTER TABLE `archivos`
+  ADD PRIMARY KEY (`archivosId`),
+  ADD KEY `fk_archivos_docentes1_idx` (`docentes_docenteId`);
+
+--
+-- Indices de la tabla `asesoria_tesis`
+--
+ALTER TABLE `asesoria_tesis`
+  ADD PRIMARY KEY (`tesisId`),
+  ADD KEY `fk_asesoria_x_docentes_id` (`docenteId`);
+
+--
+-- Indices de la tabla `cargos_academicos`
+--
+ALTER TABLE `cargos_academicos`
+  ADD PRIMARY KEY (`cargosId`),
+  ADD KEY `FK_carAcadDocId` (`docenteId`);
+
+--
+-- Indices de la tabla `convocatorias`
+--
+ALTER TABLE `convocatorias`
+  ADD PRIMARY KEY (`convocatoriaId`),
+  ADD KEY `FK_usuId` (`usuarioId`),
+  ADD KEY `fk_convocatorias_sedes1_idx` (`sedes_sedeId`);
+
+--
+-- Indices de la tabla `convocatorias_x_docente`
+--
+ALTER TABLE `convocatorias_x_docente`
+  ADD PRIMARY KEY (`convoXdocenId`,`sedes_sedeId`,`convocatorias_convocatoriaId`,`docentes_docenteId`),
+  ADD KEY `fk_convocatorias_x_docente_uap_convocatorias1_idx` (`convocatorias_convocatoriaId`,`sedes_sedeId`),
+  ADD KEY `fk_convocatorias_x_docente_uap_docentes1_idx` (`docentes_docenteId`);
+
+--
+-- Indices de la tabla `cursos`
+--
+ALTER TABLE `cursos`
+  ADD PRIMARY KEY (`cursoId`);
+
+--
+-- Indices de la tabla `cursos_x_convocatoria`
+--
+ALTER TABLE `cursos_x_convocatoria`
+  ADD PRIMARY KEY (`cursosXconvocatoriaId`),
+  ADD KEY `fk_cursos_x_convocatoria_convocatorias1_idx` (`convocatoriaId`),
+  ADD KEY `fk_cursos_x_convocatoria_cursos_x_escuela1_idx` (`cursosXescuelaId`);
+
+--
+-- Indices de la tabla `cursos_x_docente`
+--
+ALTER TABLE `cursos_x_docente`
+  ADD PRIMARY KEY (`idcursos_x_docente`);
+
+--
+-- Indices de la tabla `cursos_x_escuela`
+--
+ALTER TABLE `cursos_x_escuela`
+  ADD PRIMARY KEY (`cursosXescuelaId`),
+  ADD KEY `fk_cursos_x_escuela_cursos1_idx` (`cursos_cursoId`),
+  ADD KEY `fk_cursos_x_escuela_escuelas1_idx` (`escuelas_escuelaId`);
+
+--
+-- Indices de la tabla `docentes`
+--
+ALTER TABLE `docentes`
+  ADD PRIMARY KEY (`docenteId`);
+
+--
+-- Indices de la tabla `escuelas`
+--
+ALTER TABLE `escuelas`
+  ADD PRIMARY KEY (`escuelaId`),
+  ADD KEY `fk_escuelas_sedes1_idx` (`sedes_sedeId`),
+  ADD KEY `fk_escuelas_facultades1_idx` (`facultades_facultadId`);
+
+--
+-- Indices de la tabla `estudios_complementarios`
+--
+ALTER TABLE `estudios_complementarios`
+  ADD PRIMARY KEY (`estudiosId`),
+  ADD KEY `fk_estudios_complementarios_uap_docentes1_idx` (`docenteId`);
+
+--
+-- Indices de la tabla `experiencia_docencia`
+--
+ALTER TABLE `experiencia_docencia`
+  ADD PRIMARY KEY (`experienciaId`),
+  ADD KEY `FK_expDocenteId` (`docenteId`);
+
+--
+-- Indices de la tabla `experiencia_especializacion`
+--
+ALTER TABLE `experiencia_especializacion`
+  ADD PRIMARY KEY (`especializacionId`),
+  ADD KEY `FK_especDocId` (`docenteId`);
+
+--
+-- Indices de la tabla `facultades`
+--
+ALTER TABLE `facultades`
+  ADD PRIMARY KEY (`facultadId`);
+
+--
+-- Indices de la tabla `grados_titulos`
+--
+ALTER TABLE `grados_titulos`
+  ADD PRIMARY KEY (`gradosId`),
+  ADD KEY `fk_grados_titulos_docentes1_idx` (`docenteId`);
+
+--
+-- Indices de la tabla `herramientas_informaticas`
+--
+ALTER TABLE `herramientas_informaticas`
+  ADD PRIMARY KEY (`informaticaId`),
+  ADD KEY `FK_infDocId` (`docenteId`);
+
+--
+-- Indices de la tabla `idiomas`
+--
+ALTER TABLE `idiomas`
+  ADD PRIMARY KEY (`idiomaId`),
+  ADD KEY `fk_idiomas_docentes1_idx` (`docenteId`);
+
+--
+-- Indices de la tabla `indicadores`
+--
+ALTER TABLE `indicadores`
+  ADD PRIMARY KEY (`indicadorId`),
+  ADD KEY `fk_indicadores_docentes1_idx` (`docentes_docenteId`);
+
+--
+-- Indices de la tabla `investigaciones_publicaciones`
+--
+ALTER TABLE `investigaciones_publicaciones`
+  ADD PRIMARY KEY (`investigacionesId`),
+  ADD KEY `fk_investigaciones_publicaciones_uap_docentes1_idx` (`docenteId`);
+
+--
+-- Indices de la tabla `reconocimientos_institucionales`
+--
+ALTER TABLE `reconocimientos_institucionales`
+  ADD PRIMARY KEY (`reconocimientoId`),
+  ADD KEY `FK_recInstDocId` (`docenteId`);
+
+--
+-- Indices de la tabla `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`rolId`);
+
+--
+-- Indices de la tabla `sedes`
+--
+ALTER TABLE `sedes`
+  ADD PRIMARY KEY (`sedeId`);
+
+--
+-- Indices de la tabla `ubdepartamento`
+--
+ALTER TABLE `ubdepartamento`
+  ADD PRIMARY KEY (`idDepa`);
+
+--
+-- Indices de la tabla `ubdistrito`
+--
+ALTER TABLE `ubdistrito`
+  ADD PRIMARY KEY (`idDist`),
+  ADD KEY `fk_ubdistrito_ubprovincia1_idx` (`idProv`);
+
+--
+-- Indices de la tabla `ubprovincia`
+--
+ALTER TABLE `ubprovincia`
+  ADD PRIMARY KEY (`idProv`),
+  ADD KEY `fk_ubprovincia_ubdepartamento2_idx` (`idDepa`);
+
+--
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`usuarioId`),
+  ADD KEY `fk_usuarios_sedes1_idx` (`sedes_sedeId`),
+  ADD KEY `fk_usuarios_roles1_idx` (`roles_rolId`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `archivos`
+--
+ALTER TABLE `archivos`
+  MODIFY `archivosId` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `asesoria_tesis`
+--
+ALTER TABLE `asesoria_tesis`
+  MODIFY `tesisId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `cargos_academicos`
+--
+ALTER TABLE `cargos_academicos`
+  MODIFY `cargosId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `convocatorias`
+--
+ALTER TABLE `convocatorias`
+  MODIFY `convocatoriaId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `cursos_x_convocatoria`
+--
+ALTER TABLE `cursos_x_convocatoria`
+  MODIFY `cursosXconvocatoriaId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `cursos_x_docente`
+--
+ALTER TABLE `cursos_x_docente`
+  MODIFY `idcursos_x_docente` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `docentes`
+--
+ALTER TABLE `docentes`
+  MODIFY `docenteId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT de la tabla `estudios_complementarios`
+--
+ALTER TABLE `estudios_complementarios`
+  MODIFY `estudiosId` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `experiencia_docencia`
+--
+ALTER TABLE `experiencia_docencia`
+  MODIFY `experienciaId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `experiencia_especializacion`
+--
+ALTER TABLE `experiencia_especializacion`
+  MODIFY `especializacionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `facultades`
+--
+ALTER TABLE `facultades`
+  MODIFY `facultadId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `grados_titulos`
+--
+ALTER TABLE `grados_titulos`
+  MODIFY `gradosId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `herramientas_informaticas`
+--
+ALTER TABLE `herramientas_informaticas`
+  MODIFY `informaticaId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `idiomas`
+--
+ALTER TABLE `idiomas`
+  MODIFY `idiomaId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `indicadores`
+--
+ALTER TABLE `indicadores`
+  MODIFY `indicadorId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `investigaciones_publicaciones`
+--
+ALTER TABLE `investigaciones_publicaciones`
+  MODIFY `investigacionesId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `reconocimientos_institucionales`
+--
+ALTER TABLE `reconocimientos_institucionales`
+  MODIFY `reconocimientoId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `rolId` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `sedes`
+--
+ALTER TABLE `sedes`
+  MODIFY `sedeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `usuarioId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas
@@ -2774,7 +3090,7 @@ ALTER TABLE `archivos`
 -- Filtros para la tabla `asesoria_tesis`
 --
 ALTER TABLE `asesoria_tesis`
-  ADD CONSTRAINT `fk_asesoria_x_docentes_id` FOREIGN KEY (`docentes_docenteId`) REFERENCES `docentes` (`docenteId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_asesoria_x_docentes_id` FOREIGN KEY (`docenteId`) REFERENCES `docentes` (`docenteId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `cargos_academicos`
@@ -2800,13 +3116,8 @@ ALTER TABLE `convocatorias_x_docente`
 -- Filtros para la tabla `cursos_x_convocatoria`
 --
 ALTER TABLE `cursos_x_convocatoria`
-  ADD CONSTRAINT `fk_cursos_x_convocatoria_convocatorias1` FOREIGN KEY (`convocatoriaId`) REFERENCES `convocatorias` (`convocatoriaId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `cursos_x_docente`
---
-ALTER TABLE `cursos_x_docente`
-  ADD CONSTRAINT `fk_cursos_x_docente_uap_docentes1` FOREIGN KEY (`docentes_docenteId`) REFERENCES `docentes` (`docenteId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_cursos_x_convocatoria_convocatorias1` FOREIGN KEY (`convocatoriaId`) REFERENCES `convocatorias` (`convocatoriaId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_cursos_x_convocatoria_cursos_x_escuela1` FOREIGN KEY (`cursosXescuelaId`) REFERENCES `cursos_x_escuela` (`cursosXescuelaId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `cursos_x_escuela`
@@ -2814,14 +3125,6 @@ ALTER TABLE `cursos_x_docente`
 ALTER TABLE `cursos_x_escuela`
   ADD CONSTRAINT `fk_cursos_x_escuela_cursos1` FOREIGN KEY (`cursos_cursoId`) REFERENCES `cursos` (`cursoId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_cursos_x_escuela_escuelas1` FOREIGN KEY (`escuelas_escuelaId`) REFERENCES `escuelas` (`escuelaId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `docentes`
---
-ALTER TABLE `docentes`
-  ADD CONSTRAINT `fk_docentes_ubdepartamento` FOREIGN KEY (`ubdepartamento_idDepa`) REFERENCES `ubdepartamento` (`idDepa`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_docentes_ubdistrito` FOREIGN KEY (`ubdistrito_idDist`) REFERENCES `ubdistrito` (`idDist`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_docentes_ubprovincia` FOREIGN KEY (`ubprovincia_idProv`) REFERENCES `ubprovincia` (`idProv`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `escuelas`
@@ -2888,7 +3191,8 @@ ALTER TABLE `reconocimientos_institucionales`
 -- Filtros para la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD CONSTRAINT `FK_tipRolId` FOREIGN KEY (`tipRolId`) REFERENCES `roles` (`tipRolId`),
+  ADD CONSTRAINT `FK_tipRolId` FOREIGN KEY (`roles_rolId`) REFERENCES `roles` (`tipRolId`),
+  ADD CONSTRAINT `fk_usuarios_roles1` FOREIGN KEY (`roles_rolId`) REFERENCES `roles` (`rolId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_usuarios_sedes1` FOREIGN KEY (`sedes_sedeId`) REFERENCES `sedes` (`sedeId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 SET FOREIGN_KEY_CHECKS=1;
 COMMIT;
