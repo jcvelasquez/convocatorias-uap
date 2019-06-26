@@ -143,8 +143,6 @@
 		<!-- repeater -->
 		<div id="kt_repeater_grados">
 			
-	<!-- 		<div data-repeater-list="">
-				<div data-repeater-item="" data-random-id="<?php echo $randomRepeaterID; ?>"> -->
 					<div class="row">
 						<div class="col-lg-4">
 							<div class="input-group">
@@ -153,23 +151,11 @@
 										<i class="la la-phone"></i>
 									</span>
 								</div>
-								<select name="gradAcademico" class="form-control">
+								<select name="gradAcademico" id="gradAcademico" class="form-control">
 									<option value="">Seleccione grado académico</option>	
 									<option value="Bachiller">Bachiller</option>
-									<!-- <option value="Licenciado">Licenciado</option>
-									<option value="Estudios__Concluidos__Maestría">Estudios Concluidos Maestría</option> -->
 									<option value="Magister">Magíster</option>
-									<!-- <option value="Estudios_Concluidos_Doctorado">Estudios Concluidos Doctorado</option> -->
 									<option value="Doctor">Doctor</option>
-									<!-- <option value="Estudios_Concluidos_Postdoctorado">Estudios Concluidos Postdoctorado</option>
-									<option value="Postdoctorado">Postdoctorado</option>
-									<option value="Titulo">Título</option>
-									<option value="Doctor_Magíster">Doctor / Magíster</option>
-									<option value="Postdoctorado__Doctor">Postdoctorado / Doctor</option>
-									<option value="Tecnico__Bachiller">Técnico / Bachiller</option>
-									<option value="Bachiller__Magister">Bachiller / Magíster</option>
-									<option value="Diplomado">Diplomado</option>
-									<option value="Otros_estudios">Otros estudios</option> -->
 								</select>
 							</div>
 						</div>
@@ -180,7 +166,7 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<input type="text" name="gradEspecialidad" class="form-control" placeholder="Especialidad">
+								<input type="text" name="gradEspecialidad" id="gradEspecialidad" class="form-control" placeholder="Especialidad">
 							</div>
 						</div>
 						<div class="col-lg-4">
@@ -190,26 +176,16 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<input type="text" name="gradInstitucion" class="form-control" placeholder="Institucion">
+								<input type="text" name="gradInstitucion" id="gradInstitucion" class="form-control" placeholder="Institucion">
 							</div>
 						</div>
-						<!-- <div class="col-lg-1">
-							<a href="javascript:;" data-repeater-delete="" class="btn btn-remover btn-danger btn-icon">
-								<i class="la la-remove"></i>
-							</a>
-						</div> -->
+
 					</div>
 
-	<!-- 			</div>
-
-			</div>
- -->
-			<div data-repeater-create="" class="btn btn btn-primary">
-				<span>
+			<button id="grabarGrados" class="btn btn btn-primary">
 					<i class="la la-plus"></i>
 					<span>Agregar y grabar Grados</span>
-				</span>
-			</div>
+			</button>
 			
 		</div>
 		<!-- fin repeater -->

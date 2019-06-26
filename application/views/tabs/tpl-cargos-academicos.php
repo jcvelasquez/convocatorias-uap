@@ -35,7 +35,7 @@
 							<i class="la la-phone"></i>
 						</span>
 					</div>
-					<input type="text" class="form-control form-control-danger" placeholder="Nombre de la Institucion">
+					<input type="text" class="form-control form-control-danger" placeholder="Nombre de la Institucion" id="">
 				</div>
 			</div>
 			<div class="col-lg-6">

@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	}
 	?>
 
-<footer class="container-fluid mt-lg-3 mt-xl-5">
+<footer class="container-fluid">
   <div class="container menu">
     <div class="row"> 
       

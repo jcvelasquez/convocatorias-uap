@@ -8,11 +8,11 @@ body {
 .container-registro { width: 100%; margin: 0 auto;  }
 .container-registro .kt-portlet__body { padding:0;  width: 100%; margin: 0 auto;  }
 .container-registro .kt-form__actions { background: #ededed; }
-.container-registro .kt-wizard-v3__content { padding:50px;  }
+.container-registro .kt-wizard-v3__content { width:80%; margin: 0 auto;  }
 
-.container-registro .kt-portlet.summary { background: #ededed; padding:50px 0;  }
+.container-registro .kt-portlet.summary { background: #ededed; padding:50px 0; margin-bottom: 0;  }
 
-
+.kt-wizard-v3__nav-items { width: 80%; margin: 0 auto; }
 
 .container-registro .summary .kt-portlet__body,
 .inside_buttons_form { width: 80%; margin:0 auto;   }
@@ -263,10 +263,17 @@ header {
  }
  /******************FOOTER********************/
 
- footer {
+ footer.container-fluid {
     background: #525050;
     color: #fff;
+    margin-top: 0 !important;
 }
+
+
+div[data-ktwizard-type="action-next"],
+div[data-ktwizard-type="action-submit"] { float: right; }
+
+.form_tabs { margin-bottom: 0; }
 footer .bg-footer {
     padding: 60px 0 !important;
 }

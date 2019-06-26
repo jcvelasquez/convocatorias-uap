@@ -71,62 +71,7 @@ var Registro = function () {
         });
         
 
-        /*$('#kt_repeater_grados').repeater({
-            initEmpty: false,
-            isFirstItemUndeletable: true,
-            show: function() {
-                
-                initDateFields();
-
-                var $repeater_item = $(this);
-
-                //INICIO DEL AJAX EDICION DE CAMPO
-                $.ajax({
-                    dataType:'JSON',
-                    type: 'POST',
-                    url: BASE_URL + 'generar-idrepeater',
-                    success:function(randomid){
-
-                        $repeater_item.attr('data-random-id', randomid);
-                        $repeater_item.slideDown(); 
-                                                                                              
-                    },
-                    error: function(xhr) { 
-                        console.log(xhr.statusText + xhr.responseText);
-                    }
-                });
-                //FIN DEL AJAX
-
-
-            },
-            ready: function (setIndexes) {
-                //$dragAndDrop.on('drop', setIndexes);
-                //$(this).addClass("test")
-            },
-            hide: function(deleteElement) {     
-
-                var $repeater_item = $(this);
-
-                swal.fire({
-                    title: '¿ESTÁS SEGURO?',
-                    text: "No será posible recuperar la información",
-                    type: 'warning',
-                    confirmButtonText: "ELIMINAR",
-                    confirmButtonClass: "btn btn-danger",
-                    showCancelButton: true,
-                    cancelButtonText: "CANCELAR",
-                    cancelButtonClass: "btn btn-danger",
-                }).then(function(result) {
-                    if (result.value) {
-
-                        $repeater_item.slideUp(deleteElement);
-
-                    } 
-                });
-
-                                                    
-            }      
-        });*/
+        
     }
 
     var initCargos = function() {
@@ -459,43 +404,7 @@ var Registro = function () {
         });
      
 
-        /*
-        $('#kt_repeater_investigacion').repeater({
-            initEmpty: false,
-            isFirstItemUndeletable: true,
-            show: function() {
-                $(this).slideDown();   
-
-                initDateFields();
-
-            },
-
-            hide: function(deleteElement) {    
-
-                var $repeater = $(this); 
-
-                swal.fire({
-                        title: 'Are you sure?',
-                        text: "You won't be able to revert this!",
-                        type: 'warning',
-                        confirmButtonText: "Eliminar",
-                        confirmButtonClass: "btn btn-success",
-                        showCancelButton: true,
-                        cancelButtonText: "Cancelar",
-                        cancelButtonClass: "btn btn-danger",
-                    }).then(function(result) {
-                        if (result.value) {
-
-                            $repeater.slideUp(deleteElement);
-
-                        } 
-
-                    });              
-                
-
-
-            }      
-        });*/
+       
     }
 
 
@@ -566,6 +475,22 @@ var Registro = function () {
                 initDistrito(idProv);                      
             }
         }); 
+
+        $('#grabarGrados').on('click', function(){
+            
+            var validator = form_registro.validate();
+
+            validator.element( "#gradEspecialidad" );
+
+            /*if(validator.check('#gradEspecialidad')){
+                console.log("valido");
+            }else{
+                console.log("no valido");
+            }*/
+
+        }); 
+
+        
 
         //$(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
 
