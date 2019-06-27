@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Experiencia extends CI_Controller {
+class ExperienciaProfesional extends CI_Controller {
 
 	function __construct(){
         parent::__construct();
@@ -9,26 +9,13 @@ class Experiencia extends CI_Controller {
 		//$this->load->helper('form');
 		//$this->load->library('session');
 
-		$this->load->model('Experiencia_Docencia_model');	
 		$this->load->model('Experiencia_Profesional_model');	
 
 
     }
 
-	public function listar_docencia()
-	{
 
-		$docenteId = $this->input->post('docenteId');
-
-		$grados = $this->Experiencia_Docencia_model->listar_por_docente($docenteId);
-
-		return $this->output
-					->set_content_type('application/json')
-					->set_output(json_encode($grados));
-
-	}
-
-	public function listar_profesional()
+	public function listar()
 	{
 
 		$docenteId = $this->input->post('docenteId');
@@ -87,6 +74,36 @@ class Experiencia extends CI_Controller {
 					->set_output(json_encode($data));
 
     }
+
+    public function agregar(){
+
+		$params = array(
+			'docenteId' => $this->input->post('docenteId'),
+			'gradAcademico' => $this->input->post('gradAcademico'),
+			'gradEspecialidad' => $this->input->post('gradEspecialidad'),
+			'gradInstitucion' => $this->input->post('gradInstitucion')
+		);
+
+		$data = $this->Grados_Titulos_model->agregar_grados($params);
+
+		return $this->output
+					->set_content_type('application/json')
+					->set_output(json_encode($data));
+
+	}
+
+
+	public function eliminar()
+	{
+
+		$gradosId = $this->input->post('gradosId');
+		$data = $this->Grados_Titulos_model->eliminar_grados($gradosId);
+
+		return $this->output
+					->set_content_type('application/json')
+					->set_output(json_encode($data));
+
+	}
 
 
 

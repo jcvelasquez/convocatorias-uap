@@ -73,7 +73,7 @@ class Experiencia_Docencia_model extends CI_Model
     /*
      * function to delete plato
      */
-    function borrar_experiencia_docencia($experienciaId)
+    function eliminar_experiencia_docencia($experienciaId)
     {
         return $this->db->delete('experiencia_docencia',array('experienciaId'=>$experienciaId));
     }

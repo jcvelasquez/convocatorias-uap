@@ -34,6 +34,24 @@ class Grados_Titulos_model extends CI_Model
 
     }
 
+    function agregar_grados($params)
+    {
+        $this->db->insert('grados_titulos',$params);
+        return $this->db->insert_id();
+    }
+
+    function actualizar_grados($gradosId,$params)
+    {
+        $this->db->where('gradosId',$escuelaId);
+        return $this->db->update('grados_titulos',$params);
+    }
+
+    function eliminar_grados($gradosId)
+    {
+        return $this->db->delete('grados_titulos',array('gradosId' => $gradosId));
+    }
+    
+/*
     function get_all_escuelas_select(){
 
         $records = array();
@@ -48,10 +66,7 @@ class Grados_Titulos_model extends CI_Model
 
     }
 
-    /*
-     * Get by id
-    */
-   
+
     function get_escuela_by_id($escuelaId){
 
       //CONSULTO LA ESCUELA POR ID
@@ -71,25 +86,10 @@ class Grados_Titulos_model extends CI_Model
 
       return $records;
       
-    }
+    }*/
 
 
-    function agregar_escuelas($params)
-    {
-        $this->db->insert('escuelas',$params);
-        return $this->db->insert_id();
-    }
-
-    function editar_escuelas($escuelaId,$params)
-    {
-        $this->db->where('escuelaId',$escuelaId);
-        return $this->db->update('escuelas',$params);
-    }
-
-    function eliminar_escuelas($escuelaId)
-    {
-        return $this->db->delete('escuelas',array('escuelaId'=>$escuelaId));
-    }
+    
 
 
 }

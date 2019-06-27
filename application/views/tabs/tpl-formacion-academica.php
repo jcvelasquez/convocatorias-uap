@@ -67,7 +67,7 @@
 						Cuento con un grado de maestro
 					</span>
 					<span class="kt-option__focus">
-						(NO excluyente)
+						<!--(NO excluyente)-->
 					</span>
 				</span>
 				<span class="kt-option__body">
@@ -104,7 +104,7 @@
 						Cuento con segunda especialidad
 					</span>
 					<span class="kt-option__focus">
-						(NO excluyente)
+						<!--(NO excluyente)-->
 					</span>
 				</span>
 				<span class="kt-option__body">
@@ -222,8 +222,7 @@
 
 
 		<div id="kt_repeater_experiencia">
-<!-- 			<div data-repeater-list="">
-				<div data-repeater-item=""> -->
+
 					<div class="row">
 
 						<div class="col-lg-4">
@@ -233,7 +232,7 @@
 										<i class="la la-phone"></i>
 									</span>
 								</div>
-								<input type="text" name="expDocInstitucion" class="form-control form-control-danger" placeholder="Institución">
+								<input type="text" name="expDocInstitucion" id="expDocInstitucion" class="form-control form-control-danger" placeholder="Institución">
 							</div>
 						</div>
 
@@ -244,7 +243,7 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<select class="form-control" name="cargoDocencia">
+								<select class="form-control" name="cargoDocencia" id="cargoDocencia">
 									<option value="">Seleccione un cargo</option>
 									<option value="Docente_universitario">Docente universitario</option>
 									<option value="Facilitador">Facilitador</option>
@@ -261,7 +260,7 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<select class="form-control" name="tipoConDocencia"> 
+								<select class="form-control" name="tipoConDocencia" id="tipoConDocencia"> 
 									<option value="">Seleccione el tipo de contrato</option>
 									<option value="Tiempo_Completo">Tiempo Completo</option>
 									<option value="Tiempo_Parcial">Tiempo Parcial</option>
@@ -272,11 +271,7 @@
 								</select>
 							</div>
 						</div>
-						<!-- <div class="col-lg-1">
-							<a href="javascript:;" data-repeater-delete="" class="btn btn-remover  btn-danger btn-icon">
-								<i class="la la-remove"></i>
-							</a>
-						</div> -->
+
 					</div>
 					<div class="row">
 
@@ -287,7 +282,7 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<input type="text" class="form-control form-control-danger form-date" placeholder="Fecha Inicio" name="expDocFecInicio">
+								<input type="text" class="form-control form-control-danger form-date" placeholder="Fecha Inicio" name="expDocFecInicio" id="expDocFecInicio">
 							</div>
 						</div>
 						<div class="col-lg-4">
@@ -297,13 +292,13 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<input name="expDocFecFin" type="text" class="form-control form-control-danger form-date" placeholder="Fecha Fin">
+								<input name="expDocFecFin" id="expDocFecFin" type="text" class="form-control form-control-danger form-date" placeholder="Fecha Fin">
 							</div>
 						</div>
 						<div class="col-lg-4">
 							<div class="kt-checkbox-inline">
 								<label class="kt-checkbox kt-checkbox--solid kt-checkbox--brand kt-checkbox--check-bold">
-									<input type="checkbox" name="expDocHastaActual"> Hasta la Actualidad 
+									<input type="checkbox" name="expDocHastaActual" id="expDocHastaActual" value="1"> Hasta la Actualidad 
 									<span></span>
 								</label>
 							</div>
@@ -311,16 +306,11 @@
 
 					</div>	
 
-		<!-- 		</div>
 
-			</div>
- -->
-			<div data-repeater-create="" class="btn btn btn-primary">
-				<span>
+			<button id="grabarExperienciaDocencia" class="btn btn btn-primary">
 					<i class="la la-plus"></i>
-					<span>Agregar más Experiencia</span>
-				</span>
-			</div>
+					<span>Agregar y grabar Experiencia</span>
+			</button>
 			
 		</div> 
 
@@ -356,8 +346,7 @@
 		<!--end: Datatable -->
 
 		<div id="kt_repeater_especializacion">
-			<!-- <div data-repeater-list="">
-				<div data-repeater-item=""> -->
+
 					<div class="row">
 
 						<div class="col-lg-4">
@@ -367,7 +356,7 @@
 										<i class="la la-phone"></i>
 									</span>
 								</div>
-								<input type="text" class="form-control form-control-danger" placeholder="Institución" name="especInstitucion">
+								<input type="text" class="form-control form-control-danger" placeholder="Institución" name="especInstitucion" id="especInstitucion">
 							</div>
 						</div>
 
@@ -378,7 +367,7 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<select class="form-control" name="especTipoInstitucion">
+								<select class="form-control" name="especTipoInstitucion" id="especTipoInstitucion">
 									<option value="">Seleccione un tipo de institución</option>
 									<option value="Pública">Pública</option>
 									<option value="Privada">Privada</option>
@@ -396,7 +385,7 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<select class="form-control" name="especCargo">
+								<select class="form-control" name="especCargo" id="especCargo">
 									<option value="">Seleccione cargo desempeñado</option>
 									<option value="Director_Gerentes_de_area_o_equivalente">Director / Gerentes de área o equivalente</option>
 									<option value="Jefe_de_area,proyecto_o_equivalente">Jefe de Área, Proyecto o Equivalente</option>
@@ -407,11 +396,7 @@
 
 							</div>
 						</div>
-						<!-- <div class="col-lg-1">
-							<a href="javascript:;" data-repeater-delete="" class="btn btn-remover btn-danger btn-icon">
-								<i class="la la-remove"></i>
-							</a>
-						</div> -->
+						
 					</div>
 
 					<div class="row">
@@ -422,7 +407,7 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<input type="text" class="form-control form-control-danger form-date" placeholder="Fecha Inicio" name="especFecInicio">
+								<input type="text" class="form-control form-control-danger form-date" placeholder="Fecha Inicio" name="especFecInicio" id="especFecInicio">
 							</div>
 						</div>
 						<div class="col-lg-4">
@@ -432,13 +417,13 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<input type="text" name="especFecFin" class="form-control form-date form-control-danger" placeholder="Fecha Fin">
+								<input type="text" name="especFecFin" id="especFecFin" class="form-control form-date form-control-danger" placeholder="Fecha Fin">
 							</div>
 						</div>
 						<div class="col-lg-4">
 							<div class="kt-checkbox-inline">
 								<label class="kt-checkbox kt-checkbox--solid kt-checkbox--brand kt-checkbox--check-bold">
-									<input type="checkbox" name="especHastaFecha"> Hasta la Actualidad 
+									<input type="checkbox" name="especHastaFecha" id="especHastaFecha"> Hasta la Actualidad 
 									<span></span>
 								</label>
 							</div>
@@ -446,16 +431,11 @@
 
 					</div>	
 
-		<!-- 		</div>
 
-			</div>
- -->
-			<div data-repeater-create="" class="btn btn btn-primary">
-				<span>
+			<button id="grabarExperienciaProfesional" class="btn btn btn-primary">
 					<i class="la la-plus"></i>
-					<span>Agregar más Experiencia</span>
-				</span>
-			</div>
+					<span>Agregar y grabar Experiencia</span>
+			</button>
 			
 		</div>
 
