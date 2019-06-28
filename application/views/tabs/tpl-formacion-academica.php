@@ -127,7 +127,7 @@
 	<div class="col-lg-12">
 
 		<!--begin: Datatable -->
-		<table class="table table-striped- table-hover table-checkable" id="table_grados">
+		<table class="table table-striped table-hover table-checkable" id="table_grados">
 			<thead>
 				<tr>
 					<th width="80">ID</th>
@@ -204,7 +204,7 @@
 	<div class="col-lg-12">
 
 		<!--begin: Datatable -->
-		<table class="table table-striped- table-hover table-checkable" id="table_experiencia_docencia">
+		<table class="table table-striped table-hover table-checkable" id="table_experiencia_docencia">
 			<thead>
 				<tr>
 					<th width="80">ID</th>
@@ -245,7 +245,7 @@
 								</div>
 								<select class="form-control" name="cargoDocencia" id="cargoDocencia">
 									<option value="">Seleccione un cargo</option>
-									<option value="Docente_universitario">Docente universitario</option>
+									<option value="Docente universitario">Docente universitario</option>
 									<option value="Facilitador">Facilitador</option>
 									<option value="Conferencista">Conferencista</option>
 									<option value="Otros">Otros</option>
@@ -262,11 +262,11 @@
 								</div>
 								<select class="form-control" name="tipoConDocencia" id="tipoConDocencia"> 
 									<option value="">Seleccione el tipo de contrato</option>
-									<option value="Tiempo_Completo">Tiempo Completo</option>
-									<option value="Tiempo_Parcial">Tiempo Parcial</option>
-									<option value="Ordinario_Principal">Ordinario Principal</option>
-									<option value="Ordinario_Asociado">Ordinario Asociado</option>
-									<option value="Ordinario_Auxiliar">Ordinario Auxiliar</option>
+									<option value="Tiempo Completo">Tiempo Completo</option>
+									<option value="Tiempo Parcial">Tiempo Parcial</option>
+									<option value="Ordinario Principal">Ordinario Principal</option>
+									<option value="Ordinario Asociado">Ordinario Asociado</option>
+									<option value="Ordinario Auxiliar">Ordinario Auxiliar</option>
 									<option value="Otros">Otros</option>
 								</select>
 							</div>
@@ -282,7 +282,7 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<input type="text" class="form-control form-control-danger form-date" placeholder="Fecha Inicio" name="expDocFecInicio" id="expDocFecInicio">
+								<input type="text" class="form-control form-control-danger form-date" placeholder="dd/mm/aaaa (Fecha de Inicio)" name="expDocFecInicio" id="expDocFecInicio">
 							</div>
 						</div>
 						<div class="col-lg-4">
@@ -292,7 +292,7 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<input name="expDocFecFin" id="expDocFecFin" type="text" class="form-control form-control-danger form-date" placeholder="Fecha Fin">
+								<input name="expDocFecFin" id="expDocFecFin" type="text" class="form-control form-control-danger form-date" placeholder="dd/mm/aaaa (Fecha de Fin)">
 							</div>
 						</div>
 						<div class="col-lg-4">
@@ -387,9 +387,9 @@
 								</div>
 								<select class="form-control" name="especCargo" id="especCargo">
 									<option value="">Seleccione cargo desempeñado</option>
-									<option value="Director_Gerentes_de_area_o_equivalente">Director / Gerentes de área o equivalente</option>
-									<option value="Jefe_de_area,proyecto_o_equivalente">Jefe de Área, Proyecto o Equivalente</option>
-									<option value="Coordinador_supervisor">Coordinador / Supervisor</option>
+									<option value="Director Gerentes de area o equivalente">Director / Gerentes de área o equivalente</option>
+									<option value="Jefe de area, proyecto oequivalente">Jefe de Área, Proyecto o Equivalente</option>
+									<option value="Coordinador supervisor">Coordinador / Supervisor</option>
 									<option value="Analistas">Analistas</option>
 									<option value="Otros">Otros</option>
 								</select>
@@ -407,7 +407,7 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<input type="text" class="form-control form-control-danger form-date" placeholder="Fecha Inicio" name="especFecInicio" id="especFecInicio">
+								<input type="text" class="form-control form-control-danger form-date" placeholder="dd/mm/aaaa (Fecha de Inicio)" name="especFecInicio" id="especFecInicio">
 							</div>
 						</div>
 						<div class="col-lg-4">
@@ -417,13 +417,13 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<input type="text" name="especFecFin" id="especFecFin" class="form-control form-date form-control-danger" placeholder="Fecha Fin">
+								<input type="text" name="especFecFin" id="especFecFin" class="form-control form-date form-control-danger" placeholder="dd/mm/aaaa (Fecha de Fin)">
 							</div>
 						</div>
 						<div class="col-lg-4">
 							<div class="kt-checkbox-inline">
 								<label class="kt-checkbox kt-checkbox--solid kt-checkbox--brand kt-checkbox--check-bold">
-									<input type="checkbox" name="especHastaFecha" id="especHastaFecha"> Hasta la Actualidad 
+									<input type="checkbox" name="especHastaFecha" id="especHastaFecha" value="1"> Hasta la Actualidad 
 									<span></span>
 								</label>
 							</div>

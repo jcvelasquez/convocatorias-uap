@@ -16,7 +16,14 @@ class Experiencia_Docencia_model extends CI_Model
 
         $records = array();
 
-        $this->db->select("exp.*");
+        $this->db->select("exp.experienciaId, 
+                           exp.docenteId,
+                           exp.expDocInstitucion,
+                           exp.cargoDocencia,
+                           exp.tipoConDocencia,
+                           DATE_FORMAT(exp.expDocFecInicio, '%d/%m/%Y') as expDocFecInicio,
+                           DATE_FORMAT(exp.expDocFecFin, '%d/%m/%Y') as expDocFecFin,
+                           exp.expDocHastaActual");
         $this->db->from("experiencia_docencia exp");
         $this->db->where("exp.docenteId ='{$docenteId}' ");
         $query = $this->db->get();

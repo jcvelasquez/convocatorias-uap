@@ -28,16 +28,7 @@ class ExperienciaProfesional extends CI_Controller {
 
 	}
 
-	public function listar_select()
-	{
-
-		$escuelas = $this->Grados_Titulos_model->get_all_escuelas_select();
-
-		return $this->output
-					->set_content_type('application/json')
-					->set_output(json_encode($escuelas));
-
-	}
+	
 
 
 	public function agregar_editar($escuelaId)
@@ -45,25 +36,12 @@ class ExperienciaProfesional extends CI_Controller {
 
 		$data['escuelaId'] = $escuelaId;
 		$data['_view'] = 'admin/content/tpl-escuelas-detalle';
-
-
-		//$data['sedes'] = $this->Sedes_model->get_all_sedes_select();
-		//$data['cursos'] = $this->Cursos_model->get_all_cursos_select();
-
 		$data['js'] = array('js/escuelas.js');
 
 		$this->load->view('admin/index', $data);
 	}
 
-
-	public function eliminar()
-	{
-		$data['_view'] = 'admin/content/tpl-convocatorias';
-
-		$this->load->view('admin/index', $data);
-	}
-
-	public function get_escuela_x_id(){
+	/*public function get_escuela_x_id(){
 
 		$escuelaId = $this->input->post('escuelaId');
 
@@ -73,18 +51,36 @@ class ExperienciaProfesional extends CI_Controller {
 					->set_content_type('application/json')
 					->set_output(json_encode($data));
 
-    }
+    }*/
+
+	public function formatDatepickerToMySql($date) {
+
+        if ($date != FALSE) {
+	        $dateArr = explode("/", $date);
+	        $newDate = $dateArr[2] . '-' . $dateArr[1] . '-' . $dateArr[0];
+	        return $newDate;
+	    }
+
+	    return FALSE;
+	
+	}
 
     public function agregar(){
 
+    	$especFecInicio = $this->formatDatepickerToMySql( $this->input->post('especFecInicio') );
+    	$especFecFin = $this->formatDatepickerToMySql( $this->input->post('especFecFin') );
+
 		$params = array(
 			'docenteId' => $this->input->post('docenteId'),
-			'gradAcademico' => $this->input->post('gradAcademico'),
-			'gradEspecialidad' => $this->input->post('gradEspecialidad'),
-			'gradInstitucion' => $this->input->post('gradInstitucion')
+			'especInstitucion' => $this->input->post('especInstitucion'),
+			'especTipoInstitucion' => $this->input->post('especTipoInstitucion'),
+			'especCargo' => $this->input->post('especCargo'),
+			'especFecInicio' => $especFecInicio,
+			'especFecFin' => $especFecFin,
+			'especHastaFecha' => $this->input->post('especHastaFecha')
 		);
 
-		$data = $this->Grados_Titulos_model->agregar_grados($params);
+		$data = $this->Experiencia_Profesional_model->agregar_experiencia_profesional($params);
 
 		return $this->output
 					->set_content_type('application/json')
@@ -96,8 +92,8 @@ class ExperienciaProfesional extends CI_Controller {
 	public function eliminar()
 	{
 
-		$gradosId = $this->input->post('gradosId');
-		$data = $this->Grados_Titulos_model->eliminar_grados($gradosId);
+		$especializacionId = $this->input->post('especializacionId');
+		$data = $this->Experiencia_Profesional_model->eliminar_experiencia_profesional($especializacionId);
 
 		return $this->output
 					->set_content_type('application/json')

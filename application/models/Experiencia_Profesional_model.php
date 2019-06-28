@@ -19,7 +19,16 @@ class Experiencia_Profesional_model extends CI_Model
 
         $records = array();
 
-        $this->db->select("exp.*");
+
+        $this->db->select("exp.especializacionId, 
+                           exp.docenteId,
+                           exp.especInstitucion,
+                           exp.especTipoInstitucion,
+                           exp.especCargo,
+                           DATE_FORMAT(exp.especFecInicio, '%d/%m/%Y') as especFecInicio,
+                           DATE_FORMAT(exp.especFecFin, '%d/%m/%Y') as especFecFin,
+                           exp.especHastaFecha");
+
         $this->db->from("experiencia_especializacion exp");
         $this->db->where("exp.docenteId ='{$docenteId}' ");
         $query = $this->db->get();
@@ -50,7 +59,7 @@ class Experiencia_Profesional_model extends CI_Model
     /*
      * function to add new 
     */
-    function agregar_experiencia_especializacion($params)
+    function agregar_experiencia_profesional($params)
     {
         $this->db->insert('experiencia_especializacion',$params);
         return $this->db->insert_id();
@@ -59,7 +68,7 @@ class Experiencia_Profesional_model extends CI_Model
     /*
      * function to update 
     */
-    function actualizar_experiencia_especializacion($especializacionId,$params)
+    function actualizar_experiencia_profesional($especializacionId,$params)
     {
         $this->db->where('especializacionId',$especializacionId);
         return $this->db->update('experiencia_especializacion',$params);
@@ -68,7 +77,7 @@ class Experiencia_Profesional_model extends CI_Model
     /*
      * function to delete plato
      */
-    function borrar_experiencia_especializacion($especializacionId)
+    function eliminar_experiencia_profesional($especializacionId)
     {
         return $this->db->delete('experiencia_especializacion',array('especializacionId'=>$especializacionId));
     }

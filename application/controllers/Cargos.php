@@ -25,7 +25,7 @@ class Cargos extends CI_Controller {
 					->set_output(json_encode($cargos));
 
 	}
-
+/*
 	public function listar_select()
 	{
 
@@ -36,43 +36,64 @@ class Cargos extends CI_Controller {
 					->set_output(json_encode($escuelas));
 
 	}
-
+*/
 
 	public function agregar_editar($escuelaId)
 	{
 
 		$data['escuelaId'] = $escuelaId;
 		$data['_view'] = 'admin/content/tpl-escuelas-detalle';
-
-
-		//$data['sedes'] = $this->Sedes_model->get_all_sedes_select();
-		//$data['cursos'] = $this->Cursos_model->get_all_cursos_select();
-
 		$data['js'] = array('js/escuelas.js');
 
 		$this->load->view('admin/index', $data);
 	}
 
+	public function formatDatepickerToMySql($date) {
 
-	public function eliminar()
-	{
-		$data['_view'] = 'admin/content/tpl-convocatorias';
+        if ($date != FALSE) {
+	        $dateArr = explode("/", $date);
+	        $newDate = $dateArr[2] . '-' . $dateArr[1] . '-' . $dateArr[0];
+	        return $newDate;
+	    }
 
-		$this->load->view('admin/index', $data);
+	    return FALSE;
+	
 	}
 
-	public function get_escuela_x_id(){
+	public function agregar(){
 
-		$escuelaId = $this->input->post('escuelaId');
+    	$carAcadFecInicio = $this->formatDatepickerToMySql( $this->input->post('carAcadFecInicio') );
+    	$carAcadFecFin = $this->formatDatepickerToMySql( $this->input->post('carAcadFecFin') );
 
-		$data = $this->Escuelas_model->get_escuela_by_id($escuelaId);
+		$params = array(
+			'docenteId' => $this->input->post('docenteId'),
+			'carAcadNomInstitucion' => $this->input->post('carAcadNomInstitucion'),
+			'carAcadArea' => $this->input->post('carAcadArea'),
+			'carAcadFecInicio' => $carAcadFecInicio,
+			'carAcadFecFin' => $carAcadFecFin,
+			'carAcadeHastaFecha' => $this->input->post('carAcadeHastaFecha')
+		);
+
+		$data = $this->Cargos_Academicos_model->agregar_cargos_academicos($params);
 
 		return $this->output
 					->set_content_type('application/json')
 					->set_output(json_encode($data));
 
-    }
+	}
 
+
+	public function eliminar()
+	{
+
+		$especializacionId = $this->input->post('especializacionId');
+		$data = $this->Experiencia_Profesional_model->eliminar_experiencia_profesional($especializacionId);
+
+		return $this->output
+					->set_content_type('application/json')
+					->set_output(json_encode($data));
+
+	}
 
 
 

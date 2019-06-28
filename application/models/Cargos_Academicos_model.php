@@ -20,7 +20,13 @@ class Cargos_Academicos_model extends CI_Model
 
         $records = array();
 
-        $this->db->select("car.*");
+        $this->db->select("car.cargosId, 
+                           car.docenteId,
+                           car.carAcadNomInstitucion,
+                           car.carAcadArea,
+                           DATE_FORMAT(car.carAcadFecInicio, '%d/%m/%Y') as carAcadFecInicio,
+                           DATE_FORMAT(car.carAcadFecFin, '%d/%m/%Y') as carAcadFecFin,
+                           car.carAcadeHastaFecha");
         $this->db->from("cargos_academicos car");
         $this->db->where("car.docenteId = {$docenteId} ");
         $query = $this->db->get();
@@ -47,28 +53,20 @@ class Cargos_Academicos_model extends CI_Model
       return $this->db->get()->row_array();
     }
 
-    /*
-     * function to add new 
-    */
+
     function agregar_cargos_academicos($params)
     {
         $this->db->insert('cargos_academicos',$params);
         return $this->db->insert_id();
     }
 
-    /*
-     * function to update 
-    */
     function actualizar_cargos_academicos($cargosId,$params)
     {
         $this->db->where('cargosId',$cargosId);
         return $this->db->update('cargos_academicos',$params);
     }
 
-    /*
-     * function to delete plato
-     */
-    function borrar_cargos_academicos($cargosId)
+    function eliminar_cargos_academicos($cargosId)
     {
         return $this->db->delete('cargos_academicos',array('cargosId'=>$cargosId));
     }

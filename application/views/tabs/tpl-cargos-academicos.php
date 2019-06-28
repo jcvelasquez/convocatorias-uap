@@ -35,7 +35,7 @@
 							<i class="la la-phone"></i>
 						</span>
 					</div>
-					<input type="text" class="form-control form-control-danger" placeholder="Nombre de la Institucion" id="">
+					<input type="text" class="form-control form-control-danger" placeholder="Nombre de la Institucion" name="carAcadNomInstitucion" id="carAcadNomInstitucion">
 				</div>
 			</div>
 			<div class="col-lg-6">
@@ -45,62 +45,53 @@
 							<i class="la la-envelope"></i>
 						</span>
 					</div>
-					<input type="text" class="form-control form-control-danger" placeholder="Cargo del area academica">
+					<input type="text" class="form-control form-control-danger" placeholder="Cargo del area academica" id="carAcadArea" name="carAcadArea">
 				</div>
 			</div>
+		</div>
 
-				<!-- <div class="col-lg-1">
-					<a href="javascript:;" data-repeater-delete="" class="btn btn-remover btn-danger btn-icon">
-						<i class="la la-remove"></i>
-					</a>
-				</div> -->
+		<div class="row">
+			<div class="col-lg-3">
 
-			</div>
+				<div class="input-group date">
 
-			<div class="row">
-				<div class="col-lg-3">
-
-					<div class="input-group date">
-
-						<div class="input-group-prepend">
-							<span class="input-group-text">
-								<i class="la la-calendar-check-o"></i>
-							</span>
-						</div>
-						<input type="text" class="form-control" readonly placeholder="Fecha inicio" id="kt_datepicker_2" />
+					<div class="input-group-prepend">
+						<span class="input-group-text">
+							<i class="la la-calendar-check-o"></i>
+						</span>
 					</div>
-
-				</div>
-				<div class="col-lg-3">
-
-					<div class="input-group date">
-						<div class="input-group-prepend">
-							<span class="input-group-text">
-								<i class="la la-calendar-check-o"></i>
-							</span>
-						</div>
-						<input type="text" class="form-control" readonly placeholder="Fecha fin" id="kt_datepicker_2" />
-					</div>
-				</div>
-
-				<div class="col-lg-6">
-					<div class="kt-checkbox-inline">
-						<label class="kt-checkbox kt-checkbox--solid kt-checkbox--brand kt-checkbox--check-bold">
-							<input type="checkbox"> Hasta la Actualidad 
-							<span></span>
-						</label>
-					</div>
+					<input type="text" class="form-control form-date" placeholder="dd/mm/aaaa (Inicio)" id="carAcadFecInicio" name="carAcadFecInicio" />
 				</div>
 
 			</div>
+			<div class="col-lg-3">
+
+				<div class="input-group date">
+					<div class="input-group-prepend">
+						<span class="input-group-text">
+							<i class="la la-calendar-check-o"></i>
+						</span>
+					</div>
+					<input type="text" class="form-control form-date" placeholder="dd/mm/aaaa (Fin)" id="carAcadFecFin" name="carAcadFecFin" />
+				</div>
+			</div>
+
+			<div class="col-lg-6">
+				<div class="kt-checkbox-inline">
+					<label class="kt-checkbox kt-checkbox--solid kt-checkbox--brand kt-checkbox--check-bold">
+						<input type="checkbox" name="carAcadeHastaFecha" id="carAcadeHastaFecha" value="1"> Hasta la Actualidad 
+						<span></span>
+					</label>
+				</div>
+			</div>
+
+		</div>
 
 	<!-- 	</div>
 	</div> -->
-	<div data-repeater-create="" class="btn btn btn-primary">
-		<span>
+	<button class="btn btn btn-primary" id="btnGrabarCargos">
 			<i class="la la-plus"></i>
 			<span>Agregar y grabar cargos</span>
-		</span>
 	</div>
 
 </div>

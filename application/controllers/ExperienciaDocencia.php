@@ -51,17 +51,34 @@ class ExperienciaDocencia extends CI_Controller {
 		$this->load->view('admin/index', $data);*/
 	}
 
+
+	public function formatDatepickerToMySql($date) {
+
+        if ($date != FALSE) {
+	        $dateArr = explode("/", $date);
+	        $newDate = $dateArr[2] . '-' . $dateArr[1] . '-' . $dateArr[0];
+	        return $newDate;
+	    }
+
+	    return FALSE;
+	
+	}
+
 	
 
     public function agregar(){
+
+
+    	$expDocFecInicio = $this->formatDatepickerToMySql( $this->input->post('expDocFecInicio') );
+    	$expDocFecFin = $this->formatDatepickerToMySql( $this->input->post('expDocFecFin') );
 
 		$params = array(
 			'docenteId' => $this->input->post('docenteId'),
 			'expDocInstitucion' => $this->input->post('expDocInstitucion'),
 			'cargoDocencia' => $this->input->post('cargoDocencia'),
 			'tipoConDocencia' => $this->input->post('tipoConDocencia'),
-			'expDocFecInicio' => $this->input->post('expDocFecInicio'),
-			'expDocFecFin' => $this->input->post('expDocFecFin'),
+			'expDocFecInicio' => $expDocFecInicio,
+			'expDocFecFin' => $expDocFecFin,
 			'expDocHastaActual' => $this->input->post('expDocHastaActual')
 		);
 

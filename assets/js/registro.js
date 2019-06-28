@@ -45,6 +45,7 @@ var Registro = function () {
 
             if ($(this).is(":checked")) {
                 $("#expDocFecFin").attr("disabled", "disabled");
+                $("#expDocFecFin").datepicker('setDate', null);
             } else {
                 $("#expDocFecFin").removeAttr("disabled");
             }
@@ -55,12 +56,24 @@ var Registro = function () {
 
             if ($(this).is(":checked")) {
                 $("#especFecFin").attr("disabled", "disabled");
+                $("#especFecFin").datepicker('setDate', null);
             } else {
                 $("#especFecFin").removeAttr("disabled");
             }
 
         });
-        
+
+        $("#carAcadeHastaFecha").click(function () {
+
+            if ($(this).is(":checked")) {
+                $("#carAcadFecFin").attr("disabled", "disabled");
+                $("#carAcadFecFin").datepicker('setDate', null);
+            } else {
+                $("#carAcadFecFin").removeAttr("disabled");
+            }
+
+        });
+
 
         $('#ubdepartamento_idDepa').on('change', function(){
             var idDepa = $(this).val(); 
@@ -71,7 +84,6 @@ var Registro = function () {
             }
         }); 
 
-
         $('#ubprovincia_idProv').on('change', function(){
             var idProv = $(this).val(); 
             if(idProv != ''){ 
@@ -79,108 +91,7 @@ var Registro = function () {
             }
         }); 
 
-
         $('.kt-wizard-v3__nav-item').on('click', function(e){  e.preventDefault();   });
-
-
-        /*******************************************/
-        /*              GRABAR GRADOS              */
-        /*******************************************/  
-        $('#grabarGrados').on('click', function(e){
-
- 
-            var gradAcademico = $("#gradAcademico");
-            var gradEspecialidad = $("#gradEspecialidad");
-            var gradInstitucion = $("#gradInstitucion");
-
-            if( gradAcademico.val() == "" || gradEspecialidad.val() == "" || gradInstitucion.val() == "" ){
-                
-                swal.fire("ERROR", "¡Completa todos los campos para poder grabar!", "error");
-                
-            }else{
-
-                    $.ajax({dataType:'JSON',
-                        type: 'POST',
-                        url: BASE_URL + 'Grados/agregar',
-                        data : {docenteId: docenteId,
-                                 gradAcademico: gradAcademico.val(),
-                                 gradEspecialidad: gradEspecialidad.val(),
-                                 gradInstitucion: gradInstitucion.val()
-                                },
-                        success:function(response){
-                                                                                
-                            $('#table_grados').DataTable().ajax.reload();     
-
-                            gradAcademico.val("");
-                            gradEspecialidad.val("");
-                            gradInstitucion.val("");
-
-                        },
-                        error: function(xhr) { 
-                            console.log(xhr.statusText + xhr.responseText);
-                        }
-                    });
-
-            }
-
-
-        }); 
-
-
-        /***********************************************/
-        /* GRABAR EXPERIENCIA DOCENCIA UNIVERSITARIA   */
-        /***********************************************/  
-        $('#grabarExperienciaDocencia').on('click', function(e){
-
- 
-            var expDocInstitucion = $("#expDocInstitucion");
-            var cargoDocencia = $("#cargoDocencia");
-            var tipoConDocencia = $("#tipoConDocencia");
-            var expDocFecInicio = $("#expDocFecInicio");
-            var expDocFecFin = $("#expDocFecFin");
-            var expDocHastaActual = ($("#expDocHastaActual").is(':checked'))? '1' : '0';
-
-            console.log(expDocHastaActual);
-
-            if( expDocInstitucion.val() == "" || 
-                cargoDocencia.val() == "" || 
-                tipoConDocencia.val() == "" || 
-                expDocFecInicio.val() == "" ){
-                
-                swal.fire("ERROR", "¡Completa todos los campos para poder grabar!", "error");
-                
-            }else{
-
-                    $.ajax({dataType:'JSON',
-                        type: 'POST',
-                        url: BASE_URL + 'ExperienciaDocencia/agregar',
-                        data : {docenteId: docenteId,
-                                 expDocInstitucion: expDocInstitucion.val(),
-                                 gradEspecialidad: gradEspecialidad.val(),
-                                 gradInstitucion: gradInstitucion.val()
-                                },
-                        success:function(response){
-                                                                                
-                            $('#table_experiencia_docencia').DataTable().ajax.reload();     
-
-                            gradAcademico.val("");
-                            gradEspecialidad.val("");
-                            gradInstitucion.val("");
-
-                        },
-                        error: function(xhr) { 
-                            console.log(xhr.statusText + xhr.responseText);
-                        }
-                    });
-                
-            }
-
-
-        }); 
-        /*******************************************/
-        /*          FIN GRABAR GRADOS              */
-        /*******************************************/
-
 
     }
 
@@ -189,249 +100,330 @@ var Registro = function () {
     var initGrados = function() {
 
 
-        /*******************************/
-        /*         TABLE GRADOS        */
-        /*******************************/
-        var table_grados = $('#table_grados');
+            /*******************************/
+            /*         TABLE GRADOS        */
+            /*******************************/
+            var table_grados = $('#table_grados');
 
-        // begin first table
-        table_grados.DataTable({
-            responsive: true,
-            processing: true,
-            serverSide: true,
-            paging: false,
-            searching: false,
-            ajax: {
-                url: BASE_URL + 'registro/grados/listar',
-                data: function ( d ) {
-                    d.docenteId = docenteId ;
-                },
-                type: "POST"
-            },
-            columns: [
-                {data: 'gradosId'},
-                {data: 'gradAcademico'},
-                {data: 'gradEspecialidad'},
-                {data: 'gradInstitucion'},
-                {data: 'Acciones'},
-            ],
-            columnDefs: [
-
-                {
-                    targets: -1,
-                    title: 'Acciones',
-                    orderable: false,
-                    render: function(data, type, full, meta) {
-
-                        return `<a class="btn btn-danger mt-sweetalert" href="javascript:;" data-id="` + BASE_URL + 'admin/convocatorias/editar/' + full['gradosId'] + `"><i class="fas fa-trash"></i> Eliminar </a>`;
+            // begin first table
+            table_grados.DataTable({
+                responsive: true,
+                processing: true,
+                serverSide: true,
+                paging: false,
+                searching: false,
+                ajax: {
+                    url: BASE_URL + 'Grados/listar',
+                    data: function ( d ) {
+                        d.docenteId = docenteId ;
                     },
-                }
-                
-            ],
-        });
+                    type: "POST"
+                },
+                columns: [
+                    {data: 'gradosId'},
+                    {data: 'gradAcademico'},
+                    {data: 'gradEspecialidad'},
+                    {data: 'gradInstitucion'},
+                    {data: 'Acciones'},
+                ],
+                columnDefs: [
 
-        /*******************************/
-        /*     CLICK BOTON ELIMINAR    */
-        /*******************************/
-        $('#table_grados tbody').on( 'click', 'a.mt-sweetalert', function () {
-            
-                var data = $('#table_grados').DataTable().row( $(this).parents('tr') ).data();
-                var rowToDelete = $(this).parents('tr');
-                                
-                swal.fire({
-                    title: 'CONFIRMACION REQUERIDA',
-                    text: "¿Esta seguro que desea eliminar el registro?",
-                    type: 'warning',
-                    showCancelButton: true,
-                    confirmButtonText: 'Eliminar',
-                    cancelButtonText: 'Cancelar',
-                    reverseButtons: true
-                }).then(function(result){
-                    if (result.value) {
+                    {
+                        targets: -1,
+                        title: 'Acciones',
+                        orderable: false,
+                        render: function(data, type, full, meta) {
 
+                            return `<a class="btn btn-danger mt-sweetalert" href="javascript:;" data-id="` + BASE_URL + 'admin/convocatorias/editar/' + full['gradosId'] + `"><i class="fas fa-trash"></i> Eliminar </a>`;
+                        },
+                    }
+                    
+                ],
+            });
 
-                        $.ajax({
-                            dataType:'JSON',
+            /*******************************************/
+            /*              GRABAR GRADOS              */
+            /*******************************************/
+            $('#grabarGrados').on('click', function(e){
+
+     
+                var gradAcademico = $("#gradAcademico");
+                var gradEspecialidad = $("#gradEspecialidad");
+                var gradInstitucion = $("#gradInstitucion");
+
+                if( gradAcademico.val() == "" || gradEspecialidad.val() == "" || gradInstitucion.val() == "" ){
+                    
+                    swal.fire("ERROR", "¡Completa todos los campos para poder grabar!", "error");
+                    
+                }else{
+
+                        $.ajax({dataType:'JSON',
                             type: 'POST',
-                            url: BASE_URL + 'Grados/eliminar',
-                            data:{ gradosId : data['gradosId'] },
-                            success:function(data){
+                            url: BASE_URL + 'Grados/agregar',
+                            data : {docenteId: docenteId,
+                                     gradAcademico: gradAcademico.val(),
+                                     gradEspecialidad: gradEspecialidad.val(),
+                                     gradInstitucion: gradInstitucion.val()
+                                    },
+                            success:function(response){
+                                                                                    
+                                $('#table_grados').DataTable().ajax.reload();     
 
-                                if(data){
-                                    swal.fire("CONFIRMACION!","El registro ha sido eliminado.","success")
-                                    $('#table_grados').DataTable().row(rowToDelete).remove().draw();    
-                                }
-                                                   
+                                gradAcademico.val("");
+                                gradEspecialidad.val("");
+                                gradInstitucion.val("");
+
                             },
                             error: function(xhr) { 
                                 console.log(xhr.statusText + xhr.responseText);
                             }
                         });
-        
-                    } 
 
-                });
-                
-        } );
-        /*******************************/
-        /*  FIN CLICK BOTON ELIMINAR   */
-        /*******************************/
-        
-
-        
-    }
-
-    var initCargos = function() {
-        
-        var table_cargos = $('#table_cargos');
-
-        // begin first table
-        table_cargos.DataTable({
-            responsive: true,
-            processing: true,
-            serverSide: true,
-            paging: false,
-            searching: false,
-            ajax: {
-                url: BASE_URL + 'registro/cargos-academicos/listar',
-                data: function ( d ) {
-                    d.docenteId = $('#docenteId').val();
-                },
-                type: "POST"
-            },
-            columns: [
-                {data: 'cargosId'},
-                {data: 'carAcadNomInstitucion'},
-                {data: 'carAcadArea'},
-                {data: 'carAcadFecInicio'},
-                {data: 'carAcadFecFin'},
-                {data: 'carAcadeHastaFecha'},
-                {data: 'Acciones'},
-            ],
-            columnDefs: [
-
-                {
-                    targets: -1,
-                    title: 'Acciones',
-                    orderable: false,
-                    render: function(data, type, full, meta) {
-
-                        return `<a class="btn btn-danger mt-sweetalert" data-id="` + BASE_URL + 'admin/convocatorias/editar/' + full['cargosId'] + `" href="javascript:;"><i class="la la-edit"></i> Eliminar </a>`;
-                    },
                 }
+
+
+            }); 
+            /*******************************************/
+            /*           FIN GRABAR GRADOS             */
+            /*******************************************/
+
+            /*******************************/
+            /*     CLICK BOTON ELIMINAR    */
+            /*******************************/
+            $('#table_grados tbody').on( 'click', 'a.mt-sweetalert', function () {
                 
-            ],
-        });
+                    var data = $('#table_grados').DataTable().row( $(this).parents('tr') ).data();
+                    var rowToDelete = $(this).parents('tr');
+                                    
+                    swal.fire({
+                        title: 'CONFIRMACION REQUERIDA',
+                        text: "¿Esta seguro que desea eliminar el registro?",
+                        type: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Eliminar',
+                        cancelButtonText: 'Cancelar',
+                        reverseButtons: true
+                    }).then(function(result){
+                        if (result.value) {
 
 
-
-        /*******************************/
-        /*     CLICK BOTON ELIMINAR    */
-        /*******************************/
-        $('#table_cargos tbody').on( 'click', 'a.mt-sweetalert', function () {
-            
-                var data = table_cargos.getDataTable().row( $(this).parents('tr') ).data();
-                var rowToDelete = $(this).parents('tr');
-
-                console.log(data);
-                                
-                    swal({
-                      title: "CONFIRMACION REQUERIDA",
-                      text: "Una vez eliminada, no será posible recuperar la información!",
-                      type: "warning",
-                      showCancelButton: true,
-                      confirmButtonClass: "btn-success",
-                      confirmButtonText: "Si, eliminar!",
-                      cancelButtonText: "Cancelar",
-                      closeOnConfirm: false
-                    },
-                    function(){
-                    
-                            /*******************************/
-                            /*       BORRAR REGISTRO       */
-                            /*******************************/
-                            /*$.ajax({
+                            $.ajax({
                                 dataType:'JSON',
                                 type: 'POST',
-                                url: 'database/ContratosGet.php?action_type=delete&id='+data['idcontratos'],
+                                url: BASE_URL + 'Grados/eliminar',
+                                data:{ gradosId : data['gradosId'] },
                                 success:function(data){
-                                    
-                                    switch(data.code){
-                                    
-                                        case "200"  :   swal("CONFIRMACION", "El registro ha sido eliminado.", "success");
-                                                        table_cargos.getDataTable().row(rowToDelete).remove().draw( false );
-                                                        break;
-                                                            
-                                        case "1451" :   swal("ERROR", "El registro no se puede eliminar ya que estÃ¡ asociado a otro documento. Para poder eliminar el contrato, deberÃ¡ eliminar todos los documentos asociados a este registro.", "error");
-                                                        break;
-                                                            
-                                        default     :   swal("ERROR", "El registro no se puede eliminar.", "error");
 
+                                    if(data){
+                                        swal.fire("CONFIRMACION!","El registro ha sido eliminado.","success")
+                                        $('#table_grados').DataTable().row(rowToDelete).remove().draw();    
                                     }
-                    
+                                                       
                                 },
                                 error: function(xhr) { 
                                     console.log(xhr.statusText + xhr.responseText);
                                 }
-                            });*/
-                            /*******************************/
-                            /*    FIN BORRAR REGISTRO      */
-                            /*******************************/
-                            
-                    });
-                
-        } );
-        /*******************************/
-        /*  FIN CLICK BOTON ELIMINAR   */
-        /*******************************/
-        
+                            });
+            
+                        } 
 
+                    });
+                    
+            } );
+            /*******************************/
+            /*  FIN CLICK BOTON ELIMINAR   */
+            /*******************************/
+
+            
+      
     }
+
+
 
     // Private functions
     var initExperienciaDocencia = function() {
 
 
-        var table_experiencia_docencia = $('#table_experiencia_docencia');
+            var table_experiencia_docencia = $('#table_experiencia_docencia');
 
-        // begin first table
-        table_experiencia_docencia.DataTable({
-            responsive: true,
-            processing: true,
-            serverSide: true,
-            paging: false,
-            searching: false,
-            ajax: {
-                url: BASE_URL + 'registro/experiencia-docencia/listar',
-                data: function ( d ) {
-                    d.docenteId = $('#docenteId').val();
-                },
-                type: "POST"
-            },
-            columns: [
-                {data: 'experienciaId'},
-                {data: 'expDocInstitucion'},
-                {data: 'cargoDocencia'},
-                {data: 'tipoConDocencia'},
-                {data: 'expDocFecInicio'},
-                {data: 'expDocFecFin'},
-                {data: 'expDocHastaActual'},
-                {data: 'Acciones'},
-            ],
-            columnDefs: [
-
-                {
-                    targets: -1,
-                    title: 'Acciones',
-                    orderable: false,
-                    render: function(data, type, full, meta) {
-
-                        return `<a class="btn btn-danger" href="` + BASE_URL + 'admin/convocatorias/editar/' + full['experienciaId'] + `"><i class="la la-edit"></i> Eliminar </a>`;
+            table_experiencia_docencia.DataTable({
+                responsive: true,
+                processing: true,
+                serverSide: true,
+                paging: false,
+                searching: false,
+                ajax: {
+                    url: BASE_URL + 'ExperienciaDocencia/listar',
+                    data: function ( d ) {
+                        d.docenteId = $('#docenteId').val();
                     },
+                    type: "POST"
+                },
+                columns: [
+                    {data: 'experienciaId'},
+                    {data: 'expDocInstitucion'},
+                    {data: 'cargoDocencia'},
+                    {data: 'tipoConDocencia'},
+                    {data: 'expDocFecInicio'},
+                    {data: 'expDocFecFin'},
+                    {data: 'expDocHastaActual'},
+                    {data: 'Acciones'},
+                ],
+                columnDefs: [
+                    {
+                        targets: -3,
+                        render: function(data, type, full, meta) {
+                            if (full['expDocFecFin'] === '00/00/0000') {
+                                return "---";
+                            }
+                            return full['expDocFecFin'];
+                        },
+                    },
+                    {
+                        targets: -2,
+                        render: function(data, type, full, meta) {
+                            var status = {
+                                0: {'title': 'NO', 'state': 'danger'},
+                                1: {'title': 'SI', 'state': 'success'},
+                            };
+                            if (typeof status[data] === 'undefined') {
+                                return data;
+                            }
+                            return '<span class="kt-badge kt-badge--' + status[data].state + ' kt-badge--inline kt-badge--pill">' + status[data].title + '</span>';
+                        },
+                    },
+                    {
+                        targets: -1,
+                        title: 'Acciones',
+                        orderable: false,
+                        render: function(data, type, full, meta) {
+
+                            return `<a class="btn btn-danger mt-sweetalert" href="javascript:;" data-id="` + full['experienciaId'] + `"><i class="fas fa-trash"></i> Eliminar </a>`;
+                        },
+                    }
+                    
+                ],
+            });
+
+
+            /***********************/
+            /*    INICIO GRABAR    */
+            /***********************/  
+            $('#grabarExperienciaDocencia').on('click', function(e){
+
+     
+                var expDocInstitucion = $("#expDocInstitucion");
+                var cargoDocencia = $("#cargoDocencia");
+                var tipoConDocencia = $("#tipoConDocencia");
+                var expDocFecInicio = $("#expDocFecInicio");
+                var expDocFecFin
+                var expDocHastaActual;
+
+                if($("#expDocHastaActual").is(':checked')){
+                    expDocHastaActual = 1;
+                    expDocFecFin = "";
+                }else{
+                    expDocHastaActual = 0;
+                    expDocFecFin = $("#expDocFecFin").val();
                 }
+
+
+                if( expDocInstitucion.val() == "" || 
+                    cargoDocencia.val() == "" || 
+                    tipoConDocencia.val() == "" || 
+                    expDocFecInicio.val() == "" ){
+                    
+                    swal.fire("ERROR", "¡Completa todos los campos para poder grabar!", "error");
+                    
+                }else{
+
+                        $.ajax({dataType:'JSON',
+                            type: 'POST',
+                            url: BASE_URL + 'ExperienciaDocencia/agregar',
+                            data : {docenteId: docenteId,
+                                     expDocInstitucion: expDocInstitucion.val(),
+                                     cargoDocencia: cargoDocencia.val(),
+                                     tipoConDocencia: tipoConDocencia.val(),
+                                     expDocFecInicio: expDocFecInicio.val(),
+                                     expDocFecFin: expDocFecFin,
+                                     expDocHastaActual: expDocHastaActual
+                            },
+                            success:function(response){
+                                                                                    
+                                $('#table_experiencia_docencia').DataTable().ajax.reload();     
+
+                                expDocInstitucion.val("");
+                                cargoDocencia.val("");
+                                tipoConDocencia.val("");
+                                expDocFecInicio.datepicker('setDate', null);
+
+                                $("#expDocFecFin").prop("disabled",false);
+                                $("#expDocFecFin").datepicker('setDate', null);
+
+                                $("#expDocHastaActual").prop("checked",false);
+
+
+
+                            },
+                            error: function(xhr) { 
+                                console.log(xhr.statusText + xhr.responseText);
+                            }
+                        });
+                    
+                }
+
+
+            }); 
+            /*******************************/
+            /*          FIN GRABAR         */
+            /*******************************/
+
+            /*******************************/
+            /*     CLICK BOTON ELIMINAR    */
+            /*******************************/
+            $('#table_experiencia_docencia tbody').on( 'click', 'a.mt-sweetalert', function () {
                 
-            ],
-        });
+                    var data = $('#table_experiencia_docencia').DataTable().row( $(this).parents('tr') ).data();
+                    var rowToDelete = $(this).parents('tr');
+                                    
+                    swal.fire({
+                        title: 'CONFIRMACION REQUERIDA',
+                        text: "¿Esta seguro que desea eliminar el registro?",
+                        type: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Eliminar',
+                        cancelButtonText: 'Cancelar',
+                        reverseButtons: true
+                    }).then(function(result){
+                        if (result.value) {
+
+
+                            $.ajax({
+                                dataType:'JSON',
+                                type: 'POST',
+                                url: BASE_URL + 'ExperienciaDocencia/eliminar',
+                                data:{ experienciaId : data['experienciaId'] },
+                                success:function(data){
+
+                                    if(data){
+                                        swal.fire("CONFIRMACION!","El registro ha sido eliminado.","success")
+                                        $('#table_experiencia_docencia').DataTable().row(rowToDelete).remove().draw();    
+                                    }
+                                                       
+                                },
+                                error: function(xhr) { 
+                                    console.log(xhr.statusText + xhr.responseText);
+                                }
+                            });
+            
+                        } 
+
+                    });
+                    
+            } );
+            /*******************************/
+            /*  FIN CLICK BOTON ELIMINAR   */
+            /*******************************/
 
        
     }
@@ -439,48 +431,367 @@ var Registro = function () {
 
 
     // Private functions
-    var initExperienciaEspecializacion = function() {
+    var initExperienciaProfesional = function() {
         
-        var table_experiencia_profesional = $('#table_experiencia_profesional');
+            var table_experiencia_profesional = $('#table_experiencia_profesional');
 
-        // begin first table
-        table_experiencia_profesional.DataTable({
-            responsive: true,
-            processing: true,
-            serverSide: true,
-            paging: false,
-            searching: false,
-            ajax: {
-                url: BASE_URL + 'registro/experiencia-profesional/listar',
-                data: function ( d ) {
-                    d.docenteId = $('#docenteId').val();
-                },
-                type: "POST"
-            },
-            columns: [
-                {data: 'especializacionId'},
-                {data: 'especInstitucion'},
-                {data: 'especTipoInstitucion'},
-                {data: 'especCargo'},
-                {data: 'especFecInicio'},
-                {data: 'especFecFin'},
-                {data: 'especHastaFecha'},
-                {data: 'Acciones'},
-            ],
-            columnDefs: [
-
-                {
-                    targets: -1,
-                    title: 'Acciones',
-                    orderable: false,
-                    render: function(data, type, full, meta) {
-
-                        return `<a class="btn btn-danger" href="` + BASE_URL + 'admin/convocatorias/editar/' + full['especializacionId'] + `"><i class="la la-edit"></i> Eliminar </a>`;
+            // begin first table
+            table_experiencia_profesional.DataTable({
+                responsive: true,
+                processing: true,
+                serverSide: true,
+                paging: false,
+                searching: false,
+                ajax: {
+                    url: BASE_URL + 'ExperienciaProfesional/listar',
+                    data: function ( d ) {
+                        d.docenteId = $('#docenteId').val();
                     },
+                    type: "POST"
+                },
+                columns: [
+                    {data: 'especializacionId'},
+                    {data: 'especInstitucion'},
+                    {data: 'especTipoInstitucion'},
+                    {data: 'especCargo'},
+                    {data: 'especFecInicio'},
+                    {data: 'especFecFin'},
+                    {data: 'especHastaFecha'},
+                    {data: 'Acciones'},
+                ],
+                columnDefs: [
+                    {
+                        targets: -3,
+                        render: function(data, type, full, meta) {
+                            if (full['especFecFin'] === '00/00/0000') {
+                                return "---";
+                            }
+                            return full['especFecFin'];
+                        },
+                    },
+                    {
+                        targets: -2,
+                        render: function(data, type, full, meta) {
+                            var status = {
+                                0: {'title': 'NO', 'state': 'danger'},
+                                1: {'title': 'SI', 'state': 'success'},
+                            };
+                            if (typeof status[data] === 'undefined') {
+                                return data;
+                            }
+                            return '<span class="kt-badge kt-badge--' + status[data].state + ' kt-badge--inline kt-badge--pill">' + status[data].title + '</span>';
+                        },
+                    },
+                    {
+                        targets: -1,
+                        title: 'Acciones',
+                        orderable: false,
+                        render: function(data, type, full, meta) {
+
+                            return `<a class="btn btn-danger mt-sweetalert" href="javascript:;" data-id="` + full['especializacionId'] + `"><i class="fas fa-trash"></i> Eliminar </a>`;
+                        },
+                    }
+                ],
+            });
+
+            /***********************/
+            /*    INICIO GRABAR    */
+            /***********************/  
+            $('#grabarExperienciaProfesional').on('click', function(e){
+
+     
+                var especInstitucion = $("#especInstitucion");
+                var especTipoInstitucion = $("#especTipoInstitucion");
+                var especCargo = $("#especCargo");
+                var especFecInicio = $("#especFecInicio");
+                var especFecFin
+                var especHastaFecha;
+
+                if($("#especHastaFecha").is(':checked')){
+                    especHastaFecha = 1;
+                    especFecFin = "";
+                }else{
+                    especHastaFecha = 0;
+                    especFecFin = $("#especFecFin").val();
                 }
+
+
+                if( especInstitucion.val() == "" || 
+                    especCargo.val() == "" || 
+                    especTipoInstitucion.val() == "" || 
+                    especFecInicio.val() == "" ){
+                    
+                    swal.fire("ERROR", "¡Completa todos los campos para poder grabar!", "error");
+                    
+                }else{
+
+                        $.ajax({dataType:'JSON',
+                            type: 'POST',
+                            url: BASE_URL + 'ExperienciaProfesional/agregar',
+                            data : {docenteId: docenteId,
+                                     especInstitucion: especInstitucion.val(),
+                                     especCargo: especCargo.val(),
+                                     especTipoInstitucion: especTipoInstitucion.val(),
+                                     especFecInicio: especFecInicio.val(),
+                                     especFecFin: especFecFin,
+                                     especHastaFecha: especHastaFecha
+                            },
+                            success:function(response){
+                                                                                    
+                                $('#table_experiencia_profesional').DataTable().ajax.reload();     
+
+                                especInstitucion.val("");
+                                especCargo.val("");
+                                especTipoInstitucion.val("");
+                                especFecInicio.datepicker('setDate', null);
+
+                                $("#especFecFin").prop("disabled",false);
+                                $("#especFecFin").datepicker('setDate', null);
+                                $("#especHastaFecha").prop("checked",false);
+
+
+                            },
+                            error: function(xhr) { 
+                                console.log(xhr.statusText + xhr.responseText);
+                            }
+                        });
+                    
+                }
+
+
+            }); 
+            /*******************************/
+            /*          FIN GRABAR         */
+            /*******************************/
+
+            /*******************************/
+            /*     CLICK BOTON ELIMINAR    */
+            /*******************************/
+            $('#table_experiencia_profesional tbody').on( 'click', 'a.mt-sweetalert', function () {
                 
-            ],
-        });
+                    var data = $('#table_experiencia_profesional').DataTable().row( $(this).parents('tr') ).data();
+                    var rowToDelete = $(this).parents('tr');
+                                    
+                    swal.fire({
+                        title: 'CONFIRMACION REQUERIDA',
+                        text: "¿Esta seguro que desea eliminar el registro?",
+                        type: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Eliminar',
+                        cancelButtonText: 'Cancelar',
+                        reverseButtons: true
+                    }).then(function(result){
+                        if (result.value) {
+
+
+                            $.ajax({
+                                dataType:'JSON',
+                                type: 'POST',
+                                url: BASE_URL + 'ExperienciaProfesional/eliminar',
+                                data:{ especializacionId : data['especializacionId'] },
+                                success:function(data){
+
+                                    if(data){
+                                        swal.fire("CONFIRMACION!","El registro ha sido eliminado.","success")
+                                        $('#table_experiencia_profesional').DataTable().row(rowToDelete).remove().draw();    
+                                    }
+                                                       
+                                },
+                                error: function(xhr) { 
+                                    console.log(xhr.statusText + xhr.responseText);
+                                }
+                            });
+            
+                        } 
+
+                    });
+                    
+            } );
+            /*******************************/
+            /*  FIN CLICK BOTON ELIMINAR   */
+            /*******************************/
+
+    }
+
+
+
+    var initCargos = function() {
+        
+            var table_cargos = $('#table_cargos');
+
+            // begin first table
+            table_cargos.DataTable({
+                responsive: true,
+                processing: true,
+                serverSide: true,
+                paging: false,
+                searching: false,
+                ajax: {
+                    url: BASE_URL + 'Cargos/listar',
+                    data: function ( d ) {
+                        d.docenteId = $('#docenteId').val();
+                    },
+                    type: "POST"
+                },
+                columns: [
+                    {data: 'cargosId'},
+                    {data: 'carAcadNomInstitucion'},
+                    {data: 'carAcadArea'},
+                    {data: 'carAcadFecInicio'},
+                    {data: 'carAcadFecFin'},
+                    {data: 'carAcadeHastaFecha'},
+                    {data: 'Acciones'},
+                ],
+                columnDefs: [
+                    {
+                        targets: -3,
+                        render: function(data, type, full, meta) {
+                            if (full['carAcadFecFin'] === '00/00/0000') {
+                                return "---";
+                            }
+                            return full['carAcadFecFin'];
+                        },
+                    },
+                    {
+                        targets: -2,
+                        render: function(data, type, full, meta) {
+                            var status = {
+                                0: {'title': 'NO', 'state': 'danger'},
+                                1: {'title': 'SI', 'state': 'success'},
+                            };
+                            if (typeof status[data] === 'undefined') {
+                                return data;
+                            }
+                            return '<span class="kt-badge kt-badge--' + status[data].state + ' kt-badge--inline kt-badge--pill">' + status[data].title + '</span>';
+                        },
+                    },
+                    {
+                        targets: -1,
+                        title: 'Acciones',
+                        orderable: false,
+                        render: function(data, type, full, meta) {
+
+                            return `<a class="btn btn-danger mt-sweetalert" href="javascript:;" data-id="` + full['cargosId'] + `"><i class="fas fa-trash"></i> Eliminar </a>`;
+                        },
+                    }                    
+                ],
+            });
+
+
+
+            /***********************/
+            /*    INICIO GRABAR    */
+            /***********************/  
+            $('#btnGrabarCargos').on('click', function(e){
+
+     
+                var carAcadNomInstitucion = $("#carAcadNomInstitucion");
+                var carAcadArea = $("#carAcadArea");
+                var carAcadFecInicio = $("#carAcadFecInicio");
+                var carAcadFecFin
+                var carAcadeHastaFecha;
+
+                if($("#carAcadeHastaFecha").is(':checked')){
+                    carAcadeHastaFecha = 1;
+                    carAcadFecFin = "";
+                }else{
+                    carAcadeHastaFecha = 0;
+                    carAcadFecFin = $("#carAcadFecFin").val();
+                }
+
+
+                if( carAcadNomInstitucion.val() == "" || 
+                    carAcadArea.val() == "" || 
+                    carAcadFecInicio.val() == "" ){
+                    
+                    swal.fire("ERROR", "¡Completa todos los campos para poder grabar!", "error");
+                    
+                }else{
+
+                        $.ajax({dataType:'JSON',
+                            type: 'POST',
+                            url: BASE_URL + 'Cargos/agregar',
+                            data : {docenteId: docenteId,
+                                     carAcadNomInstitucion: carAcadNomInstitucion.val(),
+                                     carAcadArea: carAcadArea.val(),
+                                     carAcadFecInicio: carAcadFecInicio.val(),
+                                     carAcadFecFin: carAcadFecFin,
+                                     carAcadeHastaFecha: carAcadeHastaFecha
+                            },
+                            success:function(response){
+                                                                                    
+                                $('#table_cargos').DataTable().ajax.reload();     
+
+                                carAcadNomInstitucion.val("");
+                                carAcadArea.val("");
+                                carAcadFecInicio.datepicker('setDate', null);
+
+                                $("#carAcadFecFin").prop("disabled",false);
+                                $("#carAcadFecFin").datepicker('setDate', null);
+                                $("#carAcadeHastaFecha").prop("checked",false);
+
+
+                            },
+                            error: function(xhr) { 
+                                console.log(xhr.statusText + xhr.responseText);
+                            }
+                        });
+                    
+                }
+
+
+            }); 
+            /*******************************/
+            /*          FIN GRABAR         */
+            /*******************************/
+
+            /*******************************/
+            /*     CLICK BOTON ELIMINAR    */
+            /*******************************/
+            $('#table_cargos tbody').on( 'click', 'a.mt-sweetalert', function () {
+                
+                    var data = $('#table_cargos').DataTable().row( $(this).parents('tr') ).data();
+                    var rowToDelete = $(this).parents('tr');
+                                    
+                    swal.fire({
+                        title: 'CONFIRMACION REQUERIDA',
+                        text: "¿Esta seguro que desea eliminar el registro?",
+                        type: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Eliminar',
+                        cancelButtonText: 'Cancelar',
+                        reverseButtons: true
+                    }).then(function(result){
+                        if (result.value) {
+
+
+                            $.ajax({
+                                dataType:'JSON',
+                                type: 'POST',
+                                url: BASE_URL + 'Cargos/eliminar',
+                                data:{ cargosId : data['cargosId'] },
+                                success:function(data){
+
+                                    if(data){
+                                        swal.fire("CONFIRMACION!","El registro ha sido eliminado.","success")
+                                        $('#table_cargos').DataTable().row(rowToDelete).remove().draw();    
+                                    }
+                                                       
+                                },
+                                error: function(xhr) { 
+                                    console.log(xhr.statusText + xhr.responseText);
+                                }
+                            });
+            
+                        } 
+
+                    });
+                    
+            } );
+            /*******************************/
+            /*  FIN CLICK BOTON ELIMINAR   */
+            /*******************************/
+        
 
     }
 
@@ -502,7 +813,7 @@ var Registro = function () {
             paging: false,
             searching: false,
             ajax: {
-                url: BASE_URL + 'registro/idiomas/listar',
+                url: BASE_URL + 'Idiomas/listar',
                 data: function ( d ) {
                     d.docenteId = $('#docenteId').val();
                 },
@@ -549,7 +860,7 @@ var Registro = function () {
             paging: false,
             searching: false,
             ajax: {
-                url: BASE_URL + 'registro/reconocimientos/listar',
+                url: BASE_URL + 'Reconocimientos/listar',
                 data: function ( d ) {
                     d.docenteId = $('#docenteId').val();
                 },
@@ -597,7 +908,7 @@ var Registro = function () {
             paging: false,
             searching: false,
             ajax: {
-                url: BASE_URL + 'registro/asesorias/listar',
+                url: BASE_URL + 'Asesorias/listar',
                 data: function ( d ) {
                     d.docenteId = $('#docenteId').val();
                 },
@@ -643,7 +954,7 @@ var Registro = function () {
             paging: false,
             searching: false,
             ajax: {
-                url: BASE_URL + 'registro/investigaciones/listar',
+                url: BASE_URL + 'Investigaciones/listar',
                 data: function ( d ) {
                     d.docenteId = $('#docenteId').val();
                 },
@@ -692,7 +1003,7 @@ var Registro = function () {
             paging: false,
             searching: false,
             ajax: {
-                url: BASE_URL + 'registro/herramientas/listar',
+                url: BASE_URL + 'Herramientas/listar',
                 data: function ( d ) {
                     d.docenteId = $('#docenteId').val();
                 },
@@ -738,7 +1049,7 @@ var Registro = function () {
             $.ajax({
                 dataType:'JSON',
                 type: 'POST',
-                url: BASE_URL + 'provincia/prov_x_depa',
+                url: BASE_URL + 'Provincia/listar_provincias_x_depa',
                 data : {idDepa: idDepa},
                 success:function(response){
                                                                         
@@ -778,7 +1089,7 @@ var Registro = function () {
             $.ajax({
                 dataType:'JSON',
                 type: 'POST',
-                url: BASE_URL + 'distrito/dist_x_prov',
+                url: BASE_URL + 'Distrito/listar_distritos_x_prov',
                 data : {idProv: idProv},
                 success:function(response){
                                                                         
@@ -1091,7 +1402,7 @@ var Registro = function () {
             initCargos();
             initGrados();
             initExperienciaDocencia();
-            initExperienciaEspecializacion();
+            initExperienciaProfesional();
             initHerramientas();
             initReconocimientos();
             initInvestigacion();
