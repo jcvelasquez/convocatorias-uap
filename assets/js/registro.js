@@ -1160,44 +1160,170 @@ var Registro = function () {
     // Private functions
     var initReconocimientos = function() {
 
-        var table_reconocimientos = $('#table_reconocimientos');
+            var table_reconocimientos = $('#table_reconocimientos');
 
-        // begin first table
-        table_reconocimientos.DataTable({
-            responsive: true,
-            processing: true,
-            serverSide: true,
-            paging: false,
-            searching: false,
-            ajax: {
-                url: BASE_URL + 'Reconocimientos/listar',
-                data: function ( d ) {
-                    d.docenteId = $('#docenteId').val();
-                },
-                type: "POST"
-            },
-            columns: [
-                {data: 'reconocimientoId'},
-                {data: 'recInstPremio'},
-                {data: 'recInstitucion'},
-                {data: 'recInstFecha'},
-                {data: 'rutaArchivoDocSustentatorio'},
-                {data: 'Acciones'},
-            ],
-            columnDefs: [
-
-                {
-                    targets: -1,
-                    title: 'Acciones',
-                    orderable: false,
-                    render: function(data, type, full, meta) {
-
-                        return `<a class="btn btn-danger" href="` + BASE_URL + 'admin/convocatorias/editar/' + full['reconocimientoId'] + `"><i class="la la-edit"></i> </a>`;
+            // begin first table
+            table_reconocimientos.DataTable({
+                responsive: true,
+                processing: true,
+                serverSide: true,
+                paging: false,
+                searching: false,
+                ajax: {
+                    url: BASE_URL + 'Reconocimientos/listar',
+                    data: function ( d ) {
+                        d.docenteId = $('#docenteId').val();
                     },
+                    type: "POST"
+                },
+                columns: [
+                    {data: 'reconocimientoId'},
+                    {data: 'recInstPremio'},
+                    {data: 'recInstitucion'},
+                    {data: 'recInstFecha'},
+                    {data: 'recRutaArchivoCertificacion'},
+                    {data: 'Acciones'},
+                ],
+                columnDefs: [
+
+                    {
+                            targets: -2,
+                            title: 'Descargar',
+                            orderable: false,
+                            render: function(data, type, full, meta) {
+
+                                return `<a class="btn btn-danger ver_archivo" target="_blank" href="` + BASE_URL + `assets/uploads/reconocimientos/` + full['recRutaArchivoCertificacion'] + `" ><i class="fas fa-download"></i> Descargar </a>`;
+                            },
+                        },     
+                        {
+                            targets: -1,
+                            title: 'Acciones',
+                            orderable: false,
+                            render: function(data, type, full, meta) {
+
+                                return `<a class="btn btn-danger mt-sweetalert" href="javascript:;" data-id="` + full['reconocimientoId'] + `"><i class="fas fa-trash"></i> Eliminar </a>`;
+                            },
+                        } 
+                    
+                ],
+            });
+
+
+            /***********************/
+            /*    INICIO GRABAR    */
+            /***********************/  
+            $('#btnGrabarReconocimientos').on('click', function(e){
+     
+                var recInstPremio = $("#recInstPremio");
+                var recInstitucion = $("#recInstitucion");
+                var recInstFecha = $("#recInstFecha");
+                var recRutaArchivoCertificacion = $("#recRutaArchivoCertificacion");
+
+                if( recInstPremio.val() == "" || 
+                    recInstitucion.val() == "" || 
+                    recInstFecha.val() == "" || 
+                    recRutaArchivoCertificacion.val() == "" ){
+                    
+                    swal.fire("ERROR", "¡Completa todos los campos para poder grabar!", "error");
+                    
+                }else{
+
+                    var formDataReconocimientos = new FormData();
+
+                    formDataReconocimientos.append('docenteId', docenteId);
+                    formDataReconocimientos.append('recInstPremio', $("#recInstPremio").val());
+                    formDataReconocimientos.append('recInstitucion', $("#recInstitucion").val());
+                    formDataReconocimientos.append('recInstFecha', $("#recInstFecha").val());
+                    formDataReconocimientos.append('recRutaArchivoCertificacion', $("#recRutaArchivoCertificacion")[0].files[0]);
+
+                    $.ajax({url: BASE_URL + 'Reconocimientos/agregar',
+                             type:"post",
+                             data: formDataReconocimientos, //this is formData
+                             processData:false,
+                             contentType:false,
+                             cache:false,
+                             async:false,
+                             success: function(data){
+
+
+                                if(data.status == "error"){
+
+                                    swal.fire("ERROR", "Se produjo un error al grabar la información, el archivo seleccionado no puede exceder los 4Mb de tamaño y los archivos permitidos son imágenes JPG, PNG, GIF y PDF", "error");
+
+                                }else{
+
+                                    $('#table_reconocimientos').DataTable().ajax.reload();     
+
+                                    recInstPremio.val("");
+                                    recInstitucion.val("");
+                                    recRutaArchivoCertificacion.val("")
+                                    recInstFecha.datepicker('setDate', null);
+
+                                    swal.fire("CONFIRMACIÓN", "¡Información agregada correctamente!", "success");
+      
+                                }
+                            },
+                            error: function(xhr) { 
+
+                                swal.fire("ERROR", "Se produjo un error al grabar la información, el archivo seleccionado no puede exceder los 4Mb de tamaño y los archivos permitidos son imágenes JPG, PNG, GIF y PDF", "error");
+
+                            }
+                    });
+                    
                 }
+
+
+            }); 
+            /*******************************/
+            /*          FIN GRABAR         */
+            /*******************************/
+
+            /*******************************/
+            /*     CLICK BOTON ELIMINAR    */
+            /*******************************/
+            $('#table_reconocimientos tbody').on( 'click', 'a.mt-sweetalert', function () {
                 
-            ],
-        });
+                    var data = $('#table_reconocimientos').DataTable().row( $(this).parents('tr') ).data();
+                    var rowToDelete = $(this).parents('tr');
+                                    
+                    swal.fire({
+                        title: 'CONFIRMACION REQUERIDA',
+                        text: "¿Esta seguro que desea eliminar el registro?",
+                        type: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Eliminar',
+                        cancelButtonText: 'Cancelar',
+                        reverseButtons: true
+                    }).then(function(result){
+                        if (result.value) {
+
+
+                            $.ajax({
+                                dataType:'JSON',
+                                type: 'POST',
+                                url: BASE_URL + 'Reconocimientos/eliminar',
+                                data:{ reconocimientoId : data['reconocimientoId'] },
+                                success:function(data){
+
+                                    if(data){
+                                        swal.fire("CONFIRMACIÓN","El registro ha sido eliminado.","success")
+                                        $('#table_reconocimientos').DataTable().row(rowToDelete).remove().draw();    
+                                    }
+                                                       
+                                },
+                                error: function(xhr) { 
+                                    console.log(xhr.statusText + xhr.responseText);
+                                }
+                            });
+            
+                        } 
+
+                    });
+                    
+            } );
+            /*******************************/
+            /*  FIN CLICK BOTON ELIMINAR   */
+            /*******************************/
 
 
     }

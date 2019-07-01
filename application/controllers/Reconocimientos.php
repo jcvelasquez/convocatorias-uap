@@ -8,6 +8,7 @@ class Reconocimientos extends CI_Controller {
         //$this->load->helper('url');
 		//$this->load->helper('form');
 		//$this->load->library('session');
+		$this->load->library('upload');
 
 		$this->load->model('Reconocimientos_Institucionales_model');	
 
@@ -55,24 +56,62 @@ class Reconocimientos extends CI_Controller {
 	}
 
 
-	public function eliminar()
+	public function agregar(){
+
+    	$config['upload_path'] = "./assets/uploads/reconocimientos";
+    	$config['max_size']     = '4096';
+        $config['allowed_types']='gif|jpg|png|png|pdf';
+        $config['encrypt_name'] = TRUE;
+         
+        $this->upload->initialize($config);
+
+        if ( ! $this->upload->do_upload('recRutaArchivoCertificacion')){
+
+            $error = array('status' => 'error', 'error' => stripslashes($this->upload->display_errors()));
+
+			return $this->output
+						->set_content_type('application/json')
+						->set_output(json_encode($error));
+
+       }else{
+
+            $data = array('upload_data' => $this->upload->data());
+ 
+            $recRutaArchivoCertificacion = $data['upload_data']['file_name']; 
+
+            $recInstFecha = formatDatepickerToMySql( $this->input->post('recInstFecha') );
+    
+             
+            $params = array(
+				'docenteId' => $this->input->post('docenteId'),
+				'recInstPremio' => $this->input->post('recInstPremio'),
+				'recInstitucion' => $this->input->post('recInstitucion'),
+				'recInstFecha' => $recInstFecha,
+				'recRutaArchivoCertificacion' => $recRutaArchivoCertificacion,
+			);
+
+			$data = $this->Reconocimientos_Institucionales_model->agregar_reconocimientos_institucionales($params);
+
+			return $this->output
+						->set_content_type('application/json')
+						->set_output(json_encode($data));
+
+        }
+
+ 
+     }
+
+     public function eliminar()
 	{
-		$data['_view'] = 'admin/content/tpl-convocatorias';
-
-		$this->load->view('admin/index', $data);
-	}
-
-	public function get_escuela_x_id(){
-
-		$escuelaId = $this->input->post('escuelaId');
-
-		$data = $this->Escuelas_model->get_escuela_by_id($escuelaId);
+		
+		$reconocimientoId = $this->input->post('reconocimientoId');
+		$data = $this->Reconocimientos_Institucionales_model->eliminar_reconocimientos_institucionales($reconocimientoId);
 
 		return $this->output
 					->set_content_type('application/json')
 					->set_output(json_encode($data));
 
-    }
+	}
 
 
 

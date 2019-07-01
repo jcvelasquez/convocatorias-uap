@@ -24,7 +24,12 @@ class Reconocimientos_Institucionales_model extends CI_Model
 
         $records = array();
 
-        $this->db->select("rec.*");
+        $this->db->select("rec.reconocimientoId, 
+                           rec.docenteId,
+                           rec.recInstPremio,
+                           rec.recInstitucion,
+                           DATE_FORMAT(rec.recInstFecha, '%d/%m/%Y') as recInstFecha,
+                           rec.recRutaArchivoCertificacion");
         $this->db->from("reconocimientos_institucionales rec");
         $this->db->where("rec.docenteId ='{$docenteId}' ");
         $query = $this->db->get();
@@ -72,7 +77,7 @@ class Reconocimientos_Institucionales_model extends CI_Model
     /*
      * function to delete plato
      */
-    function borrar_reconocimientos_institucionales($reconocimientoId)
+    function eliminar_reconocimientos_institucionales($reconocimientoId)
     {
         return $this->db->delete('reconocimientos_institucionales',array('reconocimientoId'=>$reconocimientoId));
     }

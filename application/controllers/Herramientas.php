@@ -28,16 +28,6 @@ class Herramientas extends CI_Controller {
 
 	}
 
-	public function listar_select()
-	{
-
-		$escuelas = $this->Grados_Titulos_model->get_all_escuelas_select();
-
-		return $this->output
-					->set_content_type('application/json')
-					->set_output(json_encode($escuelas));
-
-	}
 
 
 	public function agregar_editar($escuelaId)
@@ -45,11 +35,6 @@ class Herramientas extends CI_Controller {
 
 		$data['escuelaId'] = $escuelaId;
 		$data['_view'] = 'admin/content/tpl-escuelas-detalle';
-
-
-		//$data['sedes'] = $this->Sedes_model->get_all_sedes_select();
-		//$data['cursos'] = $this->Cursos_model->get_all_cursos_select();
-
 		$data['js'] = array('js/escuelas.js');
 
 		$this->load->view('admin/index', $data);

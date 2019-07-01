@@ -18,7 +18,7 @@
 					<th>Institución</th>
 					<th>Certificado el</th>
 					<th>Archivo</th>
-					<th width="70">Acciones</th>
+					<th>Acciones</th>
 				</tr>
 			</thead>
 		</table>
@@ -27,8 +27,6 @@
 
 		<!-- inicio repeater -->
 		<div id="kt_repeater_reconocimientos">
-			<!-- <div data-repeater-list="">
-				<div data-repeater-item=""> -->
 
 					<div class="row">
 
@@ -39,7 +37,7 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<input type="text" class="form-control" title="Premio" placeholder="Premio" />
+								<input type="text" id="recInstPremio" name="recInstPremio" class="form-control" title="Premio" placeholder="Premio o reconocimiento" />
 									
 							</div>
 							
@@ -52,15 +50,9 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<input type="text" class="form-control form-control-danger" placeholder="Institucion">
+								<input type="text" id="recInstitucion" name="recInstitucion" class="form-control form-control-danger" placeholder="Institucion">
 							</div>
 						</div>
-<!-- 
-						<div class="col-lg-1">
-							<a href="javascript:;" data-repeater-delete="" class="btn btn-remover btn-danger btn-icon">
-								<i class="la la-remove"></i>
-							</a>
-						</div> -->
 
 					</div>
 
@@ -74,7 +66,7 @@
 									</span>
 								</div>
 								<div class="custom-file">
-									<input type="file" class="custom-file-input" id="customFile">
+									<input type="file" class="custom-file-input" id="recRutaArchivoCertificacion" name="recRutaArchivoCertificacion">
 									<label class="custom-file-label" for="customFile">Adjuntar certificación</label>
 								</div>
 							</div>
@@ -89,21 +81,15 @@
 										<i class="la la-calendar-check-o"></i>
 									</span>
 								</div>
-								<input type="text" class="form-control" readonly placeholder="Fecha de certificación" id="kt_datepicker_2" />
+								<input type="text" class="form-control form-date" placeholder="dd/mm/aaaa (Certificación)" id="recInstFecha" name="recInstFecha" />
 							</div>
 						</div>
 
-<!-- 
-					</div>
-
-				</div> -->
 			</div>
-			<div data-repeater-create="" class="btn btn btn-primary">
-				<span>
+			<button id="btnGrabarReconocimientos" class="btn btn btn-primary">
 					<i class="la la-plus"></i>
 					<span>Agregar y grabar reconocimiento</span>
-				</span>
-			</div>
+			</button>
 		</div>
 		<!-- fin de repeater -->
 	</div>
