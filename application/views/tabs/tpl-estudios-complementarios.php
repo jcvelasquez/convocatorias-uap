@@ -27,18 +27,16 @@
 					<th>Nivel</th>
 					<th>Certificado el</th>
 					<th>Archivo</th>
-					<th width="70">Acciones</th>
+					<th>Acciones</th>
 				</tr>
 			</thead>
 		</table>
 		<!--end: Datatable -->
 
+
 		<!-- inicio repeater -->
 		<div id="kt_repeater_idiomas">
 
-<!-- 			<div data-repeater-list="">
-				<div data-repeater-item="">
- -->
 					<div class="row">
 
 						<div class="col-lg-6">
@@ -48,7 +46,7 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<input type="text" class="form-control form-control-danger" placeholder="Centro de estudios">
+								<input id="idioCentroEstudios" name="idioCentroEstudios" type="text" class="form-control form-control-danger" placeholder="Centro de estudios">
 							</div>
 						</div>
 
@@ -59,7 +57,7 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<select class="form-control kt-selectpicker" title="idioma" data-style="btn-primary">
+								<select class="form-control kt-selectpicker" title="idioma" id="idioNombre" name="idioNombre" data-style="btn-primary">
 									<option value="">Seleccione el idioma</option>
 									<option value="Inglés">Inglés</option>
 									<option value="Francés">Francés</option>
@@ -77,7 +75,7 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<select class="form-control kt-selectpicker" title="Nivel" data-style="btn-primary">
+								<select id="idioNivel" name="idioNivel" class="form-control kt-selectpicker" title="Nivel" data-style="btn-primary">
 									<option value="">Seleccione el nivel</option>
 									<option value="Basico">Básico</option>
 									<option value="Intermedio">Intermedio</option>
@@ -86,16 +84,10 @@
 							</div>
 						</div>
 
-						<!-- <div class="col-lg-1">
-							<a href="javascript:;" data-repeater-delete="" class="btn btn-remover btn-danger btn-icon">
-								<i class="la la-remove"></i>
-							</a>
-						</div> -->
-
 					</div>
 
 
-					<div class="row kt-hide">
+					<div class="row kt-hide" id="otrosIdiomas">
 
 						<div class="col-lg-12">
 							<div class="input-group">
@@ -104,7 +96,7 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<input type="text" class="form-control form-control-danger" placeholder="Si seleccionó OTROS indique idioma">
+								<input type="text" name="idioNombreOtro" id="idioNombreOtro" class="form-control form-control-danger" placeholder="Si seleccionó OTROS indique idioma">
 							</div>
 						</div>
 
@@ -121,7 +113,7 @@
 									</span>
 								</div>
 								<div class="custom-file">
-									<input type="file" class="custom-file-input" id="customFile">
+									<input type="file" class="custom-file-input" id="idioRutaArchivoCertificacion" name="idioRutaArchivoCertificacion">
 									<label class="custom-file-label" for="customFile">Adjuntar certificación</label>
 								</div>
 							</div>
@@ -136,7 +128,7 @@
 										<i class="la la-calendar-check-o"></i>
 									</span>
 								</div>
-								<input type="text" class="form-control" readonly placeholder="Fecha de certificación" id="kt_datepicker_2" />
+								<input type="text" class="form-control form-date" placeholder="dd/mm/aaaa (Certificación)" id="idioFechaCertificacion" name="idioFechaCertificacion" />
 							</div>
 						</div>
 
@@ -146,12 +138,10 @@
 
 				</div>
 			</div> -->
-			<div data-repeater-create="" class="btn btn btn-primary">
-				<span>
+			<button class="btn btn btn-primary" id="grabarIdiomas">
 					<i class="la la-plus"></i>
 					<span>Agregar y grabar idioma</span>
-				</span>
-			</div>
+			</button>
 		</div>
 		<!-- fin de repeater -->
 	</div>
@@ -176,7 +166,7 @@
 					<th>Nivel</th>
 					<th>Certificado el</th>
 					<th>Archivo</th>
-					<th width="70">Acciones</th>
+					<th>Acciones</th>
 				</tr>
 			</thead>
 		</table>
@@ -196,7 +186,7 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<input type="text" class="form-control form-control-danger" placeholder="Especialidad o curso">
+								<input type="text" name="inforEspecialidadCurso" id="inforEspecialidadCurso" class="form-control form-control-danger" placeholder="Especialidad o curso">
 							</div>
 						</div>
 
@@ -208,7 +198,7 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<select class="form-control kt-selectpicker" title="Nivel" data-style="btn-primary">
+								<select class="form-control kt-selectpicker" id="inforNivel" name="inforNivel" title="Nivel" data-style="btn-primary">
 									<option value="">Seleccione un nivel</opion>
 									<option value="Básico">Básico</option>
 									<option value="Intermedio">Intermedio</option>
@@ -225,17 +215,10 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<input type="text" class="form-control form-control-danger" placeholder="Centro de estudios">
+								<input type="text" id="inforCentroEstudio" name="inforCentroEstudio" class="form-control form-control-danger" placeholder="Centro de estudios">
 							</div>
 						</div>
 
-
-
-					<!-- 	<div class="col-lg-1">
-							<a href="javascript:;" data-repeater-delete="" class="btn btn-remover btn-danger btn-icon">
-								<i class="la la-remove"></i>
-							</a>
-						</div> -->
 
 					</div>
 
@@ -250,7 +233,7 @@
 									</span>
 								</div>
 								<div class="custom-file">
-									<input type="file" class="custom-file-input" id="customFile">
+									<input type="file" class="custom-file-input" name="inforRutaArchivoCertificacion" id="inforRutaArchivoCertificacion">
 									<label class="custom-file-label" for="customFile">Adjuntar certificación</label>
 								</div>
 							</div>
@@ -263,7 +246,7 @@
 										<i class="la la-calendar-check-o"></i>
 									</span>
 								</div>
-								<input type="text" class="form-control" readonly placeholder="Fecha de certificación" id="kt_datepicker_2" />
+								<input type="text" class="form-control form-date" name="inforFechaCertificacion"  placeholder="Fecha de certificación" id="inforFechaCertificacion" />
 							</div>
 						</div>
 
@@ -274,12 +257,10 @@
 				</div>
 			</div>
 			 -->
-			<div data-repeater-create="" class="btn btn btn-primary">
-				<span>
+			<button id="btnGrabarHerramientas" class="btn btn btn-primary">
 					<i class="la la-plus"></i>
 					<span>Agregar y grabar herramienta</span>
-				</span>
-			</div>
+			</button>
 		</div>
 		<!-- fin de repeater -->
 	</div>

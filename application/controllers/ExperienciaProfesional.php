@@ -41,34 +41,10 @@ class ExperienciaProfesional extends CI_Controller {
 		$this->load->view('admin/index', $data);
 	}
 
-	/*public function get_escuela_x_id(){
-
-		$escuelaId = $this->input->post('escuelaId');
-
-		$data = $this->Escuelas_model->get_escuela_by_id($escuelaId);
-
-		return $this->output
-					->set_content_type('application/json')
-					->set_output(json_encode($data));
-
-    }*/
-
-	public function formatDatepickerToMySql($date) {
-
-        if ($date != FALSE) {
-	        $dateArr = explode("/", $date);
-	        $newDate = $dateArr[2] . '-' . $dateArr[1] . '-' . $dateArr[0];
-	        return $newDate;
-	    }
-
-	    return FALSE;
-	
-	}
-
     public function agregar(){
 
-    	$especFecInicio = $this->formatDatepickerToMySql( $this->input->post('especFecInicio') );
-    	$especFecFin = $this->formatDatepickerToMySql( $this->input->post('especFecFin') );
+    	$especFecInicio = formatDatepickerToMySql( $this->input->post('especFecInicio') );
+    	$especFecFin = formatDatepickerToMySql( $this->input->post('especFecFin') );
 
 		$params = array(
 			'docenteId' => $this->input->post('docenteId'),

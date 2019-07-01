@@ -12,6 +12,7 @@ var Registro = function () {
     var docenteId;
     var error;
     var success;
+    var formDataIdioma;
 
     var arrows = {
             leftArrow: '<i class="la la-angle-left"></i>',
@@ -92,6 +93,13 @@ var Registro = function () {
         }); 
 
         $('.kt-wizard-v3__nav-item').on('click', function(e){  e.preventDefault();   });
+
+/*
+        $('#idioRutaArchivoCertificacion').on('change', function(){
+
+            formDataIdioma = new FormData(this);
+
+        }); */
 
     }
 
@@ -796,53 +804,355 @@ var Registro = function () {
     }
 
 
-
-    
-
     // Private functions
     var initIdiomas = function() {
 
 
-        var table_idiomas = $('#table_idiomas');
+            var table_idiomas = $('#table_idiomas');
 
-        // begin first table
-        table_idiomas.DataTable({
-            responsive: true,
-            processing: true,
-            serverSide: true,
-            paging: false,
-            searching: false,
-            ajax: {
-                url: BASE_URL + 'Idiomas/listar',
-                data: function ( d ) {
-                    d.docenteId = $('#docenteId').val();
-                },
-                type: "POST"
-            },
-            columns: [
-                {data: 'idiomaId'},
-                {data: 'idioCentroEstudios'},
-                {data: 'idioNombre'},
-                {data: 'idioNivel'},
-                {data: 'idioFechaCertificacion'},
-                {data: 'idioRutaArchivoCertificacion'},
-                {data: 'Acciones'},
-            ],
-            columnDefs: [
-
-                {
-                    targets: -1,
-                    title: 'Acciones',
-                    orderable: false,
-                    render: function(data, type, full, meta) {
-
-                        return `<a class="btn btn-danger" href="` + BASE_URL + 'admin/convocatorias/editar/' + full['idiomaId'] + `"><i class="la la-edit"></i> </a>`;
+            // begin first table
+            table_idiomas.DataTable({
+                responsive: true,
+                processing: true,
+                serverSide: true,
+                paging: false,
+                searching: false,
+                ajax: {
+                    url: BASE_URL + 'Idiomas/listar',
+                    data: function ( d ) {
+                        d.docenteId = $('#docenteId').val();
                     },
+                    type: "POST"
+                },
+                columns: [
+                    {data: 'idiomaId'},
+                    {data: 'idioCentroEstudios'},
+                    {data: 'idioNombre'},
+                    {data: 'idioNivel'},
+                    {data: 'idioFechaCertificacion'},
+                    {data: 'idioRutaArchivoCertificacion'},
+                    {data: 'Acciones'},
+                ],
+                columnDefs: [
+                     {
+                        targets: -2,
+                        title: 'Descargar',
+                        orderable: false,
+                        render: function(data, type, full, meta) {
+
+                            return `<a class="btn btn-danger ver_archivo" target="_blank" href="` + BASE_URL + `assets/uploads/idiomas/` + full['idioRutaArchivoCertificacion'] + `" ><i class="fas fa-download"></i> Descargar </a>`;
+                        },
+                    },     
+                    {
+                        targets: -1,
+                        title: 'Acciones',
+                        orderable: false,
+                        render: function(data, type, full, meta) {
+
+                            return `<a class="btn btn-danger mt-sweetalert" href="javascript:;" data-id="` + full['idiomaId'] + `"><i class="fas fa-trash"></i> Eliminar </a>`;
+                        },
+                    }    
+                    
+                ],
+            });
+
+            /***********************/
+            /*    INICIO GRABAR    */
+            /***********************/  
+            $('#grabarIdiomas').on('click', function(e){
+     
+                var idioCentroEstudios = $("#idioCentroEstudios");
+                var idioNombre = $("#idioNombre");
+                var idioNivel = $("#idioNivel");
+                var idioFechaCertificacion = $("#idioFechaCertificacion");
+                var idioRutaArchivoCertificacion = $("#idioRutaArchivoCertificacion");
+                var idioFechaCertificacion = $("#idioFechaCertificacion");
+
+                if( idioCentroEstudios.val() == "" || 
+                    idioNombre.val() == "" || 
+                    idioNivel.val() == "" || 
+                    idioFechaCertificacion.val() == "" || 
+                    idioRutaArchivoCertificacion.val() == "" || 
+                    idioFechaCertificacion.val() == "" ){
+                    
+                    swal.fire("ERROR", "¡Completa todos los campos para poder grabar!", "error");
+                    
+                }else{
+
+                    var formDataIdioma = new FormData();
+
+                    formDataIdioma.append('docenteId', docenteId);
+                    formDataIdioma.append('idioCentroEstudios', $("#idioCentroEstudios").val());
+                    formDataIdioma.append('idioNombre', $("#idioNombre").val());
+                    formDataIdioma.append('idioNivel', $("#idioNivel").val());
+                    formDataIdioma.append('idioFechaCertificacion', $("#idioFechaCertificacion").val());
+                    formDataIdioma.append('idioRutaArchivoCertificacion', $("#idioRutaArchivoCertificacion")[0].files[0]);
+
+                    $.ajax({url: BASE_URL + 'Idiomas/agregar',
+                             type:"post",
+                             data: formDataIdioma, //this is formData
+                             processData:false,
+                             contentType:false,
+                             cache:false,
+                             async:false,
+                             success: function(data){
+
+                                if(data.status == "error"){
+
+                                   swal.fire("ERROR", "Se produjo un error al grabar la información, el archivo seleccionado no puede exceder los 4Mb de tamaño y los archivos permitidos son imágenes JPG, PNG, GIF y PDF", "error");
+
+                                }else{
+
+                                    $('#table_idiomas').DataTable().ajax.reload();     
+
+                                    idioCentroEstudios.val("");
+                                    idioNombre.val("");
+                                    idioNivel.val("");
+                                    idioRutaArchivoCertificacion.val("")
+                                    idioFechaCertificacion.datepicker('setDate', null);
+
+                                    swal.fire("CONFIRMACIÓN", "¡Información agregada correctamente!", "success");
+      
+                                }
+
+
+                            },
+                            error: function(xhr) { 
+
+                                swal.fire("ERROR", "Se produjo un error al grabar la información, el archivo seleccionado no puede exceder los 4Mb de tamaño y los archivos permitidos son imágenes JPG, PNG, GIF y PDF", "error");
+
+                            }
+                    });
+                    
                 }
+
+
+            }); 
+            /*******************************/
+            /*          FIN GRABAR         */
+            /*******************************/
+
+            /*******************************/
+            /*     CLICK BOTON ELIMINAR    */
+            /*******************************/
+            $('#table_idiomas tbody').on( 'click', 'a.mt-sweetalert', function () {
                 
-            ],
-        });
+                    var data = $('#table_idiomas').DataTable().row( $(this).parents('tr') ).data();
+                    var rowToDelete = $(this).parents('tr');
+                                    
+                    swal.fire({
+                        title: 'CONFIRMACION REQUERIDA',
+                        text: "¿Esta seguro que desea eliminar el registro?",
+                        type: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Eliminar',
+                        cancelButtonText: 'Cancelar',
+                        reverseButtons: true
+                    }).then(function(result){
+                        if (result.value) {
+
+
+                            $.ajax({
+                                dataType:'JSON',
+                                type: 'POST',
+                                url: BASE_URL + 'Idiomas/eliminar',
+                                data:{ idiomaId : data['idiomaId'] },
+                                success:function(data){
+
+                                    if(data){
+                                        swal.fire("CONFIRMACIÓN","El registro ha sido eliminado.","success")
+                                        $('#table_idiomas').DataTable().row(rowToDelete).remove().draw();    
+                                    }
+                                                       
+                                },
+                                error: function(xhr) { 
+                                    console.log(xhr.statusText + xhr.responseText);
+                                }
+                            });
+            
+                        } 
+
+                    });
+                    
+            } );
+            /*******************************/
+            /*  FIN CLICK BOTON ELIMINAR   */
+            /*******************************/
         
+
+    }
+
+
+    // Private functions
+    var initHerramientas = function() {
+
+            var table_herramientas = $('#table_herramientas');
+
+            // begin first table
+            table_herramientas.DataTable({
+                responsive: true,
+                processing: true,
+                serverSide: true,
+                paging: false,
+                searching: false,
+                ajax: {
+                    url: BASE_URL + 'Herramientas/listar',
+                    data: function ( d ) {
+                        d.docenteId = $('#docenteId').val();
+                    },
+                    type: "POST"
+                },
+                columns: [
+                    {data: 'informaticaId'},
+                    {data: 'inforEspecialidadCurso'},
+                    {data: 'inforCentroEstudio'},
+                    {data: 'inforNivel'},
+                    {data: 'inforFechaCertificacion'},
+                    {data: 'inforRutaArchivoCertificacion'},
+                    {data: 'Acciones'},
+                ],
+                columnDefs: [
+                    {
+                        targets: -2,
+                        title: 'Descargar',
+                        orderable: false,
+                        render: function(data, type, full, meta) {
+
+                            return `<a class="btn btn-danger ver_archivo" target="_blank" href="` + BASE_URL + `assets/uploads/herramientas/` + full['inforRutaArchivoCertificacion'] + `" ><i class="fas fa-download"></i> Descargar </a>`;
+                        },
+                    },     
+                    {
+                        targets: -1,
+                        title: 'Acciones',
+                        orderable: false,
+                        render: function(data, type, full, meta) {
+
+                            return `<a class="btn btn-danger mt-sweetalert" href="javascript:;" data-id="` + full['informaticaId'] + `"><i class="fas fa-trash"></i> Eliminar </a>`;
+                        },
+                    }  
+                ],
+            });
+
+            /***********************/
+            /*    INICIO GRABAR    */
+            /***********************/  
+            $('#btnGrabarHerramientas').on('click', function(e){
+     
+                var inforEspecialidadCurso = $("#inforEspecialidadCurso");
+                var inforCentroEstudio = $("#inforCentroEstudio");
+                var inforNivel = $("#inforNivel");
+                var inforFechaCertificacion = $("#inforFechaCertificacion");
+                var inforRutaArchivoCertificacion = $("#inforRutaArchivoCertificacion");
+
+                if( inforEspecialidadCurso.val() == "" || 
+                    inforCentroEstudio.val() == "" || 
+                    inforNivel.val() == "" || 
+                    inforFechaCertificacion.val() == "" || 
+                    inforRutaArchivoCertificacion.val() == "" ){
+                    
+                    swal.fire("ERROR", "¡Completa todos los campos para poder grabar!", "error");
+                    
+                }else{
+
+                    var formDataHerramientas = new FormData();
+
+                    formDataHerramientas.append('docenteId', docenteId);
+                    formDataHerramientas.append('inforEspecialidadCurso', $("#inforEspecialidadCurso").val());
+                    formDataHerramientas.append('inforCentroEstudio', $("#inforCentroEstudio").val());
+                    formDataHerramientas.append('inforNivel', $("#inforNivel").val());
+                    formDataHerramientas.append('inforFechaCertificacion', $("#inforFechaCertificacion").val());
+                    formDataHerramientas.append('inforRutaArchivoCertificacion', $("#inforRutaArchivoCertificacion")[0].files[0]);
+
+                    $.ajax({url: BASE_URL + 'Herramientas/agregar',
+                             type:"post",
+                             data: formDataHerramientas, //this is formData
+                             processData:false,
+                             contentType:false,
+                             cache:false,
+                             async:false,
+                             success: function(data){
+
+
+                                if(data.status == "error"){
+
+                                    swal.fire("ERROR", "Se produjo un error al grabar la información, el archivo seleccionado no puede exceder los 4Mb de tamaño y los archivos permitidos son imágenes JPG, PNG, GIF y PDF", "error");
+
+                                }else{
+
+                                    $('#table_herramientas').DataTable().ajax.reload();     
+
+                                    inforEspecialidadCurso.val("");
+                                    inforCentroEstudio.val("");
+                                    inforNivel.val("");
+                                    inforRutaArchivoCertificacion.val("")
+                                    inforFechaCertificacion.datepicker('setDate', null);
+
+                                    swal.fire("CONFIRMACIÓN", "¡Información agregada correctamente!", "success");
+      
+                                }
+                            },
+                            error: function(xhr) { 
+
+                                swal.fire("ERROR", "Se produjo un error al grabar la información, el archivo seleccionado no puede exceder los 4Mb de tamaño y los archivos permitidos son imágenes JPG, PNG, GIF y PDF", "error");
+
+                            }
+                    });
+                    
+                }
+
+
+            }); 
+            /*******************************/
+            /*          FIN GRABAR         */
+            /*******************************/
+
+            /*******************************/
+            /*     CLICK BOTON ELIMINAR    */
+            /*******************************/
+            $('#table_herramientas tbody').on( 'click', 'a.mt-sweetalert', function () {
+                
+                    var data = $('#table_herramientas').DataTable().row( $(this).parents('tr') ).data();
+                    var rowToDelete = $(this).parents('tr');
+                                    
+                    swal.fire({
+                        title: 'CONFIRMACION REQUERIDA',
+                        text: "¿Esta seguro que desea eliminar el registro?",
+                        type: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Eliminar',
+                        cancelButtonText: 'Cancelar',
+                        reverseButtons: true
+                    }).then(function(result){
+                        if (result.value) {
+
+
+                            $.ajax({
+                                dataType:'JSON',
+                                type: 'POST',
+                                url: BASE_URL + 'Herramientas/eliminar',
+                                data:{ informaticaId : data['informaticaId'] },
+                                success:function(data){
+
+                                    if(data){
+                                        swal.fire("CONFIRMACIÓN","El registro ha sido eliminado.","success")
+                                        $('#table_herramientas').DataTable().row(rowToDelete).remove().draw();    
+                                    }
+                                                       
+                                },
+                                error: function(xhr) { 
+                                    console.log(xhr.statusText + xhr.responseText);
+                                }
+                            });
+            
+                        } 
+
+                    });
+                    
+            } );
+            /*******************************/
+            /*  FIN CLICK BOTON ELIMINAR   */
+            /*******************************/
+
 
     }
 
@@ -990,51 +1300,7 @@ var Registro = function () {
 
 
 
-    // Private functions
-    var initHerramientas = function() {
-
-        var table_herramientas = $('#table_herramientas');
-
-        // begin first table
-        table_herramientas.DataTable({
-            responsive: true,
-            processing: true,
-            serverSide: true,
-            paging: false,
-            searching: false,
-            ajax: {
-                url: BASE_URL + 'Herramientas/listar',
-                data: function ( d ) {
-                    d.docenteId = $('#docenteId').val();
-                },
-                type: "POST"
-            },
-            columns: [
-                {data: 'informaticaId'},
-                {data: 'inforEspecialidadCurso'},
-                {data: 'inforCentroEstudio'},
-                {data: 'inforNivel'},
-                {data: 'inforFechaCertificacion'},
-                {data: 'inforRutaArchivoCertificacion'},
-                {data: 'Acciones'},
-            ],
-            columnDefs: [
-
-                {
-                    targets: -1,
-                    title: 'Acciones',
-                    orderable: false,
-                    render: function(data, type, full, meta) {
-
-                        return `<a class="btn btn-danger" href="` + BASE_URL + 'admin/convocatorias/editar/' + full['informaticaId'] + `"><i class="la la-edit"></i> </a>`;
-                    },
-                }
-                
-            ],
-        });
-
-
-    }
+    
 
 
     
@@ -1398,6 +1664,11 @@ var Registro = function () {
 
             docenteId = $('#docenteId').val();
 
+            initWizard(); 
+            initFormFields();
+            initValidation();
+            initSubmit();
+
             //REPEATERS
             initCargos();
             initGrados();
@@ -1409,10 +1680,7 @@ var Registro = function () {
             initAsesoria();
             initIdiomas();
 
-            initWizard(); 
-            initFormFields();
-            initValidation();
-            initSubmit();
+            
 
 
             

@@ -86,8 +86,8 @@ class Cargos extends CI_Controller {
 	public function eliminar()
 	{
 
-		$especializacionId = $this->input->post('especializacionId');
-		$data = $this->Experiencia_Profesional_model->eliminar_experiencia_profesional($especializacionId);
+		$cargosId = $this->input->post('cargosId');
+		$data = $this->Cargos_Academicos_model->eliminar_cargos_academicos($cargosId);
 
 		return $this->output
 					->set_content_type('application/json')

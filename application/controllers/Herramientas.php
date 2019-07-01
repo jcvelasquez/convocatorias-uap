@@ -8,6 +8,7 @@ class Herramientas extends CI_Controller {
         //$this->load->helper('url');
 		//$this->load->helper('form');
 		//$this->load->library('session');
+		$this->load->library('upload');
 
 		$this->load->model('Herramientas_Informaticas_model');	
 
@@ -54,25 +55,63 @@ class Herramientas extends CI_Controller {
 		$this->load->view('admin/index', $data);
 	}
 
+	public function agregar(){
 
-	public function eliminar()
+    	$config['upload_path'] = "./assets/uploads/herramientas";
+    	$config['max_size']     = '4096';
+        $config['allowed_types']='gif|jpg|png|png|pdf';
+        $config['encrypt_name'] = TRUE;
+         
+        $this->upload->initialize($config);
+
+        if ( ! $this->upload->do_upload('inforRutaArchivoCertificacion')){
+
+            $error = array('status' => 'error', 'error' => stripslashes($this->upload->display_errors()));
+
+			return $this->output
+						->set_content_type('application/json')
+						->set_output(json_encode($error));
+
+       }else{
+
+            $data = array('upload_data' => $this->upload->data());
+ 
+            $inforRutaArchivoCertificacion = $data['upload_data']['file_name']; 
+
+            $inforFechaCertificacion = formatDatepickerToMySql( $this->input->post('inforFechaCertificacion') );
+    
+             
+            $params = array(
+				'docenteId' => $this->input->post('docenteId'),
+				'inforEspecialidadCurso' => $this->input->post('inforEspecialidadCurso'),
+				'inforCentroEstudio' => $this->input->post('inforCentroEstudio'),
+				'inforNivel' => $this->input->post('inforNivel'),
+				'inforFechaCertificacion' => $inforFechaCertificacion,
+				'inforRutaArchivoCertificacion' => $inforRutaArchivoCertificacion,
+			);
+
+			$data = $this->Herramientas_Informaticas_model->agregar_herramientas_informaticas($params);
+
+			return $this->output
+						->set_content_type('application/json')
+						->set_output(json_encode($data));
+
+        }
+
+ 
+     }
+
+     public function eliminar()
 	{
-		$data['_view'] = 'admin/content/tpl-convocatorias';
-
-		$this->load->view('admin/index', $data);
-	}
-
-	public function get_escuela_x_id(){
-
-		$escuelaId = $this->input->post('escuelaId');
-
-		$data = $this->Escuelas_model->get_escuela_by_id($escuelaId);
+		
+		$informaticaId = $this->input->post('informaticaId');
+		$data = $this->Herramientas_Informaticas_model->eliminar_herramientas_informaticas($informaticaId);
 
 		return $this->output
 					->set_content_type('application/json')
 					->set_output(json_encode($data));
 
-    }
+	}
 
 
 

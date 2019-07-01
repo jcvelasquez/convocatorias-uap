@@ -24,7 +24,13 @@ class Herramientas_Informaticas_model extends CI_Model
 
         $records = array();
 
-        $this->db->select("herr.*");
+        $this->db->select("herr.informaticaId, 
+                           herr.docenteId,
+                           herr.inforEspecialidadCurso,
+                           herr.inforCentroEstudio,
+                           herr.inforNivel,
+                           DATE_FORMAT(herr.inforFechaCertificacion, '%d/%m/%Y') as inforFechaCertificacion,
+                           herr.inforRutaArchivoCertificacion");
         $this->db->from("herramientas_informaticas herr");
         $this->db->where("herr.docenteId ='20' ");
         $query = $this->db->get();
@@ -72,7 +78,7 @@ class Herramientas_Informaticas_model extends CI_Model
     /*
      * function to delete plato
      */
-    function borrar_herramientas_informaticas($informaticaId)
+    function eliminar_herramientas_informaticas($informaticaId)
     {
         return $this->db->delete('herramientas_informaticas',array('informaticaId'=>$informaticaId));
     }

@@ -47,7 +47,7 @@ class Registro extends CI_Controller {
 
 			//CARGO VISTA DE INICIO DE SESION
 			$data['_view'] = 'registro';
-			$data['js'] = array('js/sesion.js', 'js/registro.js');
+			$data['js'] = array('js/main.js', 'js/sesion.js', 'js/registro.js');
 			
 			$this->load->view('index', $data);
 

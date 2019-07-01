@@ -24,7 +24,13 @@ class Idiomas_model extends CI_Model
 
         $records = array();
 
-        $this->db->select("idi.*");
+        $this->db->select("idi.idiomaId, 
+                           idi.docenteId,
+                           idi.idioNombre,
+                           idi.idioCentroEstudios,
+                           idi.idioNivel,
+                           DATE_FORMAT(idi.idioFechaCertificacion, '%d/%m/%Y') as idioFechaCertificacion,
+                           idi.idioRutaArchivoCertificacion");
         $this->db->from("idiomas idi");
         $this->db->where("idi.docenteId = {$docenteId} ");
         $query = $this->db->get();
@@ -72,7 +78,7 @@ class Idiomas_model extends CI_Model
     /*
      * function to delete plato
      */
-    function borrar_idiomas($idiomaId)
+    function eliminar_idiomas($idiomaId)
     {
         return $this->db->delete('idiomas',array('idiomaId'=>$idiomaId));
     }
