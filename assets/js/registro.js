@@ -40,7 +40,75 @@ var Registro = function () {
             templates: arrows
         });
 
-        
+        $("#archivoPdfSunedu").dropzone({ 
+              url: BASE_URL + "Adicionales/agregar_sunedu",
+              paramName: "archivoSunedu", // The name that will be used to transfer the file
+              maxFilesize: 5, // MB
+              maxFiles: 1,
+              addRemoveLinks: true,
+              dictRemoveFile : "Eliminar archivo",
+              removedfile: function(file) {
+
+                    var name = file.name; 
+
+                    $.ajax({
+                        type: 'POST',
+                        url: 'Adicionales/eliminar',
+                        data: { docenteId: docenteId },
+                        dataType: 'html',
+                        success:function(response){
+                                                                                    
+                         var _ref;
+                        return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
+
+                        },
+                        error: function(xhr) { 
+                            console.log(xhr.statusText + xhr.responseText);
+                        }
+                    });
+
+                    
+              },
+              params: { docenteId: docenteId },
+              accept: function(file, done) {
+                if (file.name == "justinbieber.jpg") {
+                  done("Naha, you don't.");
+                }
+                else { done(); }
+              },
+              init: function() { 
+
+                    var myDropzone = this;
+
+                    $.ajax({
+                      url: BASE_URL + 'Adicionales/listar_archivo_sunedu',
+                      type: 'post',
+                      data: { docenteId: docenteId },
+                      dataType: 'json',
+                      success: function(response){
+
+                        //console.log(response);
+
+                        $.each(response, function(key,value) {
+
+                            if(key == "archivoSunedu")
+                            console.log(value);
+                          /*var mockFile = { name: value.name, size: value.size };
+
+                          myDropzone.emit("addedfile", mockFile);
+                          myDropzone.emit("thumbnail", mockFile, value.path);
+                          myDropzone.emit("complete", mockFile);*/
+
+                        });
+
+                      }
+                    });
+
+              }
+
+        });
+
+
 
         $("#expDocHastaActual").click(function () {
 
@@ -1185,25 +1253,24 @@ var Registro = function () {
                     {data: 'Acciones'},
                 ],
                 columnDefs: [
-
                     {
-                            targets: -2,
-                            title: 'Descargar',
-                            orderable: false,
-                            render: function(data, type, full, meta) {
+                        targets: -2,
+                        title: 'Descargar',
+                        orderable: false,
+                        render: function(data, type, full, meta) {
 
-                                return `<a class="btn btn-danger ver_archivo" target="_blank" href="` + BASE_URL + `assets/uploads/reconocimientos/` + full['recRutaArchivoCertificacion'] + `" ><i class="fas fa-download"></i> Descargar </a>`;
-                            },
-                        },     
-                        {
-                            targets: -1,
-                            title: 'Acciones',
-                            orderable: false,
-                            render: function(data, type, full, meta) {
+                            return `<a class="btn btn-danger ver_archivo" target="_blank" href="` + BASE_URL + `assets/uploads/reconocimientos/` + full['recRutaArchivoCertificacion'] + `" ><i class="fas fa-download"></i> Descargar </a>`;
+                        },
+                    },     
+                    {
+                        targets: -1,
+                        title: 'Acciones',
+                        orderable: false,
+                        render: function(data, type, full, meta) {
 
-                                return `<a class="btn btn-danger mt-sweetalert" href="javascript:;" data-id="` + full['reconocimientoId'] + `"><i class="fas fa-trash"></i> Eliminar </a>`;
-                            },
-                        } 
+                            return `<a class="btn btn-danger mt-sweetalert" href="javascript:;" data-id="` + full['reconocimientoId'] + `"><i class="fas fa-trash"></i> Eliminar </a>`;
+                        },
+                    } 
                     
                 ],
             });
@@ -1328,109 +1395,332 @@ var Registro = function () {
 
     }
 
+
+
+    // Private functions
+    var initInvestigacion = function() {
+
+            var table_investigaciones = $('#table_investigaciones');
+
+            // begin first table
+            table_investigaciones.DataTable({
+                responsive: true,
+                processing: true,
+                serverSide: true,
+                paging: false,
+                searching: false,
+                ajax: {
+                    url: BASE_URL + 'Investigaciones/listar',
+                    data: function ( d ) {
+                        d.docenteId = $('#docenteId').val();
+                    },
+                    type: "POST"
+                },
+                columns: [
+                    {data: 'investigacionesId'},
+                    {data: 'invesTitulo'},
+                    {data: 'invesTipoPublicacion'},
+                    {data: 'invesFecha'},
+                    {data: 'invesNroOrcid'},
+                    {data: 'invesRutaArchivoInvestigacion'},
+                    {data: 'Acciones'},
+                ],
+                columnDefs: [
+
+                    {
+                        targets: -2,
+                        title: 'Archivos',
+                        orderable: false,
+                        render: function(data, type, full, meta) {
+
+                            return `<a class="btn btn-danger ver_archivo" target="_blank" href="` + BASE_URL + `assets/uploads/investigaciones/` + full['invesRutaArchivoInvestigacion'] + `" ><i class="fas fa-download"></i> Descargar </a>`;
+                        },
+                    },     
+                    {
+                        targets: -1,
+                        title: 'Acciones',
+                        orderable: false,
+                        render: function(data, type, full, meta) {
+
+                            return `<a class="btn btn-danger mt-sweetalert" href="javascript:;" data-id="` + full['reconocimientoId'] + `"><i class="fas fa-trash"></i> Eliminar </a>`;
+                        },
+                    } 
+                    
+                ],
+            });
+
+
+            /***********************/
+            /*    INICIO GRABAR    */
+            /***********************/  
+            $('#btnGrabarInvestigaciones').on('click', function(e){
+     
+                var invesTitulo = $("#invesTitulo");
+                var invesTipoPublicacion = $("#invesTipoPublicacion");
+                var invesNroOrcid = $("#invesNroOrcid");
+                var invesFecha = $("#invesFecha");
+                var invesRutaArchivoInvestigacion = $("#invesRutaArchivoInvestigacion");
+
+                if( invesTitulo.val() == "" || 
+                    invesTipoPublicacion.val() == "" || 
+                    invesNroOrcid.val() == "" || 
+                    invesFecha.val() == "" || 
+                    invesRutaArchivoInvestigacion.val() == "" ){
+                    
+                    swal.fire("ERROR", "¡Completa todos los campos para poder grabar!", "error");
+                    
+                }else{
+
+                    var formDataInvestigaciones = new FormData();
+
+                    formDataInvestigaciones.append('docenteId', docenteId);
+                    formDataInvestigaciones.append('invesTitulo', $("#invesTitulo").val());
+                    formDataInvestigaciones.append('invesNroOrcid', $("#invesNroOrcid").val());
+                    formDataInvestigaciones.append('invesTipoPublicacion', $("#invesTipoPublicacion").val());
+                    formDataInvestigaciones.append('invesFecha', $("#invesFecha").val());
+                    formDataInvestigaciones.append('invesRutaArchivoInvestigacion', $("#invesRutaArchivoInvestigacion")[0].files[0]);
+
+                    $.ajax({url: BASE_URL + 'Investigaciones/agregar',
+                             type:"post",
+                             data: formDataInvestigaciones, //this is formData
+                             processData:false,
+                             contentType:false,
+                             cache:false,
+                             async:false,
+                             success: function(data){
+
+
+                                if(data.status == "error"){
+
+                                    swal.fire("ERROR", "Se produjo un error al grabar la información, el archivo seleccionado no puede exceder los 4Mb de tamaño y los archivos permitidos son imágenes JPG, PNG, GIF y PDF", "error");
+
+                                }else{
+
+                                    $('#table_investigaciones').DataTable().ajax.reload();     
+
+                                    invesTitulo.val("");
+                                    invesNroOrcid.val("");
+                                    invesTipoPublicacion.val("");
+                                    invesRutaArchivoInvestigacion.val("")
+                                    invesFecha.datepicker('setDate', null);
+
+                                    swal.fire("CONFIRMACIÓN", "¡Información agregada correctamente!", "success");
+      
+                                }
+                            },
+                            error: function(xhr) { 
+
+                                swal.fire("ERROR", "Se produjo un error al grabar la información, el archivo seleccionado no puede exceder los 4Mb de tamaño y los archivos permitidos son imágenes JPG, PNG, GIF y PDF", "error");
+
+                            }
+                    });
+                    
+                }
+
+
+            }); 
+            /*******************************/
+            /*          FIN GRABAR         */
+            /*******************************/
+
+            /*******************************/
+            /*     CLICK BOTON ELIMINAR    */
+            /*******************************/
+            $('#table_investigaciones tbody').on( 'click', 'a.mt-sweetalert', function () {
+                
+                    var data = $('#table_investigaciones').DataTable().row( $(this).parents('tr') ).data();
+                    var rowToDelete = $(this).parents('tr');
+                                    
+                    swal.fire({
+                        title: 'CONFIRMACION REQUERIDA',
+                        text: "¿Esta seguro que desea eliminar el registro?",
+                        type: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Eliminar',
+                        cancelButtonText: 'Cancelar',
+                        reverseButtons: true
+                    }).then(function(result){
+                        if (result.value) {
+
+
+                            $.ajax({
+                                dataType:'JSON',
+                                type: 'POST',
+                                url: BASE_URL + 'Investigaciones/eliminar',
+                                data:{ investigacionesId : data['investigacionesId'] },
+                                success:function(data){
+
+                                    if(data){
+                                        swal.fire("CONFIRMACIÓN","El registro ha sido eliminado.","success")
+                                        $('#table_investigaciones').DataTable().row(rowToDelete).remove().draw();    
+                                    }
+                                                       
+                                },
+                                error: function(xhr) { 
+                                    console.log(xhr.statusText + xhr.responseText);
+                                }
+                            });
+            
+                        } 
+
+                    });
+                    
+            } );
+            /*******************************/
+            /*  FIN CLICK BOTON ELIMINAR   */
+            /*******************************/
+     
+
+       
+    }
     
     
 
     // Private functions
     var initAsesoria = function() {
         
-        var table_asesorias = $('#table_asesorias');
+            var table_asesorias = $('#table_asesorias');
 
-        // begin first table
-        table_asesorias.DataTable({
-            responsive: true,
-            processing: true,
-            serverSide: true,
-            paging: false,
-            searching: false,
-            ajax: {
-                url: BASE_URL + 'Asesorias/listar',
-                data: function ( d ) {
-                    d.docenteId = $('#docenteId').val();
-                },
-                type: "POST"
-            },
-            columns: [
-                {data: 'tesisId'},
-                {data: 'tesNombreTesis'},
-                {data: 'tesTipo'},
-                {data: 'tesFecha'},
-                {data: 'tesNroResolucion'},
-                {data: 'Acciones'},
-            ],
-            columnDefs: [
-
-                {
-                    targets: -1,
-                    title: 'Acciones',
-                    orderable: false,
-                    render: function(data, type, full, meta) {
-
-                        return `<a class="btn btn-danger" href="` + BASE_URL + 'admin/convocatorias/editar/' + full['tesisId'] + `"><i class="la la-edit"></i> </a>`;
+            // begin first table
+            table_asesorias.DataTable({
+                responsive: true,
+                processing: true,
+                serverSide: true,
+                paging: false,
+                searching: false,
+                ajax: {
+                    url: BASE_URL + 'Asesorias/listar',
+                    data: function ( d ) {
+                        d.docenteId = $('#docenteId').val();
                     },
-                }
-                
-            ],
-        });
-
-
-    }
-
-
-    // Private functions
-    var initInvestigacion = function() {
-
-        var table_investigaciones = $('#table_investigaciones');
-
-        // begin first table
-        table_investigaciones.DataTable({
-            responsive: true,
-            processing: true,
-            serverSide: true,
-            paging: false,
-            searching: false,
-            ajax: {
-                url: BASE_URL + 'Investigaciones/listar',
-                data: function ( d ) {
-                    d.docenteId = $('#docenteId').val();
+                    type: "POST"
                 },
-                type: "POST"
-            },
-            columns: [
-                {data: 'investigacionesId'},
-                {data: 'invesTitulo'},
-                {data: 'invesTipoPublicacion'},
-                {data: 'invesFecha'},
-                {data: 'invesNroRegistro'},
-                {data: 'rutaArchivoInvestigacion'},
-                {data: 'Acciones'},
-            ],
-            columnDefs: [
+                columns: [
+                    {data: 'tesisId'},
+                    {data: 'tesNombreTesis'},
+                    {data: 'tesTipo'},
+                    {data: 'tesNivel'},
+                    {data: 'tesNroResolucion'},
+                    {data: 'Acciones'},
+                ],
+                columnDefs: [
 
-                {
-                    targets: -1,
-                    title: 'Acciones',
-                    orderable: false,
-                    render: function(data, type, full, meta) {
+                    {
+                        targets: -1,
+                        title: 'Acciones',
+                        orderable: false,
+                        render: function(data, type, full, meta) {
 
-                        return `<a class="btn btn-danger" href="` + BASE_URL + 'admin/convocatorias/editar/' + full['reconocimientoId'] + `"><i class="la la-edit"></i> </a>`;
-                    },
-                }
-                
-            ],
-        });
+                            return `<a class="btn btn-danger mt-sweetalert" href="javascript:;" data-id="` + full['tesisId'] + `"><i class="fas fa-trash"></i> Eliminar </a>`;
+                        },
+                    } 
+                    
+                ],
+            });
+
+            /*******************************************/
+            /*              GRABAR GRADOS              */
+            /*******************************************/
+            $('#btnGrabarAsesorias').on('click', function(e){
+
      
+                var tesNombreTesis = $("#tesNombreTesis");
+                var tesTipo = $("#tesTipo");
+                var tesNivel = $("#tesNivel");
+                var tesNroResolucion = $("#tesNroResolucion");
 
-       
+                if( tesNombreTesis.val() == "" || tesTipo.val() == "" || tesNivel.val() == "" || tesNroResolucion.val() == ""){
+                    
+                    swal.fire("ERROR", "¡Completa todos los campos para poder grabar!", "error");
+                    
+                }else{
+
+                        $.ajax({dataType:'JSON',
+                            type: 'POST',
+                            url: BASE_URL + 'Asesorias/agregar',
+                            data : {docenteId: docenteId,
+                                     tesNombreTesis: tesNombreTesis.val(),
+                                     tesTipo: tesTipo.val(),
+                                     tesNivel: tesNivel.val(),
+                                     tesNroResolucion: tesNroResolucion.val()
+                                    },
+                            success:function(response){
+                                                                                    
+                                $('#table_asesorias').DataTable().ajax.reload();     
+
+                                tesNombreTesis.val("");
+                                tesTipo.val("");
+                                tesNivel.val("");
+                                tesNroResolucion.val("");
+
+                            },
+                            error: function(xhr) { 
+                                console.log(xhr.statusText + xhr.responseText);
+                            }
+                        });
+
+                }
+
+
+            }); 
+            /*******************************************/
+            /*           FIN GRABAR GRADOS             */
+            /*******************************************/
+
+            /*******************************/
+            /*     CLICK BOTON ELIMINAR    */
+            /*******************************/
+            $('#table_asesorias tbody').on( 'click', 'a.mt-sweetalert', function () {
+                
+                    var data = $('#table_asesorias').DataTable().row( $(this).parents('tr') ).data();
+                    var rowToDelete = $(this).parents('tr');
+                                    
+                    swal.fire({
+                        title: 'CONFIRMACION REQUERIDA',
+                        text: "¿Esta seguro que desea eliminar el registro?",
+                        type: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Eliminar',
+                        cancelButtonText: 'Cancelar',
+                        reverseButtons: true
+                    }).then(function(result){
+                        if (result.value) {
+
+
+                            $.ajax({
+                                dataType:'JSON',
+                                type: 'POST',
+                                url: BASE_URL + 'Asesorias/eliminar',
+                                data:{ tesisId : data['tesisId'] },
+                                success:function(data){
+
+                                    if(data){
+                                        swal.fire("CONFIRMACION!","El registro ha sido eliminado.","success")
+                                        $('#table_asesorias').DataTable().row(rowToDelete).remove().draw();    
+                                    }
+                                                       
+                                },
+                                error: function(xhr) { 
+                                    console.log(xhr.statusText + xhr.responseText);
+                                }
+                            });
+            
+                        } 
+
+                    });
+                    
+            } );
+            /*******************************/
+            /*  FIN CLICK BOTON ELIMINAR   */
+            /*******************************/
+
+
     }
 
 
-
     
 
 
-    
-    
 
 
     /*******************************************/
@@ -1497,11 +1787,6 @@ var Registro = function () {
                         $('#ubdistrito_idDist').append($('<option>', { value: idDist, text: distrito }));
                     }
                     
-                    //SI SE MANDO EL LABEL A SELECCIONAR SE CARGA
-                    /*if(SelectedIndex != ""){
-                        $("#ubprovincia_idProv option").filter(function(){ return $.trim($(this).val()) ==  SelectedIndex}).prop('selected', true);
-                        $('#ubprovincia_idProv').selectpicker('refresh');
-                    }*/
     
                 },
                 error: function(xhr) { 
@@ -1540,10 +1825,6 @@ var Registro = function () {
         // Change event
         wizard.on('change', function(wizard) {
             
-            
-             console.log(wizard.currentStep);
-            //KTUtil.scrollTop(); 
-            //if(wizard.getStep() = 2)
         
         });
     }
@@ -1613,12 +1894,8 @@ var Registro = function () {
                 tieneSegEspecialidad: {
                     required: true
                 },
-                archivoDina: {
-                    required: {
-                        depends: function(element) {
-                            return ($("#tieneRegistroDina").prop('checked'));
-                        }
-                    }
+                registroDina: {
+                    required: false
                 }
 
             },
@@ -1658,6 +1935,7 @@ var Registro = function () {
                     var dbpk     = $(element).data("dbpk");
                     var isCheked = ($(element).prop('checked'))? '1' : '0';
 
+                    var autosave    = $(element).data("autosave");
 
                     if(campo == "docNroDocumento"){
 
@@ -1683,7 +1961,7 @@ var Registro = function () {
                     /*************************************************************/
                     //FUNCION PERSONALIZADO PARA LOS CHECKBOX - SI ESTA EN CHECK
                     /*************************************************************/
-                    if (this.checkable(element) || (element.name in this.submitted || this.optional(element))) {
+                    if ((this.checkable(element) || this.optional(element)) && autosave) {
                         
                         if($(element).val() != "") {
 
@@ -1716,10 +1994,10 @@ var Registro = function () {
                     //PARA TODOS LOS CAMPOS QUE NO SON CHECKBOXES
                     /*************************************************************/
                     
-                    if (!this.checkable(element) && (element.name in this.submitted || !this.optional(element))) {
+                    if (!this.checkable(element) && (element.name in this.submitted || !this.optional(element)) && autosave) {
 
                         //SI SE SACO EL FOCUS Y ES VALIDO, SE GRABA
-                        /*if($(element).val() != "") {
+                        if($(element).val() != "") {
 
                                 $.ajax({
                                     dataType:'JSON',
@@ -1736,7 +2014,7 @@ var Registro = function () {
                                     }
                                 });
 
-                        }*/
+                        }
                     }
 
             },

@@ -56,7 +56,7 @@ class Asesoria_Tesis_model extends CI_Model
     */
     function agregar_asesoria_tesis($params)
     {
-        $this->db->insert('uap_docentes',$params);
+        $this->db->insert('asesoria_tesis',$params);
         return $this->db->insert_id();
     }
 
@@ -72,9 +72,9 @@ class Asesoria_Tesis_model extends CI_Model
     /*
      * function to delete plato
      */
-    function borrar_asesoria_tesis($tesisId)
+    function eliminar_asesoria_tesis($tesisId)
     {
-        return $this->db->delete('uap_docentes',array('tesisId'=>$tesisId));
+        return $this->db->delete('asesoria_tesis',array('tesisId'=>$tesisId));
     }
 
 

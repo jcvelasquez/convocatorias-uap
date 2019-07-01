@@ -37,7 +37,7 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<input type="text" id="recInstPremio" name="recInstPremio" class="form-control" title="Premio" placeholder="Premio o reconocimiento" />
+								<input type="text" data-autosave="false" id="recInstPremio" name="recInstPremio" class="form-control" title="Premio" placeholder="Premio o reconocimiento" />
 									
 							</div>
 							
@@ -50,7 +50,7 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<input type="text" id="recInstitucion" name="recInstitucion" class="form-control form-control-danger" placeholder="Institucion">
+								<input type="text" data-autosave="false" id="recInstitucion" name="recInstitucion" class="form-control form-control-danger" placeholder="Institucion">
 							</div>
 						</div>
 
@@ -66,8 +66,8 @@
 									</span>
 								</div>
 								<div class="custom-file">
-									<input type="file" class="custom-file-input" id="recRutaArchivoCertificacion" name="recRutaArchivoCertificacion">
-									<label class="custom-file-label" for="customFile">Adjuntar certificación</label>
+									<input type="file" data-autosave="false" class="custom-file-input" id="recRutaArchivoCertificacion" name="recRutaArchivoCertificacion">
+									<label class="custom-file-label" for="recRutaArchivoCertificacion">Adjuntar certificación</label>
 								</div>
 							</div>
 						</div>
@@ -81,7 +81,7 @@
 										<i class="la la-calendar-check-o"></i>
 									</span>
 								</div>
-								<input type="text" class="form-control form-date" placeholder="dd/mm/aaaa (Certificación)" id="recInstFecha" name="recInstFecha" />
+								<input type="text" data-autosave="false" class="form-control form-date" placeholder="dd/mm/aaaa (Certificación)" id="recInstFecha" name="recInstFecha" />
 							</div>
 						</div>
 

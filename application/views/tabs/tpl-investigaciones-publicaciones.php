@@ -18,7 +18,7 @@
 					<th>Publicado el</th>
 					<th># ORCID</th>
 					<th>Archivo</th>
-					<th width="70">Acciones</th>
+					<th>Acciones</th>
 				</tr>
 			</thead>
 		</table>
@@ -26,9 +26,6 @@
 
 		<!-- inicio repeater -->
 		<div id="kt_repeater_investigacion">
-
-			<!-- <div data-repeater-list="">
-				<div data-repeater-item=""> -->
 
 					<div class="row">
 
@@ -39,7 +36,7 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<input type="text" class="form-control form-control-danger" placeholder="Titulo de la investigación">
+								<input type="text" data-autosave="false" class="form-control form-control-danger" id="invesTitulo" name="invesTitulo" placeholder="Titulo de la investigación">
 							</div>
 						</div>
 
@@ -50,10 +47,10 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<select class="form-control kt-selectpicker" title="idioma" data-style="btn-primary">
-									<option>Seleccione tipo</option>
-									<option>Dos</option>
-									<option>Tres</option>
+								<select class="form-control kt-selectpicker" data-autosave="false" id="invesTipoPublicacion" name="invesTipoPublicacion" title="Tipo de Investigacion" data-style="btn-primary">
+									<option value="">Seleccione tipo</option>
+									<option value="Dos">Dos</option>
+									<option value="Tres">Tres</option>
 								</select>
 							</div>
 						</div>
@@ -65,15 +62,9 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<input type="text" class="form-control form-control-danger" placeholder="Código ORCID">
+								<input type="text" class="form-control" data-autosave="false" id="invesNroOrcid" name="invesNroOrcid" placeholder="Código ORCID">
 							</div>
 						</div>
-
-				<!-- 		<div class="col-lg-1">
-							<a href="javascript:;" data-repeater-delete="" class="btn btn-remover btn-danger btn-remover btn-icon">
-								<i class="la la-remove"></i>
-							</a>
-						</div> -->
 
 					</div>
 
@@ -88,8 +79,8 @@
 									</span>
 								</div>
 								<div class="custom-file">
-									<input type="file" class="custom-file-input" id="customFile">
-									<label class="custom-file-label" for="customFile">Adjuntar documento sustento</label>
+									<input type="file" class="custom-file-input" data-autosave="false" id="invesRutaArchivoInvestigacion" name="invesRutaArchivoInvestigacion">
+									<label class="custom-file-label" for="invesRutaArchivoInvestigacion">Adjuntar documento sustento</label>
 								</div>
 							</div>
 						</div>
@@ -103,19 +94,17 @@
 										<i class="la la-calendar-check-o"></i>
 									</span>
 								</div>
-								<input type="text" class="form-control" readonly placeholder="Fecha de publicación" id="kt_datepicker_2" />
+								<input type="text" data-autosave="false"class="form-control form-date" placeholder="dd/mm/aaaa (Publicación)" id="invesFecha" name="invesFecha" />
 							</div>
 						</div>
-<!-- 
-					</div>
-				</div> -->
+
 			</div>
-			<div data-repeater-create="" class="btn btn btn-primary">
+			<button id="btnGrabarInvestigaciones" class="btn btn btn-primary">
 				<span>
 					<i class="la la-plus"></i>
 					<span>Agregar y grabar investigacion</span>
 				</span>
-			</div>
+			</button>
 		</div>
 		<!-- fin de repeater -->
 	</div>
@@ -137,9 +126,9 @@
 					<th width="70">ID</th>
 					<th>Nombre de tesis</th>
 					<th>Tipo de tesis</th>
-					<th>Publicada el</th>
+					<th>Nivel</th>
 					<th># RESOLUCION</th>
-					<th width="70">Acciones</th>
+					<th>Acciones</th>
 				</tr>
 			</thead>
 		</table>
@@ -147,9 +136,22 @@
 
 		<!-- inicio repeater -->
 		<div id="kt_repeater_asesoria">
-			<!-- <div data-repeater-list="">
-				<div data-repeater-item="">
- -->
+
+					<div class="row">
+
+						<div class="col-lg-12">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text">
+										<i class="la la-envelope"></i>
+									</span>
+								</div>
+								<input type="text" data-autosave="false" name="tesNombreTesis" id="tesNombreTesis" class="form-control " placeholder="Nombre de la tesis">
+							</div>
+						</div>
+
+					</div>
+
 					<div class="row">
 
 						<div class="col-lg-4">
@@ -159,7 +161,7 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<select class="form-control kt-selectpicker" title="Nivel" data-style="btn-primary">
+								<select class="form-control kt-selectpicker" data-autosave="false" id="tesTipo" name="tesTipo" title="Tipo" data-style="btn-primary">
 									<option value="">Seleccione tipo</option>
 									<option value="Asesoría">Asesoría</option>
 									<option value="Dirección">Dirección</option>
@@ -176,10 +178,10 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<select class="form-control kt-selectpicker" title="Nivel" data-style="btn-primary">
-									<option>Nivel</option>
-									<option>Dos</option>
-									<option>Tres</option>
+								<select class="form-control kt-selectpicker" data-autosave="false" id="tesNivel" name="tesNivel" title="Nivel" data-style="btn-primary">
+									<option value="">Seleccione un nivel</option>
+									<option value="Dos">Dos</option>
+									<option value="Tres">Tres</option>
 								</select>
 							</div>
 						</div>
@@ -191,52 +193,15 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<input type="text" class="form-control form-control-danger" placeholder="Nº Resolución">
+								<input type="text" id="tesNroResolucion" data-autosave="false" name="tesNroResolucion" class="form-control form-control-danger" placeholder="Nº Resolución">
 							</div>
-						</div>
-
-					<!-- 	<div class="col-lg-1">
-							<a href="javascript:;" data-repeater-delete="" class="btn btn-danger btn-icon btn-remover">
-								<i class="la la-remove"></i>
-							</a>
-						</div>
- -->
-					</div>
-
-
-					<div class="row">
-
-						<div class="col-lg-12">
-							<div class="input-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text">
-										<i class="la la-envelope"></i>
-									</span>
-								</div>
-								<input type="text" class="form-control form-control-danger" placeholder="Nombre de la tesis">
-							</div>
-						</div>
-
-						<div class="col-lg-3">
-							<!-- <div class="input-group date">
-								<div class="input-group-prepend">
-									<span class="input-group-text">
-										<i class="la la-calendar-check-o"></i>
-									</span>
-								</div>
-								<input type="text" class="form-control" readonly placeholder="Fecha de certificación" id="kt_datepicker_2" />
-							</div> -->
 						</div>
 
 					</div>
 
-				<!-- </div>
-			</div> -->
-			<div data-repeater-create="" class="btn btn btn-primary">
-				<span>
+			<div id="btnGrabarAsesorias" class="btn btn btn-primary">
 					<i class="la la-plus"></i>
 					<span>Agregar y grabar asesoría</span>
-				</span>
 			</div>
 		</div>
 		<!-- fin de repeater -->
@@ -253,6 +218,7 @@
 <div class="row">
 	<div class="col-lg-12">
 		<div class="input-group">
+			<?php /* ?>
 			<div class="input-group-prepend">
 				<span class="input-group-text">
 					<label class="kt-checkbox kt-checkbox--single">
@@ -262,53 +228,25 @@
 
 							if(isset($tieneRegistroDina)){ 
 								if($tieneRegistroDina == 1){
-									echo '<input type="checkbox" id="tieneRegistroDina" name="tieneRegistroDina" data-dbtable="indicadores" value="1" data-dbpk="indicadorId" checked>';
+									echo '<input type="checkbox" id="tieneRegistroDina" name="tieneRegistroDina" data-dbtable="indicadores" data-autosave="true" value="1" data-dbpk="indicadorId" checked>';
 								}else{
-									echo '<input type="checkbox" data-dbpk="indicadorId" id="tieneRegistroDina" name="tieneRegistroDina" value="1" data-dbtable="indicadores">';
+									echo '<input type="checkbox" data-dbpk="indicadorId" id="tieneRegistroDina" name="tieneRegistroDina" data-autosave="true" value="1" data-dbtable="indicadores">';
 								}
 							}else{ 
-								echo '<input type="checkbox" data-dbpk="indicadorId" id="tieneRegistroDina" name="tieneRegistroDina" value="1" data-dbtable="indicadores">';
+								echo '<input type="checkbox" data-dbpk="indicadorId" id="tieneRegistroDina" name="tieneRegistroDina" data-autosave="true" value="1" data-dbtable="indicadores">';
 							} 
 						?>
 						<span></span>
 					</label>
 				</span>
 			</div>
-			<input type="text" class="form-control" placeholder="Si cuentas con un enlace de registro DINA" id="archivoDina" title="Ingrese un registro DINA si marco la opción""  name="archivoDina" data-dbtable="archivos" data-dbpk="archivosId" >
-		</div>
-	</div>
-</div>
-<div class="row">
-	<div class="col-lg-12">
-		<div class="input-group">
+			<?php */ ?>
 			<div class="input-group-prepend">
 				<span class="input-group-text">
-					<label class="kt-checkbox kt-checkbox--single">
-						<?php 
-
-							$tieneRegistroRegina = $docente['tieneRegistroRegina']; 
-
-							if(isset($tieneRegistroRegina)){ 
-								if($tieneRegistroRegina == 1){
-									echo '<input type="checkbox" id="tieneRegistroRegina" name="tieneRegistroRegina" data-dbtable="indicadores" value="1" data-dbpk="indicadorId" title="Ingrese un registro Regina si marco la opción" checked>';
-								}else{
-									echo '<input type="checkbox" data-dbpk="indicadorId" id="tieneRegistroRegina" name="tieneRegistroRegina" value="1" data-dbtable="indicadores" title="Ingrese un registro Regina si marco la opción">';
-								}
-							}else{ 
-								echo '<input type="checkbox" data-dbpk="indicadorId" id="tieneRegistroRegina" name="tieneRegistroRegina" value="1" data-dbtable="indicadores">';
-							} 
-						?>
-						<span></span>
-					</label>
+					<i class="la la-envelope"></i>
 				</span>
 			</div>
-			<input type="text" placeholder="Si cuentas con un enlace de registro REGINA" class="form-control" id="archivoRegina" name="archivoRegina" data-dbtable="archivos" data-dbpk="archivosId" title="Ingrese un registro REGINA si marco la opción">
-			
+			<input type="text" data-autosave="true" class="form-control" placeholder="Si cuentas con un enlace de registro DINA" id="registroDina" title="Ingrese un registro DINA si marco la opción"  name="registroDina" data-dbtable="adicionales" data-dbpk="adicionalId" value="<?php echo $docente['registroDina']; ?>" >
 		</div>
 	</div>
-
 </div>
-
-
-
-

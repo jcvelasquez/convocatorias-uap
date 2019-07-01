@@ -10,13 +10,22 @@
 
 	<div class="col-lg-12">
 
-		<!-- inicio dropzone -->
-		<div class="kt-dropzone dropzone m-dropzone--success" action="inc/api/dropzone/upload.php" id="m-dropzone-three">
+		<div id="archivoPdfSunedu" class="dropConvocatorias">
+
 			<div class="kt-dropzone__msg dz-message needsclick">
 				<h3 class="kt-dropzone__msg-title">Arrastre los archivos hasta aquí o haga clic para subir archivos.</h3>
 				<span class="kt-dropzone__msg-desc">Solo imágenes, pdfs y documentos word estan permitidos</span>
 			</div>
+			
+
 		</div>
+		<!-- inicio dropzone -->
+		<!-- <div class="kt-dropzone dropzone m-dropzone--success" action="inc/api/dropzone/upload.php" id="dropRegistrosSunedu">
+			<div class="kt-dropzone__msg dz-message needsclick">
+				<h3 class="kt-dropzone__msg-title">Arrastre los archivos hasta aquí o haga clic para subir archivos.</h3>
+				<span class="kt-dropzone__msg-desc">Solo imágenes, pdfs y documentos word estan permitidos</span>
+			</div>
+		</div> -->
 		<!-- fin de dropzone -->
 		
 	</div>
@@ -44,14 +53,14 @@
 						if(isset($tieneGradoMaestro)){ 
 
 							if($tieneGradoMaestro == 1){
-								echo '<input type="checkbox" name="tieneGradoMaestro" id="tieneGradoMaestro" data-dbtable="indicadores" data-dbpk="indicadorId" value="1" checked title="Marque la opción de grado maestro">';
+								echo '<input type="checkbox" data-autosave="true" name="tieneGradoMaestro" id="tieneGradoMaestro" data-dbtable="indicadores" data-dbpk="indicadorId" value="1" checked title="Marque la opción de grado maestro">';
 							}else{
-								echo '<input type="checkbox" name="tieneGradoMaestro" id="tieneGradoMaestro" data-dbtable="indicadores" data-dbpk="indicadorId" value="1" title="Marque la opción de grado maestro">';
+								echo '<input type="checkbox" data-autosave="true" name="tieneGradoMaestro" id="tieneGradoMaestro" data-dbtable="indicadores" data-dbpk="indicadorId" value="1" title="Marque la opción de grado maestro">';
 							}
 
 						}else{ 
 
-							echo '<input type="checkbox" name="tieneGradoMaestro" id="tieneGradoMaestro" data-dbtable="indicadores" data-dbpk="indicadorId" value="1" title="Marque la opción de grado maestro">';
+							echo '<input type="checkbox" data-autosave="true" name="tieneGradoMaestro" id="tieneGradoMaestro" data-dbtable="indicadores" data-dbpk="indicadorId" value="1" title="Marque la opción de grado maestro">';
 
 						} 
 
@@ -86,12 +95,12 @@
 
 						if(isset($tieneSegEspecialidad)){ 
 							if($tieneSegEspecialidad == 1){
-								echo '<input type="checkbox" name="tieneSegEspecialidad" id="tieneSegEspecialidad" data-dbtable="indicadores" data-dbpk="indicadorId" value="1" checked>';
+								echo '<input type="checkbox" data-autosave="true" name="tieneSegEspecialidad" id="tieneSegEspecialidad" data-dbtable="indicadores" data-dbpk="indicadorId" value="1" checked>';
 							}else{
-								echo '<input type="checkbox" name="tieneSegEspecialidad" id="tieneSegEspecialidad" data-dbtable="indicadores" data-dbpk="indicadorId" value="1">';
+								echo '<input type="checkbox" data-autosave="true" name="tieneSegEspecialidad" id="tieneSegEspecialidad" data-dbtable="indicadores" data-dbpk="indicadorId" value="1">';
 							}
 						}else{ 
-							echo '<input type="checkbox" name="tieneSegEspecialidad" id="tieneSegEspecialidad" data-dbtable="indicadores" data-dbpk="indicadorId" value="1">';
+							echo '<input type="checkbox" data-autosave="true" name="tieneSegEspecialidad" id="tieneSegEspecialidad" data-dbtable="indicadores" data-dbpk="indicadorId" value="1">';
 						} 
 
 					?>
@@ -151,7 +160,7 @@
 										<i class="la la-phone"></i>
 									</span>
 								</div>
-								<select name="gradAcademico" id="gradAcademico" class="form-control">
+								<select name="gradAcademico" id="gradAcademico" data-autosave="false" class="form-control">
 									<option value="">Seleccione grado académico</option>	
 									<option value="Bachiller">Bachiller</option>
 									<option value="Magister">Magíster</option>
@@ -166,7 +175,7 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<input type="text" name="gradEspecialidad" id="gradEspecialidad" class="form-control" placeholder="Especialidad">
+								<input type="text" name="gradEspecialidad" data-autosave="false" id="gradEspecialidad" class="form-control" placeholder="Especialidad">
 							</div>
 						</div>
 						<div class="col-lg-4">
@@ -176,7 +185,7 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<input type="text" name="gradInstitucion" id="gradInstitucion" class="form-control" placeholder="Institucion">
+								<input type="text" name="gradInstitucion" data-autosave="false" id="gradInstitucion" class="form-control" placeholder="Institucion">
 							</div>
 						</div>
 
@@ -232,7 +241,7 @@
 										<i class="la la-phone"></i>
 									</span>
 								</div>
-								<input type="text" name="expDocInstitucion" id="expDocInstitucion" class="form-control form-control-danger" placeholder="Institución">
+								<input type="text" name="expDocInstitucion" id="expDocInstitucion" data-autosave="false" class="form-control form-control-danger" placeholder="Institución">
 							</div>
 						</div>
 
@@ -243,7 +252,7 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<select class="form-control" name="cargoDocencia" id="cargoDocencia">
+								<select class="form-control" name="cargoDocencia" id="cargoDocencia" data-autosave="false">
 									<option value="">Seleccione un cargo</option>
 									<option value="Docente universitario">Docente universitario</option>
 									<option value="Facilitador">Facilitador</option>
@@ -260,7 +269,7 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<select class="form-control" name="tipoConDocencia" id="tipoConDocencia"> 
+								<select class="form-control" name="tipoConDocencia" id="tipoConDocencia" data-autosave="false"> 
 									<option value="">Seleccione el tipo de contrato</option>
 									<option value="Tiempo Completo">Tiempo Completo</option>
 									<option value="Tiempo Parcial">Tiempo Parcial</option>
@@ -282,7 +291,7 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<input type="text" class="form-control form-control-danger form-date" placeholder="dd/mm/aaaa (Fecha de Inicio)" name="expDocFecInicio" id="expDocFecInicio">
+								<input type="text" class="form-control form-control-danger form-date" placeholder="dd/mm/aaaa (Fecha de Inicio)" name="expDocFecInicio" id="expDocFecInicio" data-autosave="false">
 							</div>
 						</div>
 						<div class="col-lg-4">
@@ -292,13 +301,13 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<input name="expDocFecFin" id="expDocFecFin" type="text" class="form-control form-control-danger form-date" placeholder="dd/mm/aaaa (Fecha de Fin)">
+								<input name="expDocFecFin" id="expDocFecFin" type="text" class="form-control form-control-danger form-date" placeholder="dd/mm/aaaa (Fecha de Fin)" data-autosave="false">
 							</div>
 						</div>
 						<div class="col-lg-4">
 							<div class="kt-checkbox-inline">
 								<label class="kt-checkbox kt-checkbox--solid kt-checkbox--brand kt-checkbox--check-bold">
-									<input type="checkbox" name="expDocHastaActual" id="expDocHastaActual" value="1"> Hasta la Actualidad 
+									<input type="checkbox" name="expDocHastaActual" id="expDocHastaActual" value="1" data-autosave="false"> Hasta la Actualidad 
 									<span></span>
 								</label>
 							</div>
@@ -356,7 +365,7 @@
 										<i class="la la-phone"></i>
 									</span>
 								</div>
-								<input type="text" class="form-control form-control-danger" placeholder="Institución" name="especInstitucion" id="especInstitucion">
+								<input type="text" data-autosave="false" class="form-control form-control-danger" placeholder="Institución" name="especInstitucion" id="especInstitucion">
 							</div>
 						</div>
 
@@ -367,7 +376,7 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<select class="form-control" name="especTipoInstitucion" id="especTipoInstitucion">
+								<select class="form-control" data-autosave="false" name="especTipoInstitucion" id="especTipoInstitucion">
 									<option value="">Seleccione un tipo de institución</option>
 									<option value="Pública">Pública</option>
 									<option value="Privada">Privada</option>
@@ -385,7 +394,7 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<select class="form-control" name="especCargo" id="especCargo">
+								<select class="form-control" data-autosave="false" name="especCargo" id="especCargo">
 									<option value="">Seleccione cargo desempeñado</option>
 									<option value="Director Gerentes de area o equivalente">Director / Gerentes de área o equivalente</option>
 									<option value="Jefe de area, proyecto oequivalente">Jefe de Área, Proyecto o Equivalente</option>
@@ -407,7 +416,7 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<input type="text" class="form-control form-control-danger form-date" placeholder="dd/mm/aaaa (Fecha de Inicio)" name="especFecInicio" id="especFecInicio">
+								<input type="text" class="form-control form-control-danger form-date" data-autosave="false" placeholder="dd/mm/aaaa (Fecha de Inicio)" name="especFecInicio" id="especFecInicio">
 							</div>
 						</div>
 						<div class="col-lg-4">
@@ -417,13 +426,13 @@
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<input type="text" name="especFecFin" id="especFecFin" class="form-control form-date form-control-danger" placeholder="dd/mm/aaaa (Fecha de Fin)">
+								<input type="text" name="especFecFin" data-autosave="false" id="especFecFin" class="form-control form-date form-control-danger" placeholder="dd/mm/aaaa (Fecha de Fin)">
 							</div>
 						</div>
 						<div class="col-lg-4">
 							<div class="kt-checkbox-inline">
 								<label class="kt-checkbox kt-checkbox--solid kt-checkbox--brand kt-checkbox--check-bold">
-									<input type="checkbox" name="especHastaFecha" id="especHastaFecha" value="1"> Hasta la Actualidad 
+									<input type="checkbox" name="especHastaFecha" data-autosave="false" id="especHastaFecha" value="1"> Hasta la Actualidad 
 									<span></span>
 								</label>
 							</div>

@@ -9,7 +9,6 @@ class Reconocimientos extends CI_Controller {
 		//$this->load->helper('form');
 		//$this->load->library('session');
 		$this->load->library('upload');
-
 		$this->load->model('Reconocimientos_Institucionales_model');	
 
 
@@ -28,27 +27,12 @@ class Reconocimientos extends CI_Controller {
 
 	}
 
-	public function listar_select()
-	{
-
-		$escuelas = $this->Grados_Titulos_model->get_all_escuelas_select();
-
-		return $this->output
-					->set_content_type('application/json')
-					->set_output(json_encode($escuelas));
-
-	}
-
 
 	public function agregar_editar($escuelaId)
 	{
 
 		$data['escuelaId'] = $escuelaId;
 		$data['_view'] = 'admin/content/tpl-escuelas-detalle';
-
-
-		//$data['sedes'] = $this->Sedes_model->get_all_sedes_select();
-		//$data['cursos'] = $this->Cursos_model->get_all_cursos_select();
 
 		$data['js'] = array('js/escuelas.js');
 

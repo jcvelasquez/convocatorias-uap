@@ -13,244 +13,243 @@
 	<div class="col-lg-4">
 		<div class="input-group">
 			<div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-globe-americas"></i></span></div>
-			<select id="docNacionalidad" data-dbtable="docentes" data-dbpk="docenteId" name="docNacionalidad" class="form-control kt-selectpicker" data-dbtable="docentes" title="Ingrese el pais de nacimiento" data-style="btn-primary">
+			<select data-autosave="true" id="docNacionalidad" data-dbtable="docentes" data-dbpk="docenteId" name="docNacionalidad" class="form-control kt-selectpicker" data-dbtable="docentes" title="Ingrese el pais de nacimiento" data-style="btn-primary">
 				<option value="">Seleccione su país</option>
 
 				<?php $docNacionalidad = $docente['docNacionalidad']; ?>
 
-				<option value="AF" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Afghanistan</option>
-				<option value="AX" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Åland Islands</option>
-				<option value="AL" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Albania</option>
-				<option value="DZ" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Algeria</option>
-				<option value="AS" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>American Samoa</option>
-				<option value="AD" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Andorra</option>
-				<option value="AO" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Angola</option>
-				<option value="AI" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Anguilla</option>
-				<option value="AQ" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Antarctica</option>
-				<option value="AG" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Antigua and Barbuda</option>
-				<option value="AR" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Argentina</option>
-				<option value="AM" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Armenia</option>
-				<option value="AW" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Aruba</option>
-				<option value="AU" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Australia</option>
-				<option value="AT" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Austria</option>
-				<option value="AZ" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Azerbaijan</option>
-				<option value="BS" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Bahamas</option>
-				<option value="BH" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Bahrain</option>
-				<option value="BD" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Bangladesh</option>
-				<option value="BB" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Barbados</option>
-				<option value="BY" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Belarus</option>
-				<option value="BE" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Belgium</option>
-				<option value="BZ" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Belize</option>
-				<option value="BJ" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Benin</option>
-				<option value="BM" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Bermuda</option>
-				<option value="BT" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Bhutan</option>
-				<option value="BO" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Bolivia</option>
-				<option value="BA" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Bosnia y Herzegovina</option>
-				<option value="BW" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Botswana</option>
-				<option value="BV" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Bouvet Island</option>
-				<option value="BR" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Brazil</option>
-				<option value="BN" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Brunei Darussalam</option>
-				<option value="BG" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Bulgaria</option>
-				<option value="BF" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Burkina Faso</option>
-				<option value="BI" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Burundi</option>
-				<option value="KH" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Cambodia</option>
-				<option value="CM" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Cameroon</option>
-				<option value="CA" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Canada</option>
-				<option value="CV" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Cape Verde</option>
-				<option value="KY" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Cayman Islands</option>
-				<option value="CF" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Republica Central Africana</option>
-				<option value="TD" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Chad</option>
-				<option value="CL" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Chile</option>
-				<option value="CN" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>China</option>
-				<option value="CO" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Colombia</option>
-				<option value="KM" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Comoros</option>
-				<option value="CG" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Congo</option>
-				<option value="CK" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Cook Islands</option>
-				<option value="CR" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Costa Rica</option>
-				<option value="HR" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Croatia</option>
-				<option value="CU" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Cuba</option>
-				<option value="CW" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Curaçao</option>
-				<option value="CY" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Cyprus</option>
-				<option value="CZ" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Czech Republic</option>
-				<option value="DK" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Denmark</option>
-				<option value="DJ" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Djibouti</option>
-				<option value="DM" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Dominica</option>
-				<option value="DO" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Republica Dominicana </option>
-				<option value="EC" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Ecuador</option>
-				<option value="EG" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Egypt</option>
-				<option value="SV" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>El Salvador</option>
-				<option value="GQ" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Equatorial Guinea</option>
-				<option value="ER" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Eritrea</option>
-				<option value="EE" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Estonia</option>
-				<option value="ET" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Ethiopia</option>
-				<option value="FK" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Falkland Islands (Malvinas)</option>
-				<option value="FO" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Faroe Islands</option>
-				<option value="FJ" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Fiji</option>
-				<option value="FI" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Finland</option>
-				<option value="FR" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>France</option>
-				<option value="GF" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>French Guiana</option>
-				<option value="PF" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>French Polynesia</option>
-				<option value="TF" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>French Southern Territories</option>
-				<option value="GA" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Gabon</option>
-				<option value="GM" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Gambia</option>
-				<option value="GE" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Georgia</option>
-				<option value="DE" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Germany</option>
-				<option value="GH" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Ghana</option>
-				<option value="GI" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Gibraltar</option>
-				<option value="GR" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Greece</option>
-				<option value="GL" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Greenland</option>
-				<option value="GD" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Grenada</option>
-				<option value="GP" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Guadeloupe</option>
-				<option value="GU" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Guam</option>
-				<option value="GT" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Guatemala</option>
-				<option value="GG" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Guernsey</option>
-				<option value="GN" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Guinea</option>
-				<option value="GW" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Guinea-Bissau</option>
-				<option value="GY" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Guyana</option>
-				<option value="HT" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Haiti</option>
-				<option value="VA" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Holy See (Vatican City State)</option>
-				<option value="HN" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Honduras</option>
-				<option value="HK" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Hong Kong</option>
-				<option value="HU" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Hungary</option>
-				<option value="IS" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Iceland</option>
-				<option value="IN" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>India</option>
-				<option value="ID" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Indonesia</option>
-				<option value="IR" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Iran, Islamic Republic of</option>
-				<option value="IQ" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Iraq</option>
-				<option value="IE" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Ireland</option>
-				<option value="IM" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Isle of Man</option>
-				<option value="IL" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Israel</option>
-				<option value="IT" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Italy</option>
-				<option value="JM" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Jamaica</option>
-				<option value="JP" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Japan</option>
-				<option value="JE" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Jersey</option>
-				<option value="JO" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Jordan</option>
-				<option value="KZ" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Kazakhstan</option>
-				<option value="KE" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Kenya</option>
-				<option value="KI" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Kiribati</option>
-				<option value="KR" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Korea</option>
-				<option value="KW" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Kuwait</option>
-				<option value="KG" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Kyrgyzstan</option>
-				<option value="LV" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Latvia</option>
-				<option value="LB" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Lebanon</option>
-				<option value="LS" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Lesotho</option>
-				<option value="LR" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Liberia</option>
-				<option value="LY" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Libya</option>
-				<option value="LI" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Liechtenstein</option>
-				<option value="LT" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Lithuania</option>
-				<option value="LU" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Luxembourg</option>
-				<option value="MO" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Macao</option>
-				<option value="MG" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Madagascar</option>
-				<option value="MW" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Malawi</option>
-				<option value="MY" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Malaysia</option>
-				<option value="MV" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Maldives</option>
-				<option value="ML" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Mali</option>
-				<option value="MT" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Malta</option>
-				<option value="MH" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Marshall Islands</option>
-				<option value="MQ" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Martinique</option>
-				<option value="MR" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Mauritania</option>
-				<option value="MU" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Mauritius</option>
-				<option value="YT" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Mayotte</option>
-				<option value="MX" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Mexico</option>
-				<option value="MD" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Moldova</option>
-				<option value="MC" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Monaco</option>
-				<option value="MN" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Mongolia</option>
-				<option value="ME" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Montenegro</option>
-				<option value="MS" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Montserrat</option>
-				<option value="MA" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Morocco</option>
-				<option value="MZ" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Mozambique</option>
-				<option value="MM" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Myanmar</option>
-				<option value="NA" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Namibia</option>
-				<option value="NR" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Nauru</option>
-				<option value="NP" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Nepal</option>
-				<option value="NL" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Netherlands</option>
-				<option value="NC" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>New Caledonia</option>
-				<option value="NZ" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>New Zealand</option>
-				<option value="NI" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Nicaragua</option>
-				<option value="NE" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Niger</option>
-				<option value="NG" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Nigeria</option>
-				<option value="NU" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Niue</option>
-				<option value="NF" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Norfolk Island</option>
-				<option value="NO" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Norway</option>
-				<option value="OM" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Oman</option>
-				<option value="PK" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Pakistan</option>
-				<option value="PW" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Palau</option>
-				<option value="PA" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Panama</option>
-				<option value="PG" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Papua New Guinea</option>
-				<option value="PY" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Paraguay</option>			
+				<option value="AF" <?= ($docNacionalidad=="AF")? "selected" : ""; ?>>Afghanistan</option>
+				<option value="AX" <?= ($docNacionalidad=="AX")? "selected" : ""; ?>>Åland Islands</option>
+				<option value="AL" <?= ($docNacionalidad=="AL")? "selected" : ""; ?>>Albania</option>
+				<option value="DZ" <?= ($docNacionalidad=="DZ")? "selected" : ""; ?>>Algeria</option>
+				<option value="AS" <?= ($docNacionalidad=="AS")? "selected" : ""; ?>>American Samoa</option>
+				<option value="AD" <?= ($docNacionalidad=="AD")? "selected" : ""; ?>>Andorra</option>
+				<option value="AD" <?= ($docNacionalidad=="AD")? "selected" : ""; ?>>Angola</option>
+				<option value="AI" <?= ($docNacionalidad=="AI")? "selected" : ""; ?>>Anguilla</option>
+				<option value="AQ" <?= ($docNacionalidad=="AQ")? "selected" : ""; ?>>Antarctica</option>
+				<option value="AG" <?= ($docNacionalidad=="AG")? "selected" : ""; ?>>Antigua and Barbuda</option>
+				<option value="AR" <?= ($docNacionalidad=="AR")? "selected" : ""; ?>>Argentina</option>
+				<option value="AM" <?= ($docNacionalidad=="AM")? "selected" : ""; ?>>Armenia</option>
+				<option value="AW" <?= ($docNacionalidad=="AW")? "selected" : ""; ?>>Aruba</option>
+				<option value="AU" <?= ($docNacionalidad=="AU")? "selected" : ""; ?>>Australia</option>
+				<option value="AT" <?= ($docNacionalidad=="AT")? "selected" : ""; ?>>Austria</option>
+				<option value="AZ" <?= ($docNacionalidad=="AZ")? "selected" : ""; ?>>Azerbaijan</option>
+				<option value="BS" <?= ($docNacionalidad=="BS")? "selected" : ""; ?>>Bahamas</option>
+				<option value="BH" <?= ($docNacionalidad=="BH")? "selected" : ""; ?>>Bahrain</option>
+				<option value="BD" <?= ($docNacionalidad=="BD")? "selected" : ""; ?>>Bangladesh</option>
+				<option value="BB" <?= ($docNacionalidad=="BB")? "selected" : ""; ?>>Barbados</option>
+				<option value="BY" <?= ($docNacionalidad=="BY")? "selected" : ""; ?>>Belarus</option>
+				<option value="BE" <?= ($docNacionalidad=="BE")? "selected" : ""; ?>>Belgium</option>
+				<option value="BZ" <?= ($docNacionalidad=="BZ")? "selected" : ""; ?>>Belize</option>
+				<option value="BJ" <?= ($docNacionalidad=="BJ")? "selected" : ""; ?>>Benin</option>
+				<option value="BM" <?= ($docNacionalidad=="BM")? "selected" : ""; ?>>Bermuda</option>
+				<option value="BT" <?= ($docNacionalidad=="BT")? "selected" : ""; ?>>Bhutan</option>
+				<option value="BO" <?= ($docNacionalidad=="BO")? "selected" : ""; ?>>Bolivia</option>
+				<option value="BA" <?= ($docNacionalidad=="BA")? "selected" : ""; ?>>Bosnia y Herzegovina</option>
+				<option value="BW" <?= ($docNacionalidad=="BW")? "selected" : ""; ?>>Botswana</option>
+				<option value="BV" <?= ($docNacionalidad=="BV")? "selected" : ""; ?>>Bouvet Island</option>
+				<option value="BR" <?= ($docNacionalidad=="BR")? "selected" : ""; ?>>Brazil</option>
+				<option value="BN" <?= ($docNacionalidad=="BN")? "selected" : ""; ?>>Brunei Darussalam</option>
+				<option value="BG" <?= ($docNacionalidad=="BG")? "selected" : ""; ?>>Bulgaria</option>
+				<option value="BF" <?= ($docNacionalidad=="BF")? "selected" : ""; ?>>Burkina Faso</option>
+				<option value="BI" <?= ($docNacionalidad=="BI")? "selected" : ""; ?>>Burundi</option>
+				<option value="KH" <?= ($docNacionalidad=="KH")? "selected" : ""; ?>>Cambodia</option>
+				<option value="CM" <?= ($docNacionalidad=="CM")? "selected" : ""; ?>>Cameroon</option>
+				<option value="CA" <?= ($docNacionalidad=="CA")? "selected" : ""; ?>>Canada</option>
+				<option value="CV" <?= ($docNacionalidad=="CV")? "selected" : ""; ?>>Cape Verde</option>
+				<option value="KY" <?= ($docNacionalidad=="KY")? "selected" : ""; ?>>Cayman Islands</option>
+				<option value="CF" <?= ($docNacionalidad=="CF")? "selected" : ""; ?>>Republica Central Africana</option>
+				<option value="TD" <?= ($docNacionalidad=="TD")? "selected" : ""; ?>>Chad</option>
+				<option value="CL" <?= ($docNacionalidad=="CL")? "selected" : ""; ?>>Chile</option>
+				<option value="CN" <?= ($docNacionalidad=="CN")? "selected" : ""; ?>>China</option>
+				<option value="CO" <?= ($docNacionalidad=="CO")? "selected" : ""; ?>>Colombia</option>
+				<option value="KM" <?= ($docNacionalidad=="KM")? "selected" : ""; ?>>Comoros</option>
+				<option value="CG" <?= ($docNacionalidad=="CG")? "selected" : ""; ?>>Congo</option>
+				<option value="CK" <?= ($docNacionalidad=="CK")? "selected" : ""; ?>>Cook Islands</option>
+				<option value="CR" <?= ($docNacionalidad=="CR")? "selected" : ""; ?>>Costa Rica</option>
+				<option value="HR" <?= ($docNacionalidad=="HR")? "selected" : ""; ?>>Croatia</option>
+				<option value="CU" <?= ($docNacionalidad=="CU")? "selected" : ""; ?>>Cuba</option>
+				<option value="CW" <?= ($docNacionalidad=="CW")? "selected" : ""; ?>>Curaçao</option>
+				<option value="CY" <?= ($docNacionalidad=="CY")? "selected" : ""; ?>>Cyprus</option>
+				<option value="CZ" <?= ($docNacionalidad=="CZ")? "selected" : ""; ?>>Czech Republic</option>
+				<option value="DK" <?= ($docNacionalidad=="DK")? "selected" : ""; ?>>Denmark</option>
+				<option value="DJ" <?= ($docNacionalidad=="DJ")? "selected" : ""; ?>>Djibouti</option>
+				<option value="DM" <?= ($docNacionalidad=="DM")? "selected" : ""; ?>>Dominica</option>
+				<option value="DO" <?= ($docNacionalidad=="DO")? "selected" : ""; ?>>Republica Dominicana </option>
+				<option value="EC" <?= ($docNacionalidad=="EC")? "selected" : ""; ?>>Ecuador</option>
+				<option value="EG" <?= ($docNacionalidad=="EG")? "selected" : ""; ?>>Egypt</option>
+				<option value="SV" <?= ($docNacionalidad=="SV")? "selected" : ""; ?>>El Salvador</option>
+				<option value="GQ" <?= ($docNacionalidad=="GQ")? "selected" : ""; ?>>Equatorial Guinea</option>
+				<option value="ER" <?= ($docNacionalidad=="ER")? "selected" : ""; ?>>Eritrea</option>
+				<option value="EE" <?= ($docNacionalidad=="EE")? "selected" : ""; ?>>Estonia</option>
+				<option value="ET" <?= ($docNacionalidad=="ET")? "selected" : ""; ?>>Ethiopia</option>
+				<option value="FK" <?= ($docNacionalidad=="FK")? "selected" : ""; ?>>Falkland Islands (Malvinas)</option>
+				<option value="FO" <?= ($docNacionalidad=="FO")? "selected" : ""; ?>>Faroe Islands</option>
+				<option value="FJ" <?= ($docNacionalidad=="FJ")? "selected" : ""; ?>>Fiji</option>
+				<option value="FI" <?= ($docNacionalidad=="FI")? "selected" : ""; ?>>Finland</option>
+				<option value="FR" <?= ($docNacionalidad=="FR")? "selected" : ""; ?>>France</option>
+				<option value="GF" <?= ($docNacionalidad=="GF")? "selected" : ""; ?>>French Guiana</option>
+				<option value="PF" <?= ($docNacionalidad=="PF")? "selected" : ""; ?>>French Polynesia</option>
+				<option value="TF" <?= ($docNacionalidad=="TF")? "selected" : ""; ?>>French Southern Territories</option>
+				<option value="GA" <?= ($docNacionalidad=="GA")? "selected" : ""; ?>>Gabon</option>
+				<option value="GM" <?= ($docNacionalidad=="GM")? "selected" : ""; ?>>Gambia</option>
+				<option value="GE" <?= ($docNacionalidad=="GE")? "selected" : ""; ?>>Georgia</option>
+				<option value="DE" <?= ($docNacionalidad=="DE")? "selected" : ""; ?>>Germany</option>
+				<option value="GH" <?= ($docNacionalidad=="GH")? "selected" : ""; ?>>Ghana</option>
+				<option value="GI" <?= ($docNacionalidad=="GI")? "selected" : ""; ?>>Gibraltar</option>
+				<option value="GR" <?= ($docNacionalidad=="GR")? "selected" : ""; ?>>Greece</option>
+				<option value="GL" <?= ($docNacionalidad=="GL")? "selected" : ""; ?>>Greenland</option>
+				<option value="GD" <?= ($docNacionalidad=="GD")? "selected" : ""; ?>>Grenada</option>
+				<option value="GP" <?= ($docNacionalidad=="GP")? "selected" : ""; ?>>Guadeloupe</option>
+				<option value="GU" <?= ($docNacionalidad=="GU")? "selected" : ""; ?>>Guam</option>
+				<option value="GT" <?= ($docNacionalidad=="GT")? "selected" : ""; ?>>Guatemala</option>
+				<option value="GG" <?= ($docNacionalidad=="GG")? "selected" : ""; ?>>Guernsey</option>
+				<option value="GN" <?= ($docNacionalidad=="GN")? "selected" : ""; ?>>Guinea</option>
+				<option value="GW" <?= ($docNacionalidad=="GW")? "selected" : ""; ?>>Guinea-Bissau</option>
+				<option value="GY" <?= ($docNacionalidad=="GY")? "selected" : ""; ?>>Guyana</option>
+				<option value="HT" <?= ($docNacionalidad=="HT")? "selected" : ""; ?>>Haiti</option>
+				<option value="VA" <?= ($docNacionalidad=="VA")? "selected" : ""; ?>>Holy See (Vatican City State)</option>
+				<option value="HN" <?= ($docNacionalidad=="HN")? "selected" : ""; ?>>Honduras</option>
+				<option value="HK" <?= ($docNacionalidad=="HK")? "selected" : ""; ?>>Hong Kong</option>
+				<option value="HU" <?= ($docNacionalidad=="HU")? "selected" : ""; ?>>Hungary</option>
+				<option value="IS" <?= ($docNacionalidad=="IS")? "selected" : ""; ?>>Iceland</option>
+				<option value="IN" <?= ($docNacionalidad=="IN")? "selected" : ""; ?>>India</option>
+				<option value="ID" <?= ($docNacionalidad=="ID")? "selected" : ""; ?>>Indonesia</option>
+				<option value="IR" <?= ($docNacionalidad=="IR")? "selected" : ""; ?>>Iran, Islamic Republic of</option>
+				<option value="IQ" <?= ($docNacionalidad=="IQ")? "selected" : ""; ?>>Iraq</option>
+				<option value="IE" <?= ($docNacionalidad=="IE")? "selected" : ""; ?>>Ireland</option>
+				<option value="IM" <?= ($docNacionalidad=="IM")? "selected" : ""; ?>>Isle of Man</option>
+				<option value="IL" <?= ($docNacionalidad=="IL")? "selected" : ""; ?>>Israel</option>
+				<option value="IT" <?= ($docNacionalidad=="IT")? "selected" : ""; ?>>Italy</option>
+				<option value="JM" <?= ($docNacionalidad=="JM")? "selected" : ""; ?>>Jamaica</option>
+				<option value="JP" <?= ($docNacionalidad=="JP")? "selected" : ""; ?>>Japan</option>
+				<option value="JE" <?= ($docNacionalidad=="JE")? "selected" : ""; ?>>Jersey</option>
+				<option value="JO" <?= ($docNacionalidad=="JO")? "selected" : ""; ?>>Jordan</option>
+				<option value="KZ" <?= ($docNacionalidad=="KZ")? "selected" : ""; ?>>Kazakhstan</option>
+				<option value="KE" <?= ($docNacionalidad=="KE")? "selected" : ""; ?>>Kenya</option>
+				<option value="KI" <?= ($docNacionalidad=="KI")? "selected" : ""; ?>>Kiribati</option>
+				<option value="KR" <?= ($docNacionalidad=="KR")? "selected" : ""; ?>>Korea</option>
+				<option value="KW" <?= ($docNacionalidad=="KW")? "selected" : ""; ?>>Kuwait</option>
+				<option value="KG" <?= ($docNacionalidad=="KG")? "selected" : ""; ?>>Kyrgyzstan</option>
+				<option value="LV" <?= ($docNacionalidad=="LV")? "selected" : ""; ?>>Latvia</option>
+				<option value="LB" <?= ($docNacionalidad=="LB")? "selected" : ""; ?>>Lebanon</option>
+				<option value="LS" <?= ($docNacionalidad=="LS")? "selected" : ""; ?>>Lesotho</option>
+				<option value="LR" <?= ($docNacionalidad=="LR")? "selected" : ""; ?>>Liberia</option>
+				<option value="LY" <?= ($docNacionalidad=="LY")? "selected" : ""; ?>>Libya</option>
+				<option value="LI" <?= ($docNacionalidad=="LI")? "selected" : ""; ?>>Liechtenstein</option>
+				<option value="LT" <?= ($docNacionalidad=="LT")? "selected" : ""; ?>>Lithuania</option>
+				<option value="LU" <?= ($docNacionalidad=="LU")? "selected" : ""; ?>>Luxembourg</option>
+				<option value="MO" <?= ($docNacionalidad=="MO")? "selected" : ""; ?>>Macao</option>
+				<option value="MG" <?= ($docNacionalidad=="MG")? "selected" : ""; ?>>Madagascar</option>
+				<option value="MW" <?= ($docNacionalidad=="MW")? "selected" : ""; ?>>Malawi</option>
+				<option value="MY" <?= ($docNacionalidad=="MY")? "selected" : ""; ?>>Malaysia</option>
+				<option value="MV" <?= ($docNacionalidad=="MV")? "selected" : ""; ?>>Maldives</option>
+				<option value="ML" <?= ($docNacionalidad=="ML")? "selected" : ""; ?>>Mali</option>
+				<option value="MT" <?= ($docNacionalidad=="MT")? "selected" : ""; ?>>Malta</option>
+				<option value="MH" <?= ($docNacionalidad=="MH")? "selected" : ""; ?>>Marshall Islands</option>
+				<option value="MQ" <?= ($docNacionalidad=="MQ")? "selected" : ""; ?>>Martinique</option>
+				<option value="MR" <?= ($docNacionalidad=="MR")? "selected" : ""; ?>>Mauritania</option>
+				<option value="MU" <?= ($docNacionalidad=="MU")? "selected" : ""; ?>>Mauritius</option>
+				<option value="YT" <?= ($docNacionalidad=="YT")? "selected" : ""; ?>>Mayotte</option>
+				<option value="MX" <?= ($docNacionalidad=="MX")? "selected" : ""; ?>>Mexico</option>
+				<option value="MD" <?= ($docNacionalidad=="MD")? "selected" : ""; ?>>Moldova</option>
+				<option value="MC" <?= ($docNacionalidad=="MC")? "selected" : ""; ?>>Monaco</option>
+				<option value="MN" <?= ($docNacionalidad=="MN")? "selected" : ""; ?>>Mongolia</option>
+				<option value="ME" <?= ($docNacionalidad=="ME")? "selected" : ""; ?>>Montenegro</option>
+				<option value="MS" <?= ($docNacionalidad=="MS")? "selected" : ""; ?>>Montserrat</option>
+				<option value="MA" <?= ($docNacionalidad=="MA")? "selected" : ""; ?>>Morocco</option>
+				<option value="MZ" <?= ($docNacionalidad=="MZ")? "selected" : ""; ?>>Mozambique</option>
+				<option value="MM" <?= ($docNacionalidad=="MM")? "selected" : ""; ?>>Myanmar</option>
+				<option value="NA" <?= ($docNacionalidad=="NA")? "selected" : ""; ?>>Namibia</option>
+				<option value="NR" <?= ($docNacionalidad=="NR")? "selected" : ""; ?>>Nauru</option>
+				<option value="NP" <?= ($docNacionalidad=="NP")? "selected" : ""; ?>>Nepal</option>
+				<option value="NL" <?= ($docNacionalidad=="NL")? "selected" : ""; ?>>Netherlands</option>
+				<option value="NC" <?= ($docNacionalidad=="NC")? "selected" : ""; ?>>New Caledonia</option>
+				<option value="NZ" <?= ($docNacionalidad=="NZ")? "selected" : ""; ?>>New Zealand</option>
+				<option value="NI" <?= ($docNacionalidad=="NI")? "selected" : ""; ?>>Nicaragua</option>
+				<option value="NG" <?= ($docNacionalidad=="NG")? "selected" : ""; ?>>Nigeria</option>
+				<option value="NU" <?= ($docNacionalidad=="NU")? "selected" : ""; ?>>Niue</option>
+				<option value="NF" <?= ($docNacionalidad=="NF")? "selected" : ""; ?>>Norfolk Island</option>
+				<option value="NO" <?= ($docNacionalidad=="NO")? "selected" : ""; ?>>Noruega</option>
+				<option value="OM" <?= ($docNacionalidad=="OM")? "selected" : ""; ?>>Oman</option>
+				<option value="PK" <?= ($docNacionalidad=="PK")? "selected" : ""; ?>>Pakistan</option>
+				<option value="PW" <?= ($docNacionalidad=="PW")? "selected" : ""; ?>>Palau</option>
+				<option value="PA" <?= ($docNacionalidad=="PA")? "selected" : ""; ?>>Panama</option>
+				<option value="PG" <?= ($docNacionalidad=="PG")? "selected" : ""; ?>>Papua New Guinea</option>
+				<option value="PY" <?= ($docNacionalidad=="PY")? "selected" : ""; ?>>Paraguay</option>			
 				<option value="PE" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Peru</option>
-				<option value="PH" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Philippines</option>
-				<option value="PN" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Pitcairn</option>
-				<option value="PL" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Poland</option>
-				<option value="PT" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Portugal</option>
-				<option value="PR" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Puerto Rico</option>
-				<option value="QA" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Qatar</option>
-				<option value="RE" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Réunion</option>
-				<option value="RO" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Romania</option>
-				<option value="RU" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Russian Federation</option>
-				<option value="RW" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Rwanda</option>
-				<option value="BL" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Saint Barthélemy</option>
-				<option value="KN" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Saint Kitts and Nevis</option>
-				<option value="LC" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Saint Lucia</option>
-				<option value="MF" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Saint Martin (French part)</option>
-				<option value="PM" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Saint Pierre and Miquelon</option>
-				<option value="VC" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Saint Vincent and the Grenadines</option>
-				<option value="WS" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Samoa</option>
-				<option value="SM" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>San Marino</option>
-				<option value="ST" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Sao Tome and Principe</option>
-				<option value="SA" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Saudi Arabia</option>
-				<option value="SN" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Senegal</option>
-				<option value="RS" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Serbia</option>
-				<option value="SC" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Seychelles</option>
-				<option value="SL" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Sierra Leone</option>
-				<option value="SG" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Singapore</option>
-				<option value="SX" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Sint Maarten (Dutch part)</option>
-				<option value="SK" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Slovakia</option>
-				<option value="SI" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Slovenia</option>
-				<option value="SB" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Solomon Islands</option>
-				<option value="SO" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Somalia</option>
-				<option value="ZA" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>South Africa</option>
-				<option value="SS" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>South Sudan</option>
-				<option value="ES" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Spain</option>
-				<option value="LK" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Sri Lanka</option>
-				<option value="SD" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Sudan</option>
-				<option value="SR" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Suriname</option>
-				<option value="SJ" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Svalbard and Jan Mayen</option>
-				<option value="SZ" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Swaziland</option>
-				<option value="SE" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Sweden</option>
-				<option value="CH" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Switzerland</option>
-				<option value="SY" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Syrian Arab Republic</option>
-				<option value="TW" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Taiwan, Province of China</option>
-				<option value="TJ" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Tajikistan</option>
-				<option value="TZ" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Tanzania, United Republic of</option>
-				<option value="TH" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Thailand</option>
-				<option value="TL" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Timor-Leste</option>
-				<option value="TG" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Togo</option>
-				<option value="TK" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Tokelau</option>
-				<option value="TO" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Tonga</option>
-				<option value="TT" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Trinidad and Tobago</option>
-				<option value="TN" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Tunisia</option>
-				<option value="TR" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Turkey</option>
-				<option value="TM" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Turkmenistan</option>
-				<option value="TC" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Turks and Caicos Islands</option>
-				<option value="TV" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Tuvalu</option>
-				<option value="UG" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Uganda</option>
-				<option value="UA" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Ukraine</option>
-				<option value="AE" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>United Arab Emirates</option>
-				<option value="GB" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Reino Unido (UK)</option>
-				<option value="US" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Estados Unidos (USA)</option>
-				<option value="UY" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Uruguay</option>
-				<option value="UZ" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Uzbekistan</option>
-				<option value="VU" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Vanuatu</option>
-				<option value="VE" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Venezuela</option>
-				<option value="VN" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Viet Nam</option>
-				<option value="VG" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Virgin Islands, British</option>
-				<option value="VI" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Virgin Islands, U.S.</option>
-				<option value="WF" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Wallis and Futuna</option>
-				<option value="EH" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Western Sahara</option>
-				<option value="YE" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Yemen</option>
-				<option value="ZM" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Zambia</option>
-				<option value="ZW" <?= ($docNacionalidad=="PE")? "selected" : ""; ?>>Zimbabwe</option> 
+				<option value="PH" <?= ($docNacionalidad=="PH")? "selected" : ""; ?>>Philippines</option>
+				<option value="PN" <?= ($docNacionalidad=="PN")? "selected" : ""; ?>>Pitcairn</option>
+				<option value="PL" <?= ($docNacionalidad=="PL")? "selected" : ""; ?>>Poland</option>
+				<option value="PT" <?= ($docNacionalidad=="PT")? "selected" : ""; ?>>Portugal</option>
+				<option value="PR" <?= ($docNacionalidad=="PR")? "selected" : ""; ?>>Puerto Rico</option>
+				<option value="QA" <?= ($docNacionalidad=="QA")? "selected" : ""; ?>>Qatar</option>
+				<option value="RE" <?= ($docNacionalidad=="RE")? "selected" : ""; ?>>Réunion</option>
+				<option value="RO" <?= ($docNacionalidad=="RO")? "selected" : ""; ?>>Romania</option>
+				<option value="RU" <?= ($docNacionalidad=="RU")? "selected" : ""; ?>>Russian Federation</option>
+				<option value="RW" <?= ($docNacionalidad=="RW")? "selected" : ""; ?>>Rwanda</option>
+				<option value="BL" <?= ($docNacionalidad=="BL")? "selected" : ""; ?>>Saint Barthélemy</option>
+				<option value="KN" <?= ($docNacionalidad=="KN")? "selected" : ""; ?>>Saint Kitts and Nevis</option>
+				<option value="LC" <?= ($docNacionalidad=="LC")? "selected" : ""; ?>>Saint Lucia</option>
+				<option value="MF" <?= ($docNacionalidad=="MF")? "selected" : ""; ?>>Saint Martin (French part)</option>
+				<option value="PM" <?= ($docNacionalidad=="PM")? "selected" : ""; ?>>Saint Pierre and Miquelon</option>
+				<option value="VC" <?= ($docNacionalidad=="VC")? "selected" : ""; ?>>Saint Vincent and the Grenadines</option>
+				<option value="WS" <?= ($docNacionalidad=="WS")? "selected" : ""; ?>>Samoa</option>
+				<option value="SM" <?= ($docNacionalidad=="SM")? "selected" : ""; ?>>San Marino</option>
+				<option value="ST" <?= ($docNacionalidad=="ST")? "selected" : ""; ?>>Sao Tome and Principe</option>
+				<option value="SA" <?= ($docNacionalidad=="SA")? "selected" : ""; ?>>Saudi Arabia</option>
+				<option value="SN" <?= ($docNacionalidad=="SN")? "selected" : ""; ?>>Senegal</option>
+				<option value="RS" <?= ($docNacionalidad=="RS")? "selected" : ""; ?>>Serbia</option>
+				<option value="SC" <?= ($docNacionalidad=="SC")? "selected" : ""; ?>>Seychelles</option>
+				<option value="SL" <?= ($docNacionalidad=="SL")? "selected" : ""; ?>>Sierra Leon</option>
+				<option value="SG" <?= ($docNacionalidad=="SG")? "selected" : ""; ?>>Singapore</option>
+				<option value="SX" <?= ($docNacionalidad=="SX")? "selected" : ""; ?>>Sint Maarten (Dutch part)</option>
+				<option value="SK" <?= ($docNacionalidad=="SK")? "selected" : ""; ?>>Slovakia</option>
+				<option value="SI" <?= ($docNacionalidad=="SI")? "selected" : ""; ?>>Slovenia</option>
+				<option value="SB" <?= ($docNacionalidad=="SB")? "selected" : ""; ?>>Solomon Islands</option>
+				<option value="SO" <?= ($docNacionalidad=="SO")? "selected" : ""; ?>>Somalia</option>
+				<option value="ZA" <?= ($docNacionalidad=="ZA")? "selected" : ""; ?>>South Africa</option>
+				<option value="SS" <?= ($docNacionalidad=="SS")? "selected" : ""; ?>>South Sudan</option>
+				<option value="ES" <?= ($docNacionalidad=="ES")? "selected" : ""; ?>>Spain</option>
+				<option value="LK" <?= ($docNacionalidad=="LK")? "selected" : ""; ?>>Sri Lanka</option>
+				<option value="SD" <?= ($docNacionalidad=="SD")? "selected" : ""; ?>>Sudan</option>
+				<option value="SR" <?= ($docNacionalidad=="SR")? "selected" : ""; ?>>Suriname</option>
+				<option value="SJ" <?= ($docNacionalidad=="SJ")? "selected" : ""; ?>>Svalbard and Jan Mayen</option>
+				<option value="SZ" <?= ($docNacionalidad=="SZ")? "selected" : ""; ?>>Swaziland</option>
+				<option value="SE" <?= ($docNacionalidad=="SE")? "selected" : ""; ?>>Sweden</option>
+				<option value="CH" <?= ($docNacionalidad=="CH")? "selected" : ""; ?>>Switzerland</option>
+				<option value="SY" <?= ($docNacionalidad=="SY")? "selected" : ""; ?>>Syrian Arab Republic</option>
+				<option value="TW" <?= ($docNacionalidad=="TW")? "selected" : ""; ?>>Taiwan, Province of China</option>
+				<option value="TJ" <?= ($docNacionalidad=="TJ")? "selected" : ""; ?>>Tajikistan</option>
+				<option value="TZ" <?= ($docNacionalidad=="TZ")? "selected" : ""; ?>>Tanzania, United Republic of</option>
+				<option value="TH" <?= ($docNacionalidad=="TH")? "selected" : ""; ?>>Thailand</option>
+				<option value="TL" <?= ($docNacionalidad=="TL")? "selected" : ""; ?>>Timor-Leste</option>
+				<option value="TG" <?= ($docNacionalidad=="TG")? "selected" : ""; ?>>Togo</option>
+				<option value="TK" <?= ($docNacionalidad=="TK")? "selected" : ""; ?>>Tokelau</option>
+				<option value="TO" <?= ($docNacionalidad=="TO")? "selected" : ""; ?>>Tonga</option>
+				<option value="TT" <?= ($docNacionalidad=="TT")? "selected" : ""; ?>>Trinidad and Tobago</option>
+				<option value="TN" <?= ($docNacionalidad=="TN")? "selected" : ""; ?>>Tunisia</option>
+				<option value="TR" <?= ($docNacionalidad=="TR")? "selected" : ""; ?>>Turkey</option>
+				<option value="TM" <?= ($docNacionalidad=="TM")? "selected" : ""; ?>>Turkmenistan</option>
+				<option value="TC" <?= ($docNacionalidad=="TC")? "selected" : ""; ?>>Turks and Caicos Islands</option>
+				<option value="TV" <?= ($docNacionalidad=="TV")? "selected" : ""; ?>>Tuvalu</option>
+				<option value="UG" <?= ($docNacionalidad=="UG")? "selected" : ""; ?>>Uganda</option>
+				<option value="UA" <?= ($docNacionalidad=="UA")? "selected" : ""; ?>>Ukraine</option>
+				<option value="AE" <?= ($docNacionalidad=="AE")? "selected" : ""; ?>>United Arab Emirates</option>
+				<option value="GB" <?= ($docNacionalidad=="GB")? "selected" : ""; ?>>Reino Unido (UK)</option>
+				<option value="US" <?= ($docNacionalidad=="US")? "selected" : ""; ?>>Estados Unidos (USA)</option>
+				<option value="UY" <?= ($docNacionalidad=="UY")? "selected" : ""; ?>>Uruguay</option>
+				<option value="UZ" <?= ($docNacionalidad=="UZ")? "selected" : ""; ?>>Uzbekistan</option>
+				<option value="VU" <?= ($docNacionalidad=="VU")? "selected" : ""; ?>>Vanuatu</option>
+				<option value="VE" <?= ($docNacionalidad=="VE")? "selected" : ""; ?>>Venezuela</option>
+				<option value="VN" <?= ($docNacionalidad=="VN")? "selected" : ""; ?>>Viet Nam</option>
+				<option value="VG" <?= ($docNacionalidad=="VG")? "selected" : ""; ?>>Virgin Islands, British</option>
+				<option value="VI" <?= ($docNacionalidad=="VI")? "selected" : ""; ?>>Virgin Islands, U.S.</option>
+				<option value="WF" <?= ($docNacionalidad=="WF")? "selected" : ""; ?>>Wallis and Futuna</option>
+				<option value="EH" <?= ($docNacionalidad=="EH")? "selected" : ""; ?>>Western Sahara</option>
+				<option value="YE" <?= ($docNacionalidad=="YE")? "selected" : ""; ?>>Yemen</option>
+				<option value="ZM" <?= ($docNacionalidad=="ZM")? "selected" : ""; ?>>Zambia</option>
+				<option value="ZW" <?= ($docNacionalidad=="ZW")? "selected" : ""; ?>>Zimbabwe</option> 
 			</select>
 
 		</div>
@@ -260,7 +259,7 @@
 			<div class="input-group-prepend"><span class="input-group-text"><i class="far fa-address-card"></i></span></div>
 
 
-			<select id="docTipoDocumento" data-dbtable="docentes" data-dbpk="docenteId" name="docTipoDocumento" class="form-control kt-selectpicker" title="Ingrese tipo de documento" data-style="btn-primary">
+			<select id="docTipoDocumento" data-autosave="true" data-dbtable="docentes" data-dbpk="docenteId" name="docTipoDocumento" class="form-control kt-selectpicker" title="Ingrese tipo de documento" data-style="btn-primary">
 
 				<?php $tipoDoc = $docente['docTipoDocumento']; ?>
 
@@ -276,7 +275,7 @@
 	<div class="col-lg-4">
 		<div class="input-group">
 			<div class="input-group-prepend"><span class="input-group-text"><i class="far fa-address-card"></i></span></div>
-			<input id="docNroDocumento" data-dbtable="docentes" data-dbpk="docenteId" name="docNroDocumento" type="text" class="form-control" placeholder="Número de documento" value="<?php echo $docente['docNroDocumento']; ?>">
+			<input id="docNroDocumento" data-autosave="true" data-dbtable="docentes" data-dbpk="docenteId" name="docNroDocumento" type="text" class="form-control" placeholder="Número de documento" value="<?php echo $docente['docNroDocumento']; ?>">
 		</div>
 	</div>
 
@@ -290,21 +289,21 @@
 	<div class="col-lg-4">
 		<div class="input-group">
 			<div class="input-group-prepend"><span class="input-group-text"><i class="far fa-user"></i></span></div>
-			<input id="docApPaterno" data-dbtable="docentes" data-dbpk="docenteId" name="docApPaterno" type="text" class="form-control" placeholder="Apellido Paterno" title="Ingrese su apellido paterno" value="<?php echo $docente['docApPaterno']; ?>">
+			<input id="docApPaterno" data-autosave="true" data-dbtable="docentes" data-dbpk="docenteId" name="docApPaterno" type="text" class="form-control" placeholder="Apellido Paterno" title="Ingrese su apellido paterno" value="<?php echo $docente['docApPaterno']; ?>">
 		</div>
 	</div>
 
 	<div class="col-lg-4">
 		<div class="input-group">
 			<div class="input-group-prepend"><span class="input-group-text"><i class="far fa-user"></i></span></div>
-			<input id="docApMaterno" data-dbtable="docentes" data-dbpk="docenteId" title="Ingrese su apellido materno" name="docApMaterno" type="text" class="form-control" placeholder="Apellido Materno" value="<?php echo $docente['docApMaterno']; ?>">
+			<input id="docApMaterno" data-autosave="true" data-dbtable="docentes" data-dbpk="docenteId" title="Ingrese su apellido materno" name="docApMaterno" type="text" class="form-control" placeholder="Apellido Materno" value="<?php echo $docente['docApMaterno']; ?>">
 		</div>
 	</div>
 
 	<div class="col-lg-4">
 		<div class="input-group">
 			<div class="input-group-prepend"><span class="input-group-text"><i class="far fa-user"></i></span></div>
-			<input id="docNombres" data-dbtable="docentes" data-dbpk="docenteId" title="Ingrese su nombre completo" name="docNombres" type="text" class="form-control" placeholder="Nombre completo" value="<?php echo $docente['docNombres']; ?>">
+			<input id="docNombres" data-autosave="true" data-dbtable="docentes" data-dbpk="docenteId" title="Ingrese su nombre completo" name="docNombres" type="text" class="form-control" placeholder="Nombre completo" value="<?php echo $docente['docNombres']; ?>">
 		</div>
 	</div>
 
@@ -317,7 +316,7 @@
 	<div class="col-lg-4">
 		<div class="input-group">
 			<div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-venus-mars"></i></span></div>
-			<select id="docGenero" data-dbtable="docentes" data-dbpk="docenteId" name="docGenero" class="form-control kt-selectpicker" title="Seleccione su género" data-style="btn-primary">
+			<select id="docGenero" data-autosave="true" data-dbtable="docentes" data-dbpk="docenteId" name="docGenero" class="form-control kt-selectpicker" title="Seleccione su género" data-style="btn-primary">
 
 				<?php $docGenero = $docente['docGenero']; ?>
 
@@ -331,7 +330,7 @@
 	<div class="col-lg-4">
 		<div class="input-group">
 			<div class="input-group-prepend"><span class="input-group-text"><i class="far fa-calendar-alt"></i></span></div>
-			<input type="text" data-dbtable="docentes" data-dbpk="docenteId" id="docFecNacimiento" name="docFecNacimiento" class="form-date form-control" placeholder="Fecha de nacimiento" value="<?php echo $docente['docFecNacimiento']; ?>">
+			<input type="text" data-autosave="true" data-dbtable="docentes" data-dbpk="docenteId" id="docFecNacimiento" name="docFecNacimiento" class="form-date form-control" placeholder="Fecha de nacimiento" value="<?php echo $docente['docFecNacimiento']; ?>">
 		</div>
 	</div>
 
@@ -354,7 +353,7 @@
 	<div class="col-lg-4">
 		<div class="input-group">
 			<div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-map-marked-alt"></i></span></div>
-			<select name="ubdepartamento_idDepa" data-dbtable="docentes" data-dbpk="docenteId" id="ubdepartamento_idDepa" class="form-control kt-selectpicker" title="Ingrese el departamento donde reside" data-style="btn-primary">
+			<select name="ubdepartamento_idDepa" data-autosave="true" data-dbtable="docentes" data-dbpk="docenteId" id="ubdepartamento_idDepa" class="form-control kt-selectpicker" title="Ingrese el departamento donde reside" data-style="btn-primary">
 				<option value="">Seleccione departamento</option>
 
 				<?php $idDepa = $docente['ubdepartamento_idDepa']; ?>
@@ -372,7 +371,7 @@
 	<div class="col-lg-4">
 		<div class="input-group">
 			<div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-map-marked-alt"></i></span></div>
-			<select class="form-control kt-selectpicker" data-dbtable="docentes" data-dbpk="docenteId" id="ubprovincia_idProv" name="ubprovincia_idProv" title="Ciudad" data-style="btn-primary">
+			<select class="form-control kt-selectpicker" data-autosave="true" data-dbtable="docentes" data-dbpk="docenteId" id="ubprovincia_idProv" name="ubprovincia_idProv" title="Ciudad" data-style="btn-primary">
 				<option value="">Seleccione provincia</option>
 
 				<?php $idProv = $docente['ubprovincia_idProv']; ?>
@@ -389,7 +388,7 @@
 	<div class="col-lg-4">
 		<div class="input-group">
 			<div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-map-marked-alt"></i></span></div>
-			<select class="form-control kt-selectpicker" data-dbtable="docentes" data-dbpk="docenteId" id="ubdistrito_idDist" name="ubdistrito_idDist" title="Ciudad" data-style="btn-primary">
+			<select class="form-control kt-selectpicker" data-autosave="true" data-dbtable="docentes" data-dbpk="docenteId" id="ubdistrito_idDist" name="ubdistrito_idDist" title="Ciudad" data-style="btn-primary">
 				<option value="">Seleccione distrito</option>
 
 				<?php $idDist = $docente['ubdistrito_idDist']; ?>
@@ -409,7 +408,7 @@
 	<div class="col-lg-12">
 		<div class="input-group">
 			<div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-home"></i></span></div>
-			<input id="docDireccion" name="docDireccion" data-dbtable="docentes" data-dbpk="docenteId" type="text" class="form-control" title="Ingrese una dirección de contacto" placeholder="Dirección" value="<?php echo $docente['docDireccion']; ?>" >
+			<input id="docDireccion" name="docDireccion" data-autosave="true" data-dbtable="docentes" data-dbpk="docenteId" type="text" class="form-control" title="Ingrese una dirección de contacto" placeholder="Dirección" value="<?php echo $docente['docDireccion']; ?>" >
 		</div>
 	</div>
 </div>
@@ -417,14 +416,14 @@
 	<div class="col-lg-4">
 		<div class="input-group">
 			<div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-phone"></i></span></div>
-			<input type="text" id="docCelular" data-dbtable="docentes" data-dbpk="docenteId" name="docCelular" class="form-control" title="Ingrese un teléfono móvil de contacto" placeholder="Teléfono celular" value="<?php echo $docente['docCelular']; ?>">
+			<input type="text" id="docCelular" data-autosave="true" data-dbtable="docentes" data-dbpk="docenteId" name="docCelular" class="form-control" title="Ingrese un teléfono móvil de contacto" placeholder="Teléfono celular" value="<?php echo $docente['docCelular']; ?>">
 		</div>
 	</div>
 
 	<div class="col-lg-4">
 		<div class="input-group">
 			<div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-phone"></i></span></div>
-			<input type="text" id="docTelFijo" data-dbtable="docentes" data-dbpk="docenteId" name="docTelFijo" class="form-control" title="Ingrese un teléfono fijo de contacto" placeholder="Teléfono fijo" value="<?php echo $docente['docTelFijo']; ?>">
+			<input type="text" id="docTelFijo" data-autosave="true" data-dbtable="docentes" data-dbpk="docenteId" name="docTelFijo" class="form-control" title="Ingrese un teléfono fijo de contacto" placeholder="Teléfono fijo" value="<?php echo $docente['docTelFijo']; ?>">
 		</div>
 	</div>
 

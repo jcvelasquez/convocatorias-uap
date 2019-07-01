@@ -24,7 +24,13 @@ class Investigaciones_Publicaciones_model extends CI_Model
 
         $records = array();
 
-        $this->db->select("inv.*");
+        $this->db->select("inv.investigacionesId, 
+                           inv.docenteId,
+                           inv.invesTitulo,
+                           DATE_FORMAT(inv.invesFecha, '%d/%m/%Y') as invesFecha,
+                           inv.invesTipoPublicacion,
+                           inv.invesNroOrcid,
+                           inv.invesRutaArchivoInvestigacion");
         $this->db->from("investigaciones_publicaciones inv");
         $this->db->where("inv.docenteId ='{$docenteId}' ");
         $query = $this->db->get();
@@ -71,7 +77,7 @@ class Investigaciones_Publicaciones_model extends CI_Model
     /*
      * function to delete plato
      */
-    function borrar_investigaciones($investigacionesId)
+    function eliminar_investigaciones($investigacionesId)
     {
         return $this->db->delete('investigaciones_publicaciones',array('investigacionesId'=>$investigacionesId));
     }

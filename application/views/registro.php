@@ -137,23 +137,15 @@
 					<!--begin: Form Wizard Form-->
 					<form class="kt-form" id="kt_form">
 
-						<div class="alert alert-success kt-hide" role="alert">
-							<strong>Well done!</strong> You successfully read this important alert message.
-						</div>
-
-						<div class="alert alert-warning kt-hide" role="alert">
-							<strong>Well done!</strong> You successfully read this important alert message.
-						</div>
-
-						<!--begin: Form Wizard Step 2-->
+						<!--begin: Form Wizard Step 1-->
 						<div class="kt-wizard-v3__content" data-ktwizard-type="step-content" data-ktwizard-state="current">
 							<?php include('tabs/tpl-informacion-personal.php'); ?>
 						</div>
-						<!--begin: Form Wizard Step 3-->
+						<!--begin: Form Wizard Step 2-->
 						<div class="kt-wizard-v3__content" data-ktwizard-type="step-content">
 							<?php include('tabs/tpl-formacion-academica.php'); ?>
 						</div>
-						<!--begin: Form Wizard Step 4-->
+						<!--begin: Form Wizard Step 3-->
 						<div class="kt-wizard-v3__content" data-ktwizard-type="step-content">
 							<?php include('tabs/tpl-cargos-academicos.php'); ?>
 						</div>
@@ -161,12 +153,15 @@
 						<div class="kt-wizard-v3__content" data-ktwizard-type="step-content">
 							<?php include('tabs/tpl-estudios-complementarios.php'); ?>
 						</div>
+						<!--begin: Form Wizard Step 5-->
 						<div class="kt-wizard-v3__content" data-ktwizard-type="step-content">
 							<?php include('tabs/tpl-reconocimientos-institucionales.php'); ?>
 						</div>
+						<!--begin: Form Wizard Step 6-->
 						<div class="kt-wizard-v3__content" data-ktwizard-type="step-content">
 							<?php include('tabs/tpl-investigaciones-publicaciones.php'); ?>
 						</div>
+						<!--begin: Form Wizard Step 7-->
 						<div class="kt-wizard-v3__content" data-ktwizard-type="step-content">
 							<?php include('tabs/tpl-curriculum.php'); ?>
 						</div>				

@@ -15,6 +15,8 @@ class Registro extends CI_Controller {
 		$this->load->model('Distrito_model');
         $this->load->model('Docentes_model');
 		$this->load->model('Indicadores_model');	
+		$this->load->model('Adicionales_model');	
+
 
     }
 
@@ -133,8 +135,13 @@ class Registro extends CI_Controller {
 
 			$result = $this->Indicadores_model->actualizar($params, $docenteId);
 
-		} 
+		}else if($tabla == "adicionales"){
 
+			$params['docentes_docenteId'] = $docenteId;
+
+			$result = $this->Adicionales_model->actualizar($params, $docenteId);
+
+		}
 		//
 
 		//COMPRUEBO SI EL EMAIL HA SIDO USADO ANTES

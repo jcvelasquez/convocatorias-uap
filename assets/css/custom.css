@@ -17,7 +17,7 @@ body {
 .container-registro .summary .kt-portlet__body,
 .inside_buttons_form { width: 80%; margin:0 auto;   }
 
-.form_tabs .kt-form__actions { padding: 40px 0; }
+.form_tabs .kt-form__actions { padding: 40px 0; overflow: hidden; }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 { margin-bottom:0; }
 
@@ -315,3 +315,12 @@ footer p#title-footer {
         border: solid #b51f1f 2px;
 }
 
+
+
+.dz-clickable {
+    cursor: pointer;
+    border: 2px dashed #b51f1f;
+    width: 100%;
+    padding: 30px;
+    text-align: center;
+}
