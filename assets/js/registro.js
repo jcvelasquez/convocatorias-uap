@@ -80,28 +80,28 @@ var Registro = function () {
 
                     var myDropzone = this;
 
-                    $.ajax({
-                      url: BASE_URL + 'Adicionales/listar_archivo_sunedu',
-                      type: 'post',
-                      data: { docenteId: docenteId },
-                      dataType: 'json',
-                      success: function(response){
+                    $.ajax({url: BASE_URL + 'Adicionales/listar_archivo_sunedu',
+                          type: 'post',
+                          data: { docenteId: docenteId },
+                          dataType: 'json',
+                          success: function(response){
 
-                        //console.log(response);
 
-                        $.each(response, function(key,value) {
+                            $.each(response, function(key,value) {
 
-                            if(key == "archivoSunedu")
-                            console.log(value);
-                          /*var mockFile = { name: value.name, size: value.size };
+                                if(key == "archivoSunedu"){
 
-                          myDropzone.emit("addedfile", mockFile);
-                          myDropzone.emit("thumbnail", mockFile, value.path);
-                          myDropzone.emit("complete", mockFile);*/
+                                        var mockFile = { name: value };
 
-                        });
+                                        myDropzone.emit("addedfile", mockFile);
+                                        myDropzone.emit("thumbnail", mockFile, value.path);
+                                        myDropzone.emit("complete", mockFile);
 
-                      }
+                                }
+
+                            });
+
+                          }
                     });
 
               }
