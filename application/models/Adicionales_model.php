@@ -67,9 +67,9 @@ class Adicionales_model extends CI_Model
     /*
      * function to delete plato
      */
-    function eliminar($adicionalId)
+    function eliminar($docenteId)
     {
-        return $this->db->delete('adicionales',array('adicionalId'=>$adicionalId));
+        return $this->db->delete('adicionales',array('docentes_docenteId'=>$docenteId));
     }
 
 

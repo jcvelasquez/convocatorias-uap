@@ -13,6 +13,9 @@ var Registro = function () {
     var error;
     var success;
     var formDataIdioma;
+    //var newfilename
+    //var myDropzone;
+    
 
     var arrows = {
             leftArrow: '<i class="la la-angle-left"></i>',
@@ -40,73 +43,218 @@ var Registro = function () {
             templates: arrows
         });
 
+        
+
+        /***********************/
+        /* DROPZONE PDF SUNEDU */
+        /***********************/
         $("#archivoPdfSunedu").dropzone({ 
-              url: BASE_URL + "Adicionales/agregar_sunedu",
-              paramName: "archivoSunedu", // The name that will be used to transfer the file
-              maxFilesize: 5, // MB
-              maxFiles: 1,
+              url: BASE_URL + "Adicionales/agregar",
+              paramName: "fileToUpload", 
+              maxFilesize: 5, 
+              maxFiles: $('#archivoPdfSunedu').attr('data-count'),
+              params: { docenteId: docenteId, 
+                        fieldToUpdate: 'archivoSunedu',
+                        pathFile: "./assets/uploads/adicionales/" 
+              },
+              autoDiscover : false,
+              createImageThumbnails : false,
+              acceptedFiles: 'application/pdf',
               addRemoveLinks: true,
-              dictRemoveFile : "Eliminar archivo",
-              removedfile: function(file) {
-
-                    var name = file.name; 
-
-                    $.ajax({
-                        type: 'POST',
-                        url: 'Adicionales/eliminar',
-                        data: { docenteId: docenteId },
-                        dataType: 'html',
-                        success:function(response){
-                                                                                    
-                         var _ref;
-                        return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
-
-                        },
-                        error: function(xhr) { 
-                            console.log(xhr.statusText + xhr.responseText);
-                        }
-                    });
-
-                    
-              },
-              params: { docenteId: docenteId },
-              accept: function(file, done) {
-                if (file.name == "justinbieber.jpg") {
-                  done("Naha, you don't.");
-                }
-                else { done(); }
-              },
+              dictFileTooBig: "El archivo es muy grande, solo se permite archivo de 5Mb o menor.",
+              dictRemoveFile : "<i class='fas fa-trash'></i> Eliminar archivo",
               init: function() { 
 
                     var myDropzone = this;
 
-                    $.ajax({url: BASE_URL + 'Adicionales/listar_archivo_sunedu',
+                    $.ajax({url: BASE_URL + 'Adicionales/listar_archivos',
                           type: 'post',
-                          data: { docenteId: docenteId },
+                          data: { docenteId: docenteId},
                           dataType: 'json',
                           success: function(response){
 
-
-                            $.each(response, function(key,value) {
-
-                                if(key == "archivoSunedu"){
-
-                                        var mockFile = { name: value };
-
+                                if(response !== null){
+                                    if(response.archivoSunedu !== null){
+                                        var mockFile = { name: response.archivoSunedu, size: 2000480, };
                                         myDropzone.emit("addedfile", mockFile);
-                                        myDropzone.emit("thumbnail", mockFile, value.path);
                                         myDropzone.emit("complete", mockFile);
-
+                                    }
                                 }
-
-                            });
-
                           }
                     });
+
+              },
+              removedfile: function(file) {
+
+                    var _ref = file.previewElement;
+                    var _newname;
+
+                    if( typeof(file.upload) != 'undefined'){
+                        _newname = file.upload.filename
+                    }else{
+                        _newname = file.name;
+                    }
+
+                    swal.fire({
+                        title: 'CONFIRMACION REQUERIDA',
+                        text: "¿Esta seguro que desea eliminar el archivo?",
+                        type: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Eliminar',
+                        cancelButtonText: 'Cancelar',
+                        reverseButtons: true
+                    }).then(function(result){
+
+                        if (result.value) {
+
+                            $.ajax({type: 'POST',
+                                    url: BASE_URL + 'Adicionales/eliminar',
+                                    data: { docenteId: docenteId, 
+                                            archivo: _newname, 
+                                            fieldToUpdate: 'archivoSunedu',
+                                            pathFile: "./assets/uploads/adicionales/"
+                                    },
+                                    dataType: 'html',
+                                    success:function(response){
+                                                                                            
+                                        return ( _ref )  != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
+
+                                    }
+
+                            });
+            
+                        } 
+
+                    });
+  
+              },
+              renameFile: function (file) {
+
+                    let newName = file.name.replace(/\s+/g, "_");
+                    return newName;
+              },
+              accept: function(file, done) {
+                done();
+              },
+              success: function(file, serverResponse){
+
+                    var fileuploded = file.previewElement.querySelector("[data-dz-name]");
+                    fileuploded.innerHTML = serverResponse.newfilename;
 
               }
 
         });
+        /*****************/
+        /* FIN DROPZONE  */
+        /*****************/
+
+
+
+        /***************************/
+        /* DROPZONE PDF FOTOGRAFIA */
+        /***************************/
+        $("#archivoFotografia").dropzone({ 
+              url: BASE_URL + "Adicionales/agregar",
+              paramName: "fileToUpload", 
+              maxFilesize: 5, 
+              maxFiles: $('#archivoFotografia').attr('data-count'),
+              params: { docenteId: docenteId, 
+                        fieldToUpdate: 'archivoFotografia',
+                        pathFile: "./assets/uploads/fotografias/"
+              },
+              createImageThumbnails : true,
+              autoDiscover : false,
+              addRemoveLinks: true,
+              acceptedFiles: 'image/jpg, image/jpeg,image/gif, image/png',
+              dictFileTooBig: "El archivo es muy grande, solo se permite archivo de 5Mb o menor.",
+              dictRemoveFile : "<i class='fas fa-trash'></i> Eliminar archivo",
+              init: function() { 
+
+                    var myDropZoneFotografia = this;
+
+                    $.ajax({url: BASE_URL + 'Adicionales/listar_archivos',
+                      type: 'post',
+                      data: { docenteId: docenteId },
+                      dataType: 'json',
+                      success: function(response){
+
+                        if(response !== null){
+                            if(response.archivoFotografia !== null){
+                                var mockFileFotografia = { name: response.archivoFotografia, size: 4000480 };
+                                myDropZoneFotografia.emit("addedfile", mockFileFotografia);
+                                myDropZoneFotografia.emit("complete", mockFileFotografia);
+                            } 
+                        }
+
+                      }
+
+                    });
+
+              },
+              removedfile: function(file) {
+
+                    var _ref = file.previewElement;
+                    var _newname;
+
+                    if( typeof(file.upload) != 'undefined'){
+                        _newname = file.upload.filename
+                    }else{
+                        _newname = file.name;
+                    }
+
+                    swal.fire({
+                        title: 'CONFIRMACION REQUERIDA',
+                        text: "¿Esta seguro que desea eliminar el archivo?",
+                        type: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Eliminar',
+                        cancelButtonText: 'Cancelar',
+                        reverseButtons: true
+                    }).then(function(result){
+
+                        if (result.value) {
+
+                            $.ajax({
+                                type: 'POST',
+                                url: BASE_URL + 'Adicionales/eliminar',
+                                data: { docenteId: docenteId, 
+                                        archivo: _newname, 
+                                        fieldToUpdate: 'archivoFotografia',
+                                        pathFile: "./assets/uploads/fotografias/"
+                                },
+                                dataType: 'html',
+                                success:function(response){
+                                                                                        
+                                return ( _ref )  != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
+
+                                }
+
+                            });
+            
+                        } 
+
+                    });
+  
+              },
+              renameFile: function (file) {
+
+                    let newName = file.name.replace(/\s+/g, "_");
+                    return newName;
+              },
+              accept: function(file, done) {
+                done();
+              },
+              success: function(file, serverResponse){
+
+                    var fileuploded = file.previewElement.querySelector("[data-dz-name]");
+                    fileuploded.innerHTML = serverResponse.newfilename;
+
+              }
+
+        });
+        /*****************/
+        /* FIN DROPZONE  */
+        /*****************/
 
 
 

@@ -31,7 +31,6 @@
 <script src="<?php echo asset_url('vendors/general/jquery-form/dist/jquery.form.min.js'); ?>" type="text/javascript"></script>
 <script src="<?php echo asset_url('vendors/general/block-ui/jquery.blockUI.js'); ?>" type="text/javascript"></script>
 <script src="<?php echo asset_url('vendors/general/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js'); ?>" type="text/javascript"></script>
-<script src="<?php echo asset_url('vendors/custom/js/vendors/bootstrap-datepicker.init.js'); ?>" type="text/javascript"></script>
 <script src="<?php echo asset_url('vendors/general/bootstrap-select/dist/js/bootstrap-select.js'); ?>" type="text/javascript"></script>
 <script src="<?php echo asset_url('vendors/general/select2/dist/js/select2.full.js'); ?>" type="text/javascript"></script>
 <script src="<?php echo asset_url('vendors/general/dropzone/dist/dropzone.js'); ?>" type="text/javascript"></script>
@@ -45,6 +44,7 @@
 
 
 <?php /*
+<script src="<?php echo asset_url('vendors/custom/js/vendors/bootstrap-datepicker.init.js'); ?>" type="text/javascript"></script>
 <script src="<?php echo asset_url('vendors/general/bootstrap-datetime-picker/js/bootstrap-datetimepicker.min.js'); ?>" type="text/javascript"></script>
 <script src="<?php echo asset_url('vendors/general/popper.js/dist/umd/popper.js'); ?>" type="text/javascript"></script>
 <script src="<?php echo asset_url('vendors/general/tooltip.js/dist/umd/tooltip.min.js'); ?>" type="text/javascript"></script>

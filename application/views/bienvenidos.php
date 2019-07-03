@@ -12,7 +12,13 @@
 	</div>
 </section>
 
-<div class="container-registro">
+<div class="container-registro" id="convocatorias_inicio">
+
+	<div class="kt-section">
+		<div class="kt-section__content kt-section__content--solid">
+			<h4>SISTEMA DE CONVOCATORIAS CONVUAP v1.0 <small></small></h4>
+		</div>
+	</div>
 
 	<!--beging::Portlet -->
 	<div class="kt-portlet">

@@ -10,23 +10,14 @@
 
 	<div class="col-lg-12">
 
-		<div id="archivoPdfSunedu" class="dropConvocatorias">
-
+		<!-- inicio dropzone -->
+		<div id="archivoPdfSunedu" class="dropConvocatorias" data-count="1">
 			<div class="kt-dropzone__msg dz-message needsclick">
-				<h3 class="kt-dropzone__msg-title">Arrastre los archivos hasta aquí o haga clic para subir archivos.</h3>
-				<span class="kt-dropzone__msg-desc">Solo imágenes, pdfs y documentos word estan permitidos</span>
+				<h3 class="kt-dropzone__msg-title">Arrastre un (1) archivo PDF hasta aquí o haga clic para subir uno.</h3>
+				<span class="kt-dropzone__msg-desc">Solo los archivos PDFs están permitidos. Máximo 5Mb</span>
 			</div>
-			
-
 		</div>
 		<!-- inicio dropzone -->
-		<!-- <div class="kt-dropzone dropzone m-dropzone--success" action="inc/api/dropzone/upload.php" id="dropRegistrosSunedu">
-			<div class="kt-dropzone__msg dz-message needsclick">
-				<h3 class="kt-dropzone__msg-title">Arrastre los archivos hasta aquí o haga clic para subir archivos.</h3>
-				<span class="kt-dropzone__msg-desc">Solo imágenes, pdfs y documentos word estan permitidos</span>
-			</div>
-		</div> -->
-		<!-- fin de dropzone -->
 		
 	</div>
 
@@ -163,6 +154,7 @@
 								<select name="gradAcademico" id="gradAcademico" data-autosave="false" class="form-control">
 									<option value="">Seleccione grado académico</option>	
 									<option value="Bachiller">Bachiller</option>
+									<option value="Licenciado">Licenciado</option>
 									<option value="Magister">Magíster</option>
 									<option value="Doctor">Doctor</option>
 								</select>

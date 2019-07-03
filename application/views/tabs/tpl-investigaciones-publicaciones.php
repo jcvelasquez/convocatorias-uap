@@ -49,8 +49,9 @@
 								</div>
 								<select class="form-control kt-selectpicker" data-autosave="false" id="invesTipoPublicacion" name="invesTipoPublicacion" title="Tipo de Investigacion" data-style="btn-primary">
 									<option value="">Seleccione tipo</option>
-									<option value="Dos">Dos</option>
-									<option value="Tres">Tres</option>
+									<option value="Patente de Invención">Patente de Invención</option>
+									<option value="Patente de Modelo de Utilidad">Patente de Modelo de Utilidad</option>
+									<option value="Registro de Certificado de Obtención">Registro de Certificado de Obtención</option>
 								</select>
 							</div>
 						</div>

@@ -35,10 +35,16 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 { margin-bottom:0; }
 .kt-radio.kt-radio--brand.kt-radio--solid > input:checked ~ span {
     background: #b51f1f;
 }
+
+#form_inicio,
+#seleccion_convocatorias,
+#convocatorias_inicio { width: 80%; margin: 100px auto;  }
+
 .nav-pills .nav-item .nav-link:active, .nav-pills .nav-item .nav-link.active, .nav-pills .nav-item .nav-link.active:hover {
     background:none;
     color: #ffffff;
 }
+.kt-wizard-v3 .kt-wizard-v3__nav { border: none !important; }
 .kt-option {
     border: 1px solid #b51f1f;
 }
@@ -324,3 +330,33 @@ footer p#title-footer {
     padding: 30px;
     text-align: center;
 }
+
+.dz-remove {
+
+    background-color: #b51f1f!important;
+    color: #fff;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    margin-top: 15px;
+    border: 0;
+    border-radius: .125rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    white-space: normal;
+    word-wrap: break-word;
+    padding: 0.65rem 1rem;
+}
+.dz-remove:hover { text-decoration: none; color:#fff; }
+
+.dropConvocatorias .dz-preview {
+    z-index: 1000;
+}
+.dropConvocatorias .dz-preview .dz-details {
+    opacity: 1 !important;
+}
+
+.dropConvocatorias.dz-started .dz-message{
+    display: block;
+}
+
+.dz-error .dz-remove {}

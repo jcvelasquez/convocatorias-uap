@@ -257,8 +257,6 @@
 	<div class="col-lg-4">
 		<div class="input-group">
 			<div class="input-group-prepend"><span class="input-group-text"><i class="far fa-address-card"></i></span></div>
-
-
 			<select id="docTipoDocumento" data-autosave="true" data-dbtable="docentes" data-dbpk="docenteId" name="docTipoDocumento" class="form-control kt-selectpicker" title="Ingrese tipo de documento" data-style="btn-primary">
 
 				<?php $tipoDoc = $docente['docTipoDocumento']; ?>
@@ -322,7 +320,7 @@
 
 				<option value="">Seleccione</option>
 				<option value="M" <?= ($docGenero=="M")? "selected" : ""; ?>>Masculino</option>
-				<option value="F" <?= ($docGenero=="F")? "selected" : ""; ?>>Masculino</option>
+				<option value="F" <?= ($docGenero=="F")? "selected" : ""; ?>>Femenino</option>
 			</select>
 		</div>
 	</div>
@@ -377,7 +375,7 @@
 				<?php $idProv = $docente['ubprovincia_idProv']; ?>
 
 				<?php  foreach ($provincias as $prov) { ?>
-					<option value="<?php echo $prov['idDepa'] ?>" <?= ($idProv==$prov['idProv'])? "selected" : ""; ?>><?php echo $prov['provincia'] ?></option>
+					<option value="<?php echo $prov['idProv'] ?>" <?= ($idProv==$prov['idProv'])? "selected" : ""; ?>><?php echo $prov['provincia'] ?></option>
          		<?php } ?>
 
 			</select>

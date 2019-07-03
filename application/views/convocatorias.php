@@ -12,7 +12,14 @@
 	</div>
 </section>
 
-<div class="container-registro">
+<div class="container-registro" id="seleccion_convocatorias">
+
+
+	<div class="kt-section">
+		<div class="kt-section__content kt-section__content--solid">
+			<h4>SISTEMA DE CONVOCATORIAS CONVUAP v1.0 <small></small></h4>
+		</div>
+	</div>
 
 	<div class="form-group row">
 		<div class="col-lg-12">
