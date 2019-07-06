@@ -13,6 +13,8 @@ class Escuelas extends CI_Controller {
 		$this->load->model('Cursos_model');
 		$this->load->model('Escuelas_model');	
 		$this->load->model('Facultades_model');
+		$this->load->model('Cursos_Escuelas_model');
+
 
     }
 
@@ -37,6 +39,18 @@ class Escuelas extends CI_Controller {
 					->set_output(json_encode($escuelas));
 
 	}
+
+	public function get_escuela_x_id(){
+
+		$escuelaId = $this->input->post('escuelaId');
+
+		$data = $this->Escuelas_model->get_escuela_by_id($escuelaId);
+
+		return $this->output
+					->set_content_type('application/json')
+					->set_output(json_encode($data));
+
+    }
 
 	public function listar_select()
 	{
@@ -63,6 +77,56 @@ class Escuelas extends CI_Controller {
 		$this->load->view('admin/index', $data);
 	}
 
+	public function agregar()
+	{
+
+		$primaryKey = $this->input->post('primaryKey');
+		$sedes_sedeId = $this->input->post('sedes_sedeId');
+		$facultades_facultadId = $this->input->post('facultades_facultadId');
+		$escuelaNombre = $this->input->post('escuelaNombre');
+		$escuelaEstado = $this->input->post('escuelaEstado');
+
+		$params = array('sedes_sedeId' => $sedes_sedeId,
+						'facultades_facultadId' => $facultades_facultadId,
+						'escuelaNombre' => $escuelaNombre,
+						'escuelaEstado' => $escuelaEstado); 
+
+
+		$data = $this->Escuelas_model->agregar_escuelas($params);
+
+		/*if($primaryKey == "nuevo"){
+
+			
+
+			foreach ($cursosXescuelas as $curso) {
+
+				$params = array('cursos_cursoId' => $curso->id,
+							'escuelas_escuelaId' => $idnew); 
+
+				$cursos = $this->Cursos_Escuelas_model->agregar_cursos_x_escuela($primaryKey, $params);
+			}
+
+		}else{
+
+			$data = $this->Escuelas_model->actualizar_escuelas($primaryKey, $params);
+
+			foreach ($cursosXescuelas as $curso) {
+
+				$params = array('cursos_cursoId' => $curso->id,
+							'escuelas_escuelaId' => $primaryKey); 
+
+				$cursos = $this->Cursos_Escuelas_model->agregar_cursos_x_escuela($primaryKey, $params);
+			}
+
+			
+		}*/
+
+		
+		return $this->output
+					->set_content_type('application/json')
+					->set_output(json_encode($data));
+	}
+
 
 	public function eliminar()
 	{
@@ -70,20 +134,6 @@ class Escuelas extends CI_Controller {
 
 		$this->load->view('admin/index', $data);
 	}
-
-	public function get_escuela_x_id(){
-
-		$escuelaId = $this->input->post('escuelaId');
-
-		$data = $this->Escuelas_model->get_escuela_by_id($escuelaId);
-
-		return $this->output
-					->set_content_type('application/json')
-					->set_output(json_encode($data));
-
-    }
-
-
 
 
 }

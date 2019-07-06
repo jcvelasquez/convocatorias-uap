@@ -29,7 +29,7 @@
 
 
 
-<div class="kt-section">
+<div class="kt-section kt-hide">
 	<div class="kt-section__content kt-section__content--solid ">
 		<h4>¿HAS TRABAJADO ANTES EN LA UAP? <small>Marca la opción según sea el caso</small></h4>
 	</div>
@@ -40,7 +40,7 @@
 
 	<form id="form_registro" style="width: 100%;">
 
-		<div class="col-lg-12">
+		<div class="col-lg-12" style="display: none;">
 			<label class="kt-option">
 				<span class="kt-option__control ">
 					<span class="kt-radio kt-radio--solid kt-radio--brand kt-radio--check-bold">
@@ -104,14 +104,14 @@
 					<span class="kt-option__label">
 						<span class="kt-option__head">
 							<span class="kt-option__title">
-								<strong>No he ejercido docencia en la UAP anteriormente</strong>
+								<strong>INICIAR REGISTRO DE DOCENTE</strong>
 							</span>
 							<span class="kt-option__focus">
-								<strong>(Opción 2)</strong>
+								<strong></strong>
 							</span>
 						</span>
 						<span class="kt-option__body">
-							<p>Marque esta opcion si es la primera vez que va a postular a alguna convocatoria de la UAP.</p>
+							<p>Ingrese un correo electronico y una clave para iniciar el proceso de registro.</p>
 
 
 

@@ -58,7 +58,7 @@
  							</div>
  						</div>
  						&nbsp;
- 						<a href="<?php echo site_url('admin/escuelas/agregar'); ?>" class="btn btn-brand btn-elevate btn-icon-sm">
+ 						<a href="<?php echo site_url('admin/escuelas/editar/nuevo'); ?>" class="btn btn-brand btn-elevate btn-icon-sm">
  							<i class="la la-plus"></i>
  							NUEVA ESCUELA
  						</a>

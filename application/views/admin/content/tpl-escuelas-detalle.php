@@ -61,6 +61,7 @@
  											<div class="input-group-prepend"><span class="input-group-text"><i class="la la-at"></i></span></div>
 
  											<select class="form-control" id="sedes_sedeId" name="sedes_sedeId">
+ 												<option value="">Seleccione una sede para la escuela</option>
  												<?php  foreach ($sedes as $sede) { ?>
 													<option value="<?php echo $sede['id'] ?>"><?php echo $sede['text'] ?></option>
 								         		<?php } ?>
@@ -77,6 +78,7 @@
  											<div class="input-group-prepend"><span class="input-group-text"><i class="la la-at"></i></span></div>
 
  											<select class="form-control" id="facultades_facultadId" name="facultades_facultadId">
+ 													<option value="">Seleccione una facultad para la escuela</option>
  												<?php  foreach ($facultades as $facultad) { ?>
 													<option value="<?php echo $facultad['id'] ?>"><?php echo $facultad['text'] ?></option>
 								         		<?php } ?>
@@ -103,6 +105,7 @@
  										<div class="input-group">
  											<div class="input-group-prepend"><span class="input-group-text"><i class="la la-at"></i></span></div>
  											<select class="form-control" id="escuelaEstado" name="escuelaEstado">
+ 												<option value="">Selecciona una opcion</option>
  												<option value="1">ACTIVO</option>
  												<option value="0">INACTIVO</option>
  											</select>
@@ -118,7 +121,7 @@
  								<div class="form-group row">
  									<label class="col-form-label col-lg-3 col-sm-12">Cursos de la escuela</label>
  									<div class=" col-lg-9 col-md-9 col-sm-12">
- 										<select class="form-control m-select2" id="select_cursos" name="param" multiple="multiple" name="select_cursos">
+ 										<select <?= ($escuelaId == "nuevo")? 'disabled' : ''; ; ?>  class="form-control m-select2" id="select_cursos" name="param" multiple="multiple" name="select_cursos">
  											<?php  foreach ($cursos as $curso) { ?>
 												<option value="<?php echo $curso['id'] ?>">
 													<?php echo $curso['text'] ?>

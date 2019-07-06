@@ -23,10 +23,6 @@ class Cursos_model extends CI_Model
         $this->db->select("cur.*");
         $this->db->from("cursos cur");
         $this->db->order_by('cur.cursoNombre', 'asc');
-        //$this->db->join('sedes sed', 'sed.sedeId = esc.sedes_sedeId', 'left');
-        //$this->db->where("esc.sedes_sedeId = sed.sedeId");
-        //$this->db->join('sedes sed', 'sed.sedeId = esc.sedes_sedeId', 'inner');
-        //$this->db->where("esc.cursoId ='{$cursoId}' ");
         
         $query = $this->db->get();
 
@@ -57,28 +53,14 @@ class Cursos_model extends CI_Model
 
     function get_all_cursos_por_convocatoria_select($convocatoriaId){
 
-        /*$records = array();
-
-        $this->db->select("cxe.cursos_cursoId as id");
-        $this->db->from("cursos_x_convocatoria cxc");
-        $this->db->join('cursos_x_escuela cxe', 'cxe.cursosXescuelaId = cxc.cursosXescuelaId', 'inner');
-        $this->db->where("cxc.convocatoriaId ='{$convocatoriaId}' ");
-
-        return $this->db->get()->result_array();*/
 
         $records = array();
-
-        /*$this->db->select("cursoId as id, cursoNombre as text");
-        $this->db->from("cursos");
-        $this->db->order_by('cursoNombre', 'asc');*/
         $this->db->select("cxe.cursos_cursoId as id, cur.cursoNombre as text");
         $this->db->from("cursos_x_convocatoria cxc");
         $this->db->join('cursos_x_escuela cxe', 'cxe.cursosXescuelaId = cxc.cursosXescuelaId', 'inner');
         $this->db->join('cursos cur', 'cxe.cursos_cursoId = cur.cursoId', 'inner');
         $this->db->where("cxc.convocatoriaId ='{$convocatoriaId}' ");
         
-        //$records['results'] = $this->db->get()->result_array();
-
         return $this->db->get()->result_array();
 
     }

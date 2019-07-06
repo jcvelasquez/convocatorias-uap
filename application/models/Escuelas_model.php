@@ -78,7 +78,7 @@ class Escuelas_model extends CI_Model
         return $this->db->insert_id();
     }
 
-    function editar_escuelas($escuelaId,$params)
+    function actualizar_escuelas($escuelaId,$params)
     {
         $this->db->where('escuelaId',$escuelaId);
         return $this->db->update('escuelas',$params);
@@ -88,6 +88,8 @@ class Escuelas_model extends CI_Model
     {
         return $this->db->delete('escuelas',array('escuelaId'=>$escuelaId));
     }
+
+   
 
 
 }

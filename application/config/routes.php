@@ -127,16 +127,4 @@ $route['convocatorias/mantener-sesion'] = "Bienvenidos/mantener_sesion";
 
 
 //GET AJAX AL EDITAR
-$route['escuela_x_id'] = "Escuelas/get_escuela_x_id";
 $route['convocatoria_x_id'] = "Convocatorias/get_convocatoria_x_id";
-$route['cursos_x_convocatoria'] = "Convocatorias/get_cursos_por_convocatoria_select";
-
-
-
-
-
-
-
-
-
-

@@ -220,7 +220,7 @@ var Bienvenidos = function () {
             form_registro = $('#form_registro');
 
             //initWizard(); 
-            initCursosConvocatorias();
+            //initCursosConvocatorias();
             initFormFields();
             initValidation();
             initSubmit();

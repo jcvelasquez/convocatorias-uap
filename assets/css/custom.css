@@ -360,3 +360,21 @@ footer p#title-footer {
 }
 
 .dz-error .dz-remove {}
+
+.select2-container--default .select2-selection--multiple .select2-selection__rendered .select2-selection__choice {
+    color: #333;
+    background: #f7f8fa;
+    border: 2px solid #ccc;
+    padding: 6px;
+}
+
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+    border: solid black 2px;
+    outline: 0;
+}
+
+.select2-container--default.select2-container--focus .select2-selection--multiple, .select2-container--default.select2-container--focus .select2-selection--single, .select2-container--default.select2-container--open .select2-selection--multiple, .select2-container--default.select2-container--open .select2-selection--single {
+    border: solid #b51f1f 2px;
+}
+
+.btn.btn-success { display: none;  }
