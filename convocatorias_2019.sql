@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-06-2019 a las 00:05:15
--- Versión del servidor: 10.3.15-MariaDB
+-- Tiempo de generación: 09-07-2019 a las 06:15:50
+-- Versión del servidor: 10.3.16-MariaDB
 -- Versión de PHP: 7.3.6
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -26,20 +26,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `archivos`
+-- Estructura de tabla para la tabla `adicionales`
 --
 
-CREATE TABLE `archivos` (
-  `archivosId` int(11) NOT NULL,
+CREATE TABLE `adicionales` (
+  `adicionalId` int(11) NOT NULL,
   `docentes_docenteId` int(11) NOT NULL,
-  `archivoDina` text DEFAULT NULL,
-  `archivoRegina` text DEFAULT NULL,
+  `registroDina` text DEFAULT NULL,
   `archivoEvaluacionComp` text DEFAULT NULL,
   `archivoClaseModelo` text DEFAULT NULL,
   `archivoFotografia` text DEFAULT NULL,
   `archivoCurriculum` text DEFAULT NULL,
   `archivoSunedu` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `adicionales`
+--
+
+INSERT INTO `adicionales` (`adicionalId`, `docentes_docenteId`, `registroDina`, `archivoEvaluacionComp`, `archivoClaseModelo`, `archivoFotografia`, `archivoCurriculum`, `archivoSunedu`) VALUES
+(51, 20, NULL, NULL, NULL, NULL, NULL, NULL),
+(52, 22, 'http://concytec.pe/regina1', NULL, NULL, 'IMG_20190303_085416.jpg', NULL, '2__PLAN_FORMACIÓN_EN_GESTIÓN_AMBIENTAL_2019.pdf');
 
 -- --------------------------------------------------------
 
@@ -50,8 +57,8 @@ CREATE TABLE `archivos` (
 CREATE TABLE `asesoria_tesis` (
   `tesisId` int(11) NOT NULL,
   `docenteId` int(11) NOT NULL,
-  `tesTipo` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tesFecha` date NOT NULL,
+  `tesTipo` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tesNivel` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tesNroResolucion` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tesNombreTesis` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -60,8 +67,11 @@ CREATE TABLE `asesoria_tesis` (
 -- Volcado de datos para la tabla `asesoria_tesis`
 --
 
-INSERT INTO `asesoria_tesis` (`tesisId`, `docenteId`, `tesTipo`, `tesFecha`, `tesNroResolucion`, `tesNombreTesis`) VALUES
-(1, 20, 'Tipo 1', '2019-06-24', '345e5463e345t', 'Tesis de Investigacion 1');
+INSERT INTO `asesoria_tesis` (`tesisId`, `docenteId`, `tesTipo`, `tesNivel`, `tesNroResolucion`, `tesNombreTesis`) VALUES
+(1, 0, 'Tipo 1', '', '345e5463e345t', 'Tesis de Investigacion 1'),
+(4, 0, 'Asesoría', '', 'edrasdfasd', 'asdasdas'),
+(5, 22, 'Dirección', 'Dos', '3453454', 'informe de tesis'),
+(6, 22, 'Asesoría', 'Dos', '534534534', 'tesis 2');
 
 -- --------------------------------------------------------
 
@@ -84,8 +94,11 @@ CREATE TABLE `cargos_academicos` (
 --
 
 INSERT INTO `cargos_academicos` (`cargosId`, `docenteId`, `carAcadNomInstitucion`, `carAcadArea`, `carAcadFecInicio`, `carAcadFecFin`, `carAcadeHastaFecha`) VALUES
-(1, 20, 'Institucion 1', 'Area 1', '2019-06-16', '2019-06-23', 1),
-(2, 20, 'Institucion 2', 'Area 2', '2019-06-17', '2019-06-23', 1);
+(1, 20, 'Institucion 1', 'Area 1', '2019-06-16', '2019-06-23', 0),
+(2, 20, 'Institucion 2', 'Area 2', '2019-06-17', '2019-06-23', 0),
+(3, 20, 'sdfsfsdfsdf', 'sdfsdfsd', '2019-06-05', '2019-06-14', 0),
+(4, 20, 'Cibertec', 'recursos humanos', '2019-06-04', '0000-00-00', 1),
+(5, 22, 'Jefe de sistemas', 'Director TI', '2019-02-05', '0000-00-00', 1);
 
 -- --------------------------------------------------------
 
@@ -275,7 +288,310 @@ INSERT INTO `cursos_x_escuela` (`cursosXescuelaId`, `cursos_cursoId`, `escuelas_
 (1, 46, 15),
 (2, 17, 15),
 (3, 40, 15),
-(4, 1, 15);
+(4, 1, 15),
+(20, 1, 2),
+(21, 2, 2),
+(22, 3, 2),
+(23, 4, 2),
+(24, 5, 2),
+(25, 6, 2),
+(26, 7, 2),
+(27, 8, 2),
+(28, 9, 2),
+(29, 10, 2),
+(30, 11, 2),
+(31, 12, 2),
+(32, 13, 2),
+(33, 14, 2),
+(34, 15, 2),
+(35, 16, 2),
+(36, 17, 2),
+(37, 18, 2),
+(38, 19, 2),
+(39, 20, 2),
+(40, 21, 2),
+(41, 22, 2),
+(42, 23, 2),
+(43, 24, 2),
+(44, 25, 2),
+(45, 26, 2),
+(46, 27, 2),
+(47, 28, 2),
+(48, 29, 2),
+(49, 30, 2),
+(50, 31, 2),
+(51, 32, 2),
+(52, 33, 2),
+(53, 34, 2),
+(54, 35, 2),
+(55, 36, 2),
+(56, 37, 2),
+(57, 38, 2),
+(58, 39, 2),
+(59, 40, 2),
+(60, 41, 2),
+(61, 42, 2),
+(62, 43, 2),
+(63, 44, 2),
+(64, 45, 2),
+(65, 46, 2),
+(66, 47, 2),
+(67, 48, 2),
+(68, 49, 2),
+(69, 50, 2),
+(70, 51, 2),
+(71, 52, 2),
+(72, 53, 2),
+(73, 54, 2),
+(74, 55, 2),
+(75, 56, 2),
+(76, 57, 2),
+(77, 58, 2),
+(78, 59, 2),
+(79, 7, 21),
+(80, 3, 21),
+(81, 8, 21),
+(82, 60, 2),
+(83, 61, 2),
+(84, 62, 2),
+(85, 63, 2),
+(86, 4, 21),
+(87, 1, 21),
+(89, 64, 2),
+(91, 65, 2),
+(92, 66, 2),
+(93, 67, 2),
+(94, 68, 2),
+(95, 69, 2),
+(96, 70, 2),
+(97, 71, 2),
+(98, 72, 2),
+(99, 73, 2),
+(100, 6, 21),
+(101, 2, 21),
+(104, 15, 21),
+(105, 14, 21),
+(106, 16, 21),
+(107, 13, 21),
+(108, 10, 21),
+(109, 12, 21),
+(110, 11, 21),
+(111, 9, 21),
+(112, 24, 21),
+(113, 43, 21),
+(114, 32, 21),
+(115, 40, 21),
+(117, 5, 21),
+(120, 7, 12),
+(122, 13, 12),
+(123, 8, 12),
+(124, 1, 12),
+(125, 10, 12),
+(126, 15, 12),
+(127, 16, 12),
+(128, 24, 12),
+(129, 27, 12),
+(130, 32, 12),
+(131, 35, 12),
+(132, 1, 14),
+(133, 10, 14),
+(134, 7, 14),
+(135, 13, 14),
+(136, 8, 14),
+(137, 15, 14),
+(138, 16, 14),
+(139, 24, 14),
+(140, 32, 14),
+(141, 21, 14),
+(142, 40, 14),
+(143, 48, 14),
+(144, 70, 14),
+(145, 77, 14),
+(146, 63, 21),
+(147, 48, 21),
+(148, 70, 21),
+(149, 77, 21),
+(150, 40, 12),
+(151, 48, 12),
+(152, 37, 12),
+(153, 70, 12),
+(154, 77, 12),
+(155, 13, 13),
+(157, 1, 13),
+(158, 8, 13),
+(159, 10, 13),
+(160, 16, 13),
+(161, 29, 13),
+(162, 24, 13),
+(163, 27, 13),
+(164, 32, 13),
+(165, 40, 13),
+(166, 35, 13),
+(167, 37, 13),
+(168, 45, 13),
+(169, 48, 13),
+(170, 77, 13),
+(173, 6, 6),
+(174, 7, 6),
+(175, 2, 6),
+(176, 8, 6),
+(177, 11, 6),
+(178, 15, 6),
+(179, 16, 6),
+(180, 24, 6),
+(181, 32, 6),
+(182, 5, 6),
+(183, 8, 18),
+(184, 7, 18),
+(185, 6, 18),
+(187, 16, 18),
+(188, 15, 18),
+(189, 70, 18),
+(190, 77, 18),
+(191, 7, 10),
+(192, 6, 10),
+(193, 2, 10),
+(194, 11, 10),
+(195, 15, 10),
+(196, 70, 10),
+(197, 7, 7),
+(198, 6, 7),
+(199, 2, 7),
+(200, 8, 7),
+(201, 11, 7),
+(202, 15, 7),
+(203, 16, 7),
+(204, 24, 7),
+(205, 32, 7),
+(206, 70, 7),
+(207, 77, 7),
+(208, 7, 1),
+(209, 6, 1),
+(210, 2, 1),
+(211, 8, 1),
+(212, 11, 1),
+(213, 15, 1),
+(214, 16, 1),
+(215, 24, 1),
+(216, 32, 1),
+(217, 40, 1),
+(218, 48, 1),
+(219, 63, 1),
+(220, 70, 1),
+(221, 77, 1),
+(225, 7, 15),
+(226, 3, 15),
+(227, 8, 15),
+(228, 4, 15),
+(229, 1, 15),
+(230, 6, 15),
+(231, 2, 15),
+(232, 5, 15),
+(233, 15, 15),
+(234, 14, 15),
+(235, 12, 15),
+(236, 13, 15),
+(237, 9, 15),
+(238, 16, 15),
+(239, 10, 15),
+(240, 11, 15),
+(241, 24, 15),
+(242, 32, 15),
+(243, 27, 15),
+(244, 70, 15),
+(245, 35, 15),
+(246, 77, 15),
+(247, 63, 15),
+(248, 46, 15),
+(250, 8, 22),
+(251, 16, 22),
+(252, 24, 22),
+(253, 70, 22),
+(254, 77, 22),
+(255, 1, 17),
+(256, 7, 17),
+(257, 2, 17),
+(258, 13, 17),
+(259, 8, 17),
+(260, 10, 17),
+(261, 15, 17),
+(262, 16, 17),
+(263, 70, 17),
+(264, 77, 17),
+(265, 37, 17),
+(266, 8, 8),
+(268, 1, 8),
+(269, 16, 8),
+(270, 24, 8),
+(271, 32, 8),
+(272, 26, 8),
+(274, 10, 8),
+(275, 7, 11),
+(276, 6, 11),
+(277, 2, 11),
+(278, 11, 11),
+(279, 15, 11),
+(280, 63, 11),
+(281, 1, 16),
+(282, 7, 16),
+(283, 8, 16),
+(285, 10, 16),
+(286, 15, 16),
+(287, 16, 16),
+(288, 24, 16),
+(289, 32, 16),
+(290, 40, 16),
+(291, 48, 16),
+(292, 70, 16),
+(293, 77, 16),
+(294, 7, 5),
+(295, 6, 5),
+(296, 8, 5),
+(297, 15, 5),
+(298, 11, 5),
+(299, 16, 5),
+(300, 24, 5),
+(301, 70, 5),
+(302, 1, 23),
+(304, 8, 23),
+(306, 10, 23),
+(308, 16, 23),
+(311, 70, 23),
+(312, 77, 23),
+(314, 40, 23),
+(315, 32, 23),
+(316, 24, 23),
+(318, 48, 23),
+(319, 7, 4),
+(320, 6, 4),
+(321, 2, 4),
+(322, 8, 4),
+(323, 15, 4),
+(324, 11, 4),
+(325, 70, 4),
+(326, 16, 4),
+(327, 77, 4),
+(328, 7, 20),
+(329, 6, 20),
+(330, 2, 20),
+(332, 15, 20),
+(333, 16, 20),
+(334, 24, 20),
+(335, 32, 20),
+(336, 70, 20),
+(337, 77, 20),
+(338, 11, 20),
+(340, 7, 3),
+(341, 6, 3),
+(342, 2, 3),
+(343, 8, 3),
+(345, 15, 3),
+(346, 11, 3),
+(347, 70, 3),
+(348, 74, 2),
+(349, 75, 2),
+(350, 76, 2),
+(351, 77, 2);
 
 -- --------------------------------------------------------
 
@@ -317,7 +633,9 @@ CREATE TABLE `docentes` (
 --
 
 INSERT INTO `docentes` (`docenteId`, `docCodigoDocente`, `docTipoDocumento`, `docNroDocumento`, `docNacionalidad`, `docApPaterno`, `docApMaterno`, `docNombres`, `docGenero`, `docEmail`, `docClave`, `docToken`, `docCelular`, `docTelFijo`, `docFecNacimiento`, `ubdepartamento_idDepa`, `ubprovincia_idProv`, `ubdistrito_idDist`, `docDireccion`, `docModalidad`, `docPeriodoEjercidoDesde`, `docPeriodoEjercidoHasta`, `docEstadoPostulacion`, `docRegistradoPor`, `docCreacion`, `docModificacion`) VALUES
-(20, NULL, 'DNI', 43764109, 'PE', 'BOYER', 'VELASQUEZ', 'JOSE CLAUDIO JUNIOR', 'M', 'jcvelasquez@piwichostudio.com', 'Pi051027@2019', '23a9f543975438dc361ef5d67b690c371eb57c8a', '967994927', '5353638', '1986-09-25', 15, 127, 1285, 'calle santa maritza 174urbanizacion palao', NULL, NULL, NULL, NULL, 'WEB', '2019-06-03 17:07:35', NULL);
+(20, NULL, 'DNI', 43764109, 'PE', 'BOYER', 'VELASQUEZ', 'JOSE CLAUDIO JUNIOR', 'M', 'jcvelasquez@piwichostudio.com', 'Pi051027@2019', '23a9f543975438dc361ef5d67b690c371eb57c8a', '967994927', '5353638', '1986-09-25', 6, 60, 622, 'calle santa maritza 174urbanizacion palao', NULL, NULL, NULL, NULL, 'WEB', '2019-06-03 17:07:35', NULL),
+(21, NULL, 'DNI', 43764110, 'PE', 'YANAC', 'TORRES', 'MANUEL JESUS', 'M', 'desarrollador@uap.edu.pe', 'Pi051027@2019', '23a9f543975438dc361ef5d67b690c371eb57c8a', '967994927', '5353638', '0000-00-00', 15, 127, 1285, 'calle santa maritza 174urbanizacion palao', NULL, NULL, NULL, NULL, 'WEB', '2019-06-03 17:07:35', NULL),
+(22, NULL, 'DNI', 43764109, 'PE', 'BOYER', 'VELASQUEZ', 'JOSE CLAUDIO JUNIOR', 'M', 'jcjrvb@gmail.com', 'Pi051027@2019', 'c9d2dd13d21a16cd72d19d88583fc868edd20f07', '967994927', '5353638', '0000-00-00', 15, 127, 1285, 'Calle santa maritza 87', NULL, NULL, NULL, NULL, 'WEB', '2019-07-05 00:09:17', NULL);
 
 -- --------------------------------------------------------
 
@@ -338,7 +656,7 @@ CREATE TABLE `escuelas` (
 --
 
 INSERT INTO `escuelas` (`escuelaId`, `sedes_sedeId`, `facultades_facultadId`, `escuelaNombre`, `escuelaEstado`) VALUES
-(1, 2, 1, 'E.P. PSICOLOGIA HUMANA', 1),
+(1, 5, 4, 'E.P. PSICOLOGIA HUMANA1', 1),
 (2, 2, 2, 'E.P. ADMINISTRACION Y NEG.INTERNACIONALES', 1),
 (3, 2, 1, 'FARMACIA Y BIOQUIMICA', 1),
 (4, 2, 1, 'ENFERMERIA', 1),
@@ -398,8 +716,10 @@ CREATE TABLE `experiencia_docencia` (
 --
 
 INSERT INTO `experiencia_docencia` (`experienciaId`, `docenteId`, `expDocInstitucion`, `cargoDocencia`, `tipoConDocencia`, `expDocFecInicio`, `expDocFecFin`, `expDocHastaActual`) VALUES
-(1, 20, 'Institución 1', 'Cargo 1', 'Tipo de contrato 1', '2019-06-08', '2019-06-20', 0),
-(2, 20, 'Institución 2', 'Cargo 2', 'Tipo de contrato 2', '2019-05-01', '2019-05-31', 0);
+(16, 20, 'Cibertec', 'Facilitador', 'Ordinario_Principal', '2019-06-20', '2019-06-28', 0),
+(17, 20, 'asdfasdfsdfg', 'Conferencista', 'Tiempo Parcial', '2019-05-31', '2019-06-11', 0),
+(18, 20, 'fsdfsdf', 'Facilitador', 'Tiempo Parcial', '2019-07-17', '0000-00-00', 1),
+(19, 22, 'UPC', 'Docente universitario', 'Tiempo Completo', '2019-03-12', '2019-07-02', 0);
 
 -- --------------------------------------------------------
 
@@ -424,7 +744,9 @@ CREATE TABLE `experiencia_especializacion` (
 
 INSERT INTO `experiencia_especializacion` (`especializacionId`, `docenteId`, `especInstitucion`, `especTipoInstitucion`, `especCargo`, `especFecInicio`, `especFecFin`, `especHastaFecha`) VALUES
 (1, 20, 'Institucion 1', 'Tipo 1', 'Cargo 1', '2019-06-02', '2019-06-23', 1),
-(2, 20, 'Institucion 2', 'Tipo de Institucion 2', 'Cargo 2', '2019-06-10', '2019-06-23', 1);
+(7, 20, 'asdfsdfs', 'ONG', 'Coordinador supervisor', '2019-06-13', '0000-00-00', 1),
+(8, 20, 'sdgsdfg', 'Privada', 'Jefe de area, proyecto oequivalente', '2019-05-29', '2019-06-05', 0),
+(9, 22, 'Cayetano Heredia', 'Pública', 'Jefe de area, proyecto oequivalente', '2019-05-14', '0000-00-00', 1);
 
 -- --------------------------------------------------------
 
@@ -468,8 +790,10 @@ CREATE TABLE `grados_titulos` (
 --
 
 INSERT INTO `grados_titulos` (`gradosId`, `docenteId`, `gradAcademico`, `gradEspecialidad`, `gradInstitucion`) VALUES
-(1, 20, 'Grado 1', 'Especialidad 1', 'Institución 1'),
-(2, 20, 'Grado 2', 'Especialidad 2', 'Institución 2');
+(1, 21, 'Grado 1', 'Especialidad 1', 'Institución 1'),
+(23, 20, 'Bachiller', 'sdfsf', 'sdfsdfsdfs'),
+(28, 21, 'Bachiller', 'EDED', 'EDED'),
+(29, 22, 'Bachiller', 'Especialidad 1', 'Institucion 1');
 
 -- --------------------------------------------------------
 
@@ -517,7 +841,7 @@ CREATE TABLE `idiomas` (
 
 INSERT INTO `idiomas` (`idiomaId`, `docenteId`, `idioNombre`, `idioCentroEstudios`, `idioNivel`, `idioFechaCertificacion`, `idioRutaArchivoCertificacion`) VALUES
 (1, 20, 'Ingles', 'Britanico', 'Avanzado', '2019-06-18', NULL),
-(2, 20, 'Quechua', 'PUCP', 'Basico', '2019-06-23', NULL);
+(5, 22, 'Inglés', 'Idiomas de la catolica', 'Avanzado', '2019-07-08', 'b162894c18617e2dcc3aa8b59eb2dc94.pdf');
 
 -- --------------------------------------------------------
 
@@ -548,7 +872,9 @@ CREATE TABLE `indicadores` (
 --
 
 INSERT INTO `indicadores` (`indicadorId`, `docentes_docenteId`, `tieneRegistroDina`, `tieneRegistroRegina`, `tieneGradoMaestro`, `tieneSegEspecialidad`, `tieneExpOffice`, `tieneExpOfficeSuite`, `tieneExpBlackboard`, `tienePeriodoEjercido`, `docPeriodoEjercidoDesde`, `docPeriodoEjercidoHasta`, `esValidoSunedu`, `esValidoCurriculum`, `esValidoEvaluacionComp`) VALUES
-(1, 20, 0, NULL, 1, 1, 1, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL);
+(1, 20, 0, NULL, 1, 1, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 21, NULL, NULL, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, 22, NULL, NULL, 1, 1, 1, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -562,17 +888,17 @@ CREATE TABLE `investigaciones_publicaciones` (
   `invesTitulo` varchar(150) CHARACTER SET utf8 NOT NULL,
   `invesFecha` date NOT NULL,
   `invesTipoPublicacion` varchar(150) CHARACTER SET utf8 NOT NULL,
-  `invesNroRegistro` varchar(150) CHARACTER SET utf8 NOT NULL,
-  `rutaArchivoInvestigacion` text CHARACTER SET utf8 NOT NULL
+  `invesNroOrcid` varchar(250) CHARACTER SET utf8 NOT NULL,
+  `invesRutaArchivoInvestigacion` varchar(150) CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `investigaciones_publicaciones`
 --
 
-INSERT INTO `investigaciones_publicaciones` (`investigacionesId`, `docenteId`, `invesTitulo`, `invesFecha`, `invesTipoPublicacion`, `invesNroRegistro`, `rutaArchivoInvestigacion`) VALUES
-(1, 20, 'Titulo de publicacion 1', '2019-06-24', 'En Revista 1', '003434509823498', ''),
-(2, 20, 'Titulo de publicación 2', '2019-06-21', 'Articulo 2', '00343450983434', '');
+INSERT INTO `investigaciones_publicaciones` (`investigacionesId`, `docenteId`, `invesTitulo`, `invesFecha`, `invesTipoPublicacion`, `invesNroOrcid`, `invesRutaArchivoInvestigacion`) VALUES
+(5, 20, 'asfdadadsas', '2019-07-10', 'Patente de Invención', '', ''),
+(6, 22, 'investigacion del agua', '2018-10-25', 'Patente de Invención', '345345SDFJSDF', 'af975e5c9350298f6d863702c31bacf4.pdf');
 
 -- --------------------------------------------------------
 
@@ -586,17 +912,15 @@ CREATE TABLE `reconocimientos_institucionales` (
   `recInstPremio` varchar(100) CHARACTER SET utf8 NOT NULL,
   `recInstitucion` varchar(150) CHARACTER SET utf8 NOT NULL,
   `recInstFecha` date DEFAULT NULL,
-  `recInstDocSustentario` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `rutaArchivoDocSustentatorio` text CHARACTER SET utf8 NOT NULL
+  `recRutaArchivoCertificacion` text CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `reconocimientos_institucionales`
 --
 
-INSERT INTO `reconocimientos_institucionales` (`reconocimientoId`, `docenteId`, `recInstPremio`, `recInstitucion`, `recInstFecha`, `recInstDocSustentario`, `rutaArchivoDocSustentatorio`) VALUES
-(1, 20, 'Premio 1', 'Institucion 1', '2019-06-24', '', ''),
-(2, 20, 'Premio 2', 'Institucion 2', '2019-06-19', '', '');
+INSERT INTO `reconocimientos_institucionales` (`reconocimientoId`, `docenteId`, `recInstPremio`, `recInstitucion`, `recInstFecha`, `recRutaArchivoCertificacion`) VALUES
+(5, 20, 'Premio al programador', 'UAP', '2019-07-17', '');
 
 -- --------------------------------------------------------
 
@@ -2765,10 +3089,10 @@ INSERT INTO `usuarios` (`usuarioId`, `sedes_sedeId`, `roles_rolId`, `usuNombre`,
 --
 
 --
--- Indices de la tabla `archivos`
+-- Indices de la tabla `adicionales`
 --
-ALTER TABLE `archivos`
-  ADD PRIMARY KEY (`archivosId`),
+ALTER TABLE `adicionales`
+  ADD PRIMARY KEY (`adicionalId`),
   ADD KEY `fk_archivos_docentes1_idx` (`docentes_docenteId`);
 
 --
@@ -2957,28 +3281,34 @@ ALTER TABLE `usuarios`
 --
 
 --
--- AUTO_INCREMENT de la tabla `archivos`
+-- AUTO_INCREMENT de la tabla `adicionales`
 --
-ALTER TABLE `archivos`
-  MODIFY `archivosId` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `adicionales`
+  MODIFY `adicionalId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT de la tabla `asesoria_tesis`
 --
 ALTER TABLE `asesoria_tesis`
-  MODIFY `tesisId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `tesisId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `cargos_academicos`
 --
 ALTER TABLE `cargos_academicos`
-  MODIFY `cargosId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `cargosId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `convocatorias`
 --
 ALTER TABLE `convocatorias`
   MODIFY `convocatoriaId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `cursos`
+--
+ALTER TABLE `cursos`
+  MODIFY `cursoId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- AUTO_INCREMENT de la tabla `cursos_x_convocatoria`
@@ -2993,10 +3323,22 @@ ALTER TABLE `cursos_x_docente`
   MODIFY `idcursos_x_docente` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `cursos_x_escuela`
+--
+ALTER TABLE `cursos_x_escuela`
+  MODIFY `cursosXescuelaId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=352;
+
+--
 -- AUTO_INCREMENT de la tabla `docentes`
 --
 ALTER TABLE `docentes`
-  MODIFY `docenteId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `docenteId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT de la tabla `escuelas`
+--
+ALTER TABLE `escuelas`
+  MODIFY `escuelaId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `estudios_complementarios`
@@ -3008,13 +3350,13 @@ ALTER TABLE `estudios_complementarios`
 -- AUTO_INCREMENT de la tabla `experiencia_docencia`
 --
 ALTER TABLE `experiencia_docencia`
-  MODIFY `experienciaId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `experienciaId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `experiencia_especializacion`
 --
 ALTER TABLE `experiencia_especializacion`
-  MODIFY `especializacionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `especializacionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `facultades`
@@ -3026,7 +3368,7 @@ ALTER TABLE `facultades`
 -- AUTO_INCREMENT de la tabla `grados_titulos`
 --
 ALTER TABLE `grados_titulos`
-  MODIFY `gradosId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `gradosId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `herramientas_informaticas`
@@ -3038,25 +3380,25 @@ ALTER TABLE `herramientas_informaticas`
 -- AUTO_INCREMENT de la tabla `idiomas`
 --
 ALTER TABLE `idiomas`
-  MODIFY `idiomaId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idiomaId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `indicadores`
 --
 ALTER TABLE `indicadores`
-  MODIFY `indicadorId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `indicadorId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `investigaciones_publicaciones`
 --
 ALTER TABLE `investigaciones_publicaciones`
-  MODIFY `investigacionesId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `investigacionesId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `reconocimientos_institucionales`
 --
 ALTER TABLE `reconocimientos_institucionales`
-  MODIFY `reconocimientoId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `reconocimientoId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
@@ -3081,9 +3423,9 @@ ALTER TABLE `usuarios`
 --
 
 --
--- Filtros para la tabla `archivos`
+-- Filtros para la tabla `adicionales`
 --
-ALTER TABLE `archivos`
+ALTER TABLE `adicionales`
   ADD CONSTRAINT `fk_archivos_docentes1` FOREIGN KEY (`docentes_docenteId`) REFERENCES `docentes` (`docenteId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
