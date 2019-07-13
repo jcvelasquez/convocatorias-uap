@@ -23,13 +23,15 @@
 
 </div>
 
+<?php /*
+
 <div class="kt-section">
 	<div class="kt-section__content kt-section__content--solid">
 		<h4>MARCAR SEGÚN CORRESPONDA. <small>En el caso de que sean verdaderas</small></h4>
 	</div>
 </div>
 
-
+ 
 <div class="form-group row">
 	
 	<div class="col-lg-6">
@@ -116,9 +118,11 @@
 
 </div>
 
+*/ ?>
+
 <div class="kt-section">
 	<div class="kt-section__content kt-section__content--solid">
-		<h4>GRADOS ACADEMICOS <small class="kt-hidden">Puede agregar cuantos requiera.</small></h4>
+		<h4>TITULOS PROFESIONALES <small class="kt-hidden">Puede agregar cuantos requiera.</small></h4>
 	</div>
 </div>
 
@@ -144,7 +148,7 @@
 		<div id="kt_repeater_grados">
 			
 					<div class="row">
-						<div class="col-lg-4">
+						<div class="col-lg-6">
 							<div class="input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text">
@@ -154,30 +158,42 @@
 								<select name="gradAcademico" id="gradAcademico" data-autosave="false" class="form-control">
 									<option value="">Seleccione grado académico</option>	
 									<option value="Bachiller">Bachiller</option>
-									<option value="Licenciado">Licenciado</option>
 									<option value="Magister">Magíster</option>
 									<option value="Doctor">Doctor</option>
 								</select>
 							</div>
 						</div>
-						<div class="col-lg-4">
+						<div class="col-lg-6">
 							<div class="input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text">
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<input type="text" name="gradEspecialidad" data-autosave="false" id="gradEspecialidad" class="form-control" placeholder="Especialidad">
+								<input type="text" name="gradEspecialidad" data-autosave="false" id="gradEspecialidad" class="form-control" placeholder="Mención titulo">
 							</div>
 						</div>
-						<div class="col-lg-4">
+					</div>
+					<div class="row">
+						<div class="col-lg-6">
 							<div class="input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text">
 										<i class="la la-envelope"></i>
 									</span>
 								</div>
-								<input type="text" name="gradInstitucion" data-autosave="false" id="gradInstitucion" class="form-control" placeholder="Institucion">
+								<input type="text" name="gradInstitucion" data-autosave="false" id="gradInstitucion" class="form-control" placeholder="Universidad">
+							</div>
+						</div>
+
+						<div class="col-lg-3">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text">
+										<i class="la la-envelope"></i>
+									</span>
+								</div>
+								<input type="text" name="gradFecha" data-autosave="false" id="gradFecha" class="form-control form-date" placeholder="dd/mm/aaaa (Obtención titulo)">
 							</div>
 						</div>
 
@@ -246,32 +262,19 @@
 								</div>
 								<select class="form-control" name="cargoDocencia" id="cargoDocencia" data-autosave="false">
 									<option value="">Seleccione un cargo</option>
-									<option value="Docente universitario">Docente universitario</option>
-									<option value="Facilitador">Facilitador</option>
-									<option value="Conferencista">Conferencista</option>
-									<option value="Otros">Otros</option>
+									<option value="Rector">Rector</option>
+									<option value="Vicerrector">Vicerrector</option>
+									<option value="Decano_de_Facultad">Decano de Facultad</option>
+									<option value="Director_de_Escuela">Director de Escuela</option>
+									<option value="Coordinador_Académico">Coordinador Académico</option>
+									<option value="Director_Académico">Director Académico</option>
+									<option value="Director_de_Investigación">Director de Investigación</option>
+									<option value="Vicerrector_de_Investigación">Vicerrector de Investigación</option>
 								</select>
 							</div>
 						</div>
 
-						<div class="col-lg-4">
-							<div class="input-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text">
-										<i class="la la-envelope"></i>
-									</span>
-								</div>
-								<select class="form-control" name="tipoConDocencia" id="tipoConDocencia" data-autosave="false"> 
-									<option value="">Seleccione el tipo de contrato</option>
-									<option value="Tiempo Completo">Tiempo Completo</option>
-									<option value="Tiempo Parcial">Tiempo Parcial</option>
-									<option value="Ordinario Principal">Ordinario Principal</option>
-									<option value="Ordinario Asociado">Ordinario Asociado</option>
-									<option value="Ordinario Auxiliar">Ordinario Auxiliar</option>
-									<option value="Otros">Otros</option>
-								</select>
-							</div>
-						</div>
+						
 
 					</div>
 					<div class="row">
@@ -321,7 +324,7 @@
 
 <div class="kt-section">
 	<div class="kt-section__content kt-section__content--solid">
-		<h4>EXPERIENCIA PROFESIONAL DE ESPECIALIZACIÓN <small></small></h4>
+		<h4>EXPERIENCIA PROFESIONAL DE EN DOCENCIA <small></small></h4>
 	</div>
 </div>
 
@@ -395,6 +398,45 @@
 									<option value="Otros">Otros</option>
 								</select>
 
+							</div>
+						</div>
+
+						<div class="col-lg-4">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text">
+										<i class="la la-envelope"></i>
+									</span>
+								</div>
+								<select class="form-control" name="tipoConDocencia" id="tipoConDocencia" data-autosave="false"> 
+									<option value="">Seleccione dedicacion docente</option>
+									<option value="Tiempo Completo">Docente Ordinario Principal</option>
+									<option value="Tiempo Completo">Docente Ordinario Asociado</option>
+									<option value="Tiempo Completo">Docente Ordinario Auxiliar</option>
+									
+								</select>
+							</div>
+						</div>
+
+						<div class="col-lg-4">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text">
+										<i class="la la-envelope"></i>
+									</span>
+								</div>
+								<select class="form-control" name="tipoConDocencia" id="tipoConDocencia" data-autosave="false"> 
+									<option value="">Seleccione categoria docente</option>
+									<option value="Tiempo Completo">Docente Ordinario Principal</option>
+									<option value="Tiempo Completo">Docente Ordinario Asociado</option>
+									<option value="Tiempo Completo">Docente Ordinario Auxiliar</option>
+									<option value="Tiempo Completo">Docente Contratado </option>
+									<option value="Tiempo Completo">Docente Extraordinario Emeritos </option>
+									<option value="Tiempo Completo">Docente Extraordinario Honorarios </option>
+									<option value="Tiempo Completo">Docente Extraordinario Visitantes</option>
+									
+									
+								</select>
 							</div>
 						</div>
 						

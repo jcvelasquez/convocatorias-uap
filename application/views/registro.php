@@ -90,11 +90,11 @@
 							<a class="kt-wizard-v3__nav-item" href="#" data-ktwizard-type="step">
 								<div class="kt-wizard-v3__nav-body">
 									<div class="kt-wizard-v3__nav-label">
-										<span>3</span> Cargos
+										<span>3</span> Segunda Especialidad
 									</div>
 									<div class="kt-wizard-v3__nav-bar"></div>
 								</div>
-							</a>
+							</a> 
 							<a class="kt-wizard-v3__nav-item" href="#" data-ktwizard-type="step">
 								<div class="kt-wizard-v3__nav-body">
 									<div class="kt-wizard-v3__nav-label">
@@ -147,8 +147,8 @@
 						</div>
 						<!--begin: Form Wizard Step 3-->
 						<div class="kt-wizard-v3__content" data-ktwizard-type="step-content">
-							<?php include('tabs/tpl-cargos-academicos.php'); ?>
-						</div>
+							<?php include('tabs/tpl-segunda-especialidad.php'); ?>
+						</div> 
 						<!--begin: Form Wizard Step 4-->
 						<div class="kt-wizard-v3__content" data-ktwizard-type="step-content">
 							<?php include('tabs/tpl-estudios-complementarios.php'); ?>

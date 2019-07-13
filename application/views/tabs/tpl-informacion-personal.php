@@ -263,9 +263,7 @@
 
 				<option value="">Seleccione tipo documento</option>
 				<option value="DNI" <?= ($tipoDoc=="DNI")? "selected" : "";  ?>>Documento Nacional de Identidad (D.N.I.)</option>
-				<option value="PASAPORTE" <?= ($tipoDoc=="PASAPORTE")? "selected" : "";  ?>>Pasaporte</option>
 				<option value="CE" <?= ($tipoDoc=="CE")? "selected" : "";  ?>>Carnet de Extranjeria (C.E.)</option>
-				<option value="RUC" <?= ($tipoDoc=="RUC")? "selected" : "";  ?>>Registro Único de Contribuyente (R.U.C.)</option>
 			</select>
 
 		</div>
